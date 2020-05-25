@@ -17,36 +17,43 @@
     </script>
 
     <style type="text/css">
+        @import url(//cdn.jsdelivr.net/font-nanum/1.0/nanumbarungothic/nanumbarungothic.css);
+        /* 나눔바른고딕 : 한국서버 빠름*/
+        
         * {
             margin: 0px;
             padding: 0px;
+            font-family: nanumbarungothic;
         }
 
         #front-wrap {
-            width: 984px;
+            width: 1184px;
             margin: 0px auto;
             padding: 15px 0px;
             text-align: center;
         }
 
         #nav-logo {
+            width: 17%;
+            height: 100%;
             text-align: center;
             text-decoration: none;
             /*밑줄 없앰*/
             color: white;
             margin-top: 40px;
-            margin-left: 50px;
-            margin-right: 55px;
+            margin-left: 45px;
+            margin-right: 45px;
         }
 
         #nav-search {
             /*nav-item 클래스 아래의 a 요소를 선택함*/
             text-align: center;
             text-decoration: none;
-            margin-left: 10px;
+            margin-left: 25px;
             /*밑줄 없앰*/
             color: white;
             margin-top: 38px;
+            margin-right: 15px;
         }
 
         #header a {
@@ -72,7 +79,8 @@
             padding: 40px;
             cursor: pointer;
             /*마우스 커서를 pointer 모양으로 함*/
-            border: 1px solid white;
+            border-left: 1px solid white;
+            border-right: 1px solid white;
         }
 
         .nav-item a {
@@ -87,8 +95,9 @@
             width: 234px;
             float: left;
             text-align: left;
-            background: dodgerblue;
-            min-height: 650px;
+            background: #0f4c81;
+            min-height: 850px;
+            line-height: 2.5em;
         }
 
         div#s_left ul {
@@ -97,36 +106,38 @@
         }
 
         #s_left ul ul {
-            background: skyblue;
+            background: #3C74A4;
             list-style: none;
             text-align: center;
         }
 
         #photo {
             text-align: center;
-            width: 99%;
-            min-height: 130px;
+            margin: auto;
+            width: 55%;
+            min-height: 110px;
             margin-top: 5px;
-            border: 1px solid black;
+            border: 1px solid white;
         }
 
         div#s_left>ul>li {
             padding: 10px;
-            margin-top: 5px;
+            margin-top: 25px;
             font-family: HELVETICA, NANUMGOTHIC;
             font-size: 18px;
             background: #0f4c81;
             color: white;
+            border-bottom: 1px solid white;
 
         }
 
         #contents {
-            /* border: 1px solid black; */
-            min-width: 734px;
+             border: 1px solid black; 
+            min-width: 940px;
             float: left;
             text-align: center;
             margin-left: 7px;
-            min-height: 647px;
+            min-height: 850px;
 
         }
     </style>
@@ -146,7 +157,7 @@
                     <li class="nav-item"> <a href="">MENU</a> </li>
                     <li class="nav-item"> <a href="">MENU</a> </li>
                     <li class="nav-item"> <a href="">MENU</a> </li>
-                    <li id="nav-search"><input type="text" name="nav-search"></li>
+                    <li id="nav-search"><input type="text" name="nav-search" size="20"></li>
                 </ul>
             </nav>
 
@@ -158,9 +169,9 @@
             <ul>
                 <ul>
                     <li id="photo">사진</li>
-                    <li>소속팀 인사1팀 부장 홍길동</li>
+                    <li>소속팀 인사1팀 사원 홍길동</li>
                     <li>사원번호 1571000367</li>
-                    <li><button>마이페이지</button> <button>로그아웃</button></li>
+                    <li><button>마이페이지</button> &nbsp; <button>로그아웃</button></li>
                 </ul>
                 <li>첫번째 메뉴</li>
                 <li>두번째 메뉴</li>
