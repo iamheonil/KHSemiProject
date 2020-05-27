@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-05-27T15:20:18.393Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="c_8uydPUVxOuC2waZ-mL" version="13.1.4" type="github">
+<mxfile host="app.diagrams.net" modified="2020-05-27T15:24:13.566Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="b6rSevxkNB9d88_nrZoR" version="13.1.4" type="github">
   <diagram id="veKuksc_ZrwfzwcqDDUQ" name="Page-1">
     <mxGraphModel dx="1673" dy="934" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
       <root>
@@ -139,10 +139,10 @@
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-67" value="로그인" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="610" y="490" width="90" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="PEsu_zmEFKTXnumoR2Yf-68" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="PEsu_zmEFKTXnumoR2Yf-65" target="PEsu_zmEFKTXnumoR2Yf-67" edge="1">
+        <mxCell id="PEsu_zmEFKTXnumoR2Yf-68" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="PEsu_zmEFKTXnumoR2Yf-65" target="PEsu_zmEFKTXnumoR2Yf-67" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="280" y="855" as="sourcePoint" />
-            <mxPoint x="470" y="550" as="targetPoint" />
+            <mxPoint x="620" y="540" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="PEsu_zmEFKTXnumoR2Yf-67" target="PEsu_zmEFKTXnumoR2Yf-67" edge="1">
@@ -196,10 +196,10 @@
         <mxCell id="DOy3Ms5891rvQtxvsLgi-19" value="비밀번호찾기" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="260" y="325" width="90" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="DOy3Ms5891rvQtxvsLgi-20" value="" style="endArrow=classic;html=1;entryX=0.058;entryY=0.708;entryDx=0;entryDy=0;exitX=1.045;exitY=0.628;exitDx=0;exitDy=0;entryPerimeter=0;exitPerimeter=0;" edge="1" parent="1" source="DOy3Ms5891rvQtxvsLgi-16" target="PEsu_zmEFKTXnumoR2Yf-67">
+        <mxCell id="DOy3Ms5891rvQtxvsLgi-20" value="" style="endArrow=classic;html=1;exitX=1.045;exitY=0.628;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="DOy3Ms5891rvQtxvsLgi-16" target="PEsu_zmEFKTXnumoR2Yf-67">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="270" y="599.9999999999998" as="sourcePoint" />
-            <mxPoint x="342.8797447948443" y="549.5128263407764" as="targetPoint" />
+            <mxPoint x="615" y="540" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="DOy3Ms5891rvQtxvsLgi-21" value="" style="endArrow=none;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="DOy3Ms5891rvQtxvsLgi-18" target="PEsu_zmEFKTXnumoR2Yf-67">
