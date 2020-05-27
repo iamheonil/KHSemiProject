@@ -1,1 +1,25 @@
-<mxfile host="app.diagrams.net" modified="2020-05-27T12:45:42.242Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="QWvsGrM-YXFYsirVJAkS" version="13.1.3" type="github"><diagram id="veKuksc_ZrwfzwcqDDUQ" name="Page-1">xZXfk5MwEMf/Gh6dKUlLuccrvas3Rz21an3rpCSFjIHFEA7oX284wi+pns50lAcm+e5myX52t7WwF5cbSdJoC5QJC81oaeG1hZDruPpdC1UjzF3UCKHktJHsXtjxMzPizKg5pywbOSoAoXg6FgNIEhaokUakhGLsdgIx/mpKQjYRdgERU3XPqYpMWmjZ628ZD6P2y7Zz01hi0jqbTLKIUCgGEr6zsCcBVLOKS4+Jml3LpTl3/wtrdzHJEvUnBx4T51yK/SPyHsL7jLvnjNtvTJRnInKT8G2gQJobq6rFoC+f1ss8Fo0DXj0zqbgG5ZMjE+8h44pDol2OoBTE2kHUhhUJvoUS8oR6IOpzOho+vTyDGLeCh/VZBalWIxULvbH1EnIleMK8rrozLU4zb9PQ4Vg5kAyJDYOYKVlpl9Y6N1UxbYlmZl/0RcZGigb1dYxGTFuFXeSevF4Y+JcLgT/6/vrdh5N3+Pq04w/qk7/cXyjEpAY6iu56vVkVEVdsl5KgthR67sbQrsBnfjPmY+MpHxtdAOReAdCeb5dfqsWCpYdgu/y+/rwJDn8HqG3XQEBO/wkwjH5qqMX/BoZeB9ZhqvSQUSZfJ3WsJ5lR/9gJ3Xw/NaN6PaTdAP6mB53rENXb/of4xTb4N8N3PwA=</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2020-05-27T12:54:50.894Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="mKI5bW6X696zp6bCBjDu" version="13.1.4" type="github">
+  <diagram id="veKuksc_ZrwfzwcqDDUQ" name="Page-1">
+    <mxGraphModel dx="1240" dy="747" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Kn6zxlWK2CIgFsi8zsi1-1" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="140" y="200" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3RLLDNQfC_XOSiItTL7W-1" value="" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="490" y="130" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="WiM7Vy55ep_cM7qDUGc_-1" value="" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="320" y="250" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="WiM7Vy55ep_cM7qDUGc_-2" value="" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;" parent="1" vertex="1">
+          <mxGeometry x="230" y="130" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sw5TpVUe3Zrz2vBbVAXr-1" value="들어와진건가여?&lt;br&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="430" width="120" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
