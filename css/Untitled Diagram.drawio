@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-05-27T15:19:07.167Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="_ADE8_wYJUcMU5JWQr-z" version="13.1.4" type="github">
+<mxfile host="app.diagrams.net" modified="2020-05-27T15:20:02.941Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="G3verKqGUrDXBvt_aU_B" version="13.1.4" type="github">
   <diagram id="veKuksc_ZrwfzwcqDDUQ" name="Page-1">
     <mxGraphModel dx="1673" dy="934" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
       <root>
@@ -137,7 +137,7 @@
           <mxGeometry x="90" y="610" width="30" height="60" as="geometry" />
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-67" value="로그인" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="470" y="500" width="90" height="70" as="geometry" />
+          <mxGeometry x="590" y="490" width="90" height="70" as="geometry" />
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-68" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="PEsu_zmEFKTXnumoR2Yf-65" target="PEsu_zmEFKTXnumoR2Yf-67" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
