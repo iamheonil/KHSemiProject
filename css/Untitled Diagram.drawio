@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-05-27T15:41:57.616Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="orxJ3gSEi5lzo-MC-AwF" version="13.1.4" type="github">
+<mxfile host="app.diagrams.net" modified="2020-05-27T15:42:16.058Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="aZE0Nd4yX_48bd0CG9Fh" version="13.1.4" type="github">
   <diagram id="veKuksc_ZrwfzwcqDDUQ" name="Page-1">
     <mxGraphModel dx="1673" dy="934" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
       <root>
@@ -205,7 +205,7 @@
             <mxPoint x="615" y="540" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="DOy3Ms5891rvQtxvsLgi-21" value="" style="endArrow=none;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="DOy3Ms5891rvQtxvsLgi-18" target="PEsu_zmEFKTXnumoR2Yf-67">
+        <mxCell id="DOy3Ms5891rvQtxvsLgi-21" value="" style="endArrow=none;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="DOy3Ms5891rvQtxvsLgi-18" target="PEsu_zmEFKTXnumoR2Yf-67">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="370" y="850" as="sourcePoint" />
             <mxPoint x="420" y="800" as="targetPoint" />
@@ -220,10 +220,10 @@
         <mxCell id="DOy3Ms5891rvQtxvsLgi-25" value="마이페이지" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="380" y="610" width="90" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="DOy3Ms5891rvQtxvsLgi-26" value="" style="endArrow=classic;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.594;entryY=0.01;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-67" target="DOy3Ms5891rvQtxvsLgi-25">
+        <mxCell id="DOy3Ms5891rvQtxvsLgi-26" value="" style="endArrow=classic;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="DOy3Ms5891rvQtxvsLgi-25" target="PEsu_zmEFKTXnumoR2Yf-67">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="413.23" y="639.9999999999998" as="sourcePoint" />
-            <mxPoint x="560.0039470903462" y="1011.5458661696985" as="targetPoint" />
+            <mxPoint x="580" y="640" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="DOy3Ms5891rvQtxvsLgi-28" value="회원정보변경" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
