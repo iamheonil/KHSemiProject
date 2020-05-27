@@ -1,136 +1,157 @@
-<mxfile host="app.diagrams.net" modified="2020-05-27T14:42:12.195Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="033hsYakhZetPcW9LV1m" version="13.1.3" type="github">
+<mxfile host="app.diagrams.net" modified="2020-05-27T14:57:19.430Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="VZTgxFhDZ-8oGh4TnQe-" version="13.1.3" type="github">
   <diagram id="veKuksc_ZrwfzwcqDDUQ" name="Page-1">
-    <mxGraphModel dx="1447" dy="803" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="1736" dy="964" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-4" value="전자 문서" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="160" y="470" width="90" height="70" as="geometry" />
+          <mxGeometry x="420" y="630" width="90" height="70" as="geometry" />
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-21" value="기안" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="380" y="240" width="90" height="70" as="geometry" />
+          <mxGeometry x="690" y="310" width="90" height="70" as="geometry" />
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-22" value="결재" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="380" y="470" width="90" height="70" as="geometry" />
+          <mxGeometry x="690" y="440" width="90" height="70" as="geometry" />
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-23" value="완료문서" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="380" y="650" width="90" height="70" as="geometry" />
+          <mxGeometry x="690" y="570" width="90" height="70" as="geometry" />
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-24" value="문서등록대장" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="380" y="810" width="90" height="70" as="geometry" />
+          <mxGeometry x="690" y="730" width="90" height="70" as="geometry" />
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-25" value="임시저장" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="580" y="60" width="90" height="70" as="geometry" />
+          <mxGeometry x="890" y="130" width="90" height="70" as="geometry" />
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-26" value="문서처리" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="580" y="140" width="90" height="70" as="geometry" />
+          <mxGeometry x="890" y="210" width="90" height="70" as="geometry" />
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-27" value="문서작성" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="580" y="220" width="90" height="70" as="geometry" />
+          <mxGeometry x="890" y="290" width="90" height="70" as="geometry" />
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-28" value="임시저장함" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="580" y="300" width="90" height="70" as="geometry" />
+          <mxGeometry x="890" y="370" width="90" height="70" as="geometry" />
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-29" value="문서수정" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="580" y="410" width="90" height="70" as="geometry" />
+          <mxGeometry x="890" y="460" width="90" height="70" as="geometry" />
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-30" value="문서처리" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="580" y="490" width="90" height="70" as="geometry" />
+          <mxGeometry x="890" y="540" width="90" height="70" as="geometry" />
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-31" value="결재대기함" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="580" y="580" width="90" height="70" as="geometry" />
+          <mxGeometry x="890" y="630" width="90" height="70" as="geometry" />
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-32" value="진행문서함" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="580" y="660" width="90" height="70" as="geometry" />
+          <mxGeometry x="890" y="710" width="90" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="PEsu_zmEFKTXnumoR2Yf-33" value="" style="endArrow=none;html=1;entryX=0.041;entryY=0.841;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.688;exitY=-0.024;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-4" target="PEsu_zmEFKTXnumoR2Yf-21">
+        <mxCell id="PEsu_zmEFKTXnumoR2Yf-33" value="" style="endArrow=none;html=1;entryX=0.041;entryY=0.841;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-4" target="PEsu_zmEFKTXnumoR2Yf-21">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="280" y="460" as="sourcePoint" />
-            <mxPoint x="330" y="410" as="targetPoint" />
+            <mxPoint x="590" y="430" as="sourcePoint" />
+            <mxPoint x="640" y="380" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-34" value="" style="endArrow=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-4" target="PEsu_zmEFKTXnumoR2Yf-22">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="300" y="510" as="sourcePoint" />
-            <mxPoint x="350" y="460" as="targetPoint" />
+            <mxPoint x="610" y="480" as="sourcePoint" />
+            <mxPoint x="660" y="430" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PEsu_zmEFKTXnumoR2Yf-37" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-23" target="PEsu_zmEFKTXnumoR2Yf-4">
+        <mxCell id="PEsu_zmEFKTXnumoR2Yf-37" value="" style="endArrow=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-23" target="PEsu_zmEFKTXnumoR2Yf-4">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="250" y="660" as="sourcePoint" />
-            <mxPoint x="270" y="550" as="targetPoint" />
+            <mxPoint x="560" y="630" as="sourcePoint" />
+            <mxPoint x="580" y="520" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-38" value="" style="endArrow=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-21" target="PEsu_zmEFKTXnumoR2Yf-25">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="430" y="220" as="sourcePoint" />
-            <mxPoint x="480" y="170" as="targetPoint" />
+            <mxPoint x="740" y="190" as="sourcePoint" />
+            <mxPoint x="790" y="140" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-39" value="" style="endArrow=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-21" target="PEsu_zmEFKTXnumoR2Yf-26">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="470" y="270" as="sourcePoint" />
-            <mxPoint x="520" y="220" as="targetPoint" />
+            <mxPoint x="780" y="240" as="sourcePoint" />
+            <mxPoint x="830" y="190" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-40" value="" style="endArrow=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-21" target="PEsu_zmEFKTXnumoR2Yf-27">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="480" y="300" as="sourcePoint" />
-            <mxPoint x="530" y="250" as="targetPoint" />
+            <mxPoint x="790" y="270" as="sourcePoint" />
+            <mxPoint x="840" y="220" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-41" value="" style="endArrow=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-21" target="PEsu_zmEFKTXnumoR2Yf-28">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="470" y="360" as="sourcePoint" />
-            <mxPoint x="520" y="310" as="targetPoint" />
+            <mxPoint x="780" y="330" as="sourcePoint" />
+            <mxPoint x="830" y="280" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-44" value="" style="endArrow=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-22" target="PEsu_zmEFKTXnumoR2Yf-29">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="440" y="450" as="sourcePoint" />
-            <mxPoint x="490" y="400" as="targetPoint" />
+            <mxPoint x="750" y="420" as="sourcePoint" />
+            <mxPoint x="800" y="370" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-45" value="" style="endArrow=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-22" target="PEsu_zmEFKTXnumoR2Yf-30">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="400" y="450" as="sourcePoint" />
-            <mxPoint x="450" y="400" as="targetPoint" />
+            <mxPoint x="710" y="420" as="sourcePoint" />
+            <mxPoint x="760" y="370" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-52" value="" style="endArrow=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-22" target="PEsu_zmEFKTXnumoR2Yf-31">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="710" y="460" as="sourcePoint" />
-            <mxPoint x="760" y="410" as="targetPoint" />
+            <mxPoint x="1020" y="430" as="sourcePoint" />
+            <mxPoint x="1070" y="380" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-53" value="" style="endArrow=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-32" target="PEsu_zmEFKTXnumoR2Yf-22">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="370" y="640" as="sourcePoint" />
-            <mxPoint x="480" y="510" as="targetPoint" />
+            <mxPoint x="680" y="610" as="sourcePoint" />
+            <mxPoint x="790" y="480" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PEsu_zmEFKTXnumoR2Yf-54" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-24" target="PEsu_zmEFKTXnumoR2Yf-4">
+        <mxCell id="PEsu_zmEFKTXnumoR2Yf-54" value="" style="endArrow=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-24" target="PEsu_zmEFKTXnumoR2Yf-4">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="90" y="820" as="sourcePoint" />
-            <mxPoint x="140" y="770" as="targetPoint" />
+            <mxPoint x="400" y="790" as="sourcePoint" />
+            <mxPoint x="450" y="740" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-55" value="" style="endArrow=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-24" target="PEsu_zmEFKTXnumoR2Yf-23">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="530" y="860" as="sourcePoint" />
-            <mxPoint x="580" y="810" as="targetPoint" />
+            <mxPoint x="840" y="830" as="sourcePoint" />
+            <mxPoint x="890" y="780" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PEsu_zmEFKTXnumoR2Yf-56" value="" style="endArrow=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-24" target="PEsu_zmEFKTXnumoR2Yf-32">
+        <mxCell id="PEsu_zmEFKTXnumoR2Yf-56" value="" style="endArrow=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-24" target="PEsu_zmEFKTXnumoR2Yf-32">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="530" y="870" as="sourcePoint" />
-            <mxPoint x="580" y="820" as="targetPoint" />
+            <mxPoint x="840" y="840" as="sourcePoint" />
+            <mxPoint x="890" y="790" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-57" value="" style="endArrow=none;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-24" target="PEsu_zmEFKTXnumoR2Yf-31">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="600" y="860" as="sourcePoint" />
-            <mxPoint x="650" y="810" as="targetPoint" />
+            <mxPoint x="910" y="830" as="sourcePoint" />
+            <mxPoint x="960" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PEsu_zmEFKTXnumoR2Yf-65" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="840" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PEsu_zmEFKTXnumoR2Yf-67" value="로그인" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="820" width="90" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="PEsu_zmEFKTXnumoR2Yf-68" value="" style="endArrow=classic;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-65" target="PEsu_zmEFKTXnumoR2Yf-67">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="90" y="855" as="sourcePoint" />
+            <mxPoint x="160" y="850" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PEsu_zmEFKTXnumoR2Yf-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-67" target="PEsu_zmEFKTXnumoR2Yf-67">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PEsu_zmEFKTXnumoR2Yf-72" value="" style="endArrow=classic;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="PEsu_zmEFKTXnumoR2Yf-67" target="PEsu_zmEFKTXnumoR2Yf-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="260" y="840" as="sourcePoint" />
+            <mxPoint x="300" y="800" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
