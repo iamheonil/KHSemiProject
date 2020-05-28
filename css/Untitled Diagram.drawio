@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-05-28T16:30:15.296Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" etag="DfAprdxFIobWdfTbVTLW" version="13.1.5" type="github">
+<mxfile host="app.diagrams.net" modified="2020-05-28T16:34:09.737Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" etag="KyfbgoLq1VFhWzYXA2mX" version="13.1.5" type="github">
   <diagram id="veKuksc_ZrwfzwcqDDUQ" name="Page-1">
-    <mxGraphModel dx="1038" dy="536" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="1038" dy="585" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -570,6 +570,16 @@
           <mxGeometry x="-0.2054" width="160" relative="1" as="geometry">
             <mxPoint x="1261.7157287525383" y="950.251262658471" as="sourcePoint" />
             <mxPoint x="1130" y="895" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Yp1-gwKtbLMfh5_p5UJI-46" value="작성 완료" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="830" y="1060" width="57" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Yp1-gwKtbLMfh5_p5UJI-47" value="Extend" style="endArrow=block;endSize=16;endFill=0;html=1;dashed=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yp1-gwKtbLMfh5_p5UJI-46" target="Yp1-gwKtbLMfh5_p5UJI-15">
+          <mxGeometry x="-0.2054" width="160" relative="1" as="geometry">
+            <mxPoint x="1013.2157287525381" y="970.2512626584708" as="sourcePoint" />
+            <mxPoint x="874.5" y="1000" as="targetPoint" />
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
