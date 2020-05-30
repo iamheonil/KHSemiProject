@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-05-30T14:14:58.225Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" etag="WQd6RGIx5jiTWmdJPlEs" version="13.1.7" type="github">
+<mxfile host="app.diagrams.net" modified="2020-05-30T14:16:48.365Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" etag="jAbJOFxyI7V8s3WkjuYE" version="13.1.7" type="github">
   <diagram id="veKuksc_ZrwfzwcqDDUQ" name="Page-1">
     <mxGraphModel dx="1038" dy="585" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
       <root>
@@ -639,7 +639,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="78OipM9IOy99-lYrfjTT-7" value="배경색 지정" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="78OipM9IOy99-lYrfjTT-7" value="일정 강조&lt;br&gt;배경색 지정" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="270" y="170" width="90" height="70" as="geometry" />
         </mxCell>
         <mxCell id="78OipM9IOy99-lYrfjTT-8" value="Extend" style="endArrow=block;endSize=16;endFill=0;html=1;dashed=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="78OipM9IOy99-lYrfjTT-7" target="DOy3Ms5891rvQtxvsLgi-11">
