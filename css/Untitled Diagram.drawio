@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-05-31T13:10:19.273Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" etag="PzzBZPAtU2USzIkDYdx0" version="13.1.7" type="github">
+<mxfile host="app.diagrams.net" modified="2020-05-31T13:10:45.031Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" etag="IwVg8JU9UOYcdvbqcMGr" version="13.1.7" type="github">
   <diagram id="veKuksc_ZrwfzwcqDDUQ" name="Page-1">
     <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
       <root>
@@ -59,9 +59,7 @@
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="280" y="855" as="sourcePoint" />
             <mxPoint x="620" y="540" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="540" y="540" />
-            </Array>
+            <Array as="points" />
           </mxGeometry>
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" edge="1">
@@ -89,7 +87,7 @@
           <mxGeometry x="680" y="720" width="90" height="70" as="geometry" />
         </mxCell>
         <mxCell id="DOy3Ms5891rvQtxvsLgi-16" value="회원가입" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="280" y="480" width="90" height="70" as="geometry" />
+          <mxGeometry x="280" y="440" width="90" height="70" as="geometry" />
         </mxCell>
         <mxCell id="DOy3Ms5891rvQtxvsLgi-17" value="" style="endArrow=classic;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="PEsu_zmEFKTXnumoR2Yf-65" target="DOy3Ms5891rvQtxvsLgi-16" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -98,10 +96,10 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="DOy3Ms5891rvQtxvsLgi-18" value="아이디찾기" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="280" y="400" width="90" height="70" as="geometry" />
+          <mxGeometry x="280" y="360" width="90" height="70" as="geometry" />
         </mxCell>
         <mxCell id="DOy3Ms5891rvQtxvsLgi-19" value="비밀번호찾기" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="280" y="320" width="90" height="70" as="geometry" />
+          <mxGeometry x="280" y="280" width="90" height="70" as="geometry" />
         </mxCell>
         <mxCell id="DOy3Ms5891rvQtxvsLgi-20" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="DOy3Ms5891rvQtxvsLgi-16" target="PEsu_zmEFKTXnumoR2Yf-67" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
