@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-05-31T13:29:28.039Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" etag="f5tM3To-y7Ap7jAwxzvI" version="13.1.10" type="github">
+<mxfile host="app.diagrams.net" modified="2020-06-01T08:14:35.465Z" agent="5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="KtWYyJ0I3MRc-bq4c0x8" version="13.1.11" type="github">
   <diagram id="veKuksc_ZrwfzwcqDDUQ" name="Page-1">
-    <mxGraphModel dx="1038" dy="585" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="1200" dy="848" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -340,8 +340,8 @@
         </mxCell>
         <mxCell id="IGPOGFFqoMFYPmlBidTe-8" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="edgeStyle=none;html=1;endArrow=open;verticalAlign=bottom;dashed=1;labelBackgroundColor=none;" parent="1" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="1740" y="610" as="sourcePoint" />
-            <mxPoint x="1630" y="610" as="targetPoint" />
+            <mxPoint x="1690" y="610" as="sourcePoint" />
+            <mxPoint x="1580" y="610" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="IGPOGFFqoMFYPmlBidTe-10" value="include" style="endArrow=block;endSize=16;endFill=0;html=1;dashed=1;exitX=1.032;exitY=0.577;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitPerimeter=0;" parent="1" source="IGPOGFFqoMFYPmlBidTe-4" target="PEsu_zmEFKTXnumoR2Yf-26" edge="1">
@@ -650,15 +650,18 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zVTeGUb_1D3lMInnOZZ9-1" value="일정 수정" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="zVTeGUb_1D3lMInnOZZ9-1" value="일정 수정" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="410" y="40" width="90" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="zVTeGUb_1D3lMInnOZZ9-2" value="Extend" style="endArrow=block;endSize=16;endFill=0;html=1;dashed=1;entryX=0.284;entryY=0.04;entryDx=0;entryDy=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryPerimeter=0;" edge="1" parent="1" source="zVTeGUb_1D3lMInnOZZ9-1" target="DOy3Ms5891rvQtxvsLgi-11">
+        <mxCell id="zVTeGUb_1D3lMInnOZZ9-2" value="Extend" style="endArrow=block;endSize=16;endFill=0;html=1;dashed=1;entryX=0.284;entryY=0.04;entryDx=0;entryDy=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryPerimeter=0;" parent="1" source="zVTeGUb_1D3lMInnOZZ9-1" target="DOy3Ms5891rvQtxvsLgi-11" edge="1">
           <mxGeometry x="-0.2099" width="160" relative="1" as="geometry">
             <mxPoint x="426.8198051533948" y="179.74873734152925" as="sourcePoint" />
             <mxPoint x="553.1801948466052" y="220.25126265847075" as="targetPoint" />
             <mxPoint as="offset" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-1" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;html=1;outlineConnect=0;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1860" y="580" width="30" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
