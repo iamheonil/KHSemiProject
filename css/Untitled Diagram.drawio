@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-06-01T08:14:35.465Z" agent="5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="KtWYyJ0I3MRc-bq4c0x8" version="13.1.11" type="github">
+<mxfile host="app.diagrams.net" modified="2020-06-01T09:18:55.723Z" agent="5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="M_FGYuAn-fv0sV3mp71L" version="13.1.11" type="github">
   <diagram id="veKuksc_ZrwfzwcqDDUQ" name="Page-1">
-    <mxGraphModel dx="1200" dy="848" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="2040" dy="1438" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -72,7 +72,7 @@
           <mxGeometry x="530" y="200" width="90" height="70" as="geometry" />
         </mxCell>
         <mxCell id="DOy3Ms5891rvQtxvsLgi-13" value="커뮤니티" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="910" y="570" width="90" height="70" as="geometry" />
+          <mxGeometry x="890" y="570" width="90" height="70" as="geometry" />
         </mxCell>
         <mxCell id="Yp1-gwKtbLMfh5_p5UJI-6" value="공지사항" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="890" y="770" width="90" height="70" as="geometry" />
@@ -662,6 +662,99 @@
         </mxCell>
         <mxCell id="LLBiNao7luYFCybffmW4-1" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;html=1;outlineConnect=0;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="1860" y="580" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-6" value="게시글 삭제" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="1000" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-7" value="댓글 업로드" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="940" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-8" value="게시글 삭제" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="1000" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-9" value="댓글 업로드" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="940" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-10" value="게시글 삭제" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="1000" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-11" value="댓글 업로드" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="940" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-12" value="게시글 조회" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="830" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-13" value="게시글 수정" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="970" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-14" value="댓글 수정" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="880" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-15" value="댓글 삭제" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1390" y="800" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-16" value="게시글 검색" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="690" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-17" value="스터디 모집" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="620" width="90" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-18" value="사내게시판" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="700" width="90" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-19" value="게시글 삭제" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1189" y="1000" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-20" value="댓글 업로드" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1289" y="940" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-21" value="게시글 조회" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1159" y="830" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-22" value="게시글 수정" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1089" y="970" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-23" value="댓글 수정" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1349" y="880" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-24" value="댓글 삭제" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1389" y="800" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-25" value="게시글 검색" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1349" y="690" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-26" value="스터디 모집" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1179" y="620" width="90" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-27" value="사내게시판" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1049" y="700" width="90" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-28" value="게시글 삭제" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1189" y="1000" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-29" value="댓글 업로드" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1289" y="940" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-30" value="게시글 조회" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1159" y="830" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-31" value="게시글 수정" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1089" y="970" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-32" value="댓글 수정" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1349" y="880" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-33" value="댓글 삭제" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1389" y="800" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-34" value="게시글 검색" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1349" y="690" width="80" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-35" value="스터디 모집" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1179" y="620" width="90" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="LLBiNao7luYFCybffmW4-36" value="사내게시판" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1049" y="700" width="90" height="70" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
