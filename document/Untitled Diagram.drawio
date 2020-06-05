@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-06-03T13:00:39.084Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" etag="hrMeOQJXhZUokvpLzHx2" version="13.1.12" type="github">
+<mxfile host="app.diagrams.net" modified="2020-06-05T12:35:36.498Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" etag="s5kAcJ132Q_kagZxp13v" version="13.1.14" type="github">
   <diagram id="veKuksc_ZrwfzwcqDDUQ" name="Page-1">
-    <mxGraphModel dx="998" dy="1290" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -127,9 +127,6 @@
         </mxCell>
         <mxCell id="DOy3Ms5891rvQtxvsLgi-39" value="회원탈퇴" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="400.00000000000006" y="840" width="91.99999999999994" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="v78TJd5WylzDGEyUC_zp-4" value="Text" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="DOy3Ms5891rvQtxvsLgi-39">
-          <mxGeometry x="51.99999999999994" y="32" width="40" height="20" as="geometry" />
         </mxCell>
         <mxCell id="J3ixDLLctHBhhOuJPxoI-3" value="Extend" style="endArrow=block;endSize=16;endFill=0;html=1;dashed=1;exitX=0.004;exitY=0.615;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="PEsu_zmEFKTXnumoR2Yf-32" target="PEsu_zmEFKTXnumoR2Yf-24" edge="1">
           <mxGeometry x="-0.1951" width="160" relative="1" as="geometry">
@@ -312,10 +309,10 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="J3ixDLLctHBhhOuJPxoI-30" value="Extend" style="endArrow=block;endSize=16;endFill=0;html=1;dashed=1;entryX=1;entryY=1;entryDx=0;entryDy=0;exitX=0;exitY=0;exitDx=0;exitDy=0;" parent="1" source="DOy3Ms5891rvQtxvsLgi-37" target="DOy3Ms5891rvQtxvsLgi-32" edge="1">
-          <mxGeometry x="0.3553" y="104" width="160" relative="1" as="geometry">
+          <mxGeometry x="-0.4374" y="-8" width="160" relative="1" as="geometry">
             <mxPoint x="194.98717480252088" y="970.0813945559153" as="sourcePoint" />
             <mxPoint x="201.12000000000006" y="902.6599999999999" as="targetPoint" />
-            <mxPoint y="-1" as="offset" />
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="IGPOGFFqoMFYPmlBidTe-1" value="작성완료" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -753,30 +750,30 @@
             <mxPoint x="630" y="435" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="v78TJd5WylzDGEyUC_zp-1" value="공용 주소록" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="v78TJd5WylzDGEyUC_zp-1" value="공용 주소록" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="550" y="750" width="90" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="v78TJd5WylzDGEyUC_zp-2" value="Extend" style="endArrow=block;endSize=16;endFill=0;html=1;dashed=1;entryX=0.244;entryY=1.057;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="DOy3Ms5891rvQtxvsLgi-15">
+        <mxCell id="v78TJd5WylzDGEyUC_zp-2" value="Extend" style="endArrow=block;endSize=16;endFill=0;html=1;dashed=1;entryX=0.244;entryY=1.057;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="DOy3Ms5891rvQtxvsLgi-15" edge="1">
           <mxGeometry x="-0.2054" width="160" relative="1" as="geometry">
             <mxPoint x="610" y="740" as="sourcePoint" />
             <mxPoint x="685" y="480" as="targetPoint" />
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="v78TJd5WylzDGEyUC_zp-3" value="부서 별 사원 목록" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="v78TJd5WylzDGEyUC_zp-3" value="부서 별 사원 목록" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="560" y="880" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="v78TJd5WylzDGEyUC_zp-5" value="Extend" style="endArrow=block;endSize=16;endFill=0;html=1;dashed=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="v78TJd5WylzDGEyUC_zp-3" target="v78TJd5WylzDGEyUC_zp-1">
+        <mxCell id="v78TJd5WylzDGEyUC_zp-5" value="Extend" style="endArrow=block;endSize=16;endFill=0;html=1;dashed=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="v78TJd5WylzDGEyUC_zp-3" target="v78TJd5WylzDGEyUC_zp-1" edge="1">
           <mxGeometry x="-0.2054" width="160" relative="1" as="geometry">
             <mxPoint x="620" y="750" as="sourcePoint" />
             <mxPoint x="671.96" y="673.99" as="targetPoint" />
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="v78TJd5WylzDGEyUC_zp-6" value="사원 상세 정보" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="v78TJd5WylzDGEyUC_zp-6" value="사원 상세 정보" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="730" y="825" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="v78TJd5WylzDGEyUC_zp-7" value="Extend" style="endArrow=block;endSize=16;endFill=0;html=1;dashed=1;entryX=0.961;entryY=0.208;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="v78TJd5WylzDGEyUC_zp-6" target="v78TJd5WylzDGEyUC_zp-3">
+        <mxCell id="v78TJd5WylzDGEyUC_zp-7" value="Extend" style="endArrow=block;endSize=16;endFill=0;html=1;dashed=1;entryX=0.961;entryY=0.208;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="v78TJd5WylzDGEyUC_zp-6" target="v78TJd5WylzDGEyUC_zp-3" edge="1">
           <mxGeometry x="-0.2054" width="160" relative="1" as="geometry">
             <mxPoint x="620" y="750" as="sourcePoint" />
             <mxPoint x="671.96" y="673.99" as="targetPoint" />
