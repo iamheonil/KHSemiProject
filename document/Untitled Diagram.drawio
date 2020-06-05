@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-06-05T12:36:06.170Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" etag="tHqy6z6pOOa4eB2kDna_" version="13.1.14" type="github">
+<mxfile host="app.diagrams.net" modified="2020-06-05T12:46:42.121Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" etag="L850-MSxAZp0KhkRdpdv" version="13.1.14" type="github">
   <diagram id="veKuksc_ZrwfzwcqDDUQ" name="Page-1">
-    <mxGraphModel dx="474" dy="265" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="868" dy="482" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -49,7 +49,7 @@
             <mxPoint x="1245" y="680" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PEsu_zmEFKTXnumoR2Yf-65" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+        <mxCell id="PEsu_zmEFKTXnumoR2Yf-65" value="사용자" style="shape=umlActor;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
           <mxGeometry x="90" y="610" width="30" height="60" as="geometry" />
         </mxCell>
         <mxCell id="PEsu_zmEFKTXnumoR2Yf-67" value="로그인" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
