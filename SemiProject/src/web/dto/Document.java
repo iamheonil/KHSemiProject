@@ -11,9 +11,6 @@ public class Document {
 	private String doc_state; //문서상태
 	private int doc_userid; //작성자 사번
 	private Date doc_date; //작성일시
-	
-	
-	
 	private String doc_emergency; //긴급여부
 	
 	
