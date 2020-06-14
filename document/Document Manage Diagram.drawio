@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-06-05T12:46:49.901Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" etag="jRHpEt5ziP76tmTWH1IF" version="13.1.14" type="github">
+<mxfile host="app.diagrams.net" modified="2020-06-14T15:38:21.764Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36" etag="6K9jwHJ_AubqMxFVQUGk" version="13.2.4" type="github">
   <diagram id="veKuksc_ZrwfzwcqDDUQ" name="Page-1">
-    <mxGraphModel dx="868" dy="1682" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="1673" dy="2076" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -11,7 +11,7 @@
           <mxGeometry x="620" y="90" width="90" height="70" as="geometry" />
         </mxCell>
         <mxCell id="qZMmR-H3ITs96lG1GbWU-22" value="&lt;span style=&quot;font-family: &amp;#34;roboto&amp;#34; , &amp;#34;robotodraft&amp;#34; , &amp;#34;helvetica&amp;#34; , &amp;#34;arial&amp;#34; , sans-serif ; font-size: 13px ; background-color: rgb(255 , 255 , 255)&quot;&gt;사원관리&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="700" y="340" width="110" height="80" as="geometry" />
+          <mxGeometry x="630" y="340" width="110" height="80" as="geometry" />
         </mxCell>
         <mxCell id="qZMmR-H3ITs96lG1GbWU-24" value="&lt;span style=&quot;font-family: &amp;#34;roboto&amp;#34; , &amp;#34;robotodraft&amp;#34; , &amp;#34;helvetica&amp;#34; , &amp;#34;arial&amp;#34; , sans-serif ; font-size: 13px ; background-color: rgb(255 , 255 , 255)&quot;&gt;조직도 관리&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="460" y="320" width="120" height="80" as="geometry" />
@@ -61,22 +61,22 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="qZMmR-H3ITs96lG1GbWU-46" value="사원 기본" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="730" y="520" width="120" height="80" as="geometry" />
+          <mxGeometry x="660" y="520" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="qZMmR-H3ITs96lG1GbWU-47" value="사원 상세 정보" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="870" y="410" width="120" height="80" as="geometry" />
+          <mxGeometry x="800" y="410" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="qZMmR-H3ITs96lG1GbWU-48" value="Extend" style="endArrow=block;endSize=16;endFill=0;html=1;dashed=1;" parent="1" target="qZMmR-H3ITs96lG1GbWU-22" edge="1">
           <mxGeometry x="-0.211" y="6" width="160" relative="1" as="geometry">
-            <mxPoint x="789.9996676051576" y="522.5992902912994" as="sourcePoint" />
-            <mxPoint x="882.9201948466055" y="349.9987373415288" as="targetPoint" />
+            <mxPoint x="719.9996676051576" y="522.5992902912994" as="sourcePoint" />
+            <mxPoint x="812.9201948466055" y="349.9987373415288" as="targetPoint" />
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="qZMmR-H3ITs96lG1GbWU-49" value="Extend" style="endArrow=block;endSize=16;endFill=0;html=1;dashed=1;" parent="1" target="qZMmR-H3ITs96lG1GbWU-22" edge="1">
           <mxGeometry x="-0.211" y="6" width="160" relative="1" as="geometry">
-            <mxPoint x="883.5396676051575" y="422.59929029129944" as="sourcePoint" />
-            <mxPoint x="976.4601948466054" y="249.9987373415288" as="targetPoint" />
+            <mxPoint x="813.5396676051575" y="422.59929029129944" as="sourcePoint" />
+            <mxPoint x="906.4601948466054" y="249.9987373415288" as="targetPoint" />
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
@@ -162,6 +162,16 @@
             <mxPoint x="340" y="120" as="sourcePoint" />
             <mxPoint x="620" y="120" as="targetPoint" />
             <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UlcThPSZrMBPWYS6WQND-1" value="&lt;span style=&quot;font-family: &amp;#34;roboto&amp;#34; , &amp;#34;robotodraft&amp;#34; , &amp;#34;helvetica&amp;#34; , &amp;#34;arial&amp;#34; , sans-serif ; font-size: 13px ; background-color: rgb(255 , 255 , 255)&quot;&gt;주소록관리&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="270" width="110" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="UlcThPSZrMBPWYS6WQND-2" value="Extend" style="endArrow=block;endSize=16;endFill=0;html=1;dashed=1;entryX=0.956;entryY=0.8;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="UlcThPSZrMBPWYS6WQND-1" target="qZMmR-H3ITs96lG1GbWU-9">
+          <mxGeometry x="-0.211" y="6" width="160" relative="1" as="geometry">
+            <mxPoint x="1017.7555174689574" y="317.05941110315223" as="sourcePoint" />
+            <mxPoint x="830.0300000000002" y="100" as="targetPoint" />
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
       </root>
