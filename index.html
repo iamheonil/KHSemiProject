@@ -19,7 +19,7 @@
     <style type="text/css">
         @import url(//cdn.jsdelivr.net/font-nanum/1.0/nanumbarungothic/nanumbarungothic.css);
         /* 나눔바른고딕 : 한국서버 빠름*/
-        
+
         * {
             margin: 0px;
             padding: 0px;
@@ -111,6 +111,14 @@
             text-align: center;
         }
 
+        #s_left ul li ul li {
+            margin: 0px;
+            padding: 0px;
+            color: tomato;
+            font-size: 16px;
+            border: 1px solid black;
+        }
+
         #photo {
             text-align: center;
             margin: auto;
@@ -132,13 +140,28 @@
         }
 
         #contents {
-             border: 1px solid black; 
+            border: 1px solid black;
             min-width: 940px;
             float: left;
             text-align: center;
             margin-left: 7px;
-            min-height: 850px;
+            min-height: 1050px;
+            display: block;
 
+        }
+
+        #footer a {
+            /* border: 1px solid black; */
+            text-decoration: none;
+
+        }
+
+        #footer a:hover {
+            text-decoration: underline;
+        }
+
+        #footer a:visited {
+            color: black;
         }
     </style>
 
@@ -173,24 +196,74 @@
                     <li>사원번호 1571000367</li>
                     <li><button>마이페이지</button> &nbsp; <button>로그아웃</button></li>
                 </ul>
-                <li>첫번째 메뉴</li>
-                <li>두번째 메뉴</li>
-                <li>세번째 메뉴</li>
-                <li>네번째 메뉴</li>
-                <li>다섯번째 메뉴</li>
+                <li>첫번째 메뉴
+                    <ul>
+
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+
+                    </ul>
+
+                </li>
+                <li>두번째 메뉴
+                    <ul>
+
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+
+                    </ul>
+                </li>
+                <li>세번째 메뉴
+                    <ul>
+
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+
+                    </ul>
+                </li>
+                <li>네번째 메뉴
+                    <ul>
+
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+
+                    </ul>
+                </li>
+                <li>다섯번째 메뉴
+                    <ul>
+
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+
+                    </ul>
+                </li>
             </ul>
         </div>
 
         <div id="contents">
 
-         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-         <h3>Content 영역</h3>
-
-
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <h3>Content 영역</h3>
 
         </div>
+        &nbsp;<br>
+        <div id="footer">
 
+            <div style="text-align: left;">
+                <h1><a href="#">로고</a></h1>
+            </div>
+            <div style="text-align: right;">
+                <h5><a href="#">공지사항</a> | <a href="#">쭈우우우우욱</a> | <a href="#"><b>개인정보 처리방침</b></a> | &copy; ActiveWare</h5>
+            </div>
+
+        </div>
     </div>
-    <br><br><br>
+
+
 
 </body></html>
