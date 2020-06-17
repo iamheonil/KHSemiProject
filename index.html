@@ -27,18 +27,16 @@
         }
 
         #front-wrap {
-            width: 1184px;
+            width: 1280px;
             margin: 0px auto;
-            padding: 15px 0px;
+            padding: 10px 0px;
             text-align: center;
         }
 
         #nav-logo {
-            width: 17%;
+            width: 150px;
             height: 100%;
-            text-align: center;
             text-decoration: none;
-            /*밑줄 없앰*/
             color: white;
             margin-top: 40px;
             margin-left: 45px;
@@ -76,6 +74,7 @@
         }
 
         .nav-item {
+            width: 110px;
             padding: 40px;
             cursor: pointer;
             /*마우스 커서를 pointer 모양으로 함*/
@@ -91,22 +90,39 @@
             color: white;
         }
 
+        .nav-item ul>li {
+            text-decoration: none;
+        }
+
+
+        .nav-item ul:hover {
+            text-decoration: none;
+            display: block;
+        }
+
         div#s_left {
-            width: 234px;
-            float: left;
+            width: 240px;
             text-align: left;
             background: #0f4c81;
-            min-height: 850px;
+            min-height: 1123px;
             line-height: 2.5em;
         }
 
         div#s_left ul {
-            width: 234px;
+            width: 230px;
             text-align: left;
+            margin: 0 auto;
         }
 
         #s_left ul ul {
-            background: #3C74A4;
+            width: 210px;
+            list-style: none;
+            text-align: center;
+        }
+
+        #personal {
+            width: 210px;
+            background: dodgerblue;
             list-style: none;
             text-align: center;
         }
@@ -114,9 +130,9 @@
         #s_left ul li ul li {
             margin: 0px;
             padding: 0px;
-            color: tomato;
+            line-height: 1.9em;
+            color: white;
             font-size: 16px;
-            border: 1px solid black;
         }
 
         #photo {
@@ -141,56 +157,67 @@
 
         #contents {
             border: 1px solid black;
-            min-width: 940px;
-            float: left;
+            width: 1037px;
+            float: right;
             text-align: center;
             margin-left: 7px;
-            min-height: 1050px;
-            display: block;
+            min-height: 1120px;
 
         }
 
-        #footer a {
+        a {
             /* border: 1px solid black; */
             text-decoration: none;
+            color: dimgray;
 
         }
 
         #footer a:hover {
             text-decoration: underline;
         }
-
-        #footer a:visited {
-            color: black;
-        }
     </style>
 
 </head>
 
 <body>
-
-
     <div id="front-wrap">
         <div id="header">
+            <ul class="nav-container">
+                <li id="nav-logo"> <a href="">빵빵이 행정시스템</a> </li>
+                <li class="nav-item"> <a href="">HOME</a> </li>
+                <li class="nav-item"> <a href="">전자결재</a>
+                    <ul>
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">자유게시판</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"> <a href="">커뮤니티</a>
+                    <ul>
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">자유게시판</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"> <a href="">일정관리</a>
+                    <ul>
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">자유게시판</a></li>
+                    </ul>
+                </li>
+                <li id="nav-search"><input type="text" name="nav-search" size="25"></li>
+            </ul>
 
-            <nav>
-                <ul class="nav-container">
-                    <li id="nav-logo"> <a href="">빵빵이 행정시스템</a> </li>
-                    <li class="nav-item"> <a href="">HOME</a> </li>
-                    <li class="nav-item"> <a href="">MENU</a> </li>
-                    <li class="nav-item"> <a href="">MENU</a> </li>
-                    <li class="nav-item"> <a href="">MENU</a> </li>
-                    <li id="nav-search"><input type="text" name="nav-search" size="20"></li>
-                </ul>
-            </nav>
+            <div id="contents">
 
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <h3>Content 영역</h3>
 
+            </div>
         </div>
 
         <div id="s_left">
 
             <ul>
-                <ul>
+                <ul id="personal">
                     <li id="photo" style="border-radius: 100px; padding-top: 5px;"><br>사진</li>
                     <li>소속팀 인사1팀 사원 홍길동</li>
                     <li>사원번호 1571000367</li>
@@ -245,18 +272,11 @@
             </ul>
         </div>
 
-        <div id="contents">
 
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <h3>Content 영역</h3>
+        &nbsp;
 
-        </div>
-        &nbsp;<br>
         <div id="footer">
-
-            <div style="text-align: left;">
-                <h1><a href="#">로고</a></h1>
-            </div>
+            <h3 style="text-align: left;"><a href="#">로고</a></h3>
             <div style="text-align: right;">
                 <h5><a href="#">공지사항</a> | <a href="#">쭈우우우우욱</a> | <a href="#"><b>개인정보 처리방침</b></a> | &copy; ActiveWare</h5>
             </div>
