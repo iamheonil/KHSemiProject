@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-06-18T11:55:33.007Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36" etag="d5oeYWBubW9V5yZLOywp" version="13.2.6" type="github">
+<mxfile host="app.diagrams.net" modified="2020-06-18T12:05:18.636Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36" etag="CRcSK41ruqsiPSD2fhYw" version="13.2.6" type="github">
   <diagram id="mM8BfhB0ug2EMRv0EJna" name="Page-1">
     <mxGraphModel dx="1454" dy="585" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
@@ -159,8 +159,8 @@
         <mxCell id="t1NXMLt-jvlbNoCUIiNC-63" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
           <mxGeometry x="810" y="220" width="10" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="t1NXMLt-jvlbNoCUIiNC-65" value="viewBoard" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
-          <mxGeometry x="480" y="230" width="70" height="20" as="geometry" />
+        <mxCell id="t1NXMLt-jvlbNoCUIiNC-65" value="Board" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="230" width="50" height="20" as="geometry" />
         </mxCell>
         <mxCell id="t1NXMLt-jvlbNoCUIiNC-71" value="selectBoardByBoardno(boardnum)" style="html=1;verticalAlign=bottom;endArrow=block;exitX=0.9;exitY=0.22;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="t1NXMLt-jvlbNoCUIiNC-41" target="t1NXMLt-jvlbNoCUIiNC-63">
           <mxGeometry x="-0.0578" width="80" relative="1" as="geometry">
@@ -176,7 +176,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="t1NXMLt-jvlbNoCUIiNC-75" value="viewBoard" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+        <mxCell id="t1NXMLt-jvlbNoCUIiNC-75" value="boardnum" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
           <mxGeometry x="680" y="230" width="70" height="20" as="geometry" />
         </mxCell>
       </root>
