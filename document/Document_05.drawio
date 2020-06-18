@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-06-18T04:16:52.422Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36" etag="xz5QFbAC1KAANSWdyWf2" version="13.2.6" type="github">
+<mxfile host="app.diagrams.net" modified="2020-06-18T04:17:41.847Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36" etag="i8K8odYFzu0k-_6cJovv" version="13.2.6" type="github">
   <diagram id="GmI4eg5Vj9IhphaG-CfB" name="Page-1">
     <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -296,6 +296,9 @@
             <mxPoint x="177" y="519" as="targetPoint" />
             <mxPoint as="offset" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="Astc3gN2xnt3zBdMGdQR-31" value="이런식으로 CntAll 따로있어야하지 않을까?" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="660" y="383" width="240" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
