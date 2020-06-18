@@ -1,1 +1,69 @@
-<mxfile host="app.diagrams.net" modified="2020-06-18T15:11:47.205Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36" version="13.2.6" etag="7DAwG5B1xOskMOfUIg9L" type="github"><diagram id="pcOBBgtfIblqh87GqkOa">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2020-06-18T17:00:14.245Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36" etag="YhnlNmikeeJv_kKSDSnP" version="13.2.6" type="github">
+  <diagram id="pcOBBgtfIblqh87GqkOa" name="Page-1">
+    <mxGraphModel dx="509" dy="577" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hIu2EnUw6FQ_nshIiTp8-3" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="409" y="146" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="hIu2EnUw6FQ_nshIiTp8-5" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="169" y="146" width="10" height="97" as="geometry" />
+        </mxCell>
+        <mxCell id="hIu2EnUw6FQ_nshIiTp8-6" value="write(HttpServletRequest req)" style="html=1;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry x="-0.0578" width="80" relative="1" as="geometry">
+            <mxPoint x="180" y="158" as="sourcePoint" />
+            <mxPoint x="410" y="158" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hIu2EnUw6FQ_nshIiTp8-8" value="insert (board)" style="html=1;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry x="-0.0578" width="80" relative="1" as="geometry">
+            <mxPoint x="419" y="220" as="sourcePoint" />
+            <mxPoint x="649" y="220" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hIu2EnUw6FQ_nshIiTp8-11" value="&lt;span style=&quot;font-size: 10pt ; font-family: &amp;#34;arial&amp;#34;&quot;&gt;BoardWriteController&lt;/span&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="78" y="80" width="192" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="hIu2EnUw6FQ_nshIiTp8-12" value="Service" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="364" y="80" width="100" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="hIu2EnUw6FQ_nshIiTp8-13" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="hIu2EnUw6FQ_nshIiTp8-12">
+          <mxGeometry x="45" y="66" width="10" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="hIu2EnUw6FQ_nshIiTp8-15" value="Dao" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="604" y="80" width="100" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="hIu2EnUw6FQ_nshIiTp8-26" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="hIu2EnUw6FQ_nshIiTp8-15">
+          <mxGeometry x="45" y="66" width="10" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="hIu2EnUw6FQ_nshIiTp8-21" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="169" y="146" width="10" height="97" as="geometry" />
+        </mxCell>
+        <mxCell id="hIu2EnUw6FQ_nshIiTp8-22" value="" style="html=1;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry x="-0.0578" width="80" relative="1" as="geometry">
+            <mxPoint x="180" y="158" as="sourcePoint" />
+            <mxPoint x="410" y="158" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hIu2EnUw6FQ_nshIiTp8-17" value="setBoardno(Board boardno)" style="html=1;verticalAlign=bottom;endArrow=block;entryX=-0.04;entryY=0.29;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry x="-0.0578" width="80" relative="1" as="geometry">
+            <mxPoint x="419" y="160" as="sourcePoint" />
+            <mxPoint x="648.5999999999999" y="160" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hIu2EnUw6FQ_nshIiTp8-27" value="int boardno" style="html=1;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry x="0.0261" width="80" relative="1" as="geometry">
+            <mxPoint x="650" y="194" as="sourcePoint" />
+            <mxPoint x="419" y="194" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
