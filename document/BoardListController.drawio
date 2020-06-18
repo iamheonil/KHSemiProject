@@ -1,1 +1,215 @@
-<mxfile host="app.diagrams.net" modified="2020-06-18T10:17:25.626Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36" etag="hnIcqbilaW2yKHysvaWg" version="13.2.6" type="github"><diagram id="7vuC1bm-wXDalM8IOh89" name="Page-1">7Vzfc6o4FP5rnOk+tAOJ/Hqsenf34e5MZ5zdu/eRKykwReKNadX712+ABCGxiooSVvvQyiEcku98yTn5wA7geL7+g/iL6C8coGQAjGA9gJMBAJYD2e/MsBEGpzCEJA4Kk7k1TONfiBsNbn2PA7SsNaQYJzRe1I0znKZoRms2nxC8qjd7xUn9rgs/RIphOvMT1fotDmhUWF3gbO1/ojiMxJ1N2yvOzH3RmI9kGfkBXlVM8MsAjgnGtPg0X49RkmEncCmu+/2Ts2XHCEppkws+3iLwDeFFOP0nefx79Dr+9YYeuZcPP3nnAx5hnwRf4yUd45QSnCSI8P7TjQCF4Pc0QJlfYwBHqyimaLrwZ9nZFWMBs0V0nrAjk33kd0CEovWnXTdLQBiREJ4jSjasCb8AWMUVnENDjuhqGxBToBxVgiHa+ZwDYel4CxP7wJE6AjUAFdimiHzEDIHOobKNg1jBa2KlQjXxcecwWYZmMHkKTApGKA2esxWNHaU4ZcZR4C+jHDRzF0AoUJa2g/BUxm/tGL6wEZT4NP6ou9+FCb/DC47ZjUv03eFTfUabpoTrEr+TGeKXVRe1Q55cyRH1SYio4iiPUTnuM1YC56bjBm2npbgBw7lq4MTkbidwLDxk82+2erFh8cPv1XOTNV/aiqMNP2oacFb05HAczEldMQOCliY0BPWFGTjXndBQrYi05kWB654BWcOGBOqUP5YtLSxy2BvzB9YdeVemj1ruaEwfbVaLk6MtO7KuHG7rHu7jw3365JYcATnLXDjcwwZFQyWei6wfec+s0cCaZBZEYtYJtqWGE0xohEOc+snL1trG3saWtoCmy3tZ3dxcc28ztPsAm1x5lCVMZ7A12Ft0D5t7GmqecynU3D6gZslz1Ox6jqoCBFtJczHwxQ/jNHwg6Odv+5DM8IhnfvKcxGHKbD8wpXieJ6syAf5I8OztrIzF8Xs0ngzLcRXM3HYylmfWowPMJ6/y45y464XgOL+fpLOtX9EQv74u0UVSnqWmvCVK0Kygxjilz0nycDO8gPAyxLDs/hFD3Sgv8oVCGy4wKkCRDTiuQo1unxmWVb+TKYqe49eIA450iD24x74aMrOl2Ls9CH0DgaP78kqp5YVO3VV5JVQ4vWFTqtLOYeuVvtJAjRXKx0E1tiBM7+VY2dGVH89ZqvLAbpe93SDtbAZgXGSwmyllPVkkamuLc5xfHVKaqrNkDBkA259nbx4kLFyjnC+lKaRlhDVgynWLHfkBnWGKR7nHcsU76EkHdqh60p0dexJHa+yAsBf0UHWzij6SiSM3llfksLWVWJTaVP/EYqva2T4WaLJXAqKXXRX9tqosaQibexpqF3vuYQMFtbuAX0YHwosI+If86rAIqYJNJUFNkU9m0a3L+G3RQ5bx+0APVZi6S7mVCIry/0wpV/GjQ+gbiGvd51n1hVCvUaK9XHlyhKaUj/Smyn95T+/VV8ATZ5NCgv1udZhcd1HpDFEJmrAlUWmHJx3YcReVzhCVzmCHrE5oSo+9olJRsz8s8z83mWQUabCdLKOIl9pnGUfd9N9y9a4EUKizZ2vPsiMdYt8LdVEJiehlV+W706tv6DR5paDpF7wcY3ekev5KwbW/OSrw7tm8E0tsZ/OuZ6/yHJ5O/883dIB4kHD2dGKH2/9uUjTf/osY+OU/</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2020-06-18T10:18:39.117Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36" etag="ZHKrOOZVbYzPITBOpB9e" version="13.2.6" type="github">
+  <diagram id="7vuC1bm-wXDalM8IOh89" name="Page-1">
+    <mxGraphModel dx="1342" dy="585" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="vkh2WeopgSVl-UBfCzke-1" value="BoardListController" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="25" y="40" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-23" value="Service" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="260" y="40" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-3" value="Dao" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="500" y="40" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-9" value="" style="endArrow=none;dashed=1;html=1;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="84.5" y="110" as="sourcePoint" />
+            <mxPoint x="84.5" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-27" value="" style="endArrow=none;dashed=1;html=1;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="84.5" y="367" as="sourcePoint" />
+            <mxPoint x="84.5" y="207" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-30" value="" style="endArrow=none;dashed=1;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" target="vkh2WeopgSVl-UBfCzke-23" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="325" y="110" as="sourcePoint" />
+            <mxPoint x="320" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-31" value="" style="endArrow=none;dashed=1;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="vkh2WeopgSVl-UBfCzke-54" target="vkh2WeopgSVl-UBfCzke-3" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="565" y="370" as="sourcePoint" />
+            <mxPoint x="335" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-33" value="" style="endArrow=none;dashed=1;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="325" y="170" as="sourcePoint" />
+            <mxPoint x="325" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-35" value="" style="endArrow=none;dashed=1;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="325" y="370" as="sourcePoint" />
+            <mxPoint x="325" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-46" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="1" vertex="1">
+          <mxGeometry x="320" y="110" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-47" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="1" vertex="1">
+          <mxGeometry x="80" y="110" width="10" height="97" as="geometry" />
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-48" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="1" vertex="1">
+          <mxGeometry x="560" y="112" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-49" value="getBoardPaging(req)" style="html=1;verticalAlign=bottom;endArrow=block;" parent="1" edge="1">
+          <mxGeometry x="-0.0578" width="80" relative="1" as="geometry">
+            <mxPoint x="91" y="121.99999999999977" as="sourcePoint" />
+            <mxPoint x="321" y="121.99999999999977" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-50" value="selectBoardCntAll()" style="html=1;verticalAlign=bottom;endArrow=block;" parent="1" edge="1">
+          <mxGeometry x="-0.0578" width="80" relative="1" as="geometry">
+            <mxPoint x="331" y="121.99999999999977" as="sourcePoint" />
+            <mxPoint x="561" y="121.99999999999977" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-51" value="paging" style="html=1;verticalAlign=bottom;endArrow=block;" parent="1" edge="1">
+          <mxGeometry x="0.0348" y="-3" width="80" relative="1" as="geometry">
+            <mxPoint x="558" y="146" as="sourcePoint" />
+            <mxPoint x="328" y="146" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-52" value="paging" style="html=1;verticalAlign=bottom;endArrow=block;" parent="1" edge="1">
+          <mxGeometry x="0.0348" y="-3" width="80" relative="1" as="geometry">
+            <mxPoint x="318" y="146" as="sourcePoint" />
+            <mxPoint x="88" y="146" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-53" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="1" vertex="1">
+          <mxGeometry x="320" y="167" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-54" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="1" vertex="1">
+          <mxGeometry x="560" y="167" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-55" value="" style="endArrow=none;dashed=1;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="vkh2WeopgSVl-UBfCzke-70" target="vkh2WeopgSVl-UBfCzke-54" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="565" y="370" as="sourcePoint" />
+            <mxPoint x="565" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-56" value="getListBoardPaging(req,paging)" style="html=1;verticalAlign=bottom;endArrow=block;" parent="1" edge="1">
+          <mxGeometry x="-0.0578" width="80" relative="1" as="geometry">
+            <mxPoint x="90" y="181.99999999999977" as="sourcePoint" />
+            <mxPoint x="320" y="181.99999999999977" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-57" value="List&amp;lt;Board&amp;gt;" style="html=1;verticalAlign=bottom;endArrow=block;" parent="1" edge="1">
+          <mxGeometry x="0.0348" y="-3" width="80" relative="1" as="geometry">
+            <mxPoint x="320" y="201.5" as="sourcePoint" />
+            <mxPoint x="90" y="201.5" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-58" value="List&amp;lt;Board&amp;gt;" style="html=1;verticalAlign=bottom;endArrow=block;" parent="1" edge="1">
+          <mxGeometry x="0.0348" y="-3" width="80" relative="1" as="geometry">
+            <mxPoint x="560" y="201.5" as="sourcePoint" />
+            <mxPoint x="330" y="201.5" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-59" value="selectBoardAll(paging)" style="html=1;verticalAlign=bottom;endArrow=block;" parent="1" edge="1">
+          <mxGeometry x="-0.0578" width="80" relative="1" as="geometry">
+            <mxPoint x="330" y="181.99999999999977" as="sourcePoint" />
+            <mxPoint x="560" y="181.99999999999977" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-60" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="1" vertex="1">
+          <mxGeometry x="320" y="222" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-61" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="1" vertex="1">
+          <mxGeometry x="80" y="222" width="10" height="97" as="geometry" />
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-62" value="getBoardPaging(req)" style="html=1;verticalAlign=bottom;endArrow=block;" parent="1" edge="1">
+          <mxGeometry x="-0.0578" width="80" relative="1" as="geometry">
+            <mxPoint x="91" y="233.99999999999977" as="sourcePoint" />
+            <mxPoint x="321" y="233.99999999999977" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-63" value="selectBoardSearchCntAll()" style="html=1;verticalAlign=bottom;endArrow=block;" parent="1" edge="1">
+          <mxGeometry x="-0.0578" width="80" relative="1" as="geometry">
+            <mxPoint x="331" y="233.99999999999977" as="sourcePoint" />
+            <mxPoint x="561" y="233.99999999999977" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-64" value="paging" style="html=1;verticalAlign=bottom;endArrow=block;" parent="1" edge="1">
+          <mxGeometry x="0.0348" y="-3" width="80" relative="1" as="geometry">
+            <mxPoint x="318" y="258" as="sourcePoint" />
+            <mxPoint x="88" y="258" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-65" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="1" vertex="1">
+          <mxGeometry x="320" y="279" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-66" value="getListBoardPaging(req, paging)" style="html=1;verticalAlign=bottom;endArrow=block;" parent="1" edge="1">
+          <mxGeometry x="-0.0578" width="80" relative="1" as="geometry">
+            <mxPoint x="90" y="293.9999999999998" as="sourcePoint" />
+            <mxPoint x="320" y="293.9999999999998" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-67" value="List&amp;lt;Board&amp;gt;" style="html=1;verticalAlign=bottom;endArrow=block;" parent="1" edge="1">
+          <mxGeometry x="0.0348" y="-3" width="80" relative="1" as="geometry">
+            <mxPoint x="320" y="313.5" as="sourcePoint" />
+            <mxPoint x="90" y="313.5" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-68" value="List&amp;lt;Board&amp;gt;" style="html=1;verticalAlign=bottom;endArrow=block;" parent="1" edge="1">
+          <mxGeometry x="0.0348" y="-3" width="80" relative="1" as="geometry">
+            <mxPoint x="560" y="313.5" as="sourcePoint" />
+            <mxPoint x="330" y="313.5" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-69" value="selectBoardSearch(search, paging)" style="html=1;verticalAlign=bottom;endArrow=block;" parent="1" edge="1">
+          <mxGeometry x="-0.0578" width="80" relative="1" as="geometry">
+            <mxPoint x="330" y="293.9999999999998" as="sourcePoint" />
+            <mxPoint x="560" y="293.9999999999998" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-72" value="paging" style="html=1;verticalAlign=bottom;endArrow=block;" parent="1" edge="1">
+          <mxGeometry x="0.0348" y="-3" width="80" relative="1" as="geometry">
+            <mxPoint x="560" y="259" as="sourcePoint" />
+            <mxPoint x="330" y="259" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-70" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="1" vertex="1">
+          <mxGeometry x="560" y="222" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-73" value="" style="endArrow=none;dashed=1;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="vkh2WeopgSVl-UBfCzke-74" target="vkh2WeopgSVl-UBfCzke-70" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="565" y="370" as="sourcePoint" />
+            <mxPoint x="565" y="207" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-74" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="1" vertex="1">
+          <mxGeometry x="560" y="280" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vkh2WeopgSVl-UBfCzke-75" value="" style="endArrow=none;dashed=1;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" target="vkh2WeopgSVl-UBfCzke-74" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="565" y="370" as="sourcePoint" />
+            <mxPoint x="565" y="262" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
