@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-06-18T17:28:50.778Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36" etag="QGdLjbm30Ge4hkbPYZNz" version="13.2.6" type="github">
+<mxfile host="app.diagrams.net" modified="2020-06-19T10:42:40.469Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36" etag="p-zENdePuIpNnNLkOTZ_" version="13.2.6" type="github">
   <diagram id="pcOBBgtfIblqh87GqkOa" name="Page-1">
     <mxGraphModel dx="1278" dy="585" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -10,21 +10,21 @@
         <mxCell id="hIu2EnUw6FQ_nshIiTp8-5" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="1" vertex="1">
           <mxGeometry x="169" y="146" width="10" height="97" as="geometry" />
         </mxCell>
-        <mxCell id="hIu2EnUw6FQ_nshIiTp8-6" value="write(HttpServletRequest req)" style="html=1;verticalAlign=bottom;endArrow=block;" parent="1" edge="1">
+        <mxCell id="hIu2EnUw6FQ_nshIiTp8-6" value="BoardInsert(HttpServletRequest req)" style="html=1;verticalAlign=bottom;endArrow=block;" parent="1" edge="1">
           <mxGeometry x="-0.0578" width="80" relative="1" as="geometry">
             <mxPoint x="180" y="158" as="sourcePoint" />
             <mxPoint x="410" y="158" as="targetPoint" />
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="hIu2EnUw6FQ_nshIiTp8-8" value="insert (Board board)" style="html=1;verticalAlign=bottom;endArrow=block;" parent="1" edge="1">
+        <mxCell id="hIu2EnUw6FQ_nshIiTp8-8" value="insertBoard (Board board)" style="html=1;verticalAlign=bottom;endArrow=block;" parent="1" edge="1">
           <mxGeometry x="-0.0578" width="80" relative="1" as="geometry">
             <mxPoint x="419" y="220" as="sourcePoint" />
             <mxPoint x="649" y="220" as="targetPoint" />
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="hIu2EnUw6FQ_nshIiTp8-11" value="&lt;span style=&quot;font-size: 10pt ; font-family: &amp;#34;arial&amp;#34;&quot;&gt;BoardWriteController&lt;/span&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
+        <mxCell id="hIu2EnUw6FQ_nshIiTp8-11" value="&lt;span style=&quot;font-size: 10pt ; font-family: &amp;#34;arial&amp;#34;&quot;&gt;BoardInsertController&lt;/span&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
           <mxGeometry x="78" y="80" width="192" height="350" as="geometry" />
         </mxCell>
         <mxCell id="hIu2EnUw6FQ_nshIiTp8-12" value="Service" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" parent="1" vertex="1">
