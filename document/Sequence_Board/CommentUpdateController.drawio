@@ -1,1 +1,114 @@
-<mxfile host="app.diagrams.net" modified="2020-06-19T09:15:40.419Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36" version="13.2.6" etag="cuj7vHijv39TUg9hZTAr" type="github"><diagram id="ktdkzM_fEOCEdslWpJ4l">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2020-06-19T10:39:28.986Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36" etag="stBO_hmbXXUUZDl2VnK9" version="13.2.6" type="github">
+  <diagram id="ktdkzM_fEOCEdslWpJ4l" name="Page-1">
+    <mxGraphModel dx="1278" dy="585" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-1" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="409" y="146" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-2" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="409" y="201" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-3" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="169" y="146" width="10" height="97" as="geometry" />
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-4" value="getComment(HttpServletRequest req)" style="html=1;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry x="-0.0578" width="80" relative="1" as="geometry">
+            <mxPoint x="180" y="158" as="sourcePoint" />
+            <mxPoint x="410" y="158" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-5" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="649" y="203" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-6" value="selectBoardByBoardno(Board boardnum)" style="html=1;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry x="-0.0578" width="80" relative="1" as="geometry">
+            <mxPoint x="419" y="211" as="sourcePoint" />
+            <mxPoint x="649" y="211" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-7" value="view(Board boardnum)&amp;nbsp;" style="html=1;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry x="-0.0578" width="80" relative="1" as="geometry">
+            <mxPoint x="179" y="210" as="sourcePoint" />
+            <mxPoint x="409" y="210" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-8" value="int commentno" style="html=1;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry x="0.0348" y="-3" width="80" relative="1" as="geometry">
+            <mxPoint x="409" y="180" as="sourcePoint" />
+            <mxPoint x="179" y="180" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-9" value="&lt;span style=&quot;font-size: 10pt ; font-family: &amp;#34;arial&amp;#34;&quot;&gt;CommentUpdateController&lt;/span&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="78" y="80" width="192" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-10" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="ImhPCs6EsgVFrWb3PK_K-9">
+          <mxGeometry x="91" y="230" width="10" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-11" value="Service" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="364" y="80" width="100" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-12" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="ImhPCs6EsgVFrWb3PK_K-11">
+          <mxGeometry x="45" y="66" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-13" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="ImhPCs6EsgVFrWb3PK_K-11">
+          <mxGeometry x="45" y="121" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-14" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="ImhPCs6EsgVFrWb3PK_K-11">
+          <mxGeometry x="45" y="230" width="10" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-15" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="ImhPCs6EsgVFrWb3PK_K-11">
+          <mxGeometry x="45" y="170" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-16" value="Dao" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="604" y="80" width="100" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-17" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="ImhPCs6EsgVFrWb3PK_K-16">
+          <mxGeometry x="45" y="230" width="10" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-18" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="ImhPCs6EsgVFrWb3PK_K-16">
+          <mxGeometry x="45" y="170" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-19" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="169" y="146" width="10" height="144" as="geometry" />
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-20" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="649" y="203" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-21" value="comment" style="html=1;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry x="0.0348" y="-3" width="80" relative="1" as="geometry">
+            <mxPoint x="649" y="230" as="sourcePoint" />
+            <mxPoint x="419" y="230" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-22" value="comment" style="html=1;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry x="0.0348" y="-3" width="80" relative="1" as="geometry">
+            <mxPoint x="409" y="230" as="sourcePoint" />
+            <mxPoint x="179" y="230" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-23" value="commentUpdate(HttpServletRequest req)" style="html=1;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry x="-0.0578" width="80" relative="1" as="geometry">
+            <mxPoint x="179" y="320" as="sourcePoint" />
+            <mxPoint x="409" y="320" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ImhPCs6EsgVFrWb3PK_K-24" value="updateComment(Comment comment)&amp;nbsp;" style="html=1;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+          <mxGeometry x="-0.0578" width="80" relative="1" as="geometry">
+            <mxPoint x="419" y="320" as="sourcePoint" />
+            <mxPoint x="649" y="320" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
