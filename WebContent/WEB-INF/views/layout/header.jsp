@@ -292,10 +292,10 @@ a {
 
 <body>
 	<header>
-		<li id="logo"><a href="/main"><img src="/logo.png"
+		<li id="logo"><a href="/document/dolist"><img src="/logo.png"
 				width="170px;"></a></li>
 		<ul>
-			<li class="li-white"><a href="#">전자결재</a>
+			<li class="li-white"><a href="/document/dolist">전자결재</a>
 				<ul class="depth02" style="display: none;">
 					<li>
 						<ul>
@@ -321,7 +321,7 @@ a {
 					</li>
 				</ul></li>
 			<li class="li-white"><a href="/plan/view">일정관리</a></li>
-			<li class="li-white"><a href="#">커뮤니티</a></li>
+			<li class="li-white"><a href="/board/list">커뮤니티</a></li>
 			<li class="li-white"><a href="#">주소록</a></li>
 		</ul>
 	</header>
