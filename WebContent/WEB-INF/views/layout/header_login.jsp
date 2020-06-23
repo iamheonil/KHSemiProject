@@ -237,7 +237,7 @@ window.onload = function() {
 			<span class="close2">&times;</span>
 			<h2><strong>개인정보처리방침</strong></h2><br><br>
 			<div>
-				<c:import url="/resources/policy/Personal_Information_Processing_Policy.html"></c:import>
+				<c:import url="/resources/policy/Personal_Information_Processing_Policy.jsp"></c:import>
 			</div>
 		</div>
 
