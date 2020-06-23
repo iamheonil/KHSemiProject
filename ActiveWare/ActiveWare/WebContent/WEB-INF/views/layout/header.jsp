@@ -66,7 +66,7 @@ header {
 
 #logo {
 	padding-top: 16px;
-	padding-left: 150px;
+	padding-left: 230px;
 	position: absolute;
 	line-height: 1.0em;
 }
