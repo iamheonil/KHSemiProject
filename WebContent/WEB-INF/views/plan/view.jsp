@@ -32,10 +32,6 @@
 				aria-labelledby="dropdownMenu"
 				style="display: block; position: static; margin-bottom: 5px;">
 				<li><a tabindex="-1" href="#">일정추가</a></li>
-				<!--                 
-			<li><a tabindex="-1" href="#">카테고리2</a></li>
-                <li><a tabindex="-1" href="#">카테고리3</a></li>
-                <li><a tabindex="-1" href="#">카테고리4</a></li> -->
 				<li class="divider"></li>
 				<li><a tabindex="-1" href="#" data-role="close">Close</a></li>
 			</ul>
@@ -151,8 +147,6 @@
 	<script src="/js/addEvent.js"></script>
 	<script src="/js/editEvent.js"></script>
 	<script src="/js/etcSetting.js"></script>
-
-</div>
 
 <%-- import footer --%>
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
