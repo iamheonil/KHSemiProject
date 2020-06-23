@@ -125,17 +125,17 @@ var calendar = $('#calendar').fullCalendar({
   },
 
   //주말 숨기기 & 보이기 버튼
-//  customButtons: {
-//    viewWeekends: {
-//      text: '주말',
-//      click: function () {
-//        activeInactiveWeekends ? activeInactiveWeekends = false : activeInactiveWeekends = true;
-//        $('#calendar').fullCalendar('option', {
-//          weekends: activeInactiveWeekends
-//        });
-//      }
-//    }
-//  },
+  customButtons: {
+    viewWeekends: {
+      text: '주말',
+      click: function () {
+        activeInactiveWeekends ? activeInactiveWeekends = false : activeInactiveWeekends = true;
+        $('#calendar').fullCalendar('option', {
+          weekends: activeInactiveWeekends
+        });
+      }
+    }
+  },
 
   header: {
     left: 'today, prevYear, nextYear, viewWeekends',
@@ -166,7 +166,7 @@ var calendar = $('#calendar').fullCalendar({
   events: function (start, end, timezone, callback) {
     $.ajax({
       type: "get",
-      url: "/data.json",
+      url: "data.json",
       data: {
         // 실제 사용시, 날짜를 전달해 일정기간 데이터만 받아오기를 권장
       },
@@ -325,7 +325,7 @@ var calendar = $('#calendar').fullCalendar({
   },
   eventLimitClick: 'week', //popover
   navLinks: true,
-  // defaultDate: moment('2019-06'), //실제 사용시 삭제
+  defaultDate: moment('2019-05'), //실제 사용시 삭제
   timeFormat: 'HH:mm',
   defaultTimedEventDuration: '01:00:00',
   editable: true,
