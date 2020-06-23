@@ -10,13 +10,17 @@
 <head>
 <title>Insert title here</title>
 
-<!-- CDN -->
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"
-	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-	crossorigin="anonymous"></script>
+<!-- jQuery 2.2.4 -->
+<script type="text/javascript"
+ src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
-<link rel="stylesheet" href="css/style.css">
-<script src="js/style.js"></script>
+<!-- 부트스트랩 3.3.2 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<!-- <link rel="stylesheet" href="/css/style.css">
+<script src="/js/style.js"></script> -->
 
 <script type="text/javascript">
 	
@@ -78,7 +82,7 @@ header>ul:hover>li>ul {
 }
 
 header>ul>li {
-	width: 33.33%;
+	width: 25%;
 	display: block;
 	float: left;
 	text-align: center;
@@ -114,7 +118,7 @@ header>ul>li a:hover {
 }
 
 .depth02>li>ul {
-	width: 33.33%;
+	width: 25%;
 	float: left;
 }
 
@@ -161,10 +165,9 @@ a {
 }
 
 #contents {
-	border: 1px solid black;
-	margin-right: 350px;
+	/* border: 1px solid black; */
+	margin-right: 250px;
 	margin-top: 30px;
-	width: 1000px;
 	float: right;
 	text-align: center;
 	margin-left: 7px;
@@ -173,8 +176,35 @@ a {
 	width: 1000px;
 }
 
+/* 사이드 메뉴 */
+.ad-li {
+	border-bottom: 4px solid white;
+	height: 100px;
+	display: flex;
+	align-items: center;
+}
+
+#admenu {
+	margin-top: 10px;
+	border-top: 4px solid white;
+}
+
+#admenu a {
+	color: white;
+	width: 100%;
+	font-size: 20px;
+	text-decoration: none;
+}
+
+#admenu li {
+	padding-left: 55px;
+	position: relative;
+}
+
+/* ---------------------------- */
+
 div#s_left {
-	margin-left: 304px;
+	margin-left: 178px;
 	margin-top: 30px;
 	float: left;
 	width: 240px;
@@ -262,7 +292,8 @@ a {
 
 <body>
 	<header>
-		<li id="logo"><a href="#"><img src="logo.png" width="170px;"></a></li>
+		<li id="logo"><a href="/main"><img src="/logo.png"
+				width="170px;"></a></li>
 		<ul>
 			<li class="li-white"><a href="#">전자결재</a>
 				<ul class="depth02" style="display: none;">
@@ -282,9 +313,15 @@ a {
 							<li><a href="#">저기도메뉴</a></li>
 							<li><a href="#">저기도메뉴</a></li>
 						</ul>
+						<ul>
+							<li><a href="#">주소록메뉴</a></li>
+							<li><a href="#">주소록메뉴</a></li>
+							<li><a href="#">주소록메뉴</a></li>
+						</ul>
 					</li>
 				</ul></li>
-			<li class="li-white"><a href="#">일정관리</a></li>
+			<li class="li-white"><a href="/plan/view">일정관리</a></li>
 			<li class="li-white"><a href="#">커뮤니티</a></li>
+			<li class="li-white"><a href="#">주소록</a></li>
 		</ul>
 	</header>
