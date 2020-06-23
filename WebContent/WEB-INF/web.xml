@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>ActiveWare</display-name>
+  <welcome-file-list>
+    <welcome-file>user/login</welcome-file>
+  </welcome-file-list>
+    	<!-- 필터 클래스 등록(설정) -->
+  <filter>
+  	<filter-name>HangulEncodingFilter</filter-name>
+  	<filter-class>common.EncodeFilter</filter-class>
+  	
+  	<!-- Initial Parameter, 초기화 파라미터 -->
+  	<!-- 	init() 함수가 호출될 때 읽어들일 수 있도록 설정하는 변수 -->
+  	<init-param>
+  		<param-name>enc</param-name> <!-- 파라미터 이름  -->
+  		<param-value>UTF-8</param-value> <!-- 파라미터 값 -->
+  	</init-param>
+  </filter>
+  
+  <!--필터 클래스에 url-pattern 매핑 -->
+  <filter-mapping>
+  	<filter-name>HangulEncodingFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  
+</web-app>
