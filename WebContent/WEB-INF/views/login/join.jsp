@@ -422,7 +422,7 @@ $(document).ready(function() {
 			</p>
 			<div class="notice">
 				<p style="margin-bottom: 3px">
-					${userdept} ${username }${userrank }님 환영합니다!
+					${userdept} ${userrank } ${username }님 환영합니다!
 				</p>
 				<p>
 					계속해서 아래 정보를 입력해주세요.

@@ -1,6 +1,7 @@
 package web.controller.user;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,12 +37,12 @@ public class UserIdCheckController extends HttpServlet {
 		// req정보로 user_basic 정보가져오기
 		user_basic = user_basicService.getUser_basic(req);
 		
-		user_basic = user_basicService.selectAllByUserid(user_basic);
-		
-		System.out.println(user_basic);
 		
 		// 사번과 이름이 있는지 체크하기
 		if(user_basicService.user_basicCheck(user_basic) > 0) {
+			
+			// 입력한 사번으로 모델값 등록
+			user_basic = user_basicService.selectAllByUserid(user_basic);
 			req.setAttribute("userdept", user_basic.getDept());
 			req.setAttribute("userrank", user_basic.getUserrank());
 			req.setAttribute("username", user_basic.getUsername());
@@ -50,7 +51,12 @@ public class UserIdCheckController extends HttpServlet {
 			session.setAttribute("userid", user_basic.getUserid());
 			req.getRequestDispatcher("/WEB-INF/views/login/join.jsp").forward(req, resp);;
 		} else {
-			resp.sendRedirect("/user/joincheck");
+			
+			PrintWriter out = resp.getWriter();
+			out.println("<script>");
+			out.println("alert('등록된 정보가 없습니다.');");
+			out.println("location.href='/user/joincheck';");
+			out.println("</script>");
 		}
 	}
 }

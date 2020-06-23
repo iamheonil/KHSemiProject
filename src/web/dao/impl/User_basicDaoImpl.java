@@ -31,7 +31,6 @@ public class User_basicDaoImpl implements User_basicDao {
 		int cnt = 0; // 조회 개수
 		
 		try {
-			System.out.println("dao에서 수행전 " + user_basic);
 			
 			ps = conn.prepareStatement(sql);
 			
@@ -43,7 +42,6 @@ public class User_basicDaoImpl implements User_basicDao {
 			//조회 결과 처리
 			while(rs.next()) {
 				cnt = rs.getInt(1);
-				System.out.println("cntcnt" + cnt);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
