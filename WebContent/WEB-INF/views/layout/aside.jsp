@@ -7,11 +7,14 @@
 
 		<ul>
 			<ul id="personal">
-				<li id="photo" style="border-radius: 100px; padding-top: 5px;"><br>사진</li>
+				<li id="photo" style="border-radius: 100px;">
+					<img src="https://scontent-ssn1-1.xx.fbcdn.net/v/t1.0-9/22851732_1447343662030847_4635333031465798330_n.png?_nc_cat=110&_nc_sid=85a577&_nc_ohc=RNi4MIIjllEAX9U13Gc&_nc_ht=scontent-ssn1-1.xx&oh=da907adae481ccba598a9b1596fe256c&oe=5F180F0D"
+					style="width: 112px; height: 112px; border-radius:100px;">
+				</li>
 				<li>소속팀 인사1팀 사원 홍길동</li>
-				<li>사원번호 1571000367</li>
-				<li><button>마이페이지</button> &nbsp;
-					<button>로그아웃</button></li>
+				<li>사원번호 20200001</li>
+				<li><button class="btn btn-dark">마이페이지</button> &nbsp;
+					<button class="btn btn-dark">로그아웃</button></li>
 			</ul>
 			<nav id="admenu">
 

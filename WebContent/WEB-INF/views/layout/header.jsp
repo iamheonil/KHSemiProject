@@ -25,8 +25,7 @@
 
 <style type="text/css">
 @import
-	url(//cdn.jsdelivr.net/font-nanum/1.0/nanumbarungothic/nanumbarungothic.css)
-	;
+	url(//cdn.jsdelivr.net/font-nanum/1.0/nanumbarungothic/nanumbarungothic.css);
 
 /* 나눔바른고딕 : 한국서버 빠름*/
 * {
@@ -202,7 +201,7 @@ a {
 
 div#s_left {
 	margin-left: 178px;
-	margin-top: 30px;
+	margin-top: 0px;
 	float: left;
 	width: 240px;
 	text-align: left;
@@ -227,9 +226,12 @@ div#s_left ul {
 
 #personal {
 	width: 210px;
-	background: dodgerblue;
+	height: 280px;
+	background: #4C7DA6;
+	padding-top: 15px;
 	list-style: none;
 	text-align: center;
+	color: white;
 }
 
 .li-white {
