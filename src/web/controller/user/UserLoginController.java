@@ -55,10 +55,14 @@ public class UserLoginController extends HttpServlet {
 		
 		if(res) {
 			System.out.println("로그인성공");
+			
+			// 사번, 이름, 직급, 부서 세션으로 등록
 			session.setAttribute("userid", user_basic.getUserid());
 			session.setAttribute("username", user_basic.getUsername());
 			session.setAttribute("userrank", user_basic.getUserrank());
 			session.setAttribute("userdept", user_basic.getUserrank());
+			
+			resp.sendRedirect("/document/dolist");
 		} else {
 			resp.setContentType("text/html; charset=utf-8");
 
