@@ -8,7 +8,7 @@
 <html>
 
 <head>
-<title>Insert title here</title>
+<title>:: ActiveWare</title>
 
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript"
@@ -19,17 +19,13 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<!-- <link rel="stylesheet" href="/css/style.css">
-<script src="/js/style.js"></script> -->
-
 <script type="text/javascript">
 	
 </script>
 
 <style type="text/css">
 @import
-	url(//cdn.jsdelivr.net/font-nanum/1.0/nanumbarungothic/nanumbarungothic.css)
-	;
+	url(//cdn.jsdelivr.net/font-nanum/1.0/nanumbarungothic/nanumbarungothic.css);
 
 /* 나눔바른고딕 : 한국서버 빠름*/
 * {
@@ -205,7 +201,7 @@ a {
 
 div#s_left {
 	margin-left: 178px;
-	margin-top: 30px;
+	margin-top: 0px;
 	float: left;
 	width: 240px;
 	text-align: left;
@@ -230,9 +226,12 @@ div#s_left ul {
 
 #personal {
 	width: 210px;
-	background: dodgerblue;
+	height: 280px;
+	background: #4C7DA6;
+	padding-top: 15px;
 	list-style: none;
 	text-align: center;
+	color: white;
 }
 
 .li-white {
@@ -292,10 +291,10 @@ a {
 
 <body>
 	<header>
-		<li id="logo"><a href="/main"><img src="/logo.png"
+		<li id="logo"><a href="/document/dolist"><img src="/logo.png"
 				width="170px;"></a></li>
 		<ul>
-			<li class="li-white"><a href="#">전자결재</a>
+			<li class="li-white"><a href="/document/dolist">전자결재</a>
 				<ul class="depth02" style="display: none;">
 					<li>
 						<ul>
@@ -321,7 +320,7 @@ a {
 					</li>
 				</ul></li>
 			<li class="li-white"><a href="/plan/view">일정관리</a></li>
-			<li class="li-white"><a href="#">커뮤니티</a></li>
+			<li class="li-white"><a href="/board/list">커뮤니티</a></li>
 			<li class="li-white"><a href="#">주소록</a></li>
 		</ul>
 	</header>
