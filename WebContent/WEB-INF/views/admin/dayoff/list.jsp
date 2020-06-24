@@ -14,14 +14,15 @@
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
-<c:import url="/WEB-INF/views/adlayout/adheader.jsp" />
+<%-- <c:import url="/WEB-INF/views/adlayout/adheader.jsp" /> --%>
 
 <style type="text/css">
 h4 {
 	color: #0A2D5D;
 	font-weight: bold;
 	font-size: 1.6em;
-	padding : 20px;
+	padding : 10px;
+	
 }
 .container {
 	padding-left: 20px;
@@ -71,9 +72,9 @@ $(document).ready(function() {
 });
 </script>
 
-<c:import url="/WEB-INF/views/adlayout/adaside.jsp" />
+<%-- <c:import url="/WEB-INF/views/adlayout/adaside.jsp" /> --%>
 
-<div class="container">
+<div class="content">
 	<h4>휴가 신청서 목록</h4>
 	<div class="container">
 	
@@ -106,5 +107,5 @@ $(document).ready(function() {
 </div>
 
 
-<c:import url="/WEB-INF/views/adlayout/adfooter.jsp" />
+<%-- <c:import url="/WEB-INF/views/adlayout/adfooter.jsp" /> --%>
 
