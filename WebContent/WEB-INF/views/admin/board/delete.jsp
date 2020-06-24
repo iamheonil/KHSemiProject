@@ -13,7 +13,7 @@
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
-<c:import url="/WEB-INF/views/adlayout/adheader.jsp" />
+<%-- <c:import url="/WEB-INF/views/adlayout/adheader.jsp" /> --%>
 
 
 <style type="text/css">
@@ -57,7 +57,7 @@ $(document).ready(function() {
 });
 </script>
 
-<c:import url="/WEB-INF/views/adlayout/adaside.jsp" />
+<%-- <c:import url="/WEB-INF/views/adlayout/adaside.jsp" /> --%>
 
 <div class="content">
 	<h4>커뮤니티 삭제</h4>
@@ -91,5 +91,5 @@ $(document).ready(function() {
 
 </div>
 
-<c:import url="/WEB-INF/views/adlayout/adfooter.jsp" />
+<%-- <c:import url="/WEB-INF/views/adlayout/adfooter.jsp" /> --%>
 
