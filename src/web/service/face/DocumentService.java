@@ -31,7 +31,7 @@ public interface DocumentService {
 	 */
 	public void writeDoc(HttpServletRequest req);
 
-	// !!! 수정사항 !!!
+
 	/**
 	 * @param req - 요청 정보 객체
 	 * @return SearchPaging - 페이징 계산이 완료된 객체
@@ -39,7 +39,7 @@ public interface DocumentService {
 	public SearchPaging getTempSearchPaging(HttpServletRequest req);
 	
 
-	// !!!수정사항 !!!
+
 	/**
 	 * 임시저장함 문서 검색 조회
 	 * @param req - 요청 정보 객체
@@ -146,7 +146,7 @@ public interface DocumentService {
 	 */
 	public ArrayList<Map<String, Object>> getListApprove(Paging paging);
 
-	// !!! 수정사항 !!!
+
 	/**
 	 * 문서등록대장 페이징 처리
 	 * @param req - 요청 정보 객체
@@ -155,7 +155,7 @@ public interface DocumentService {
 	public SearchPaging getDocumentPaging(HttpServletRequest req);
 	
 	
-	// !!! 수정사항 !!!
+
 	/**
 	 * 문서등록대장 전체 조회
 	 * 
@@ -182,7 +182,7 @@ public interface DocumentService {
 	 */
 	public List<Document> getDoListProgress();
 
-	// !!! 수정사항 !!!
+
 	/**
 	 * 임시저장함에서 체크박스로 선택한 문서 삭제
 	 * 

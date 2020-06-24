@@ -43,7 +43,7 @@ public class DocumentServiceImpl implements DocumentService{
 		
 	}
 
-	// !!! 수정사항 !!!
+
 	@Override
 	public SearchPaging getTempSearchPaging(HttpServletRequest req) {
 		//요청파라미터 curPage를 파싱한다
@@ -59,7 +59,6 @@ public class DocumentServiceImpl implements DocumentService{
 		//날짜
 		String startDate = req.getParameter("startDate");
 		String endDate = req.getParameter("endDate");
-		
 
 		
 		// 로그인 중인 userid 값 저장
@@ -79,7 +78,7 @@ public class DocumentServiceImpl implements DocumentService{
 		return paging;
 	}
 
-	// !!! 수정사항 !!!
+
 	@Override
 	public ArrayList<Map<String, Object>> getListSearchTemp(SearchPaging paging, int userid, String startDate, String endDate) {
 		
@@ -185,7 +184,7 @@ public class DocumentServiceImpl implements DocumentService{
 		return documentDao.selectApproveAll(paging);
 	}
 	
-	// !!! 수정사항 !!!
+
 	@Override
 	public SearchPaging getDocumentPaging(HttpServletRequest req) {
 		//요청파라미터 curPage를 파싱한다
@@ -198,12 +197,10 @@ public class DocumentServiceImpl implements DocumentService{
 		//검색어
 		String search = (String)req.getParameter("search");
 		
-		
 		//날짜
 		String startDate = req.getParameter("startDate");
 		String endDate = req.getParameter("endDate");
-		
-
+	
 		//Board TB와 curPage 값을 이용한 Paging 객체를 생성하고 반환
 		int totalCount = documentDao.selectDocumentSearchCntAll(search, startDate, endDate);
 		
@@ -216,7 +213,7 @@ public class DocumentServiceImpl implements DocumentService{
 		return paging;
 	}
 	
-	/// !!! 수정사항
+
 	@Override
 	public ArrayList<Map<String, Object>> getListDocumentAll(SearchPaging paging, String startDate, String endDate) {
 		
@@ -237,7 +234,7 @@ public class DocumentServiceImpl implements DocumentService{
 	}
 
 
-	// !!! 수정사항
+
 	@Override
 	public void deleteDocumentList(String names) {
 		
@@ -246,12 +243,7 @@ public class DocumentServiceImpl implements DocumentService{
 		documentDao.deleteDocReport_linkList(names);
 		documentDao.deleteDoc_attachList(names);
 		documentDao.deleteDocList(names);
-		
 	}
-
-
-
-
 
 
 }

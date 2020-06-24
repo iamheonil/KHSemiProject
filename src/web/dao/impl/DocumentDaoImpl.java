@@ -30,7 +30,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		return 0;
 	}
 
-	// !!! 수정사항 !!!
+	
 	@Override
 	public int selectTempSearchCntAll(String search, int userid, String startDate, String endDate) {
 		conn = JDBCTemplate.getConnection();
@@ -76,7 +76,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		System.out.println("임시저장함 검색 조회 결과 개수" + cnt);
 		return cnt;
 	}
-	// !!! 수정사항 !!!
+	
 	@Override
 	public ArrayList<Map<String, Object>> selectTempSearch(SearchPaging paging, int userid, String startDate, String endDate) {
 		conn = JDBCTemplate.getConnection();
@@ -396,7 +396,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		return list;
 	}
 	
-	// !!! 수정사항!!!
+	
 	@Override
 	public int selectDocumentSearchCntAll(String search, String startDate, String endDate) {
 		conn = JDBCTemplate.getConnection();
@@ -440,7 +440,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		return cnt;
 	}
 	
-	// !!! 수정사항 !!!
+	
 	@Override
 	public ArrayList<Map<String, Object>> selectDocumentAll(SearchPaging paging, String startDate, String endDate) {
 		conn = JDBCTemplate.getConnection();
@@ -517,7 +517,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		return null;
 	}
 	
-	// !!! 수정사항 !!!
+	
 	@Override
 	public void deleteDocReport_linkList(String names) {
 		conn = JDBCTemplate.getConnection();
@@ -538,7 +538,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		}
 		
 	}
-	// !!! 수정사항 !!!
+	
 	@Override
 	public void deleteDoc_attachList(String names) {
 		conn = JDBCTemplate.getConnection();
@@ -559,7 +559,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		}
 		
 	}
-	// !!! 수정사항 !!!
+
 	@Override
 	public void deleteDocList(String names) {
 		conn = JDBCTemplate.getConnection();
@@ -579,7 +579,7 @@ public class DocumentDaoImpl implements DocumentDao {
 			JDBCTemplate.close(ps);
 		}
 	}
-	// !!! 수정사항 !!!
+
 	@Override
 	public void deleteDoc_commentList(String names) {
 		conn = JDBCTemplate.getConnection();
