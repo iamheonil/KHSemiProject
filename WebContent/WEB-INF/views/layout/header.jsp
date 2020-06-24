@@ -308,9 +308,9 @@ a {
 							<li><a href="#">여기도메뉴</a></li>
 						</ul>
 						<ul>
-							<li><a href="#">저기도메뉴</a></li>
-							<li><a href="#">저기도메뉴</a></li>
-							<li><a href="#">저기도메뉴</a></li>
+							<li><a href="/board/notice">공지사항</a></li>
+							<li><a href="/board/study">스터디 모집</a></li>
+							<li><a href="/board/free">사내게시판</a></li>
 						</ul>
 						<ul>
 							<li><a href="#">주소록메뉴</a></li>
