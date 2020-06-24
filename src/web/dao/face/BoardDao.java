@@ -32,6 +32,24 @@ public interface BoardDao {
 	 * @return - 전체 게시글 수
 	 */
 	
+	public List<Board> selectFree();
+
+	/**
+	 * 스터디모집 조회
+	 * 
+	 * 
+	 * @return
+	 */
+	
+	public List<Board> selectStudy();
+
+	
+	/**
+	 * 총 게시글 수 조회
+	 * 
+	 * @return - 전체 게시글 수
+	 */
+	
 	public int selectCntAll();
 	
 	/**

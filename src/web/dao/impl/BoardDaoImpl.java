@@ -104,7 +104,85 @@ public class BoardDaoImpl implements BoardDao{
 		return N_list;
 	}
 
-	
+	@Override
+	public List<Board> selectFree() {
+		
+		conn = JDBCTemplate.getConnection();
+		
+		String sql = "";
+		sql += "SELECT * FROM board";
+		sql += " WHERE category = '사내게시판'";
+		sql += " ORDER BY b_num DESC";
+		
+		List<Board> F_list = new ArrayList<>();
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Board board = new Board();
+				
+				board.setCategory(rs.getString("category"));
+				board.setB_num(rs.getInt("b_num"));
+				board.setB_title(rs.getString("b_title"));
+				board.setB_date(rs.getDate("b_date"));
+				board.setHits(rs.getInt("hits"));
+				board.setUserid(rs.getInt("userid"));
+				board.setUsername(rs.getString("username"));
+				
+				F_list.add(board);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+			JDBCTemplate.close(rs);
+		}
+		
+		return F_list;
+	}
+
+	@Override
+	public List<Board> selectStudy() {
+		
+		conn = JDBCTemplate.getConnection();
+		
+		String sql = "";
+		sql += "SELECT * FROM board";
+		sql += " WHERE category = '스터디모집'";
+		sql += " ORDER BY b_num DESC";
+		
+		List<Board> S_list = new ArrayList<>();
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Board board = new Board();
+				
+				board.setCategory(rs.getString("category"));
+				board.setB_num(rs.getInt("b_num"));
+				board.setB_title(rs.getString("b_title"));
+				board.setB_date(rs.getDate("b_date"));
+				board.setHits(rs.getInt("hits"));
+				board.setUserid(rs.getInt("userid"));
+				board.setUsername(rs.getString("username"));
+				
+				S_list.add(board);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+			JDBCTemplate.close(rs);
+		}
+		
+		return S_list;
+	}
 	@Override
 	public int selectCntAll() {
 		
