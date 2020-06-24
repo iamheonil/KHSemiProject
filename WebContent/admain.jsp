@@ -17,8 +17,8 @@
 		
 		/* 사원관리 */
 		$(document).ready(function(){
-			$('#').click(function(){
-				$('#contents').load('');
+			$('#deptlist').click(function(){
+				$('#contents').load('/dept/list');
 			})
 		})
 		
@@ -32,7 +32,7 @@
 		/* 전자문서 */
 		$(document).ready(function(){
 			$('#document').click(function(){
-				$('#contents').load('');
+				$('#contents').load('/document/list/delete');
 			})
 		})
 		
