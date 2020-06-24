@@ -75,7 +75,7 @@ $(document).ready(function(){
 
 		<button type="button" class="btn pull-right glyphicon glyphicon-pencil"
 			onclick="location.href='/board/insert'">&nbsp;글쓰기</button>
-		<c:import url="/WEB-INF/views/layout/paging.jsp" />
+		<c:import url="/WEB-INF/views/layout/b_paging.jsp" />
 
 		<div class="form-inline text-center">
 			<input class="form-control" type="text" id="search" style="width:250px;" placeholder="검색어를 입력해주세요"/>
