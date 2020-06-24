@@ -1,6 +1,7 @@
 package web.dao.impl;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +11,7 @@ import java.util.List;
 import web.dao.face.BoardDao;
 import web.dbutil.JDBCTemplate;
 import web.dto.Board;
-import web.util.Paging;
+import web.util.B_Paging;
 
 public class BoardDaoImpl implements BoardDao{
 
@@ -139,7 +140,7 @@ public class BoardDaoImpl implements BoardDao{
 
 
 	@Override
-	public List<Board> selectAll(Paging paging) {
+	public List<Board> selectAll(B_Paging paging) {
 		
 		conn = JDBCTemplate.getConnection(); //DB연결
 		

@@ -33,7 +33,7 @@ public class BoardFreeController extends HttpServlet {
 		B_Paging paging = boardService.getPaging(req);
 		System.out.println("BoardListController " + paging);
 		//Paging 결과 MODEL값 전달
-		req.setAttribute("paging", paging);
+		req.setAttribute("B_paging", paging);
 		
 		// 공지사항 게시글 조회
 		List<Board> F_list = boardService.fList();

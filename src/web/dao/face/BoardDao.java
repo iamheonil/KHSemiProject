@@ -2,8 +2,9 @@ package web.dao.face;
 
 import java.util.List;
 
+
 import web.dto.Board;
-import web.util.Paging;
+import web.util.B_Paging;
 
 public interface BoardDao {
 
@@ -41,7 +42,7 @@ public interface BoardDao {
 	 */
 	
 	
-	public List<Board> selectAll(Paging paging);
+	public List<Board> selectAll(B_Paging paging);
 
 	/**
 	 * 

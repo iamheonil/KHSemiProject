@@ -2,11 +2,12 @@ package web.service.face;
 
 import java.util.List;
 
+
 import javax.servlet.http.HttpServletRequest;
 
 import web.dto.Board;
 import web.dto.Board_comment;
-import web.util.Paging;
+import web.util.B_Paging;
 
 public interface BoardService {
 
@@ -25,7 +26,7 @@ public interface BoardService {
 	 * @return Paging - 페이징 계산이 완료된 객체
 	 */
 	
-	public Paging getPaging(HttpServletRequest req);
+	public B_Paging getPaging(HttpServletRequest req);
 	
 	/**
 	 * 페이징 처리하여 보여질 게시글 목록만 조회
@@ -34,7 +35,7 @@ public interface BoardService {
 	 * @return List<Board>
 	 */
 	
-	public List<Board> list(Paging paging);
+	public List<Board> list(B_Paging paging);
 
 	
 	/**
@@ -120,12 +121,25 @@ public interface BoardService {
 	public List<Board> nList();
 
 	/**
+	 * 게시판 사내게시판만 조회
+	 * 
+	 * @return List<Board>
+	 */
+	public List<Board> fList();
+	
+	/**
+	 * 게시판 스터디게시판만 조회
+	 * 
+	 * @return List<Board>
+	 */
+	public List<Board> sList();
+	
+	/**
 	 * 댓글 삭제
 	 * 
 	 * @param comment - 삭제할 댓글
 	 * @return boolean - 삭제 성공 여부
 	 */
-	
 	public boolean deleteComment(Board_comment comment);
 
 }

@@ -1,6 +1,8 @@
 package web.service.impl;
 
 import java.io.UnsupportedEncodingException;
+
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +14,7 @@ import web.dao.impl.Board_commentDaoImpl;
 import web.dto.Board;
 import web.dto.Board_comment;
 import web.service.face.BoardService;
-import web.util.Paging;
+import web.util.B_Paging;
 
 public class BoardServiceImpl implements BoardService{
 
@@ -34,7 +36,7 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public Paging getPaging(HttpServletRequest req) {
+	public B_Paging getPaging(HttpServletRequest req) {
 		
 		//전달파라미터 curPage를 파싱
 		String param = req.getParameter("curPage");
@@ -48,13 +50,13 @@ public class BoardServiceImpl implements BoardService{
 		int totalCount = boardDao.selectCntAll();
 		
 		//Paging 객체 생성
-		Paging paging = new Paging(totalCount, curPage);
+		B_Paging paging = new B_Paging(totalCount, curPage);
 		
 		return paging;
 	}
 
 	@Override
-	public List<Board> list(Paging paging) {
+	public List<Board> list(B_Paging paging) {
 		
 	
 		
@@ -182,6 +184,16 @@ public class BoardServiceImpl implements BoardService{
 			return true;
 		}
 		
+	}
+
+	@Override
+	public List<Board> fList() {
+		return null;
+	}
+
+	@Override
+	public List<Board> sList() {
+		return null;
 	}
 
 
