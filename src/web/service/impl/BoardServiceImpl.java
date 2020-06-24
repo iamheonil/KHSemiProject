@@ -36,6 +36,16 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
+	public List<Board> fList() {
+		return boardDao.selectFree();
+	}
+	
+	@Override
+	public List<Board> sList() {
+		return boardDao.selectStudy();
+	}
+
+	@Override
 	public B_Paging getPaging(HttpServletRequest req) {
 		
 		//전달파라미터 curPage를 파싱
@@ -186,15 +196,6 @@ public class BoardServiceImpl implements BoardService{
 		
 	}
 
-	@Override
-	public List<Board> fList() {
-		return null;
-	}
-
-	@Override
-	public List<Board> sList() {
-		return null;
-	}
 
 
 
