@@ -4,12 +4,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<%
+     request.getAttribute("allPlan");
+%>  
+
 
 <script type="text/javascript" src="<c:url value='/resources/js/fullcalendar/fullcalendar.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/fullcalendar/daygrid.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/fullcalendar/interaction.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/fullcalendar/timegrid.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/resources/js/fullcalendar/settings.js'/>"></script>
+<%-- <script type="text/javascript" src="<c:url value='/resources/js/fullcalendar/settings.js'/>"></script> --%>
 
 <link rel="stylesheet" type="text/css" href="${ctx }/resources/css/fullcalendar/daygrid.css">
 <link rel="stylesheet" type="text/css" href="${ctx }/resources/css/fullcalendar/fullcalendar.css">
@@ -24,7 +28,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">
 
     <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
-
 
 <script type='text/javascript'>
 	$(document).ready(function() {
@@ -56,6 +59,58 @@
 	});
 </script>
 
+<c:forEach items="${allPlan }" var="plan">
+		<tr>
+			<td>${plan.plan_num }</td>
+			<td>${plan.userid }</td>
+			<td>${plan.plan_name }</td>
+			<td><fmt:formatDate value="${plan.ptime_start }"
+					pattern="yyyy-MM-dd" /></td>
+			<td><fmt:formatDate value="${plan.ptime_end }"
+					pattern="yyyy-MM-dd" /></td>
+		</tr>
+	</c:forEach>
+
+<br>
+
+<script type="text/javascript">
+
+	document.addEventListener('DOMContentLoaded', function() {
+		var calendarEl = document.getElementById('calendar');
+		
+/* 		var eventName = ${plan.plan_name };
+		var ptime_Start = ${plan.ptime_start };
+		var ptime_End = ${plan.ptime_end }; */
+		
+		var eventName = '하잉';
+		var ptime_Start = '2020-06-24';
+		var ptime_End = '2020-06-30';
+
+		var calendar = new FullCalendar.Calendar(calendarEl, {
+			plugins : [ 'interaction', 'dayGrid' ],
+			// defaultDate : '2019-06-12', 기본 날짜 설정을 삭제, 오늘 날짜로 기본 설정
+			editable : true,
+			eventLimit : true, // allow "more" link when too many events
+			locale : 'ko',
+			
+			events : [ {
+				title : '하위',
+				start : '2020-06-24',
+				end : '2020-06-26'
+			}, {
+				title : eventName,
+				url : 'http://google.com/',
+				start : ptime_Start,
+				end : ptime_End
+			} ]
+		});
+		
+		calendar.render();
+		// var testVal = ${allPlan };
+	});
+</script>
+
+
 <div id="contents">
 
 	<div id="calendar"></div>
@@ -70,6 +125,8 @@
 		<br>
 		<button class="btn btn-primary">일정 등록 하기</button>
 	</form>
+
+<br>
 
 </div>
 
