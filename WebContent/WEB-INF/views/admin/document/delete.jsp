@@ -14,7 +14,7 @@
 
 
 
-<c:import url="/WEB-INF/views/layout/header.jsp" />
+<%-- <c:import url="/WEB-INF/views/layout/header.jsp" /> --%>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -58,7 +58,7 @@ $(document).ready(function() {
 </div>
 <c:import url="/WEB-INF/views/layout/paging.jsp" />
 
-<c:import url="/WEB-INF/views/layout/footer.jsp" />
+<%-- <c:import url="/WEB-INF/views/layout/footer.jsp" /> --%>
 
 
 </body>
