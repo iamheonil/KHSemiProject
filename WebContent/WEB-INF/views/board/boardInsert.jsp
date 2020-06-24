@@ -3,9 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:import url="/WEB-INF/views/layout/header.jsp" />
-
+<c:import url="/WEB-INF/views/layout/aside.jsp" />
 <script type="text/javascript" src="/resources/se2/js/service/HuskyEZCreator.js" charset="utf-8">
 </script>
+
 
 <script type="text/javascript">
 function submitContents(elClickedObj){
@@ -40,16 +41,22 @@ $(document).ready(function() {
 </script>
 
 <style type="text/css">
-#content {
-	width: 100%;
-	height: 100px;
-	realize:none;
+/* #content { */
+/* 	width: 100%; */
+/* 	height: 100px; */
+/* 	realize:none; */
+/* } */
 	
+.container{
+	width: 50%;
+	height: auto;
 }
+	
+	
 
 </style>
 
-<div>
+<div class="container">
 
 <h3>게시글 작성</h3>
 <hr>
@@ -70,8 +77,8 @@ $(document).ready(function() {
 <tr><td class="info">아이디</td><td>${userid }</td></tr>
 <tr><td class="info">이름</td><td>${username }</td></tr>
 <tr><td class="info">제목</td><td><input type="text" name="title" style="width:100%"/></td></tr>
-<tr><td class="info">내용</td></tr>
-<tr><td colspan="2"><textarea id="content" name="content"></textarea></td></tr>
+<tr><td class="info">내용<td colspan="2"><textarea id="content" name="content"></textarea></td></tr>
+
 </table>
 </form>
 
@@ -83,7 +90,6 @@ $(document).ready(function() {
 </div>
 </div>
 
-<c:import url="/WEB-INF/views/layout/footer.jsp" />
 
 <script type="text/javascript">
 var oEditors = [];
@@ -97,4 +103,5 @@ nhn.husky.EZCreator.createInIFrame({
 
 </script>
 
+<c:import url="/WEB-INF/views/layout/footer.jsp" />
 
