@@ -69,64 +69,7 @@ h3{
 }
 </style>
 
-		<div id="s_left">
-
-			<ul>
-				<ul id="personal">
-					<li id="photo" style="border-radius: 100px; padding-top: 5px;"><br>사진</li>
-					<li>소속팀 인사1팀 사원 홍길동</li>
-					<li>사원번호 1571000367</li>
-					<li><button>마이페이지</button> &nbsp;
-						<button>로그아웃</button></li>
-				</ul>
-				<li>첫번째 메뉴
-					<ul>
-
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-
-					</ul>
-
-				</li>
-				<li>두번째 메뉴
-					<ul>
-
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-
-					</ul>
-				</li>
-				<li>세번째 메뉴
-					<ul>
-
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-
-					</ul>
-				</li>
-				<li>네번째 메뉴
-					<ul>
-
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-
-					</ul>
-				</li>
-				<li>다섯번째 메뉴
-					<ul>
-
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-
-					</ul>
-				</li>
-			</ul>
-		</div>
+<c:import url="/WEB-INF/views/layout/aside_doc.jsp"/>
 		
 <div id="contents">
 <div id="templist">

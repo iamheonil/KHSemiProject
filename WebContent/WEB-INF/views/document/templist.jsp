@@ -21,23 +21,7 @@ $(document).ready(function() {
 		// 선택된 체크박스
 		var $checkboxes = $("input:checkbox[name='checkRow']:checked");
 		
-			
-		
-		//방법1
-		// 체크된 대상들을 하나씩 꺼내서 문자열로 합치기
-	//		var names = "";
-	//		var len = $checkboxes.length;
-	//		$checkboxes.each( function(idx) {
-	//			names += $(this).val();
-			
-	//			if( len-1 != idx ) {
-	//				names += ",";
-	//			}
-	//		});
-	//		console.log(names);
-	
-	
-	
+
 		//방법2
 		// 체크된 대상들을 map으로 만들고 map을 문자열로 만들기
 		var map = $checkboxes.map(function() {
@@ -145,64 +129,7 @@ h3{
 }
 </style>
 
-		<div id="s_left">
-
-			<ul>
-				<ul id="personal">
-					<li id="photo" style="border-radius: 100px; padding-top: 5px;"><br>사진</li>
-					<li>소속팀 인사1팀 사원 홍길동</li>
-					<li>사원번호 1571000367</li>
-					<li><button>마이페이지</button> &nbsp;
-						<button>로그아웃</button></li>
-				</ul>
-				<li>첫번째 메뉴
-					<ul>
-
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-
-					</ul>
-
-				</li>
-				<li>두번째 메뉴
-					<ul>
-
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-
-					</ul>
-				</li>
-				<li>세번째 메뉴
-					<ul>
-
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-
-					</ul>
-				</li>
-				<li>네번째 메뉴
-					<ul>
-
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-
-					</ul>
-				</li>
-				<li>다섯번째 메뉴
-					<ul>
-
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-
-					</ul>
-				</li>
-			</ul>
-		</div>
+<c:import url="/WEB-INF/views/layout/aside_doc.jsp"/>
 		
 <div id="contents">
 <div id="templist">
