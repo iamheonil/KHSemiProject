@@ -12,14 +12,26 @@
 	height: auto;
 }
 </style>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	//글쓰기 버튼을 누르면 이동
+	$("#btnSearch").click(function(){
+		location.href="/board/list?search="+$("#search").val();
+	});
+
+
+});
+</script>
 <div id="contents">
 	<div class="container">
 
-		<h2>사내 게시판</h2>
-
+		<h2 style="text-align: left;">커뮤니티</h2>
+		
+		<hr>
 		<table class="table table-hover table-condensed">
-			<thead style="background-color: rgb(38, 114, 165)";>
-				<tr>
+			<thead style="background-color: rgb(38, 114, 165);">
+				<tr style="text-align: center;">
 					<th style="width: 7%">글 번호</th>
 					<th style="width: 8%;">카테고리</th>
 					<th style="width: 43%;">제목</th>
@@ -30,11 +42,11 @@
 				</tr>
 			</thead>
 
-			<thead>
+			<thead style="board: 1px solid #ffc6c9; background-color: #ffe3e4; color: #ff4e59;">
 				<c:forEach items="${N_list }" var="i">
 					<tr class="text-left info">
-						<td>${i.b_num }</td>
-						<td>${i.category }</td>
+						<td style="text-align: center;">${i.b_num }</td>
+						<td>${i.category}</td>
 						<td><a href="/board/view?b_num=${i.b_num }">${i.b_title }</a></td>
 						<td>${i.userid }</td>
 						<td>${i.username }</td>
@@ -47,7 +59,7 @@
 			<c:forEach items="${list }" var="i">
 
 				<tr class="text-left">
-					<td>${i.b_num }</td>
+					<td style="text-align: center;">${i.b_num }</td>
 					<td>${i.category }</td>
 					<td><a href="/board/view?b_num=${i.b_num }">${i.b_title }</a></td>
 					<td>${i.userid }</td>
@@ -57,13 +69,17 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<button type="button" class="pull-left"
-			onclick="location.href='/board/insert'">글 등록</button>
 
 
 
-
+		<button type="button" class="btn pull-right glyphicon glyphicon-pencil"
+			onclick="location.href='/board/insert'">&nbsp;글쓰기</button>
 		<c:import url="/WEB-INF/views/layout/paging.jsp" />
+
+		<div class="form-inline text-center">
+			<input class="form-control" type="text" id="search" style="width:250px;" placeholder="검색어를 입력해주세요"/>
+			<button id="btnSearch" class="btn glyphicon glyphicon-search"></button>
+		</div>
 	</div>
 </div>
 
