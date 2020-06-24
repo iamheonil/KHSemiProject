@@ -1,6 +1,8 @@
 package web.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,6 +17,7 @@ import web.dao.impl.Report_linkDaoImpl;
 import web.dto.Document;
 import web.service.face.DocumentService;
 import web.util.Paging;
+import web.util.SearchPaging;
 
 public class DocumentServiceImpl implements DocumentService{
 	
@@ -40,22 +43,65 @@ public class DocumentServiceImpl implements DocumentService{
 		
 	}
 
+	// !!! 수정사항 !!!
 	@Override
-	public Paging getTempPaging(HttpServletRequest req) {
+	public SearchPaging getTempSearchPaging(HttpServletRequest req) {
+		//요청파라미터 curPage를 파싱한다
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if( param!=null && !"".equals(param) ) {
+			curPage = Integer.parseInt(param);
+		}
+
+		//검색어
+		String search = (String)req.getParameter("search");
 		
-		return null;
+		//날짜
+		String startDate = req.getParameter("startDate");
+		String endDate = req.getParameter("endDate");
+		
+
+		
+		// 로그인 중인 userid 값 저장
+		int userid = (int) req.getSession().getAttribute("userid");
+		
+		System.out.println("로그인한 userid" + userid);
+		
+		//Board TB와 curPage 값을 이용한 Paging 객체를 생성하고 반환
+		int totalCount = documentDao.selectTempSearchCntAll(search, userid, startDate, endDate);
+		
+		// Paging 객체 생성 
+		SearchPaging paging = new SearchPaging(totalCount, curPage);
+		
+		//검색어
+		paging.setSearch(search);
+
+		return paging;
 	}
 
+	// !!! 수정사항 !!!
 	@Override
-	public List<Document> getListTemp(HttpServletRequest req, Paging paging) {
+	public ArrayList<Map<String, Object>> getListSearchTemp(SearchPaging paging, int userid, String startDate, String endDate) {
 		
-		return null;
+		return documentDao.selectTempSearch(paging, userid, startDate, endDate);
 	}
 
 	@Override
 	public Document getDocumentno(HttpServletRequest req) {
 		
-		return null;
+		//doc_num를 저장할 객체 생성
+		Document documentno = new Document();
+		
+		//boardno 전달파라미터 검증 - null, ""
+		String param = req.getParameter("doc_num");
+		if(param!=null && !"".equals(param)) {
+			
+			//documentno 전달파라미터 추출
+			documentno.setDoc_num(Integer.parseInt(param));
+		}
+		
+		//결과 객체 반환
+		return documentno;
 	}
 
 	@Override
@@ -76,7 +122,8 @@ public class DocumentServiceImpl implements DocumentService{
 
 	@Override
 	public Document getDocument(Document doc) {
-		return null;
+		
+		return documentDao.selectDocumentByDocno(doc);
 	}
 
 	@Override
@@ -133,24 +180,50 @@ public class DocumentServiceImpl implements DocumentService{
 	}
 
 	@Override
-	public List<Document> getListApprove(Paging paging) {
-		return null;
-
-		// return documentDao.selectApproveAll(paging);
+	public ArrayList<Map<String, Object>> getListApprove(Paging paging) {
+		
+		return documentDao.selectApproveAll(paging);
 	}
-
+	
+	// !!! 수정사항 !!!
 	@Override
-	public Paging getDocumentPaging(HttpServletRequest req) {
+	public SearchPaging getDocumentPaging(HttpServletRequest req) {
+		//요청파라미터 curPage를 파싱한다
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if( param!=null && !"".equals(param) ) {
+			curPage = Integer.parseInt(param);
+		}
 
-		return null;
+		//검색어
+		String search = (String)req.getParameter("search");
+		
+		
+		//날짜
+		String startDate = req.getParameter("startDate");
+		String endDate = req.getParameter("endDate");
+		
+
+		//Board TB와 curPage 값을 이용한 Paging 객체를 생성하고 반환
+		int totalCount = documentDao.selectDocumentSearchCntAll(search, startDate, endDate);
+		
+		// Paging 객체 생성 
+		SearchPaging paging = new SearchPaging(totalCount, curPage);
+		
+		//검색어
+		paging.setSearch(search);
+
+		return paging;
 	}
-
+	
+	/// !!! 수정사항
 	@Override
-	public List<Document> getListDocumentAll(HttpServletRequest req, Paging paging) {
-
-		return null;
+	public ArrayList<Map<String, Object>> getListDocumentAll(SearchPaging paging, String startDate, String endDate) {
+		
+		return documentDao.selectDocumentAll(paging, startDate, endDate);
 	}
-
+	
+	
 	@Override
 	public List<Document> getDoListWaitApprove() {
 
@@ -163,9 +236,16 @@ public class DocumentServiceImpl implements DocumentService{
 		return null;
 	}
 
+
+	// !!! 수정사항
 	@Override
 	public void deleteDocumentList(String names) {
-		// TODO Auto-generated method stub
+		
+		System.out.println("names : " +  names );
+		documentDao.deleteDoc_commentList(names);
+		documentDao.deleteDocReport_linkList(names);
+		documentDao.deleteDoc_attachList(names);
+		documentDao.deleteDocList(names);
 		
 	}
 

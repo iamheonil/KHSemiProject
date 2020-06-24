@@ -26,7 +26,7 @@ public class DocumentWriteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		req.getRequestDispatcher("/WEB-INF/document/docwrite.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/document/docwrite.jsp").forward(req, resp);
 	}
 
 	@Override

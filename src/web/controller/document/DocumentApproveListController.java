@@ -1,7 +1,9 @@
 package web.controller.document;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,19 +27,17 @@ public class DocumentApproveListController extends HttpServlet {
 		
 		//요청 파라미터를 전달하여 Paging 객체 생성하기
 		Paging paging = documentService.getApprovePaging(req);
-		System.out.println("ApproveListController - " + paging);
 
 		//게시글 전체 조회
-		List<Document> ApproveList = documentService.getListApprove(paging);
-		System.out.println(ApproveList);
+		ArrayList<Map<String, Object>> approveList = documentService.getListApprove(paging);
 		
 		//Paging처리 결과 MODEL값 전달
 		req.setAttribute("paging", paging);
 		
 		//조회결과 MODEL값 전달
-		req.setAttribute("ApproveList", ApproveList);
+		req.setAttribute("approveList", approveList);
 		
-		req.getRequestDispatcher("/WEB-INF/document/approve.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/document/approve.jsp").forward(req, resp);
 		
 	}
 }

@@ -12,8 +12,8 @@ public class Report_linkServiceImpl implements Report_linkService {
 
 	@Override
 	public Report_link getDocReport_Link(Document doc) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return report_linkDao.selectDocReport_linkByDocno(doc);
 	}
 
 }

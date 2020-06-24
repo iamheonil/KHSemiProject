@@ -18,7 +18,15 @@ public class DocumentDeleteListController extends HttpServlet {
 	private DocumentService documentService = new DocumentServiceImpl();
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String names = req.getParameter("names");
+		
+		if( !"".equals(names) && names != null) {
+			documentService.deleteDocumentList(names);
+		}
+		
+		resp.sendRedirect("/document/list/temp");
+
 	}
 
 }

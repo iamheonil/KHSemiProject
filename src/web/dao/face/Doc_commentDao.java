@@ -1,5 +1,9 @@
 package web.dao.face;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import web.dto.Doc_comment;
 import web.dto.Document;
 
@@ -19,7 +23,7 @@ public interface Doc_commentDao {
 	 * @param doc - 조회할 문서번호
 	 * @return Doc_comment - 조회된 Doc_comment 정보
 	 */
-	public Doc_comment selectDoc_commentByDocno(Document doc);
+	public ArrayList<Map<String, Object>> selectDoc_commentByDocno(Document doc);
 	
 	
 	/**

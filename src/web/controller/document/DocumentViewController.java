@@ -1,6 +1,9 @@
 package web.controller.document;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import web.dto.Doc_attach;
+import web.dto.Doc_comment;
+import web.dto.Document;
+import web.dto.Report_link;
 import web.service.face.Doc_attachService;
 import web.service.face.Doc_commentService;
 import web.service.face.DocumentService;
@@ -28,7 +35,28 @@ public class DocumentViewController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/WEB-INF/document/docview.jsp").forward(req, resp);
+		
+		//전달파라미터 얻기 - documentno
+		Document documentno = documentService.getDocumentno(req);
+		System.out.println(documentno);
+		
+		//상세보기 결과 조회 - Document
+		Document viewDocument = documentService.getDocument(documentno);
+		//조회결과 MODEL값 전달
+		req.setAttribute("viewDocument", viewDocument);
+
+		//상세보기 결과 조회 - Doc_comment
+		ArrayList<Map<String, Object>> viewComment  = doc_commentService.getDoc_comment(documentno);
+		//조회결과 MODEL값 전달
+		req.setAttribute("viewComment", viewComment);
+		
+		Doc_attach attach = doc_attachService.getDoc_attach(documentno);
+		req.setAttribute("viewAttach", attach);
+		
+		Report_link report = report_linkService.getDocReport_Link(documentno);
+		req.setAttribute("viewReport", report);
+		
+		req.getRequestDispatcher("/WEB-INF/views/document/docview.jsp").forward(req, resp);
 		
 	}
 }

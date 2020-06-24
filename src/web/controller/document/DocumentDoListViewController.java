@@ -20,6 +20,6 @@ public class DocumentDoListViewController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		req.getRequestDispatcher("/WEB-INF/document/dolist.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/document/dolist.jsp").forward(req, resp);
 	}
 }

@@ -19,7 +19,7 @@ public class DocumentApproveController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/WEB-INF/document/docapprove.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/document/docapprove.jsp").forward(req, resp);
 	}
 	
 	@Override

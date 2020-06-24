@@ -44,19 +44,19 @@ $(document).ready(function() {
 			return $(this).val();
 		});
 		var names = map.get().join(",");
-	//		console.log("names : " + names);
+			console.log("names : " + names);
 	
-	//		console.log($checkboxes);
-	//		console.log( "map:" + map );	// 맵
-	//		console.log( "map->array : " + map.get() );	// 맵->배열
-	//		console.log( "array tostring : " + map.get().join(",") ); // toString
+			console.log($checkboxes);
+			console.log( "map:" + map );	// 맵
+			console.log( "map->array : " + map.get() );	// 맵->배열
+			console.log( "array tostring : " + map.get().join(",") ); // toString
 		
 	
 		
 		
 		// 전송 폼
 		var $form = $("<form>")
-			.attr("action", "/board/listDelete")
+			.attr("action", "/document/list/delete")
 			.attr("method", "post")
 			.append(
 				$("<input>")
@@ -68,6 +68,20 @@ $(document).ready(function() {
 		$form.submit();
 	
 	});
+	
+	// 검색어 관련
+	$("#searchBtn").click(function() {
+		location.href="/document/list/temp?search="+$("#keyword").val()
+					+"&startDate="+$("#someDate").val()
+					+"&endDate="+$("#someDateTime").val();
+	})
+	
+	// 검색창에서 enter시 검색버튼 눌려지기
+	$("input[name~='keyword']").keydown(function(e) {
+	if(e.keyCode == 13) {
+		$("#searchBtn").click()
+	}
+})
 });
 
 
@@ -91,6 +105,9 @@ function checkAll() {
 		});
 	}
 }
+
+
+
 </script>
 <style type="text/css">
 h3{
@@ -100,45 +117,100 @@ h3{
 .form-control{
 	height: 40px;
 }
+#dolistAppro{
+	list-style: none;
+	margin: 0;
+	padding-left: 20px;
+	background: #6794D4;
+}
 
+#templist{
+	width: 930px;
+/* 	padding-left: 15px; */
+	padding: 35px;
+}
 h3{
 	margin-top: 10px;
 	padding: 0;
 }
-/* .container{ */
-/* 	width: 900px; */
-/* } */
+#dolistcon{
+	padding: 20px;
+}
+.container{
+	width: 900px;
+}
+
 .form-inline{
 	display: inline-block;
 }
-#contents{
-	text-align: unset;
-}
 </style>
 
+		<div id="s_left">
 
-<c:import url="/WEB-INF/views/layout/aside.jsp"/>
+			<ul>
+				<ul id="personal">
+					<li id="photo" style="border-radius: 100px; padding-top: 5px;"><br>사진</li>
+					<li>소속팀 인사1팀 사원 홍길동</li>
+					<li>사원번호 1571000367</li>
+					<li><button>마이페이지</button> &nbsp;
+						<button>로그아웃</button></li>
+				</ul>
+				<li>첫번째 메뉴
+					<ul>
 
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
 
+					</ul>
+
+				</li>
+				<li>두번째 메뉴
+					<ul>
+
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+
+					</ul>
+				</li>
+				<li>세번째 메뉴
+					<ul>
+
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+
+					</ul>
+				</li>
+				<li>네번째 메뉴
+					<ul>
+
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+
+					</ul>
+				</li>
+				<li>다섯번째 메뉴
+					<ul>
+
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+
+					</ul>
+				</li>
+			</ul>
+		</div>
+		
 <div id="contents">
 <div id="templist">
 
-<h3>결재한 문서</h3><br>
+<h3>임시저장함</h3><br>
 
-<input id="someDate" type="date"> ~
- <input id="someDateTime" type="date">
- 
-&emsp;&emsp;
-<div class="form-inline">
-<!-- 	<select id="searchType" name="searchType"> -->
-<!-- 		<option value="">검색조건</option> -->
-<!-- 		<option value="t">제목</option>  -->
-<!-- 	</select> -->
-	<input class="form-control" type="text" id="keyword" name="keyword" 
-		 placeholder="검색어를 입력하세요"/>
-	<button id="searchBtn" class="btn btn-primary">Search</button>
 
-</div> 
+
 <br><br>
 
 
@@ -147,32 +219,43 @@ h3{
 <tr class="active">
 	<th><input type="checkbox" id="checkAll" onclick="checkAll();"/></th>
 	<th style="width: 10%;">구분</th>
-	<th style="width: 20%;">보고일자</th>
+	<th style="width: 20%;">저장일자</th>
 	<th style="width: 40%;">제목</th>
 	<th style="width: 10%;">부서</th>
 	<th style="width: 10%;">직위</th>
 	<th style="width: 10%;">보고자</th>
 </tr>
-<c:forEach items="${ApproveList }" var="approve">
+<c:forEach items="${TempList }" var="temp">
 <tr>
-<!-- 	<td><input type="checkbox" name="checkRow"/></td> -->
-	<td></td>
-	<td><fmt:formatDate value="${approve.doc_date }" pattern="yyyy-MM-dd"/></td>
-<%-- 	<td><a href="/board/view?boardno=${doc.doc_num }">${doc.doc_title }</a></td> --%>
-	<td>${approve.doc_title }</td>
-	<td>${approve.dept }</td>
-	<td>${approve.userrank }</td>
-	<td>${approve.userid }</td>
-	<td>${approve.doc_state }</td>
-	
+	<td><input type="checkbox" name="checkRow" value="${temp.doc_num }"/></td>
+	<td>기안</td>
+	<td><fmt:formatDate value="${temp.doc_date }" pattern="yyyy-MM-dd"/></td>
+	<td><a href="/document/view?doc_num=${temp.doc_num }">${temp.doc_title }</a></td>
+	<td>${temp.dept }</td>
+	<td>${temp.userrank }</td>
+	<td>${temp.username }</td>
 </tr>
 
 </c:forEach>
 </table>
-<button id="btnDelete" class="btn btn-primary">삭제</button>
 
+<div style="text-align: left;">
+	<button id="btnDelete" class="btn btn-primary">삭제</button>
+</div>
 
-<c:import url="/WEB-INF/views/layout/paging.jsp"/>
+<c:import url="/WEB-INF/views/layout/document_templist_paging.jsp"/>
+<br>
+
+<div class="form-inline">
+	<input id="someDate" name="startDate" type="date"> ~
+	<input id="someDateTime" name="endDate" type="date">
+	&emsp;&emsp;
+	<input class="form-control" type="text" id="keyword" name="keyword" 
+		 placeholder="검색어를 입력하세요"/>
+	<button id="searchBtn" class="btn btn-primary">Search</button>
+
+</div> 
+
 </div> <!-- div.container -->
 
 

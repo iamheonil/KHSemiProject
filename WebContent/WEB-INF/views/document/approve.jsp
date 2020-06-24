@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+<!-- 완료문서 - 결재한 문서 목록 조회	 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -100,97 +100,30 @@ h3{
 .form-control{
 	height: 40px;
 }
-#dolistAppro{
-	list-style: none;
-	margin: 0;
-	padding-left: 20px;
-	background: #6794D4;
-}
 
-#templist{
-	width: 930px;
-/* 	padding-left: 15px; */
-	padding: 35px;
-}
 h3{
 	margin-top: 10px;
 	padding: 0;
 }
-#dolistcon{
-	padding: 20px;
-}
-.container{
-	width: 900px;
-}
-
+/* .container{ */
+/* 	width: 900px; */
+/* } */
 .form-inline{
 	display: inline-block;
 }
+#contents{
+	text-align: unset;
+}
 </style>
 
-		<div id="s_left">
 
-			<ul>
-				<ul id="personal">
-					<li id="photo" style="border-radius: 100px; padding-top: 5px;"><br>사진</li>
-					<li>소속팀 인사1팀 사원 홍길동</li>
-					<li>사원번호 1571000367</li>
-					<li><button>마이페이지</button> &nbsp;
-						<button>로그아웃</button></li>
-				</ul>
-				<li>첫번째 메뉴
-					<ul>
+<c:import url="/WEB-INF/views/layout/aside.jsp"/>
 
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
 
-					</ul>
-
-				</li>
-				<li>두번째 메뉴
-					<ul>
-
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-
-					</ul>
-				</li>
-				<li>세번째 메뉴
-					<ul>
-
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-
-					</ul>
-				</li>
-				<li>네번째 메뉴
-					<ul>
-
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-
-					</ul>
-				</li>
-				<li>다섯번째 메뉴
-					<ul>
-
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-
-					</ul>
-				</li>
-			</ul>
-		</div>
-		
 <div id="contents">
 <div id="templist">
 
-<h3>임시저장함</h3><br>
+<h3>결재한 문서</h3><br>
 
 <input id="someDate" type="date"> ~
  <input id="someDateTime" type="date">
@@ -215,40 +148,31 @@ h3{
 	<th><input type="checkbox" id="checkAll" onclick="checkAll();"/></th>
 	<th style="width: 10%;">구분</th>
 	<th style="width: 20%;">보고일자</th>
-	<th style="width: 40%;">제목</th>
+	<th style="width: 30%;">제목</th>
 	<th style="width: 10%;">부서</th>
 	<th style="width: 10%;">직위</th>
 	<th style="width: 10%;">보고자</th>
+	<th style="width: 10%;">상태</th>
 </tr>
-<%-- <c:forEach items="${boardList }" var="board"> --%>
+<c:forEach items="${approveList }" var="approve">
 <tr>
 	<td><input type="checkbox" name="checkRow"/></td>
-	<td>기안</td>
-<%-- 	<td><fmt:formatDate value="${board.writtendate }" pattern="yyyy-MM-dd"/></td> --%>
-	<td>2020-05-23</td>
-<%-- 	<td><a href="/board/view?boardno=${doc.doc_num }">${doc.doc_title }</a></td> --%>
-	<td>제목1</td>
-	<td>부서1</td>
-	<td>사원</td>
-	<td>이름1</td>
+	<td>${approve.report_type }</td>
+	<td><fmt:formatDate value="${approve.doc_date }" pattern="yyyy-MM-dd"/></td>
+	<td><a href="/ActiveWare/document/view?doc_num=${approve.doc_num }">${approve.doc_title }</a></td>
+	<td>${approve.dept }</td>
+	<td>${approve.userrank }</td>
+	<td>${approve.username }</td>
+	<td>${approve.doc_state }</td>
+	
 </tr>
-<tr>
-	<td><input type="checkbox" name="checkRow"/></td>
-	<td>기안</td>
-<%-- 	<td><fmt:formatDate value="${board.writtendate }" pattern="yyyy-MM-dd"/></td> --%>
-	<td>2020-05-23</td>
-<%-- 	<td><a href="/board/view?boardno=${doc.doc_num }">${doc.doc_title }</a></td> --%>
-	<td>제목2</td>
-	<td>부서2</td>
-	<td>팀장</td>
-	<td>이름2</td>
-</tr>
-<%-- </c:forEach> --%>
+
+</c:forEach>
 </table>
 <button id="btnDelete" class="btn btn-primary">삭제</button>
 
 
-<c:import url="/WEB-INF/views/layout/paging.jsp"/>
+<c:import url="/WEB-INF/views/layout/paging_approvelist.jsp"/>
 </div> <!-- div.container -->
 
 

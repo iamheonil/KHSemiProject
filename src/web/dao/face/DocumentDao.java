@@ -6,6 +6,7 @@ import java.util.Map;
 
 import web.dto.Document;
 import web.util.Paging;
+import web.util.SearchPaging;
 
 public interface DocumentDao {
 	
@@ -23,41 +24,34 @@ public interface DocumentDao {
 	public int selectnextDocno();
 	
 	/**
-	 * 임시저장 페이징에 필요한 개수 조회
-	 * 
-	 * @return int - 조회된 임시저장함의 문서 개수
-	 */
-	public int selectTempCntAll();
-	
-	
-	/**
 	 * 임시저장(검색) 페이징에 필요한 개수 조회
 	 * 
 	 * @return int - 조회된 임시저장함의 문서 개수
 	 */
-	public int selectTempSearchCntAll();
-	
 	
 	/**
-	 * 검색값 있는 임시저장함 페이징 조회
+	 * 임시저장함 페이징에 필요한 개수 조회  !!! 수정사항
 	 * 
 	 * @param search - 검색 값
-	 * @param paging - Paging 객체정보
-	 * 
-	 * @return List<Document> - 조회된 List<Document> 
+	 * @param userid - 로그인 한 userid 정보
+	 * @param startDate - 검색날짜 시작 값
+	 * @param endDate - 검색날짜 종료 값
+	 * @return int - 조회된 개수
 	 */
-	public List<Document> selectTempSearch(String search, Paging paging);
+	public int selectTempSearchCntAll(String search, int userid, String startDate, String endDate);
+
 	
 	
 	/**
-	 * 검색값 없는 임시저장함 페이징 조회
+	 * 임시저장함 목록 조회 !!! 수정사항
 	 * 
-	 * @param paging - Paging 객체정보
-	 * 
-	 * @return List<Document> - 조회된 List<Document> 
+	 * @param paging - paging 객체
+	 * @param userid - 로그인 한 userid 정보
+	 * @param startDate - 검색날짜 시작 값 
+	 * @param endDate - 검색날짜 종료 값
+	 * @return ArrayList<Map<String, Object>> - 조회결과
 	 */
-	public List<Document> selectTempAll(Paging paging);
-	
+	public ArrayList<Map<String, Object>> selectTempSearch(SearchPaging paging, int userid, String startDate, String endDate);
 	
 	/**
 	 * doc 문서번호로 문서삭제
@@ -226,41 +220,27 @@ public interface DocumentDao {
 	
 	
 	/**
-	 * 문서등록대장 페이징에 필요한 개수 조회
-	 * 
-	 * @return int - 조회된 문서등록대장 문서 개수
-	 */
-	public int selectDocumentCntAll();
-	
-	
-	/**
-	 * 문서등록대장(검색) 페이징에 필요한 개수 조회
-	 * 
-	 * @return int - 조회된 문서등록대장 문서 개수
-	 */
-	public int selectDocumentSearchCntAll();
-	
-	
-	
-	/**
-	 * 검색값이 있는 문서등록대장 페이징 조회
+	 * 문서등록대장 페이징 조회 !!! 수정사항 !!!
 	 * 
 	 * @param search - 검색 값
-	 * @param paging - Paging 객체정보
-	 * @return List<Document> - 조회된 List<Document>
+	 * @param startDate - 검색날짜 시작 값
+	 * @param endDate - 검색날짜 종료 값
+	 * @return int - 조회된 개수
 	 */
-	public List<Document> selectDocumentAllSearch(String search, Paging paging);
+	public int selectDocumentSearchCntAll(String search, String startDate, String endDate);
 	
 	
 	/**
-	 * 검색값이 없는 문서등록대장 페이징 조회
+	 * 문서등록대장 조회  !!! 수정사항 !!!
 	 * 
 	 * @param paging - Paging 객체정보
-	 * @return List<Document> - 조회된 List<Document>
+	 * @param startDate - 검색날짜 시작 값
+	 * @param endDate - 검색날짜 종료 값
+	 * @return ArrayList<Map<String, Object>> - 조회된 문서등록대장 값
 	 */
-	public List<Document> selectDocumentAll(Paging paging);
+	public ArrayList<Map<String, Object>> selectDocumentAll(SearchPaging paging, String startDate, String endDate);
 	
-	
+
 	/**
 	 * 처리할일에서 결재대기함 문서 조회(페이징x)
 	 * 
@@ -277,24 +257,25 @@ public interface DocumentDao {
 	public List<Document> selectDoListProgress();
 	
 	
+	// !!! 수정사항 !!!
 	/**
 	 * 체크박스로 삭제하기
 	 * @param names
 	 */
 	public void deleteDocReport_linkList(String names);
-	
+	// !!! 수정사항 !!!
 	/**
 	 * 체크박스로 삭제하기
 	 * @param names
 	 */
 	public void deleteDoc_attachList(String names);
-	
+	// !!! 수정사항 !!!
 	/**
 	 * 체크박스로 삭제하기
 	 * @param names
 	 */
 	public void deleteDocList(String names);
-	
+	// !!! 수정사항 !!!
 	/**
 	 * 체크박스로 삭제하기
 	 * @param names

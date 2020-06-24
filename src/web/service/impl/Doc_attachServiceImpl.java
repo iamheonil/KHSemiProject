@@ -13,7 +13,7 @@ public class Doc_attachServiceImpl implements Doc_attachService {
 	@Override
 	public Doc_attach getDoc_attach(Document doc) {
 		
-		return null;
+		return doc_attachDao.selectDoc_attachByDoc(doc);
 	}
 
 }

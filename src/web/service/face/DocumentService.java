@@ -1,11 +1,14 @@
 package web.service.face;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import web.dto.Document;
 import web.util.Paging;
+import web.util.SearchPaging;
 
 public interface DocumentService {
 	
@@ -27,22 +30,24 @@ public interface DocumentService {
 	 * @param req - 요청 정보 객체
 	 */
 	public void writeDoc(HttpServletRequest req);
-	
+
+	// !!! 수정사항 !!!
 	/**
 	 * @param req - 요청 정보 객체
-	 * @return Paging - 페이징 계산이 완료된 객체
+	 * @return SearchPaging - 페이징 계산이 완료된 객체
 	 */
-	public Paging getTempPaging(HttpServletRequest req);
+	public SearchPaging getTempSearchPaging(HttpServletRequest req);
 	
-	
+
+	// !!!수정사항 !!!
 	/**
-	 * 임시저장함 문서 조회
+	 * 임시저장함 문서 검색 조회
 	 * @param req - 요청 정보 객체
 	 * @param paging - 페이징 객체
 	 * @return List<Document> - 임시저장함 문서 전체 조회 결과 리스트
 	 */
-	public List<Document> getListTemp(HttpServletRequest req, Paging paging);
-	
+	public ArrayList<Map<String, Object>> getListSearchTemp(SearchPaging paging, int userid, String startDate, String endDate);
+
 	/**
 	 * 요청파라미터 얻기
 	 * @param req - 요청 정보 객체
@@ -139,23 +144,28 @@ public interface DocumentService {
 	 * @param paging - 페이징 객체
 	 * @return List<Document> - 결재한 문서 전체 조회 결과 리스트
 	 */
-	public List<Document> getListApprove(Paging paging);
-	
+	public ArrayList<Map<String, Object>> getListApprove(Paging paging);
+
+	// !!! 수정사항 !!!
 	/**
 	 * 문서등록대장 페이징 처리
 	 * @param req - 요청 정보 객체
 	 * @return Paging - 페이징 객체
 	 */
-	public Paging getDocumentPaging(HttpServletRequest req);
+	public SearchPaging getDocumentPaging(HttpServletRequest req);
 	
+	
+	// !!! 수정사항 !!!
 	/**
 	 * 문서등록대장 전체 조회
-	 * @param req - 요청 정보 객체
+	 * 
 	 * @param paging - 페이징 객체
-	 * @return List<Document> - 문서등록대장 전체 조회 결과 리스트
+	 * @param startDate - 시작 값
+	 * @param endDate - 종료 값
+	 * @return ArrayList<Map<String, Object>> - 조회된 문서등록대장 목록 값
 	 */
-	public List<Document> getListDocumentAll(HttpServletRequest req, Paging paging);
-	
+	public ArrayList<Map<String, Object>> getListDocumentAll(SearchPaging paging, String startDate, String endDate);
+
 	
 	/**
 	 * 처리할일에서 결재대기함 문서 조회(페이징x)
@@ -171,11 +181,13 @@ public interface DocumentService {
 	 * @return List<Document> - 조회된 List<Document> 정보
 	 */
 	public List<Document> getDoListProgress();
-	
+
+	// !!! 수정사항 !!!
 	/**
 	 * 임시저장함에서 체크박스로 선택한 문서 삭제
 	 * 
 	 * @param names - 삭제한 게시글 번호 목록들 문자열
 	 */
 	public void deleteDocumentList(String names);
+
 }
