@@ -93,48 +93,52 @@ function deleteComment( c_num ) {
 
 </script>
 <div id="contents" class="container">
-<table>
-<tr>
-	<th> 글 번호 </th>
-	<td> ${viewBoard.b_num }</td>
-	<th> 카테고리 </th>
-	<td> &nbsp;${viewBoard.category }</td>
-</tr>
-<tr>
-	<th> 부서</th>
-	<td>${viewBoard.dept }</td>
-	<th> 직급 </th>
-	<td>${viewBoard.userrank }</td>
-	<th> 작성자 </th>
-	<td> &nbsp; ${name }</td>
-</tr>
-<tr>	
-	<th> 제목 </th>
-	<td> ${viewBoard.b_title }</td>
-</tr>
-<tr>
-	<th> 조회수 </th>
-	<td> ${viewBoard.hits }</td>
-	<th> 작성일 </th>
-	<td> ${viewBoard.b_date }</td>
-</tr>
+<div style="border: 1px solid black;">
 
-</table>
-<hr>
-<table>	
-<tr>
-	<th>본문</th>
-	<td><br>${viewBoard.b_content }</td>
-</tr>	
-</table>
-<div>	
+<div class="padding_view" style="padding: 20px;">
+
+<!-- 카테고리 -->
+<div class="category" style="text-align: left; font-size: 13px; color:rgb(38, 114, 165);">
+	카테고리 &nbsp;[${viewBoard.category }]
+</div>
+
+<!-- 제목 -->
+<div class="title-area" style="text-align: left; ">
+<h3> ${viewBoard.b_title } </h3>
+</div>
+
+<!-- 글쓴이 정보 -->
+<div class="writer-info" style="text-align: left; font-size: 13px;">
+<ul>
+<li style="font-weight: bold;">
+ ${viewBoard.dept } ${viewBoard.userrank }
+ ${name }
+</li>
+
+<li>
+${viewBoard.b_date } 조회수 &nbsp; ${viewBoard.hits }
 	<c:if test="${userid eq viewBoard.userid }">
 		<button id="btnDelete" class="btn btn-danger pull-right">삭제</button>
 		<button id="btnUpdate" class="btn btn-info pull-right">수정</button>
 	</c:if>
 	<button id="btnList" class="btn btn-primary pull-right">목록</button>
-<hr>
+</li>
+</ul>
 </div>
+
+<div id="content" style="text-align: left;">
+
+<ul>
+<li>
+<hr>
+${viewBoard.b_content }
+</li>
+</ul>
+
+</div>
+
+
+<hr>
 <!-- 댓글 처리 -->
 <!-- <div> -->
 <!-- <hr> -->
@@ -148,6 +152,7 @@ function deleteComment( c_num ) {
 <!--  댓글 입력 -->
 <!-- <div class="form-inline"> -->
 <%-- 	<input type="text" size="10" class="form-control" id="commentWriter" value="${name }" readonly="readonly"/> --%>
+
 <!-- 	<textarea rows="2" style="resize: none;" cols="60" class="form-control" id="commentContent"></textarea> -->
 <!-- 	<button id="btnCommInsert" class="btn">입력</button> -->
 
@@ -159,13 +164,13 @@ function deleteComment( c_num ) {
 <tbody id="commentBody">
 <c:forEach items="${commentList }" var="comment">
 <tr data-c_num="${comment.c_num }">
-	<th >[${comment.dept }&nbsp;${comment.userrank }]&nbsp;${name }
+	<th>[${comment.dept }&nbsp;${comment.userrank }]&nbsp;${name }
 	(<fmt:formatDate value="${comment.c_date }" pattern="yy-MM-dd hh:mm" />)
-<%-- 		<c:if test="${sessionScope.userid eq comment.userid }"> --%>
+		<c:if test="${sessionScope.userid eq comment.userid }">
 		<button class="btn btn-defalut btn-xs"
 			onclick="deleteComment(${comment.c_num});">삭제	
 		</button>
-<%-- 		</c:if> --%>
+		</c:if>
 	</th>
 	
 </tr>
@@ -175,10 +180,13 @@ function deleteComment( c_num ) {
 </table>
 <!--  댓글 입력 -->
 <table>
+
 <div class="form-inline">
+
 	<input type="text" size="10" class="form-control" id="commentWriter" value="${name }" readonly="readonly"/>
 	<textarea rows="3" style="resize: none;" cols="100" class="form-control" id="commentContent"></textarea>
 	<button id="btnCommInsert" class="btn">입력</button>
+
 </div>
 </table>
 
@@ -192,5 +200,8 @@ function deleteComment( c_num ) {
 <!-- </tr> -->
 <%-- </c:forEach> --%>
 <!-- </tbody> -->
+</div>
+
+</div>
 </div>
 <c:import url="/WEB-INF/views/layout/footer.jsp"/>
