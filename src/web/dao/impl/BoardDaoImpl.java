@@ -215,6 +215,108 @@ public class BoardDaoImpl implements BoardDao{
 		return totalCount;
 		
 	}
+	@Override
+	public int selectNoticeCntAll() {
+		
+		conn = JDBCTemplate.getConnection(); //DB연결
+		
+		//SQL
+		String sql = "";
+		sql += "SELECT COUNT(*) from board";
+		sql += " WHERE category='공지사항'";
+		
+		//결과 저장 int 생성
+		int totalCount = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql); //sql 수행객체
+			rs=ps.executeQuery(); 
+			
+			while(rs.next()) {
+				totalCount = rs.getInt(1);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+			
+		}
+		
+		return totalCount;
+	}
+	
+	@Override
+	public int selectStudyCntAll() {
+		
+		
+		conn = JDBCTemplate.getConnection(); //DB연결
+		
+		//SQL
+		String sql = "";
+		sql += "SELECT COUNT(*) from board";
+		sql += " WHERE category='스터디모집'";
+		
+		//결과 저장 int 생성
+		int totalCount = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql); //sql 수행객체
+			rs=ps.executeQuery(); 
+			
+			while(rs.next()) {
+				totalCount = rs.getInt(1);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+			
+		}
+		
+		return totalCount;
+	}
+
+	@Override
+	public int selectFreeCntAll() {
+	
+		
+		conn = JDBCTemplate.getConnection(); //DB연결
+		
+		//SQL
+		String sql = "";
+		sql += "SELECT COUNT(*) from board";
+		sql += " WHERE category='사내게시판'";
+		
+		//결과 저장 int 생성
+		int totalCount = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql); //sql 수행객체
+			rs=ps.executeQuery(); 
+			
+			while(rs.next()) {
+				totalCount = rs.getInt(1);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+			
+		}
+		
+		return totalCount;
+	}
+
+
 
 
 	@Override
@@ -230,8 +332,10 @@ public class BoardDaoImpl implements BoardDao{
 		sql += "   		category, b_num, b_title";
 		sql += "  	, b_content, b_date, hits, userid, username, userrank, dept";
 		sql += "    FROM board";
+		sql += "       WHERE b_title LIKE '%'||?||'%'";
 		sql += "	ORDER BY b_num DESC";
 		sql += "    ) B";
+		sql += "     ORDER BY rnum";
 		sql += "  ) BOARD";
 		sql += " WHERE rnum BETWEEN ? AND ?";
 		//쿼리 결과 저장 list 생성
@@ -240,8 +344,188 @@ public class BoardDaoImpl implements BoardDao{
 			try {
 				ps=conn.prepareStatement(sql);
 				
-				ps.setInt(1, paging.getStartNo());
-				ps.setInt(2, paging.getEndNo());
+				ps.setString(1, paging.getSearch());
+				ps.setInt(2, paging.getStartNo());
+				ps.setInt(3, paging.getEndNo());
+				
+				rs= ps.executeQuery();
+				while(rs.next()) {
+					Board board = new Board();
+					
+					//조회 결과담기
+					board.setCategory(rs.getNString("category"));
+					board.setB_num(rs.getInt("b_num"));
+					board.setB_title(rs.getString("b_title"));
+					board.setB_content(rs.getNString("b_content"));
+					board.setB_date(rs.getDate("b_date"));
+					board.setHits(rs.getInt("hits"));
+					board.setUserid(rs.getInt("userid"));
+					board.setUsername(rs.getNString("username"));
+					board.setUserrank(rs.getString("userrank"));
+					board.setDept(rs.getString("dept"));
+					
+					list.add(board);
+					
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				
+				JDBCTemplate.close(rs);
+				JDBCTemplate.close(ps);
+			}
+		
+		return list;
+	}
+
+	@Override
+	public List<Board> selectNotice(B_Paging paging) {
+			conn = JDBCTemplate.getConnection(); //DB연결
+			
+			//SQL 작성
+			String sql = "";
+			sql += "SELECT * FROM(";
+			sql += " SELECT rownum rnum, B.* FROM (";
+			sql += "  SELECT";
+			sql += "   		category, b_num, b_title";
+			sql += "  	, b_content, b_date, hits, userid, username, userrank, dept";
+			sql += "    FROM board";
+			sql += "       WHERE category='공지사항' AND b_title LIKE '%'||?||'%'";
+			sql += "	ORDER BY b_num DESC";
+			sql += "    ) B";
+			sql += "     ORDER BY rnum";
+			sql += "  ) BOARD";
+			sql += " WHERE rnum BETWEEN ? AND ?";
+			//쿼리 결과 저장 list 생성
+			List<Board> list = new ArrayList<>();
+			
+				try {
+					ps=conn.prepareStatement(sql);
+					
+					ps.setString(1, paging.getSearch());
+					ps.setInt(2, paging.getStartNo());
+					ps.setInt(3, paging.getEndNo());
+					
+					rs= ps.executeQuery();
+					while(rs.next()) {
+						Board board = new Board();
+						
+						//조회 결과담기
+						board.setCategory(rs.getNString("category"));
+						board.setB_num(rs.getInt("b_num"));
+						board.setB_title(rs.getString("b_title"));
+						board.setB_content(rs.getNString("b_content"));
+						board.setB_date(rs.getDate("b_date"));
+						board.setHits(rs.getInt("hits"));
+						board.setUserid(rs.getInt("userid"));
+						board.setUsername(rs.getNString("username"));
+						board.setUserrank(rs.getString("userrank"));
+						board.setDept(rs.getString("dept"));
+						
+						list.add(board);
+						
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					
+					JDBCTemplate.close(rs);
+					JDBCTemplate.close(ps);
+				}
+			
+			return list;
+	}
+
+
+	@Override
+	public List<Board> selectFree(B_Paging paging) {
+			conn = JDBCTemplate.getConnection(); //DB연결
+			
+			//SQL 작성
+			String sql = "";
+			sql += "SELECT * FROM(";
+			sql += " SELECT rownum rnum, B.* FROM (";
+			sql += "  SELECT";
+			sql += "   		category, b_num, b_title";
+			sql += "  	, b_content, b_date, hits, userid, username, userrank, dept";
+			sql += "    FROM board";
+			sql += "       WHERE category='사내게시판' AND b_title LIKE '%'||?||'%'";
+			sql += "	ORDER BY b_num DESC";
+			sql += "    ) B";
+			sql += "     ORDER BY rnum";
+			sql += "  ) BOARD";
+			sql += " WHERE rnum BETWEEN ? AND ?";
+			//쿼리 결과 저장 list 생성
+			List<Board> list = new ArrayList<>();
+			
+				try {
+					ps=conn.prepareStatement(sql);
+					
+					ps.setString(1, paging.getSearch());
+					ps.setInt(2, paging.getStartNo());
+					ps.setInt(3, paging.getEndNo());
+					
+					rs= ps.executeQuery();
+					while(rs.next()) {
+						Board board = new Board();
+						
+						//조회 결과담기
+						board.setCategory(rs.getNString("category"));
+						board.setB_num(rs.getInt("b_num"));
+						board.setB_title(rs.getString("b_title"));
+						board.setB_content(rs.getNString("b_content"));
+						board.setB_date(rs.getDate("b_date"));
+						board.setHits(rs.getInt("hits"));
+						board.setUserid(rs.getInt("userid"));
+						board.setUsername(rs.getNString("username"));
+						board.setUserrank(rs.getString("userrank"));
+						board.setDept(rs.getString("dept"));
+						
+						list.add(board);
+						
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					
+					JDBCTemplate.close(rs);
+					JDBCTemplate.close(ps);
+				}
+			
+			return list;
+		}
+
+
+	@Override
+	public List<Board> selectStudy(B_Paging paging) {
+		conn = JDBCTemplate.getConnection(); //DB연결
+		
+		//SQL 작성
+		String sql = "";
+		sql += "SELECT * FROM(";
+		sql += " SELECT rownum rnum, B.* FROM (";
+		sql += "  SELECT";
+		sql += "   		category, b_num, b_title";
+		sql += "  	, b_content, b_date, hits, userid, username, userrank, dept";
+		sql += "    FROM board";
+		sql += "       WHERE category='스터디모집' AND b_title LIKE '%'||?||'%'";
+		sql += "	ORDER BY b_num DESC";
+		sql += "    ) B";
+		sql += "     ORDER BY rnum";
+		sql += "  ) BOARD";
+		sql += " WHERE rnum BETWEEN ? AND ?";
+		//쿼리 결과 저장 list 생성
+		List<Board> list = new ArrayList<>();
+		
+			try {
+				ps=conn.prepareStatement(sql);
+				
+				ps.setString(1, paging.getSearch());
+				ps.setInt(2, paging.getStartNo());
+				ps.setInt(3, paging.getEndNo());
 				
 				rs= ps.executeQuery();
 				while(rs.next()) {
@@ -275,6 +559,9 @@ public class BoardDaoImpl implements BoardDao{
 	}
 
 
+
+	
+	
 	@Override
 	public Board selectBoardByBoardno(Board boardnum) {
 		
@@ -519,6 +806,10 @@ public class BoardDaoImpl implements BoardDao{
 			JDBCTemplate.close(ps);
 		}
 	}
+
+
+
+	
 
 
 }

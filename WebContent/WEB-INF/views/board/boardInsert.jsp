@@ -4,8 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 <c:import url="/WEB-INF/views/layout/aside.jsp" />
-<script type="text/javascript" src="/resources/se2/js/service/HuskyEZCreator.js" charset="utf-8">
-</script>
+
+<script type="text/javascript" src="/resources/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 
 
 <script type="text/javascript">
@@ -69,7 +69,7 @@ $(document).ready(function() {
 <td>
 <select>
  <option value="공지사항">공지사항</option>
- <option value="스터디">스터디</option>
+ <option value="스터디모집">스터디모집</option>
  <option value="사내게시판">사내게시판</option>
  </select>
 </td>

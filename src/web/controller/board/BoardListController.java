@@ -35,7 +35,7 @@ public class BoardListController extends HttpServlet {
 		
 		// 게시글을 조회
 		List<Board> list = boardService.list(paging);
-		
+	
 		// 공지사항 게시글 조회
 		List<Board> N_list = boardService.nList();
 		
