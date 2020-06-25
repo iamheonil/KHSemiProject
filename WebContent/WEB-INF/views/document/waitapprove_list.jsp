@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!-- 완료문서 - 결재한 문서 목록 조회	 -->
+	
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -18,7 +18,7 @@ $(document).ready(function() {
 	
 	// 검색어 관련
 	$("#searchBtn").click(function() {
-		location.href="/document/list/approve?search="+$("#keyword").val()
+		location.href="/document/list/waitapprove?search="+$("#keyword").val()
 					+"&startDate="+$("#someDate").val()
 					+"&endDate="+$("#someDateTime").val();
 	})
@@ -43,22 +43,27 @@ h3{
 .form-control{
 	height: 40px;
 }
-
-h3{
-	margin-top: 10px;
-	padding: 0;
+#dolistAppro{
+	list-style: none;
+	margin: 0;
+	padding-left: 20px;
+	background: #6794D4;
 }
 
 #templist{
 	width: 1000px;
 	padding: 35px;
 }
+h3{
+	margin-top: 10px;
+	padding: 0;
+}
+#dolistcon{
+	padding: 20px;
+}
 
 .form-inline{
 	display: inline-block;
-}
-#contents{
-	text-align: unset;
 }
 
 .active > th {
@@ -70,12 +75,12 @@ h3{
 <c:import url="/WEB-INF/views/layout/header_doc.jsp" />
 
 <c:import url="/WEB-INF/views/layout/aside_doc.jsp"/>
-
-
+		
 <div id="contents">
 <div id="templist">
 
-<h3>결재한 문서</h3><br>
+<h3>결재대기함</h3><br>
+
 
 
 <br><br>
@@ -83,32 +88,31 @@ h3{
 
 <div class="container" style="width:930px;">
 <table class="table table-striped table-hover" style="width: 900px;"> <!-- 부트스트랩, table -->
-<tr class="active">
-	<th style="width: 9%;">구분</th>
-	<th style="width: 14%;">보고일자</th>
-	<th style="width: 44%;">제목</th>
-	<th style="width: 8%;">부서</th>
-	<th style="width: 8%;">직위</th>
-	<th style="width: 8%;">보고자</th>
-	<th style="width: 8%;">상태</th>
+<tr class="active" style="text-align: center;">
+	<th style="width: 10%;">구분</th>
+	<th style="width: 15%;">보고일자</th>
+	<th style="width: 45%;">제목</th>
+	<th style="width: 10%;">부서</th>
+	<th style="width: 10%;">직위</th>
+	<th style="width: 10%;">보고자</th>
 </tr>
-<c:forEach items="${approveList }" var="approve">
+<c:forEach items="${waitApproveList }" var="waitApprove">
 <tr>
-	<td>${approve.report_type }</td>
-	<td><fmt:formatDate value="${approve.doc_date }" pattern="yyyy-MM-dd"/></td>
-	<td><a href="/document/view?doc_num=${approve.doc_num }">${approve.doc_title }</a></td>
-	<td>${approve.dept }</td>
-	<td>${approve.userrank }</td>
-	<td>${approve.username }</td>
-	<td>${approve.doc_state }</td>
-	
+	<td>${waitApprove.report_type }</td>
+	<td><fmt:formatDate value="${waitApprove.doc_date }" pattern="yyyy-MM-dd"/></td>
+	<td><a href="/document/view?doc_num=${waitApprove.doc_num }">${waitApprove.doc_title }</a></td>
+	<td>${waitApprove.dept }</td>
+	<td>${waitApprove.userrank }</td>
+	<td>${waitApprove.username }</td>
 </tr>
 
 </c:forEach>
 </table>
 
-<c:import url="/WEB-INF/views/layout/paging_approvelist.jsp"/>
+
+<c:import url="/WEB-INF/views/layout/document_waitApprove_paging.jsp"/>
 <br>
+
 <div class="form-inline">
 	<input id="someDate" name="startDate" type="date"> ~
 	<input id="someDateTime" name="endDate" type="date">
@@ -123,7 +127,7 @@ h3{
 
 
 </div> <!-- templist -->
-</div> <!-- contents 닫는태그 -->
+</div>  <!-- contents 닫는태그 -->
 	
 	
 <%-- import footer --%>

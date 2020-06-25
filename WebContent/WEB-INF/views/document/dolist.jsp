@@ -69,8 +69,8 @@ h4 {
 		<div id="dolist">
 			<h4>처리할 일</h4>
 			<ul id="dolistAppro">
-				<li>결재대기함 : 1건</li>
-				<li>진행문서함 : 1건</li>
+				<li><a href="/document/list/waitapprove">결재대기함 : ${waitApproveCnt }건</a></li>
+				<li><a href="/document/list/progress">진행문서함 : 1건</a></li>
 			</ul>
 		</div>
 		<br>

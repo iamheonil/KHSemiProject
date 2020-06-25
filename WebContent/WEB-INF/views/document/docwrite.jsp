@@ -12,8 +12,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<%-- import header.jsp --%>
-<c:import url="/WEB-INF/views/layout/header.jsp" />
+
 <script type="text/javascript">
 
 $(document).on("click",".guideBox > button", function(){
@@ -142,7 +141,7 @@ window.onload = function(){
 <style type="text/css">
 
 #docdetail{
-	width: 904px;
+	width: 1000px;
 /* 	padding-left: 15px; */
 	padding: 20px;
 }
@@ -157,14 +156,12 @@ td:first-child{
 	font-weight: bold;
 	width: 200px;
 }
-.container{
-	width: 900px;
-}
+
 input[type=checkbox] {
 	transform : scale(1.5);
 }
 textarea{
-	width: 620px;
+	width: 680px;
 	height: 200px;
 }
 #path td{
@@ -176,9 +173,8 @@ textarea{
 	vertical-align: middle;
 }
 #selectpath{
-	margin: 10px;
+	margin: 10px 0px;
 	float: right;
-	margin-right: 20px;
 }
 #attach button{
 	float: right;
@@ -187,90 +183,34 @@ textarea{
 
 </style>
 
+<%-- import header.jsp --%>
+<c:import url="/WEB-INF/views/layout/header_doc.jsp" />
 
-		<div id="s_left">
-
-			<ul>
-				<ul id="personal">
-					<li id="photo" style="border-radius: 100px; padding-top: 5px;"><br>사진</li>
-					<li>소속팀 인사1팀 사원 홍길동</li>
-					<li>사원번호 1571000367</li>
-					<li><button>마이페이지</button> &nbsp;
-						<button>로그아웃</button></li>
-				</ul>
-				<li>첫번째 메뉴
-					<ul>
-
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-
-					</ul>
-
-				</li>
-				<li>두번째 메뉴
-					<ul>
-
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-
-					</ul>
-				</li>
-				<li>세번째 메뉴
-					<ul>
-
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-
-					</ul>
-				</li>
-				<li>네번째 메뉴
-					<ul>
-
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-
-					</ul>
-				</li>
-				<li>다섯번째 메뉴
-					<ul>
-
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-
-					</ul>
-				</li>
-			</ul>
-		</div>
-
+<c:import url="/WEB-INF/views/layout/aside_doc.jsp" />
 		
 <div id="contents">
 <div id="docdetail">
 
+
+<div class="container" style="width: 930px">
 <div id="docbutton" align="right">
 <button class="btn btn-primary" id="myBtn">문서처리</button>
 <button class="btn btn-primary" onclick="location.href='/document/list/temp'">임시저장</button>
 <button class="btn btn-primary">닫기</button>
 </div>
-
-<div class="container">
 <h3>문서정보</h3>
 
 <form action="#" method="post">
-<table class="table table-bordered" style="width: 850px;">
+<table class="table table-bordered" style="width: 900px;">
 <tr>
 	<td class="active">제목＊</td>
-	<td><input type="text" id="doc_title" name="doc_title" style="width: 560px;"/>
+	<td><input type="text" id="doc_title" name="doc_title" style="width: 620px;"/>
 		 &nbsp;<input type="checkbox"/> 긴급</td>
 </tr>
 
 <tr>
 	<td class="active">문서요지</td>
-	<td><input type="text" id="doc_title" name="doc_title" style="width: 620px;"/></td>
+	<td><input type="text" id="doc_title" name="doc_title" style="width: 680px;"/></td>
 </tr>
 
 <tr>
@@ -332,7 +272,7 @@ textarea{
 
 </div>
 
-<table id="path" class="table table-bordered " style="width: 850px;"> <!-- 부트스트랩, table -->
+<table id="path" class="table table-bordered " style="width: 900px;"> <!-- 부트스트랩, table -->
 <tr class="active">
 	<th style="width: 10%;">구분</th>
 	<th style="width: 15%;">직위/성명</th>

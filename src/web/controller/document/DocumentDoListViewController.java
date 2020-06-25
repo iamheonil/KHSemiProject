@@ -19,7 +19,9 @@ public class DocumentDoListViewController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int waitApproveCnt = documentService.getDoListWaitApproveCnt(req);
 		
+		req.setAttribute("waitApproveCnt", waitApproveCnt);
 		req.getRequestDispatcher("/WEB-INF/views/document/dolist.jsp").forward(req, resp);
 	}
 }

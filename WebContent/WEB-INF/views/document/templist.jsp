@@ -122,6 +122,10 @@ h3{
 .form-inline{
 	display: inline-block;
 }
+
+.active > th {
+	text-align: center;
+}
 </style>
 
 <%-- import header.jsp --%>

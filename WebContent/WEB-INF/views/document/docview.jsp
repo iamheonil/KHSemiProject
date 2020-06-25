@@ -13,8 +13,39 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 
-<%-- import header.jsp --%>
-<c:import url="/WEB-INF/views/layout/header.jsp" />
+
+<script type="text/javascript">
+
+// 팝업창 띄우기
+window.onload = function(){
+	var modal = document.getElementById('myModal');
+	
+	// Get the button that opens the modal
+	var btn = document.getElementById("myBtn");
+	
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];                                          
+	
+	// When the user clicks on the button, open the modal 
+	btn.onclick = function() {
+	    modal.style.display = "block";
+	}
+	
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	    modal.style.display = "none";
+	}
+	
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	    if (event.target == modal) {
+	        modal.style.display = "none";
+	    }
+	}
+	
+}
+
+</script>
 
 <style type="text/css">
 
@@ -64,14 +95,19 @@ textarea{
 
 </style>
 
-<c:import url="/WEB-INF/views/layout/aside.jsp" />
+<%-- import header.jsp --%>
+<c:import url="/WEB-INF/views/layout/header_doc.jsp" />
+
+<c:import url="/WEB-INF/views/layout/aside_doc.jsp" />
 		
 <div id="contents">
 
 <div id="docdetail">
 
+<!-- 결재대기함에 조회되는 문서일때 문서처리 버튼있음 -->
+
 <div id="docbutton" align="right">
-<button class="btn btn-primary">닫기</button>
+<button class="btn btn-primary" onclick="history.back(-1)">닫기</button>
 </div>
 
 <div class="container">
@@ -102,7 +138,7 @@ textarea{
 
 <br>
 
-</div>
+
 <h3>보고경로</h3>
 <table id="path" class="table table-bordered " style="width: 850px;"> <!-- 부트스트랩, table -->
 <tr class="active">
@@ -116,22 +152,24 @@ textarea{
 <c:forEach items="${viewComment }" var="comment">
 <tr>
 	<td>${comment.report_type }</td>
-	<td>${comment.username }</td><!-- userrank, 보고종류 -->
+	<td>${comment.userrank }<br>
+	${comment.username }</td><!-- userrank, 보고종류 -->
 	<td>${comment.comm_content }</td>
 	<td>${comment.username }</td>
-	<td><fmt:formatDate value="${comment.comm_date }" pattern="yyyy-MM-dd"/></td>
+	<td><fmt:formatDate value="${comment.comm_date }" pattern="yyyy-MM-dd"/><br>
+	<fmt:formatDate value="${comment.comm_date }" pattern="hh:MM:ss"/></td>
 </tr>
 
 </c:forEach>
 </table>
-
+</div>
 
 </div> <!-- div.container -->
 </div> <!-- detail -->
 
 
 
-</div>
+
 	
 	
 <%-- import footer --%>

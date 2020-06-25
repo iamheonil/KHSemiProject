@@ -15,10 +15,10 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-	
+
 	// 검색어 관련
 	$("#searchBtn").click(function() {
-		location.href="/document/list/approve?search="+$("#keyword").val()
+		location.href="/document/list/draft?search="+$("#keyword").val()
 					+"&startDate="+$("#someDate").val()
 					+"&endDate="+$("#someDateTime").val();
 	})
@@ -31,9 +31,6 @@ $(document).ready(function() {
 })
 });
 
-
-
-
 </script>
 <style type="text/css">
 h3{
@@ -44,14 +41,14 @@ h3{
 	height: 40px;
 }
 
-h3{
-	margin-top: 10px;
-	padding: 0;
-}
-
 #templist{
 	width: 1000px;
 	padding: 35px;
+}
+
+h3{
+	margin-top: 10px;
+	padding: 0;
 }
 
 .form-inline{
@@ -75,7 +72,7 @@ h3{
 <div id="contents">
 <div id="templist">
 
-<h3>결재한 문서</h3><br>
+<h3>기안한 문서</h3><br>
 
 
 <br><br>
@@ -92,23 +89,24 @@ h3{
 	<th style="width: 8%;">보고자</th>
 	<th style="width: 8%;">상태</th>
 </tr>
-<c:forEach items="${approveList }" var="approve">
+<c:forEach items="${draftList }" var="draft">
 <tr>
-	<td>${approve.report_type }</td>
-	<td><fmt:formatDate value="${approve.doc_date }" pattern="yyyy-MM-dd"/></td>
-	<td><a href="/document/view?doc_num=${approve.doc_num }">${approve.doc_title }</a></td>
-	<td>${approve.dept }</td>
-	<td>${approve.userrank }</td>
-	<td>${approve.username }</td>
-	<td>${approve.doc_state }</td>
+	<td>${draft.report_type }</td>
+	<td><fmt:formatDate value="${draft.doc_date }" pattern="yyyy-MM-dd"/></td>
+	<td><a href="/document/view?doc_num=${draft.doc_num }">${draft.doc_title }</a></td>
+	<td>${draft.dept }</td>
+	<td>${draft.userrank }</td>
+	<td>${draft.username }</td>
+	<td>${draft.doc_state }</td>
 	
 </tr>
 
 </c:forEach>
 </table>
 
-<c:import url="/WEB-INF/views/layout/paging_approvelist.jsp"/>
+<c:import url="/WEB-INF/views/layout/document_alllist_paging.jsp"/>
 <br>
+
 <div class="form-inline">
 	<input id="someDate" name="startDate" type="date"> ~
 	<input id="someDateTime" name="endDate" type="date">

@@ -8,14 +8,14 @@
 
 	<!-- 첫 페이지로 가기 -->
 	<c:if test="${paging.curPage ne 1 }"><!-- 첫 페이지가 아닐 때 보여줌 -->
-	<li><a href="/document/list/temp?search=${param.search }">&larr;</a></li>
+	<li><a href="/document/list/waitApprove?search=${param.search }">&larr;</a></li>
 	</c:if>
 	
 	
 	
 	<!-- 이전 페이징 리스트로 가기 -->
 	<c:if test="${paging.startPage gt paging.pageCount }">
-	<li><a href="/document/list/temp?curPage=${paging.startPage - paging.pageCount }&search=${param.search }">&laquo;</a></li>
+	<li><a href="/document/list/waitApprove?curPage=${paging.startPage - paging.pageCount }&search=${param.search }">&laquo;</a></li>
 	</c:if>
 
 	<c:if test="${paging.startPage le paging.pageCount }">
@@ -26,7 +26,7 @@
 	
 	<!-- 이전 페이지로 가기 -->
 	<c:if test="${paging.curPage ne 1 }">
-	<li><a href="/document/list/temp?curPage=${paging.curPage - 1 }&search=${param.search }">&lt;</a></li>
+	<li><a href="/document/list/waitApprove?curPage=${paging.curPage - 1 }&search=${param.search }">&lt;</a></li>
 	</c:if>
 	
 
@@ -36,12 +36,12 @@
 	
 	<!-- 보고 있는 페이지번호 강조 (.active) -->
 	<c:if test="${paging.curPage eq i }">
-		<li class="active"><a href="/document/list/temp?curPage=${i }&search=${param.search }">${i }</a></li>
+		<li class="active"><a href="/document/list/waitApprove?curPage=${i }&search=${param.search }">${i }</a></li>
 	</c:if>
 	
 	<!-- 보고 있는 페이지번호가 아니면 평소 모양으로 보여주기 -->
 	<c:if test="${paging.curPage ne i }">
-		<li><a href="/document/list/temp?curPage=${i }&search=${param.search }">${i }</a></li>
+		<li><a href="/document/list/waitApprove?curPage=${i }&search=${param.search }">${i }</a></li>
 	</c:if>
 	
 	</c:forEach>
@@ -50,14 +50,14 @@
 	
 	<!-- 다음 페이지로 가기 -->
 	<c:if test="${paging.curPage ne paging.totalPage }">
-	<li><a href="/document/list/temp?curPage=${paging.curPage + 1 }&search=${param.search }">&gt;</a></li>
+	<li><a href="/document/list/waitApprove?curPage=${paging.curPage + 1 }&search=${param.search }">&gt;</a></li>
 	</c:if>
 	
 	
 	
 	<!-- 다음 페이징 리스트로 가기 -->
 	<c:if test="${paging.endPage ne paging.totalPage }">
-	<li><a href="/document/list/temp?curPage=${paging.startPage + paging.pageCount }&search=${param.search }">&raquo;</a></li>
+	<li><a href="/document/list/waitApprove?curPage=${paging.startPage + paging.pageCount }&search=${param.search }">&raquo;</a></li>
 	</c:if>
 
 	<c:if test="${paging.endPage eq paging.totalPage }">

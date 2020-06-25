@@ -58,6 +58,7 @@ header {
 	height: 80px;
 	background-color: #0f4c81;
 	z-index: 9999;
+	text-decoration: none;
 }
 
 #logo {
@@ -68,9 +69,11 @@ header {
 }
 
 header>ul {
-	width: 700px;
-	background-color: white;
+	width: 950px;
+	background-color: #0f4c81;
 	margin: 0 auto;
+	text-decoration: none;
+	position: absolute;
 }
 
 header>ul:hover>li>ul {
@@ -82,17 +85,20 @@ header>ul>li {
 	display: block;
 	float: left;
 	text-align: center;
+	text-decoration: none;
 }
 
 header>ul>li a {
 	display: block;
 	line-height: 80px;
 	width: 70% color: black;
+	text-decoration: none;
 }
 
 header>ul>li a:hover {
 	background-color: #9c6a6a;
 	transition: 0.5s;
+	text-decoration: none;
 }
 
 .depth02 {
@@ -100,18 +106,17 @@ header>ul>li a:hover {
 	left: 0;
 	top: 100%;
 	width: 100%;
-	background-color: white;
 	display: block;
 	max-height: 500px;
+	text-decoration: none;
 }
 
 .depth02>li {
 	display: block;
 	position: relative;
 	margin: 0 auto;
-	width: 730px;
+	width: 950px;
 	height: 100px;
-	background-color: white;
 }
 
 .depth02>li>ul {
@@ -120,7 +125,8 @@ header>ul>li a:hover {
 }
 
 .depth02>li>ul>li {
-	line-height: 33px;
+	line-height: 80px;
+	background: white;
 }
 
 .li-white>a {
@@ -306,7 +312,7 @@ a {
 		<li id="logo"><a href="/document/dolist"><img src="/logo.png" width="170px;"></a></li>
 		<ul style="margin-left: 490px;">
 			<li class="li-white"><a href="/document/dolist">전자결재</a>
-				<ul class="depth02" style="display: none;">
+				<ul class="depth02" style="display: none; position: relative; left: 0px;">
 					<li>
 						<ul>
 							<li><a href="/document/dolist">처리할일</a></li>
@@ -316,19 +322,25 @@ a {
 							<li><a href="/document/list/all">문서등록대장</a></li>
 						</ul>
 						<ul>
-							<li>&nbsp;</li>
-							<li>&nbsp;</li>
-							<li>&nbsp;</li>
+							<li><a href="#"></a>&nbsp;</li>
+							<li><a href="#"></a>&nbsp;</li>
+							<li><a href="#"></a>&nbsp;</li>
+							<li><a href="#"></a>&nbsp;</li>
+							<li><a href="#"></a>&nbsp;</li>
 						</ul>
 						<ul>
 							<li><a href="/board/notice">공지사항</a></li>
 							<li><a href="/board/study">스터디 모집</a></li>
 							<li><a href="/board/free">사내게시판</a></li>
+							<li><a href="#"></a>&nbsp;</li>
+							<li><a href="#"></a>&nbsp;</li>
 						</ul>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li><a href="#"></a>&nbsp;</li>
+							<li><a href="#"></a>&nbsp;</li>
+							<li><a href="#"></a>&nbsp;</li>
+							<li><a href="#"></a>&nbsp;</li>
+							<li><a href="#"></a>&nbsp;</li>
 						</ul>
 					</li>
 				</ul></li>

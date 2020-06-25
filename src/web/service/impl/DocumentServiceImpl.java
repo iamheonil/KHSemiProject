@@ -27,9 +27,16 @@ public class DocumentServiceImpl implements DocumentService{
 	private Report_linkDao report_linkDao = new Report_linkDaoImpl();
 	
 	@Override
-	public int getDoListWaitApproveCnt() {
+	public int getDoListWaitApproveCnt(HttpServletRequest req) {
 
-		return 0;
+		// 빈 값으로 저장
+		String search = null;
+		String startDate = null;
+		String endDate = null;
+		
+		int userid = (int) req.getSession().getAttribute("userid");
+		
+		return documentDao.selectWaitApproveSearchCntAll(search, userid, startDate, endDate);
 	}
 
 	@Override
@@ -109,14 +116,43 @@ public class DocumentServiceImpl implements DocumentService{
 	}
 
 	@Override
-	public Paging getWaitApprovePaging(HttpServletRequest req) {
+	public SearchPaging getWaitApprovePaging(HttpServletRequest req) {
+		//요청파라미터 curPage를 파싱한다
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if( param!=null && !"".equals(param) ) {
+			curPage = Integer.parseInt(param);
+		}
+
+		//검색어
+		String search = (String)req.getParameter("search");
 		
-		return null;
+		//날짜
+		String startDate = req.getParameter("startDate");
+		String endDate = req.getParameter("endDate");
+
+		
+		// 로그인 중인 userid 값 저장
+		int userid = (int) req.getSession().getAttribute("userid");
+		
+		System.out.println("로그인한 userid" + userid);
+		
+		
+		int totalCount = documentDao.selectWaitApproveSearchCntAll(search, userid, startDate, endDate);
+		
+		// Paging 객체 생성 
+		SearchPaging paging = new SearchPaging(totalCount, curPage);
+		
+		//검색어
+		paging.setSearch(search);
+
+		return paging;
 	}
 
 	@Override
-	public List<Document> getListWaitApprove(HttpServletRequest req, Paging paging) {
-		return null;
+	public ArrayList<Map<String, Object>> getListWaitApprove(SearchPaging paging, int userid, String startDate, String endDate) {
+		
+		return documentDao.selectWaitApproveSerach(paging, userid, startDate, endDate);
 	}
 
 	@Override
@@ -147,41 +183,85 @@ public class DocumentServiceImpl implements DocumentService{
 	}
 
 	@Override
-	public Paging getDraftPaging(HttpServletRequest req) {
+	public SearchPaging getDraftPaging(HttpServletRequest req) {
 
-		return null;
-	}
-
-	@Override
-	public List<Document> getListDraft(HttpServletRequest req, Paging paging) {
-
-		return null;
-	}
-
-	@Override
-	public Paging getApprovePaging(HttpServletRequest req) {
-
-		//전달파라미터 curPage를 파싱한다
+		//요청파라미터 curPage를 파싱한다
 		String param = req.getParameter("curPage");
 		int curPage = 0;
 		if( param!=null && !"".equals(param) ) {
 			curPage = Integer.parseInt(param);
 		}
+
+		//검색어
+		String search = (String)req.getParameter("search");
 		
-		//Board 테이블의 총 게시글 수를 조회한다
-		int totalCount = documentDao.selectApproveCntAll();
+		//날짜
+		String startDate = req.getParameter("startDate");
+		String endDate = req.getParameter("endDate");
+
 		
-		//Paging 객체 생성
-		Paging paging = new Paging(totalCount, curPage); 
+		// 로그인 중인 userid 값 저장
+		int userid = (int) req.getSession().getAttribute("userid");
 		
-		//계산된 Paging 객체 반환
+		System.out.println("로그인한 userid" + userid);
+		
+		//Board TB와 curPage 값을 이용한 Paging 객체를 생성하고 반환
+		int totalCount = documentDao.selectDraftCntAll(search, userid, startDate, endDate);
+		
+		// Paging 객체 생성 
+		SearchPaging paging = new SearchPaging(totalCount, curPage);
+		
+		//검색어
+		paging.setSearch(search);
+
 		return paging;
 	}
 
 	@Override
-	public ArrayList<Map<String, Object>> getListApprove(Paging paging) {
+	public ArrayList<Map<String, Object>> getListDraft(SearchPaging paging, int userid, String startDate, String endDate) {
+
+		return documentDao.selectDraftAll(paging, userid, startDate, endDate);
+	}
+
+	@Override
+	public SearchPaging getApprovePaging(HttpServletRequest req) {
+
+		//요청파라미터 curPage를 파싱한다
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if( param!=null && !"".equals(param) ) {
+			curPage = Integer.parseInt(param);
+		}
+
+		//검색어
+		String search = (String)req.getParameter("search");
 		
-		return documentDao.selectApproveAll(paging);
+		//날짜
+		String startDate = req.getParameter("startDate");
+		String endDate = req.getParameter("endDate");
+
+		
+		// 로그인 중인 userid 값 저장
+		int userid = (int) req.getSession().getAttribute("userid");
+		
+		System.out.println("로그인한 userid" + userid);
+		
+		//Board TB와 curPage 값을 이용한 Paging 객체를 생성하고 반환
+		int totalCount = documentDao.selectApproveCntAll(search, userid, startDate, endDate);
+		
+		// Paging 객체 생성 
+		SearchPaging paging = new SearchPaging(totalCount, curPage);
+		
+		//검색어
+		paging.setSearch(search);
+
+		return paging;
+	}
+
+	@Override
+	public ArrayList<Map<String, Object>> getListApprove(SearchPaging paging, int userid, String startDate, String endDate) {
+		
+		return documentDao.selectApproveAll(paging, userid, startDate, endDate);
 	}
 	
 

@@ -35,7 +35,7 @@ public class Doc_commentDaoImpl implements Doc_commentDao {
 		//SQL 작성 - 직접 작성한 문서는 아니고 수신자 경로에 자신이 있으면 조회함
 		String sql = "";
 		sql += "select";
-		sql += "    C.comm_content, C.receiver_id, C.comm_date, U.username, R.report_type";
+		sql += "    C.comm_content, C.receiver_id, C.comm_date, U.username, R.report_type, U.userrank";
 		sql += "    from doc_comment C";
 		sql += "        inner join document D on D.doc_num = C.doc_num";
 		sql += "        inner join user_basic U on U.userid = C.receiver_id";
@@ -58,6 +58,7 @@ public class Doc_commentDaoImpl implements Doc_commentDao {
 				c.put("receiver_id", rs.getString("receiver_id"));
 				c.put("username", rs.getString("username"));
 				c.put("report_type", rs.getString("report_type"));
+				c.put("userrank", rs.getString("userrank"));
 				
 				list.add(c);
 			}

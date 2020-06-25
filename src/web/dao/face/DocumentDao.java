@@ -77,21 +77,22 @@ public interface DocumentDao {
 	 * 
 	 * @return int - 조회된 결재대기함의 문서 개수
 	 */
-	public int selectWaitApproveSearchCntAll();
+	public int selectWaitApproveSearchCntAll(String search, int userid, String startDate, String endDate);
 	
-	
+
 	/**
-	 * 검색값이 있는 결재대기함 페이징 조회
+	 * 결재대기함 값 조회
 	 * 
-	 * @param search - 검색 값
-	 * @param paging - Paging 객체정보
-	 * @return List<Document> - 조회된 List<Document> 
+	 * @param paging - paging 객체정보
+	 * @param userid - 로그인 한 userid정보값
+	 * @param startDate - 검색결과 시작 값
+	 * @param endDate - 검색결과 종료 값
+	 * @return ArrayList<Map<String, Object>> - 조회된 결재대기함 값
 	 */
-	public List<Document> selectWaitApproveSerach(String search, Paging paging);
-	
+	public ArrayList<Map<String, Object>> selectWaitApproveSerach(SearchPaging paging, int userid, String startDate, String endDate);
 	
 	/**
-	 * 검색값이 없는 결재대기함 페이징 조회
+	 * 검색값이 없는 결재대기함 페이징 조회(필요x)
 	 * 
 	 * @param paging - Paging 객체정보
 	 * @return List<Document> - 조회된 List<Document> 
@@ -150,7 +151,7 @@ public interface DocumentDao {
 	 * 
 	 * @return int - 조회된 기안한문서 문서 개수
 	 */
-	public int selectDraftCntAll();
+	public int selectDraftCntAll(String search, int userid, String startDate, String endDate);
 	
 	
 	/**
@@ -162,22 +163,12 @@ public interface DocumentDao {
 	
 	
 	/**
-	 * 검색값이 있는 기안한문서 페이징 조회
-	 * 
-	 * @param search - 검색 값
-	 * @param paging - Paging 객체정보
-	 * @return List<Document> - 조회된 List<Document>
-	 */
-	public List<Document> selectDraftSearch(String search, Paging paging);
-	
-	
-	/**
 	 * 검색값이 없는 기안한문서 페이징 조회
 	 * 
 	 * @param paging - Paging 객체정보
 	 * @return List<Document> - 조회된 List<Document>
 	 */
-	public List<Document> selectDraftAll(Paging paging);
+	public ArrayList<Map<String, Object>> selectDraftAll(SearchPaging paging, int userid, String startDate, String endDate);
 	
 	
 	/**
@@ -185,25 +176,7 @@ public interface DocumentDao {
 	 * 
 	 * @return int - 조회된 결재한문서 문서 개수
 	 */
-	public int selectApproveCntAll();
-	
-	
-	/**
-	 * 결재한문서(검색) 페이징에 필요한 개수 조회
-	 * 
-	 * @return int - 조회된 결재한문서 문서 개수
-	 */
-	public int selectApproveSearchCntAll();
-	
-	
-	/**
-	 * 검색값이 있는 결재한문서 페이징 조회
-	 * 
-	 * @param search - 검색 값
-	 * @param paging - Paging 객체정보
-	 * @return List<Document> - 조회된 List<Document>
-	 */
-	public List<Document> selectApproveSearch(String search, Paging paging);
+	public int selectApproveCntAll(String search, int userid, String startDate, String endDate);
 	
 	
 	/**
@@ -212,7 +185,7 @@ public interface DocumentDao {
 	 * @param paging - Paging 객체정보
 	 * @return List<Document> - 조회된 List<Document>
 	 */
-	public ArrayList<Map<String, Object>> selectApproveAll(Paging paging);
+	public ArrayList<Map<String, Object>> selectApproveAll(SearchPaging paging, int userid, String startDate, String endDate);
 	
 	
 	/**

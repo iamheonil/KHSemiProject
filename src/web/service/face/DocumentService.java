@@ -14,9 +14,11 @@ public interface DocumentService {
 	
 	/**
 	 * 처리할 일 - 결재 대기함 문서 총 개수
+	 * 
+	 * @param req - req 요청객체
 	 * @return int - 문서 총 개수
 	 */
-	public int getDoListWaitApproveCnt();
+	public int getDoListWaitApproveCnt(HttpServletRequest req);
 	
 	/**
 	 * 처리할 일 - 진행 문서함 문서 총 개수
@@ -66,16 +68,19 @@ public interface DocumentService {
 	 * @param req - 요청 정보 객체
 	 * @return Paging - 페이징 객체
 	 */
-	public Paging getWaitApprovePaging(HttpServletRequest req);
+	public SearchPaging getWaitApprovePaging(HttpServletRequest req);
 	
 	
+	// 수정피룡!!!
 	/**
-	 * 결재대기함 문서 조회
-	 * @param req - 요청 정보 객체
+	 * 
 	 * @param paging - 페이징 객체
-	 * @return List<Document> - 결재대기함 문서 전체 조회 결과 리스트
+	 * @param userid - 로그인 한 userid
+	 * @param startDate - 시작 값
+	 * @param endDate - 종료 값
+	 * @return ArrayList<Map<String, Object>> - 조회된 문서등록대장 목록 값
 	 */
-	public List<Document> getListWaitApprove(HttpServletRequest req, Paging paging);
+	public ArrayList<Map<String, Object>> getListWaitApprove(SearchPaging paging, int userid, String startDate, String endDate);
 	
 	
 	/**
@@ -121,7 +126,7 @@ public interface DocumentService {
 	 * @param req - 요청 정보 객체
 	 * @return Paging - 페이징 객체
 	 */
-	public Paging getDraftPaging(HttpServletRequest req);
+	public SearchPaging getDraftPaging(HttpServletRequest req);
 	
 	/**
 	 * 기안한 문서 전체 조회
@@ -129,7 +134,7 @@ public interface DocumentService {
 	 * @param paging - 페이징 객체
 	 * @return List<Document> - 기안한 문서 전체 조회 결과 리스트
 	 */
-	public List<Document> getListDraft(HttpServletRequest req, Paging paging);
+	public ArrayList<Map<String, Object>> getListDraft(SearchPaging paging, int userid, String startDate, String endDate);
 	
 	
 	/**
@@ -137,14 +142,14 @@ public interface DocumentService {
 	 * @param req - 요청 정보 객체
 	 * @return Paging - 페이징 객체
 	 */
-	public Paging getApprovePaging(HttpServletRequest req);
+	public SearchPaging getApprovePaging(HttpServletRequest req);
 	
 	/**
 	 * 결재한 문서 전체 조회
 	 * @param paging - 페이징 객체
 	 * @return List<Document> - 결재한 문서 전체 조회 결과 리스트
 	 */
-	public ArrayList<Map<String, Object>> getListApprove(Paging paging);
+	public ArrayList<Map<String, Object>> getListApprove(SearchPaging paging, int userid, String startDate, String endDate);
 
 
 	/**
