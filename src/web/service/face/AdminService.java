@@ -12,17 +12,17 @@ public interface AdminService {
 	 * 로그인 정보 추출
 	 * 
 	 * @param req - 요청 정보 객체
-	 * @return Admin - 로그인 정보
+	 * @return Admin - 입력한 로그인 정보
 	 */
 	public Admin getLoginAdmin(HttpServletRequest req);
 
 	/**
 	 * 로그인 처리
 	 * 
-	 * @param adminnum - 로그인 정보
+	 * @param admin - 입력한 로그인 정보
 	 * @return true - 인증됨, false - 인증되지 않음
 	 */
-	public boolean login(Admin adminnum);
+	public boolean login(Admin admin);
 
 	/**
 	 * 유저정보 가져오기

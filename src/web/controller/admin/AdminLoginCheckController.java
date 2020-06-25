@@ -1,6 +1,7 @@
 package web.controller.admin;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,12 +21,12 @@ public class AdminLoginCheckController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private AdminService adminService = new AdminServiceImpl();
-	
+	private Admin admin = new Admin();
  
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		//VIEW 지정 - forward
-		req.getRequestDispatcher("/WEB-INF/views/admin/adminlogin.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/login/login_admin.jsp").forward(req, resp);
 		
 		
 	}
@@ -33,30 +34,36 @@ public class AdminLoginCheckController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		//전달 파라미터 :: 로그인 정보 얻기
-		Admin admin = adminService.getLoginAdmin(req);
+		HttpSession session = req.getSession();
 		
-		boolean login = adminService.login(admin);
+		// 입력한 로그인 정보 admin 객체에 저장
+		admin = adminService.getLoginAdmin(req);
 		
+		System.out.println("admin 정보 " + admin);
 		
-		if(login) {
-			//로그인 사용자의 정보 얻어오기
-			admin = adminService.info(admin);
+		// 관리자 로그인 - 반환값 boolean
+		boolean res = false;
+		res = adminService.login(admin);
+		
+		if(res) {
+			System.out.println("로그인성공");
 			
-			//세션 정보 저장하기
-			HttpSession session = req.getSession();
-			session.setAttribute("login", login);
-			session.setAttribute("adminnum", admin);
-			session.setAttribute("adminpw", admin);
+			// 사번, 이름, 직급, 부서 세션으로 등록
+			session.setAttribute("login", true);
+			session.setAttribute("adminid", admin.getAdminid());
+			
+			resp.sendRedirect("/admin/view");
+		} else {
+			resp.setContentType("text/html; charset=utf-8");
 
+			PrintWriter out = resp.getWriter();
+			out.println("<script>");
+			out.println("alert('아이디와 비밀번호가 맞지 않습니다!');");
+			out.println("location.href='/admin/login';");
+			out.println("</script>");
 		}
 		
 		
-		//메인 페이지로 리다이렉트
-		resp.sendRedirect("/");
-		
-		//또는 비밀번호를 확인해 주십시오 같은 ajax나 부트스트랩?
-
 				
 		
 	}
