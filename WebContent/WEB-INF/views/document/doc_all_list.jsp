@@ -104,7 +104,7 @@ h3{
 </table>
 
 
-<c:import url="/WEB-INF/views/layout/document_templist_paging.jsp"/>
+<c:import url="/WEB-INF/views/layout/document_alllist_paging.jsp"/>
 <br>
 
 <div class="form-inline">
