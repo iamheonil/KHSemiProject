@@ -27,30 +27,14 @@
 	
 }
 
-.tt1 {
-	float: left;
-	width: 48%;
-}
-.tt1 table {
-	width: 100%;
-}
-
-/* .tt2 { */
-/* 	float: none; */
-/* } */
-
-.tt3 {
-	float: right;
-	width: 48%;
-}
-.tt3 table {
-	width: 100%;
-}
-
-
 </style>
 
+<script type="text/javascript">
 
+
+</script>
+
+<%-- <c:import url="/WEB-INF/views/adlayout/adheader.jsp" /> --%>
 		<!-- float 해제 -->
 		<div class="clearfix"></div>
 
@@ -60,70 +44,40 @@
 <!-- float 해제 -->
 <!-- <div class="clearfix"></div> -->
 
+<%-- <c:import url="/WEB-INF/views/adlayout/adaside.jsp" />		 --%>
+
 <div class="container">
 	<div class="wrap">
 		<div class="tt1">
-			<table class="table table-striped table-hover table-condensed">
-				<tr><th colspan="3" style="text-align: center;">주소록</th></tr>
+			<table id="check" class="table table-striped table-hover table-condensed">
+				<thead>
+				<tr><th colspan="5" style="text-align: center;">주소록</th></tr>
 				<tr>
-					<th>부서</th>
-					<th>직급</th>
-					<th>이름</th>
+					<th class="text-center">부서</th>
+					<th class="text-center">직급</th>
+					<th class="text-center">이름</th>
+					<th class="text-center">주소</th>
+					<th class="text-center">전화번호</th>
 				</tr>
-<%-- 	<c:forEach items="${ }" var="board"> --%>
+				</thead>
+					<c:forEach items="${detailList }" var="detail">
+				<tbody>
 				<tr>
-					<td>개발팀</td>
-					<td>부장</td>
-					<td>홍길동</td>
+					<td>${detail.dept }</td>
+					<td>${detail.userrank }</td>
+					<td>${detail.username }</td>
+					<td>${detail.useraddr }</td>
+					<td>${detail.userphone }</td>
 				</tr>
-			<%-- 	</c:forEach> --%>
-				<tr>
-					<td>개발팀</td>
-					<td>팀장</td>
-					<td>김길동</td>
-				</tr>
-					<tr>
-					<td>개발팀</td>
-					<td>사원</td>
-					<td>이길동</td>
-				</tr>
-					<tr>
-					<td>개발팀</td>
-					<td>사원</td>
-					<td>심길동</td>
-				</tr>
-				</tr>
-					<tr>
-					<td>개발팀</td>
-					<td>사원</td>
-					<td>심길동</td>
-				</tr>
-			</table>
-				<c:import url="/WEB-INF/views/adlayout/paging.jsp" />
+				</tbody>
+					</c:forEach>
 				
-				
-		</div>
-		<div class="tt3">
-			<table class="table-striped table-hover table-condensed">
-				<tr><th colspan="3" style="text-align: center;">주소록 상세조회</th></tr>
-				<tr>
-					<th>이름</th>
-					<th>전화번호</th>
-					<th>주소</th>
-				</tr>
-				<tr>
-					<td>홍길동</td>
-					<td>010-1234-5678</td>
-					<td>경기도</td>
-				</tr>
 			</table>
+			
+				<c:import url="/WEB-INF/views/adlayout/ad_paging.jsp" />
+				
 		</div>
 	</div>
 		<div class="clearfix"></div>
-
 	
-
-
-
-</body>
-</html>
+<%-- <c:import url="/WEB-INF/views/adlayout/adfooter.jsp" /> --%>
