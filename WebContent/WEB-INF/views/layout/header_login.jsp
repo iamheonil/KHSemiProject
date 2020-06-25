@@ -24,7 +24,7 @@
 #header {
 	margin: 0 auto;
 	width: 100%;
-	height: 200px;
+	height: 270px;
 	background: #0f4c81;
 }
 
@@ -46,7 +46,7 @@
 #footer-wrap {
 	width: 100%;
 	background: #0f4c81;
-	padding-bottom: 211px;
+	padding-bottom: 135px;
 }
 
 #footer {
