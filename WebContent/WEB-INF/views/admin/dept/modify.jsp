@@ -32,8 +32,25 @@ $(document).ready(function() {
 });
 </script>
 
+<style type="text/css">
+h4 {
+	color: #0A2D5D;
+	font-weight: bold;
+	padding: 20px;
+	font-size: 1.7em;
+}
+
+.container {
+	float: left;
+	position: relative;
+	width: 900px;
+}
+}
+</style>
+
 <div class="container">
-<h3>사원 기본 정보 수정</h3>
+<h4>사원 기본 정보 수정</h4>
+<hr>
 
 <form method="post" enctype="application/x-www-form-urlencoded">
 
