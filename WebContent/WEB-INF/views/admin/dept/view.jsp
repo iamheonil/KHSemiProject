@@ -70,12 +70,13 @@ $(document).ready(function() {
 <div class="contents">
 	<div class="container">
 	<h4>사원관리</h4>
+	<hr>
 			<p class="bg-info">사원 수정 및 삭제를 위해 사원을 검색해주세요.</p>
 		<div class="form-inline text-center" id="formSearch">
 			<input class="form-control" type="text" id="search" />
 			<button id="btnSearch" class="btn btn-primary">검색</button>
 		</div>
-		
+	<hr>		
 			<p class="bg-info">새로운 사원 생성을 원하시면 버튼을 클릭해주세요.</p>			
 		<div id="btnBox">
 			<button id="btnCreate" class="btn btn-primary">새로운 사원 생성</button>
