@@ -27,13 +27,13 @@ public class BoardNoticeController extends HttpServlet {
 		System.out.println("게시판 목록 호출 완료 [GET]");
 		
 		// 요청 파라미터를 전달을 통해 Paging 객체 생성
-		B_Paging paging = boardService.getPaging(req);
+		B_Paging paging = boardService.getNoticePaging(req);
 		System.out.println("BoardListController " + paging);
 		//Paging 결과 MODEL값 전달
 		req.setAttribute("paging", paging);
 		
 		// 공지사항 게시글 조회
-		List<Board> N_list = boardService.nList();
+		List<Board> N_list = boardService.nList(paging);
 		
 		//조회된 결과 view 전달
 		

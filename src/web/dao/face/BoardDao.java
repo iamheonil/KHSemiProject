@@ -52,6 +52,27 @@ public interface BoardDao {
 	
 	public int selectCntAll();
 	
+
+	/**
+	 * 
+	 * 공지사항 게시글 수 조회
+	 * 
+	 * 
+	 * @return - 공지사항 전체 게시글 수
+	 */
+	
+	public int selectNoticeCntAll();
+
+	/**
+	 * 
+	 * 스터디모집 게시글 수 조회
+	 * 
+	 * 
+	 * @return - 공지사항 전체 게시글 수
+	 */
+	
+	public int selectStudyCntAll();
+
 	/**
 	 * 페이징 대상 게시글 목록 조회
 	 * 
@@ -61,6 +82,33 @@ public interface BoardDao {
 	
 	
 	public List<Board> selectAll(B_Paging paging);
+	
+	/**
+	 * 페이징 대상 게시글 목록 조회
+	 * 
+	 * @param paging - 페이징 정보 객체
+	 * @return List<Board> - 조회된 게시글 목록
+	 */
+	
+	public List<Board> selectNotice(B_Paging paging);
+
+	/**
+	 * 페이징 대상 게시글 목록 조회
+	 * 
+	 * @param paging - 페이징 정보 객체
+	 * @return List<Board> - 조회된 게시글 목록
+	 */
+	public List<Board> selectFree(B_Paging paging);
+
+	/**
+	 * 페이징 대상 게시글 목록 조회
+	 * 
+	 * @param paging - 페이징 정보 객체
+	 * @return List<Board> - 조회된 게시글 목록
+	 */
+	
+	public List<Board> selectStudy(B_Paging paging);
+
 
 	/**
 	 * 
@@ -121,6 +169,9 @@ public interface BoardDao {
 	 * @param board - 수정할 내용을 담은 객체
 	 */
 	public void boardUpdate(Board board);
+
+	public int selectFreeCntAll();
+
 
 	
 	

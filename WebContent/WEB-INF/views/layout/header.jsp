@@ -102,13 +102,14 @@ header>ul>li a:hover {
 	width: 100%;
 	background-color: white;
 	display: block;
-	max-height: 300px;
+	max-height: 500px;
 }
 
 .depth02>li {
 	display: block;
+	position: relative;
 	margin: 0 auto;
-	width: 750px;
+	width: 730px;
 	height: 100px;
 	background-color: white;
 }
@@ -291,21 +292,22 @@ a {
 
 <body>
 	<header>
-		<li id="logo"><a href="/document/dolist"><img src="/logo.png"
-				width="170px;"></a></li>
-		<ul>
+		<li id="logo"><a href="/document/dolist"><img src="/logo.png" width="170px;"></a></li>
+		<ul style="margin-left: 490px;">
 			<li class="li-white"><a href="/document/dolist">전자결재</a>
 				<ul class="depth02" style="display: none;">
 					<li>
 						<ul>
-							<li><a href="#">메뉴</a></li>
-							<li><a href="#">메뉴</a></li>
-							<li><a href="#">메뉴</a></li>
+							<li><a href="/document/dolist">처리할일</a></li>
+							<li><a href="/document/write">문서기안</a></li>
+							<li><a href="/document/list/waitapprove">문서결재</a></li>
+							<li><a href="/document/list/draft">완료문서</a></li>
+							<li><a href="/document/list/all">문서등록대장</a></li>
 						</ul>
 						<ul>
-							<li><a href="#">여기도메뉴</a></li>
-							<li><a href="#">여기도메뉴</a></li>
-							<li><a href="#">여기도메뉴</a></li>
+							<li>&nbsp;</li>
+							<li>&nbsp;</li>
+							<li>&nbsp;</li>
 						</ul>
 						<ul>
 							<li><a href="/board/notice">공지사항</a></li>
@@ -313,9 +315,9 @@ a {
 							<li><a href="/board/free">사내게시판</a></li>
 						</ul>
 						<ul>
-							<li><a href="#">주소록메뉴</a></li>
-							<li><a href="#">주소록메뉴</a></li>
-							<li><a href="#">주소록메뉴</a></li>
+							<li></li>
+							<li></li>
+							<li></li>
 						</ul>
 					</li>
 				</ul></li>

@@ -1,6 +1,7 @@
 package web.controller.board;
 
 import java.io.IOException;
+
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -30,13 +31,14 @@ public class BoardFreeController extends HttpServlet {
 		System.out.println("게시판 목록 호출 완료 [GET]");
 		
 		// 요청 파라미터를 전달을 통해 Paging 객체 생성
-		B_Paging paging = boardService.getPaging(req);
+		B_Paging paging = boardService.getFreePaging(req);
 		System.out.println("BoardListController " + paging);
+		
 		//Paging 결과 MODEL값 전달
-		req.setAttribute("B_paging", paging);
+		req.setAttribute("paging", paging);
 		
 		// 공지사항 게시글 조회
-		List<Board> F_list = boardService.fList();
+		List<Board> F_list = boardService.fList(paging);
 		List<Board> N_list = boardService.nList();
 		//조회된 결과 view 전달
 		

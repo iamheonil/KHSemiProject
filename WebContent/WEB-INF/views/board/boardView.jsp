@@ -98,7 +98,7 @@ function deleteComment( c_num ) {
 <div class="padding_view" style="padding: 20px;">
 
 <!-- 카테고리 -->
-<div class="category" style="text-align: left; font-size: 13px; color:rgb(38, 114, 165);">
+<div class="category" style="text-align: left; font-size: 13px; color:rgb(38, 114, 165);" onclick="history.go(-1)">
 	카테고리 &nbsp;[${viewBoard.category }]
 </div>
 
@@ -166,11 +166,11 @@ ${viewBoard.b_content }
 <tr data-c_num="${comment.c_num }">
 	<th>[${comment.dept }&nbsp;${comment.userrank }]&nbsp;${name }
 	(<fmt:formatDate value="${comment.c_date }" pattern="yy-MM-dd hh:mm" />)
-		<c:if test="${sessionScope.userid eq comment.userid }">
+<%-- 		<c:if test="${sessionScope.userid eq comment.userid }"> --%>
 		<button class="btn btn-defalut btn-xs"
-			onclick="deleteComment(${comment.c_num});">삭제	
+			onclick="alert('삭제되었습니다.'); deleteComment(${comment.c_num}); history.go(0);">삭제	
 		</button>
-		</c:if>
+<%-- 		</c:if> --%>
 	</th>
 	
 </tr>

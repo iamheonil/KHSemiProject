@@ -22,6 +22,8 @@ public class BoardServiceImpl implements BoardService{
 	private BoardDao boardDao = new BoardDaoImpl();
 	private Board_commentDao board_commentDao= new Board_commentDaoImpl();
 	
+	// ------------------------------ 게시판 목록 ------------------------------
+	
 	
 	@Override
 	public List<Board> list() {
@@ -45,6 +47,9 @@ public class BoardServiceImpl implements BoardService{
 		return boardDao.selectStudy();
 	}
 
+	// -------------------------------게시판 페이징 -----------------------------
+	
+	
 	@Override
 	public B_Paging getPaging(HttpServletRequest req) {
 		
@@ -56,8 +61,33 @@ public class BoardServiceImpl implements BoardService{
 			
 		}
 		//Board 테이블의 총 게시글 수 조회
+		//검색어
+		String search = (String)req.getParameter("search");
+		
 		
 		int totalCount = boardDao.selectCntAll();
+		
+		//Paging 객체 생성
+		B_Paging paging = new B_Paging(totalCount, curPage);
+		
+		//검색어
+		paging.setSearch(search);
+		
+		return paging;
+	}
+
+	@Override
+	public B_Paging getNoticePaging(HttpServletRequest req) {
+		//전달파라미터 curPage를 파싱
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if( param!=null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+			
+		}
+		//Board 테이블의 총 게시글 수 조회
+		
+		int totalCount = boardDao.selectNoticeCntAll();
 		
 		//Paging 객체 생성
 		B_Paging paging = new B_Paging(totalCount, curPage);
@@ -66,6 +96,50 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
+	public B_Paging getStudyPaging(HttpServletRequest req) {
+		
+				//전달파라미터 curPage를 파싱
+		
+				String param = req.getParameter("curPage");
+				int curPage = 0;
+				if( param!=null && !"".equals(param)) {
+					curPage = Integer.parseInt(param);
+					
+				}
+				//Board 테이블의 총 게시글 수 조회
+				
+				int totalCount = boardDao.selectStudyCntAll();
+				
+				//Paging 객체 생성
+				B_Paging paging = new B_Paging(totalCount, curPage);
+				
+				return paging;
+	}
+	
+	@Override
+	public B_Paging getFreePaging(HttpServletRequest req) {
+
+		//전달파라미터 curPage를 파싱
+
+			String param = req.getParameter("curPage");
+			int curPage = 0;
+			if( param!=null && !"".equals(param)) {
+				curPage = Integer.parseInt(param);
+				
+			}
+			//Board 테이블의 총 게시글 수 조회
+			
+			int totalCount = boardDao.selectFreeCntAll();
+			
+			//Paging 객체 생성
+			B_Paging paging = new B_Paging(totalCount, curPage);
+			
+			return paging;
+	}
+
+
+	// -------------------------------------------------------------
+	@Override
 	public List<Board> list(B_Paging paging) {
 		
 	
@@ -73,6 +147,25 @@ public class BoardServiceImpl implements BoardService{
 		return boardDao.selectAll(paging);
 	}
 
+	@Override
+	public List<Board> nList(B_Paging paging) {
+		
+		return boardDao.selectNotice(paging);
+	}
+
+	@Override
+	public List<Board> fList(B_Paging paging) {
+		
+		return boardDao.selectFree(paging);
+	}
+
+	@Override
+	public List<Board> sList(B_Paging paging) {
+		
+		return boardDao.selectStudy(paging);
+	}
+	
+	
 	@Override
 	public Board getBoardno(HttpServletRequest req) {
 		
@@ -195,6 +288,8 @@ public class BoardServiceImpl implements BoardService{
 		}
 		
 	}
+
+	
 
 
 

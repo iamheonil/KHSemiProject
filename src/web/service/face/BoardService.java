@@ -20,13 +20,26 @@ public interface BoardService {
 	public List<Board> list();
 	
 	/**
-	 * 페이징 객체 생성
+	 * 게시판 공지사항만 조회
 	 * 
-	 * @param req - 요청 정보 객체
-	 * @return Paging - 페이징 계산이 완료된 객체
+	 * @return List<Board>
 	 */
 	
-	public B_Paging getPaging(HttpServletRequest req);
+	public List<Board> nList();
+
+	/**
+	 * 게시판 사내게시판만 조회
+	 * 
+	 * @return List<Board>
+	 */
+	public List<Board> fList();
+	
+	/**
+	 * 게시판 스터디게시판만 조회
+	 * 
+	 * @return List<Board>
+	 */
+	public List<Board> sList();
 	
 	/**
 	 * 페이징 처리하여 보여질 게시글 목록만 조회
@@ -37,6 +50,48 @@ public interface BoardService {
 	
 	public List<Board> list(B_Paging paging);
 
+	
+
+	/**
+	 * 페이징 처리로 보여질 게시글목록만 조회
+	 * 
+	 * 
+	 * @param paging - 페이징 정보 객체
+	 * @return List<Board>
+	 */
+	
+	public List<Board> nList(B_Paging paging);
+
+	/**
+	 * 
+	 * 페이징 처리로 보여질 게시글목록만 조회
+	 * 
+	 * @param paging - 페이징 정보 객체
+	 * @return List<Board>
+	 */
+	public List<Board> fList(B_Paging paging);
+	
+	/**
+	 *  페이징 처리로 보여질 게시글목록만 조회
+	 *
+	 *
+	 * @param paging - 페이징 정보 객체
+	 * @return List<Board>
+	 */
+	public List<Board> sList(B_Paging paging);
+	
+	// ------------------------------------------------------------------------------
+	
+	/**
+	 * 페이징 객체 생성
+	 * 
+	 * @param req - 요청 정보 객체
+	 * @return Paging - 페이징 계산이 완료된 객체
+	 */
+	
+	public B_Paging getPaging(HttpServletRequest req);
+	
+	
 	
 	/**
 	 * 
@@ -112,27 +167,6 @@ public interface BoardService {
 	
 	public void insertComment(Board_comment comment);
 
-	/**
-	 * 게시판 공지사항만 조회
-	 * 
-	 * @return List<Board>
-	 */
-	
-	public List<Board> nList();
-
-	/**
-	 * 게시판 사내게시판만 조회
-	 * 
-	 * @return List<Board>
-	 */
-	public List<Board> fList();
-	
-	/**
-	 * 게시판 스터디게시판만 조회
-	 * 
-	 * @return List<Board>
-	 */
-	public List<Board> sList();
 	
 	/**
 	 * 댓글 삭제
@@ -141,5 +175,31 @@ public interface BoardService {
 	 * @return boolean - 삭제 성공 여부
 	 */
 	public boolean deleteComment(Board_comment comment);
+	
+	/**
+	 * 페이징 객체 생성
+	 * 
+	 * @param req - 요청 정보 객체
+	 * @return Paging - 페이징 계산이 완료된 객체
+	 */
+	
+	public B_Paging getNoticePaging(HttpServletRequest req);
+	
+	/**
+	 * 페이징 객체 생성
+	 * 
+	 * @param req - 요청 정보 객체
+	 * @return Paging - 페이징 계산이 완료된 객체
+	 */
+	public B_Paging getStudyPaging(HttpServletRequest req);
+
+	/**
+	 * 페이징 객체 생성
+	 * 
+	 * @param req - 요청 정보 객체
+	 * @return Paging - 페이징 계산이 완료된 객체
+	 */
+	
+	public B_Paging getFreePaging(HttpServletRequest req);
 
 }

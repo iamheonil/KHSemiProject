@@ -13,7 +13,7 @@
 				</li>
 				<li>소속팀 인사1팀 사원 홍길동</li>
 				<li>사원번호 20200001</li>
-				<li><button class="btn btn-dark">마이페이지</button> &nbsp;
+				<li><button class="btn btn-dark" onclick="location.href='/user/modify/detail'">마이페이지</button> &nbsp;
 					<button class="btn btn-dark">로그아웃</button></li>
 			</ul>
 			<nav id="admenu">
