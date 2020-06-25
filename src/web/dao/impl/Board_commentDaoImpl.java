@@ -116,6 +116,8 @@ public class Board_commentDaoImpl implements Board_commentDao{
 					ps.setString(4, comment.getUsername());
 					ps.setString(5, comment.getUserrank());
 					ps.setString(6, comment.getDept());
+					
+					ps.executeUpdate();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				} finally {

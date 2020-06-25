@@ -20,6 +20,12 @@ $(document).ready(function(){
 		location.href="/board/list?search="+$("#search").val();
 	});
 
+	$("#search").keydown(function(e) {
+		if(e.keyCode == 13) {
+			$("#btnSearch").click()
+		}
+	})
+
 
 });
 </script>

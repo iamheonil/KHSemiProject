@@ -17,10 +17,14 @@ $(document).ready(function(){
 	
 	//글쓰기 버튼을 누르면 이동
 	$("#btnSearch").click(function(){
-		location.href="/board/list?search="+$("#search").val();
+		location.href="/board/free?search="+$("#search").val();
 	});
 
-
+	$("#search").keydown(function(e) {
+		if(e.keyCode == 13) {
+			$("#btnSearch").click()
+		}
+	})
 });
 </script>
 <div id="contents">

@@ -204,21 +204,30 @@ public class BoardServiceImpl implements BoardService{
 		
 		Board board = new Board();
 		
+		board.setCategory(req.getParameter("category"));
+		board.setB_title(req.getParameter("title"));
+		board.setB_content(req.getParameter("content"));
+		
 		//게시글 작성자 id입력
 		board.setUserid((int)req.getSession().getAttribute("userid"));
-		
-		//게시글 번호 생성 - Dao이용
+		board.setUserrank((String)req.getSession().getAttribute("userrank"));
+		board.setUsername((String)req.getSession().getAttribute("username"));
+		board.setDept((String)req.getSession().getAttribute("userdept"));
+//		//게시글 번호 생성 - Dao이용
 		int boardnum = boardDao.selectBoardno();
+		
+		if(board.getB_title()==null||"".equals(board.getB_title())) {
+			
+			board.setB_title("(제목없음)");
+		}
 		
 		if(board != null) {
 			
-			//게시글 번호 입력
-			board.setB_num(boardnum);
+		board.setB_num(boardnum);
 			
-			//게시글 삽입
-			boardDao.insertBoard(board);
-		}
+		boardDao.insertBoard(board);
 		
+		}
 		
 	}
 
@@ -260,13 +269,15 @@ public class BoardServiceImpl implements BoardService{
 		
 		String b_num = (String)req.getParameter("b_num");
 		String userid = (String)req.getParameter("userid");
-		String c_content = (String)req.getParameter("content");
+		String c_content = req.getParameter("c_content");
+		String username = req.getParameter("username");
 		
 		Board_comment comment = new Board_comment();
 		
-		comment.setB_num(Integer.parseInt("b_num"));
-		comment.setUserid(Integer.parseInt("userid"));
+		comment.setB_num(Integer.parseInt(b_num));
+		comment.setUserid(Integer.parseInt(userid));
 		comment.setC_content(c_content);
+		comment.setUsername(username);
 		
 		return comment;
 	}
