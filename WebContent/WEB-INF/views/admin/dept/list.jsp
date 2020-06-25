@@ -62,104 +62,32 @@ caption {
 <c:import url="/WEB-INF/views/adlayout/adaside.jsp" />
 
 <div class="content">
-	<h4>사원 기본 관리</h4>
-	<div class="container">
+	<h4>사원 검색 결과</h4>
+	
+	<h5>사원 검색 결과입니다.</h5>
+	<hr>
 
-		<table class="table table-hover table-condensed">
-			<caption>인사</caption>
+	<table class="table table-hover table-condensed">
+		<tr class="info">
+			<th style="width: 10%">사번</th>
+			<th style="width: 50%">이름</th>
+			<th style="width: 15%">직급</th>
+			<th style="width: 10%">부서</th>
+		</tr>
+		<c:forEach items="${deptlist }" var="dept">
 			<tr>
-				<th>사번</th>
-				<th>이름</th>
-				<th>직위</th>
+				<td>${user_basic.userid }</td>
+				<td><a href="user/basic/modify/list?userid=${user_basic.userid }">${user_basic.username }</a></td>
+				<td>${user_basic.userrank }</td>
+				<td>${user_basic.dept }</td>
 			</tr>
+		</c:forEach>
+	</table>
 
-			<c:forEach items="${deptList }" var="deptno">
-				<tr>
-					<td>${User_basic.userid }</td>
-					<td>${User_basic.username }</td>
-					<td>${User_basic.userrank }</td>
-				</tr>
-			</c:forEach>
-		</table>
-		<br>
-		<br>
+	<jsp:include page="/WEB-INF/views/layout/paging.jsp" />
 
-		<table class="table table-hover table-condensed">
-			<caption>개발</caption>
-			<tr>
-				<th>사번</th>
-				<th>이름</th>
-				<th>직위</th>
-			</tr>
-			<c:forEach items="${deptList }" var="deptno">
-				<tr>
-					<td>${User_basic.userid }</td>
-					<td>${User_basic.username }</td>
-					<td>${User_basic.userrank }</td>
-
-				</tr>
-			</c:forEach>
-		</table>
-		<br>
-		<br>
-
-		<table class="table table-hover table-condensed">
-			<caption>회계</caption>
-			<tr>
-				<th>사번</th>
-				<th>이름</th>
-				<th>직위</th>
-			</tr>
-			<c:forEach items="${deptList }" var="deptno">
-				<tr>
-					<td>${User_basic.userid }</td>
-					<td>${User_basic.username }</td>
-					<td>${User_basic.userrank }</td>
-
-				</tr>
-			</c:forEach>
-		</table>
-		<br>
-		<br>
-
-		<table class="table table-hover table-condensed">
-			<caption>영업</caption>
-			<tr>
-				<th>사번</th>
-				<th>이름</th>
-				<th>직위</th>
-			</tr>
-			<c:forEach items="${deptList }" var="deptno">
-				<tr>
-					<td>${User_basic.userid }</td>
-					<td>${User_basic.username }</td>
-					<td>${User_basic.userrank }</td>
-
-				</tr>
-			</c:forEach>
-		</table>
-		<br>
-		<br>
-
-		<table class="table table-hover table-condensed">
-			<caption>자재</caption>
-			<tr>
-				<th>사번</th>
-				<th>이름</th>
-				<th>직위</th>
-			</tr>
-			<c:forEach items="${deptList }" var="deptno">
-				<tr>
-					<td>${User_basic.userid }</td>
-					<td>${User_basic.username }</td>
-					<td>${User_basic.userrank }</td>
-				</tr>
-			</c:forEach>
-		</table>
-		<br>
-		<br>
-	</div>
 </div>
+<!-- .container -->
 
 
 <c:import url="/WEB-INF/views/adlayout/adfooter.jsp" />
