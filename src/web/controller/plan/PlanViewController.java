@@ -1,6 +1,7 @@
 package web.controller.plan;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -40,7 +41,18 @@ public class PlanViewController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		System.out.println("넘어 왔어!!");
+		List<Plan> planList = new ArrayList<>();
+
+		Plan p1 = new Plan();
+		p1.setPlan_name("A");
+		// p1.setPw("Alice");
+
+		planList.add(p1);
+
+		req.setAttribute("planList", planList);
+
+		// View 지정
+		req.getRequestDispatcher("/WEB-INF/views/plan/view.jsp").forward(req, resp);
 		
 	}
 
