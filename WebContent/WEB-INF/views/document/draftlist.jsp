@@ -61,6 +61,12 @@ h3{
 .active > th {
 	text-align: center;
 }
+.table-content > td{ 
+ 	text-align: center; 
+}
+.table-content > td:nth-child(3){
+	text-align: left;
+}
 </style>
 
 <%-- import header.jsp --%>
@@ -81,16 +87,16 @@ h3{
 <div class="container" style="width:930px;">
 <table class="table table-striped table-hover" style="width: 900px;"> <!-- 부트스트랩, table -->
 <tr class="active">
-	<th style="width: 9%;">구분</th>
+	<th style="width: 10%;">구분</th>
 	<th style="width: 14%;">보고일자</th>
-	<th style="width: 44%;">제목</th>
+	<th style="width: 40%;">제목</th>
 	<th style="width: 8%;">부서</th>
 	<th style="width: 8%;">직위</th>
-	<th style="width: 8%;">보고자</th>
-	<th style="width: 8%;">상태</th>
+	<th style="width: 10%;">보고자</th>
+	<th style="width: 10%;">상태</th>
 </tr>
 <c:forEach items="${draftList }" var="draft">
-<tr>
+<tr class="table-content">
 	<td>${draft.report_type }</td>
 	<td><fmt:formatDate value="${draft.doc_date }" pattern="yyyy-MM-dd"/></td>
 	<td><a href="/document/view?doc_num=${draft.doc_num }">${draft.doc_title }</a></td>
