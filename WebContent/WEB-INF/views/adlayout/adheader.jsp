@@ -108,7 +108,6 @@ div#s_left ul {
 
 
 #contents {
-	border: 1px solid black;
 	width: 931px;
 	float: right;
 	text-align: center;
