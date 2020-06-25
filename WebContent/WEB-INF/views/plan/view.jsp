@@ -108,7 +108,7 @@
 		
 		// console.log(${planList });
 
-		result.innerHTML = ${planList };
+		// result.innerHTML = ${planList };
 	}
 
 	document.addEventListener('DOMContentLoaded', function() {
