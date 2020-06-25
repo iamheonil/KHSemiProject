@@ -48,7 +48,7 @@ $(document).ready(function(){ //댓글 입력
 			})
 		).append(
 			$("<textarea>")
-			.attr("name", "content")
+			.attr("username", "content")
 			.css("display", "none")
 			.text($("#commentContent").val())
 		);
@@ -97,7 +97,11 @@ function deleteComment( c_num ) {
 
 <div class="padding_view" style="padding: 20px;">
 
+
 <!-- 카테고리 -->
+<div id="b_num" style="text-align: left; font-size: 13px;">
+글번호 &nbsp;${viewBoard.b_num } 
+</div>
 <div class="category" style="text-align: left; font-size: 13px; color:rgb(38, 114, 165);" onclick="history.go(-1)">
 	카테고리 &nbsp;[${viewBoard.category }]
 </div>
@@ -143,20 +147,7 @@ ${viewBoard.b_content }
 <!-- <div> -->
 <!-- <hr> -->
 
-<!--  비로그인  -->
-<%-- <c:if test="${not login }"> --%>
-<!-- <strong>로그인이 필요합니다</strong> -->
 
-<%-- </c:if> --%>
-
-<!--  댓글 입력 -->
-<!-- <div class="form-inline"> -->
-<%-- 	<input type="text" size="10" class="form-control" id="commentWriter" value="${name }" readonly="readonly"/> --%>
-
-<!-- 	<textarea rows="2" style="resize: none;" cols="60" class="form-control" id="commentContent"></textarea> -->
-<!-- 	<button id="btnCommInsert" class="btn">입력</button> -->
-
-<!-- </div> -->
 
 
 <!--  댓글 리스트  -->
@@ -164,31 +155,36 @@ ${viewBoard.b_content }
 <tbody id="commentBody">
 <c:forEach items="${commentList }" var="comment">
 <tr data-c_num="${comment.c_num }">
-	<th>[${comment.dept }&nbsp;${comment.userrank }]&nbsp;${name }
+	<th>[${comment.dept }&nbsp;${comment.userrank }]&nbsp;${username }
 	(<fmt:formatDate value="${comment.c_date }" pattern="yy-MM-dd hh:mm" />)
-<%-- 		<c:if test="${sessionScope.userid eq comment.userid }"> --%>
+		<c:if test="${sessionScope.userid eq comment.userid }">
 		<button class="btn btn-defalut btn-xs"
 			onclick="alert('삭제되었습니다.'); deleteComment(${comment.c_num}); history.go(0);">삭제	
 		</button>
-<%-- 		</c:if> --%>
+		</c:if>
 	</th>
-	
 </tr>
-<tr style="text-align: left;">	<td >${comment.c_content }<hr></td></tr>
+
+<tr style="text-align: left;" id="content"><td>${comment.c_content }<hr></td></tr>
 </c:forEach>
 </tbody>
 </table>
 <!--  댓글 입력 -->
 <table>
+<!--  비로그인  -->
+<c:if test="${not login }">
+<strong>로그인이 필요합니다</strong>
+</c:if>
+
+
+
+</table>
 
 <div class="form-inline">
-
-	<input type="text" size="10" class="form-control" id="commentWriter" value="${name }" readonly="readonly"/>
-	<textarea rows="3" style="resize: none;" cols="100" class="form-control" id="commentContent"></textarea>
+	<input type="text" size="10" class="form-control" id="commentWriter" value="${username }" readonly="readonly"/>
+	<textarea rows="3" style="resize: none" cols="100" class="form-control" id="commentContent"></textarea>
 	<button id="btnCommInsert" class="btn">입력</button>
-
 </div>
-</table>
 
 
 <!-- <tbody id="commentBody"> -->

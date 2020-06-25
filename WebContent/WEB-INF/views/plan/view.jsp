@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -8,6 +7,7 @@
 <script type="text/javascript" src="<c:url value='/resources/js/fullcalendar/daygrid.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/fullcalendar/interaction.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/fullcalendar/timegrid.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/resources/js/fullcalendar/httpRequest.js'/>"></script>
 <%-- <script type="text/javascript" src="<c:url value='/resources/js/fullcalendar/settings.js'/>"></script> --%>
 
 <link rel="stylesheet" type="text/css" href="${ctx }/resources/css/fullcalendar/daygrid.css">
@@ -70,19 +70,59 @@
 <br>
 
 <script type="text/javascript">
+	window.onload = function() {
+		// Button ID => btnAction
+		btnAction.onclick = function() {
+
+			// console.log("btnAction Click!")
+
+			// AJAX 요청 보내기
+			sendRequest("POST", "/plan/view", "", callback);
+
+		}
+
+	}
+
+	//위의 요청의 콜백 함수 
+	function callback() {
+
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+
+				// console.log("정상적인 Ajax 요청, 응답 완료");
+
+				print();
+
+			} else {
+				console.log("AJAX 요청, 응답 실패");
+			}
+		}
+
+	}
+
+	function print() {
+
+		console.log("Print Call")
+
+		console.log("response Text");
+		
+		// console.log(${planList });
+
+		// result.innerHTML = ${planList };
+	}
 
 	document.addEventListener('DOMContentLoaded', function() {
 
 		var eventName = '<c:out value='${allPlan }'/>';
-		
+
 		var calendarEl = document.getElementById('calendar');
-		
+
 		// var eventName = ${plan };
-		
+
 		/* 
 		var ptime_Start = ${plan.ptime_start };
 		var ptime_End = ${plan.ptime_end }; */
-		
+
 		// var eventName = '하잉';
 		var ptime_Start = '2020-06-24';
 		var ptime_End = '2020-06-30';
@@ -93,19 +133,19 @@
 			editable : true,
 			eventLimit : true, // allow "more" link when too many events
 			locale : 'ko',
-			
+
 			events : [ {
 				title : '하위',
 				start : '2020-06-01',
 				end : '2020-06-05'
 			}, {
 				title : eventName,
-				url : 'http://google.com/',
-				start : ptime_Start,
-				end : ptime_End
+				// url : 'http://google.com/',
+				start : '2020-06-06',
+				end : '2020-07-11'
 			} ]
 		});
-		
+
 		calendar.render();
 		// var testVal = ${allPlan };
 	});
@@ -130,6 +170,10 @@
 <br>
 
 </div>
+
+<button id="btnAction">AJAX 요청</button>
+
+<div id="result"></div>
 
 <%-- import footer --%>
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

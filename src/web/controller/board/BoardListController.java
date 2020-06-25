@@ -48,7 +48,7 @@ public class BoardListController extends HttpServlet {
 		
 		req.setAttribute("N_list", N_list);
 //		req.setAttribute("C_list", C_list);
-		System.out.println(N_list);
+//		System.out.println(N_list);
 		//View 지정
 		req.getRequestDispatcher("/WEB-INF/views/board/boardList.jsp").forward(req, resp);
 		

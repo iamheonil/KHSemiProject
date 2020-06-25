@@ -67,7 +67,7 @@ $(document).ready(function() {
 <table class="table table-bordered">
 <tr><td class="info">카테고리</td>
 <td>
-<select>
+<select id= "category" name="category">
  <option value="공지사항">공지사항</option>
  <option value="스터디모집">스터디모집</option>
  <option value="사내게시판">사내게시판</option>
@@ -76,6 +76,8 @@ $(document).ready(function() {
 </tr>
 <tr><td class="info">아이디</td><td>${userid }</td></tr>
 <tr><td class="info">이름</td><td>${username }</td></tr>
+<tr><td class="info">부서</td><td>${userdept }</td></tr>
+<tr><td class="info">직급</td><td>${userrank }</td></tr>
 <tr><td class="info">제목</td><td><input type="text" name="title" style="width:100%"/></td></tr>
 <tr><td class="info" colspan="2">내용</td></tr>
 <tr><td colspan="2"><textarea id="content" name="content"></textarea></td></tr>

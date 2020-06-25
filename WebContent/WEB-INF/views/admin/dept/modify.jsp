@@ -1,20 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
-<!-- 합쳐지고 최소화된 최신 CSS -->
+<!-- 부트스트랩 3.3.2 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-<!-- 부가적인 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<html>
-<body>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<!-- jQuery 2.2.4.min -->
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 
 <script type="text/javascript">
@@ -35,8 +32,25 @@ $(document).ready(function() {
 });
 </script>
 
+<style type="text/css">
+h4 {
+	color: #0A2D5D;
+	font-weight: bold;
+	padding: 20px;
+	font-size: 1.7em;
+}
+
+.container {
+	float: left;
+	position: relative;
+	width: 900px;
+}
+}
+</style>
+
 <div class="container">
-<h3>사원 기본 정보 수정</h3>
+<h4>사원 기본 정보 수정</h4>
+<hr>
 
 <form method="post" enctype="application/x-www-form-urlencoded">
 
@@ -69,5 +83,4 @@ $(document).ready(function() {
 	<button type="button" id="btnCancel" class="btn btn-danger">취소</button>
 </div>
 
-</body>
-</html>
+

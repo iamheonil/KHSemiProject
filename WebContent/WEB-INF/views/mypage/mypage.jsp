@@ -8,7 +8,7 @@
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
 <%-- import aside.jsp --%>
-<c:import url="/WEB-INF/views/layout/aside.jsp" />
+<c:import url="/WEB-INF/views/layout/aside_mypage.jsp" />
 
 <script type='text/javascript'>
 	$(document).ready(function() {

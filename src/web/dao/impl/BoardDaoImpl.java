@@ -716,19 +716,21 @@ public class BoardDaoImpl implements BoardDao{
 		
 		//SQL 작성
 		String sql = "";
-		sql += "INSERT INTO board( cateogory, userid, b_num, b_title, b_content, hits)";
-		sql += "VALUES ( ?, ?, ?, ?, 0)";
+		sql += "INSERT INTO board( category, b_num, b_title, b_content, hits, userid, username, userrank, dept)";
+		sql += " VALUES ( ?, board_seq.nextval, ?, ?, 0, ?, ?, ?, ?)";
 		
 		try {
 			ps = conn.prepareStatement(sql);
 			
 			//글쓰기 정보 삽입
 			ps.setString(1, board.getCategory());
-			ps.setInt(2, board.getUserid());
-			ps.setInt(3, board.getB_num());
-			ps.setString(4, board.getB_title());
-			ps.setString(5, board.getB_content());
-			
+			ps.setString(2, board.getB_title());
+			ps.setString(3, board.getB_content());
+			ps.setInt(4, board.getUserid());
+			ps.setString(5, board.getUsername());
+			ps.setString(6, board.getUserrank());
+			ps.setString(7, board.getDept());
+						
 			ps.executeUpdate();
 			
 		} catch (SQLException e) {

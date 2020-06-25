@@ -18,17 +18,13 @@
 			</ul>
 			<nav id="admenu">
 
-				<li class="ad-li"><a href="/document/dolist">
-				<span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;전자결재</a></li>
+				<li class="ad-li"><a href="/document/dolist">&nbsp;&nbsp;전자문서</a></li>
 
-				<li class="ad-li"><a href="/plan/view">
-				<span class="glyphicon glyphicon-time"></span>&nbsp;&nbsp;일정관리</a></li>
+				<li class="ad-li"><a href="/plan/view">&nbsp;&nbsp;일정관리</a></li>
 		
-				<li class="ad-li"><a href="/board/list">
-				<span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;커뮤니티</a></li>
+				<li class="ad-li"><a href="/board/list">&nbsp;&nbsp;커뮤니티</a></li>
 
-				<li class="ad-li"><a href="">
-				<span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;주소록</a></li>
+				<li class="ad-li"><a href="">&nbsp;&nbsp;주소록</a></li>
 						
 			</nav>
 		</ul>

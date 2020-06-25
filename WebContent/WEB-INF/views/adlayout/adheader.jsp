@@ -108,7 +108,6 @@ div#s_left ul {
 
 
 #contents {
-	border: 1px solid black;
 	width: 931px;
 	float: right;
 	text-align: center;
@@ -215,7 +214,7 @@ a {
 	<div id="front-wrap">
 		<div id="header">
 			<ul class="nav-container">
-				<li id="nav-logo"><a href="/admain.jsp"><img src="/logo2.png" width="200px;"></a></li>
+				<li id="nav-logo"><a href="/admain.jsp"><img src="/logo.png" width="170px;"></a></li>
 			</ul>
 		</div>
 		
