@@ -139,10 +139,20 @@
 				start : '2020-06-01',
 				end : '2020-06-05'
 			}, {
+				title : '히잉',
+				// url : 'http://google.com/',
+				start : '2020-06-10',
+				end : '2020-06-15'
+			}, {
+				title : '호잉',
+				// url : 'http://google.com/',
+				start : '2020-06-23',
+				end : '2020-06-26'
+			}, {
 				title : eventName,
 				// url : 'http://google.com/',
-				start : '2020-06-06',
-				end : '2020-07-11'
+				start : '2020-06-27',
+				end : '2020-06-31'
 			} ]
 		});
 
