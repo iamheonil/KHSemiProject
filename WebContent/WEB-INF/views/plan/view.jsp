@@ -4,11 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%
-     request.getAttribute("allPlan");
-%>  
-
-
 <script type="text/javascript" src="<c:url value='/resources/js/fullcalendar/fullcalendar.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/fullcalendar/daygrid.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/fullcalendar/interaction.js'/>"></script>
@@ -69,6 +64,7 @@
 			<td><fmt:formatDate value="${plan.ptime_end }"
 					pattern="yyyy-MM-dd" /></td>
 		</tr>
+		<br>
 	</c:forEach>
 
 <br>
@@ -76,13 +72,18 @@
 <script type="text/javascript">
 
 	document.addEventListener('DOMContentLoaded', function() {
+
+		var eventName = '<c:out value='${allPlan }'/>';
+		
 		var calendarEl = document.getElementById('calendar');
 		
-/* 		var eventName = ${plan.plan_name };
+		// var eventName = ${plan };
+		
+		/* 
 		var ptime_Start = ${plan.ptime_start };
 		var ptime_End = ${plan.ptime_end }; */
 		
-		var eventName = '하잉';
+		// var eventName = '하잉';
 		var ptime_Start = '2020-06-24';
 		var ptime_End = '2020-06-30';
 
@@ -95,8 +96,8 @@
 			
 			events : [ {
 				title : '하위',
-				start : '2020-06-24',
-				end : '2020-06-26'
+				start : '2020-06-01',
+				end : '2020-06-05'
 			}, {
 				title : eventName,
 				url : 'http://google.com/',
