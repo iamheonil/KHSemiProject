@@ -16,8 +16,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<%-- import header.jsp --%>
-<c:import url="/WEB-INF/views/layout/header.jsp" />
+
 <style type="text/css">
 h4 {
 	color: #0A2D5D;
@@ -29,18 +28,19 @@ h4 {
 	margin: 0;
 	padding-left: 20px;
 	background: #6794D4;
+	text-align: left;
 }
 
 #dolistAppro li {
 	/* 	float: left; */
 	display: inline-block;
 	background: white;
-	margin: 10px;
+	margin: 10px 20px;
 	padding: 5px;
 }
 
 #dolist {
-	width: 860px;
+	width: 1000px;
 	padding-left: 15px;
 }
 
@@ -58,7 +58,11 @@ h4 {
 }
 </style>
 
-<c:import url="/WEB-INF/views/layout/aside.jsp" />
+
+<%-- import header.jsp --%>
+<c:import url="/WEB-INF/views/layout/header_doc.jsp" />
+
+<c:import url="/WEB-INF/views/layout/aside_doc.jsp" />
 
 <div id="contents">
 	<div id="dolistcon">
@@ -74,9 +78,9 @@ h4 {
 		<br>
 
 
-		<div class="container">
+		<div class="container" style="width: 1000px;">
 			<h4>결재대기함</h4>
-			<table class="table table-striped table-hover" style="width: 850px;">
+			<table class="table table-striped table-hover" style="width: 1000px;">
 				<!-- 부트스트랩, table -->
 				<tr class="active">
 					<th style="width: 10%;">구분</th>
@@ -100,13 +104,11 @@ h4 {
 				<%-- </c:forEach> --%>
 			</table>
 
-			<c:import url="/WEB-INF/views/layout/paging.jsp" />
 
 			<br>
 
 			<h4>진행문서함</h4>
-			<table class="table table-striped table-hover table-condensed"
-				style="width: 850px;">
+			<table class="table table-striped table-hover table-condensed" style="width:1000px;">
 				<!-- 부트스트랩, table -->
 				<tr class="active">
 					<th style="width: 10%;">구분</th>
@@ -122,7 +124,7 @@ h4 {
 					<%-- 	<td><fmt:formatDate value="${board.writtendate }" pattern="yyyy-MM-dd"/></td> --%>
 					<td>2020-05-23</td>
 					<%-- 	<td><a href="/board/view?boardno=${doc.doc_num }">${doc.doc_title }</a></td> --%>
-					<td>제목1</td>
+					<td>전자문서 결재에 대한 결과 보고 입니다 아아아</td>
 					<td>부서1</td>
 					<td>사원</td>
 					<td>이름1</td>
@@ -130,7 +132,6 @@ h4 {
 				<%-- </c:forEach> --%>
 			</table>
 
-			<c:import url="/WEB-INF/views/layout/paging.jsp" />
 
 		</div>
 		<!-- div.container -->

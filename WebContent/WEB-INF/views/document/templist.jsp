@@ -12,8 +12,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<%-- import header.jsp --%>
-<c:import url="/WEB-INF/views/layout/header.jsp" />
+
 <script type="text/javascript">
 $(document).ready(function() {
 	// 선택체크 삭제
@@ -109,8 +108,7 @@ h3{
 }
 
 #templist{
-	width: 930px;
-/* 	padding-left: 15px; */
+	width: 1000px;
 	padding: 35px;
 }
 h3{
@@ -120,14 +118,14 @@ h3{
 #dolistcon{
 	padding: 20px;
 }
-.container{
-	width: 900px;
-}
 
 .form-inline{
 	display: inline-block;
 }
 </style>
+
+<%-- import header.jsp --%>
+<c:import url="/WEB-INF/views/layout/header_doc.jsp" />
 
 <c:import url="/WEB-INF/views/layout/aside_doc.jsp"/>
 		
@@ -141,13 +139,13 @@ h3{
 <br><br>
 
 
-<div class="container">
-<table class="table table-striped table-hover" style="width: 850px;"> <!-- 부트스트랩, table -->
-<tr class="active">
+<div class="container" style="width:930px;">
+<table class="table table-striped table-hover" style="width: 900px;"> <!-- 부트스트랩, table -->
+<tr class="active" style="text-align: center;">
 	<th><input type="checkbox" id="checkAll" onclick="checkAll();"/></th>
 	<th style="width: 10%;">구분</th>
-	<th style="width: 20%;">저장일자</th>
-	<th style="width: 40%;">제목</th>
+	<th style="width: 15%;">저장일자</th>
+	<th style="width: 45%;">제목</th>
 	<th style="width: 10%;">부서</th>
 	<th style="width: 10%;">직위</th>
 	<th style="width: 10%;">보고자</th>
@@ -187,7 +185,7 @@ h3{
 
 
 </div> <!-- templist -->
-</div> <!-- contents 닫는태그 -->
+</div>  <!-- contents 닫는태그 -->
 	
 	
 <%-- import footer --%>

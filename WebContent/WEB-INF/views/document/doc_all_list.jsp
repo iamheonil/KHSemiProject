@@ -12,8 +12,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<%-- import header.jsp --%>
-<c:import url="/WEB-INF/views/layout/header.jsp" />
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -49,8 +47,7 @@ h3{
 }
 
 #templist{
-	width: 930px;
-/* 	padding-left: 15px; */
+	width: 1000px;
 	padding: 35px;
 }
 h3{
@@ -60,14 +57,14 @@ h3{
 #dolistcon{
 	padding: 20px;
 }
-.container{
-	width: 900px;
-}
 
 .form-inline{
 	display: inline-block;
 }
 </style>
+
+<%-- import header.jsp --%>
+<c:import url="/WEB-INF/views/layout/header_doc.jsp" />
 
 <c:import url="/WEB-INF/views/layout/aside_doc.jsp"/>
 		
@@ -81,12 +78,12 @@ h3{
 <br><br>
 
 
-<div class="container">
-<table class="table table-striped table-hover" style="width: 850px;"> <!-- 부트스트랩, table -->
+<div class="container" style="width:930px;">
+<table class="table table-striped table-hover" style="width: 900px;"> <!-- 부트스트랩, table -->
 <tr class="active">
-	<th style="width: 10%;">문서번호</th>
-	<th style="width: 15%;">보고일자</th>
-	<th style="width: 40%;">제목</th>
+	<th style="width: 9%;">문서번호</th>
+	<th style="width: 14%;">보고일자</th>
+	<th style="width: 44%;">제목</th>
 	<th style="width: 8%;">부서</th>
 	<th style="width: 8%;">직위</th>
 	<th style="width: 8%;">보고자</th>
