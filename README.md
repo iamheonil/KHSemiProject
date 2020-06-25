@@ -14,4 +14,5 @@
 
 <br>
 
-
+### 릴리즈 정보
+https://github.com/iamheonil/KHSemiProject/releases
