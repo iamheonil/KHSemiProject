@@ -65,6 +65,16 @@ h3{
 .active > th {
 	text-align: center;
 }
+
+.table-content > td{ 
+ 	text-align: center; 
+}
+.table-content > td:nth-child(3){
+	text-align: left;
+}
+.table-content span{
+	color: red;
+}
 </style>
 
 <%-- import header.jsp --%>
@@ -94,7 +104,7 @@ h3{
 	<th style="width: 8%;">상태</th>
 </tr>
 <c:forEach items="${AllList }" var="list">
-<tr>
+<tr class="table-content">
 	<td>${list.doc_num }</td>
 	<td><fmt:formatDate value="${list.doc_date }" pattern="yyyy-MM-dd"/></td>
 	<td><a href="/document/view?doc_num=${list.doc_num }">${list.doc_title }</a></td>

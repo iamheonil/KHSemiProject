@@ -89,7 +89,7 @@ h3{
 <div id="contents">
 <div id="templist">
 
-<h3>결재대기함</h3><br>
+<h3>진행문서함</h3><br>
 
 
 
@@ -106,21 +106,21 @@ h3{
 	<th style="width: 10%;">직위</th>
 	<th style="width: 10%;">보고자</th>
 </tr>
-<c:forEach items="${waitApproveList }" var="waitApprove">
+<c:forEach items="${progressList }" var="progress">
 <tr class="table-content">
-	<td>${waitApprove.report_type }</td>
-	<td><fmt:formatDate value="${waitApprove.doc_date }" pattern="yyyy-MM-dd"/></td>
-	<td><a href="/document/view?doc_num=${waitApprove.doc_num }">${waitApprove.doc_title }</a></td>
-	<td>${waitApprove.dept }</td>
-	<td>${waitApprove.userrank }</td>
-	<td>${waitApprove.username }</td>
+	<td>${progress.report_type }</td>
+	<td><fmt:formatDate value="${progress.doc_date }" pattern="yyyy-MM-dd"/></td>
+	<td><a href="/document/view?doc_num=${progress.doc_num }">${progress.doc_title }</a></td>
+	<td>${progress.dept }</td>
+	<td>${progress.userrank }</td>
+	<td>${progress.username }</td>
 </tr>
 
 </c:forEach>
 </table>
 
 
-<c:import url="/WEB-INF/views/layout/document_waitApprove_paging.jsp"/>
+<c:import url="/WEB-INF/views/layout/document_progress_paging.jsp"/>
 <br>
 
 <div class="form-inline">
