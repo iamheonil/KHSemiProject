@@ -68,7 +68,9 @@ $(document).ready(function() {
 <tr><td class="info">카테고리</td>
 <td>
 <select id= "category" name="category">
+ <c:if test="${userrank == '차장' or userrank == '부장' or userrank == '팀장'}">
  <option value="공지사항">공지사항</option>
+ </c:if>
  <option value="스터디모집">스터디모집</option>
  <option value="사내게시판">사내게시판</option>
  </select>

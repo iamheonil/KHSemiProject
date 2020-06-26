@@ -67,9 +67,10 @@ $(document).ready(function(){
 		</table>
 
 
-
+		<c:if test="${userrank == '차장' or userrank == '부장' or userrank == '팀장'}">
 		<button type="button" class="btn pull-right glyphicon glyphicon-pencil"
 			onclick="location.href='/board/insert'">&nbsp;글쓰기</button>
+		</c:if>
 		<c:import url="/WEB-INF/views/layout/b_Npaging.jsp" />
 
 		<div class="form-inline text-center">

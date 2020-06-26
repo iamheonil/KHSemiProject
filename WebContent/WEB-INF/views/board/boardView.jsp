@@ -194,7 +194,9 @@ ${viewBoard.b_content }
 	<input type="hidden" class="form-control" id="userrank" name="userrank" value="${sessionScope.userrank }" readonly="readonly"/>
 	<input type="text" size="8" class="form-control" id="comment" name="username" value="  ${username }" readonly="readonly"/>
 	<textarea rows="3" style="resize: none" cols="80" class="form-control" id="content" name="content"></textarea>
+	<c:if test="${login }">
 	<button id="btnCommInsert" class="btn">입력</button>
+	</c:if>
 </div>
 </form>
 
