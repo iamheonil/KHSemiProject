@@ -41,9 +41,18 @@ $(document).ready(function(){
 /* 커뮤니티 */
 $(document).ready(function(){
 	$('#board').click(function(){
-		$('#contents').load('/board/delete');
+		$('#contents').load('/admin/board/list');
 	})
 })
+
+/* 커뮤니티 리스트 */
+// $(document).ready(function(){
+// 	$(document).on("click", '.btn btn-primary pull-right', function(){
+// 		$('#contents').load($(this).attr("href"));
+// 		return false;
+// 	})
+// })
+
 
 // /* 조직도 */
 // $(document).ready(function(){
