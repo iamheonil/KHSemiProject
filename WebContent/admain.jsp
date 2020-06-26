@@ -45,12 +45,12 @@ $(document).ready(function(){
 	})
 })
 
-/* 조직도 */
-$(document).ready(function(){
-	$('#').click(function(){
-		$('#contents').load('');
-	})
-})
+// /* 조직도 */
+// $(document).ready(function(){
+// 	$('#').click(function(){
+// 		$('#contents').load('');
+// 	})
+// })
 
 /* 전자문서 */
 $(document).ready(function(){
