@@ -10,6 +10,22 @@
 <script type="text/javascript"
  src="/resources/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 
+<script type="text/javascript">
+	//<form>의 submit이 수행되면 스마트에디터의 내용이 <textarea>에 적용됨	
+function submitContents(elClickedObj){
+	//에디터의 내용을 #content에 반영한다
+	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+	
+	try {
+		elClickedObj.form.submit();
+		
+	} catch (e) {
+		
+	}
+
+}
+</script>
+
  <script type="text/javascript">
  $(document).ready(function(){
 	 
@@ -36,6 +52,12 @@
 #content {
 	width: 98%;
 }
+
+.container{
+	width: 50%;
+	height: auto;
+}
+
 </style>
 
 <div class="container">
@@ -45,7 +67,7 @@
 
 <div>
 <form action="/board/update" method="post">
-<input type="hidden" name="boardno" value="${viewBoard.boardno }" />
+<input type="hidden" name="boardno" value="${viewBoard.b_num }" />
 
 <table class="table table-bordered">
 <tr><td class="info">카테고리</td>
@@ -59,7 +81,7 @@
 </tr>
 <tr><td class="info">아이디</td><td>${userid }</td></tr>
 <tr><td class="info">이름</td><td>${username }</td></tr>
-<tr><td class="info">제목</td><td><input type="text" name="title" style="width:100%" value="${viewBoard.title }"/></td></tr>
+<tr><td class="info">제목</td><td><input type="text" name="title" style="width:100%" value="${viewBoard.b_title }"/></td></tr>
 <tr><td class="info" colspan="2">내용</td></tr>
 <tr><td colspan="2">
 	<textarea id="content" name="content" rows="10" cols="100">${viewBoard.b_content }</textarea>
@@ -75,9 +97,7 @@
 </div>
 </div>
 
-<jsp:include page="../layout/footer.jsp" />
 
-<c:import url="/WEB-INF/views/layout/footer.jsp" />
 
 <!-- 스마트 에디터를 생성하는 코드 -->
 <!-- 스마트 에디터의 스킨을 입히는 코드 -->
@@ -94,14 +114,6 @@ nhn.husky.EZCreator.createInIFrame({
 		bUseModeChanger: true //글쓰기 모드 탭
 	}
 });
-
-//<form>의 submit이 수행되면 스마트에디터의 내용이 <textarea>에 적용됨
-function submitContents(elClickedObj) {
-	// 에디터의 내용이 textarea에 적용된다.
-	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
-
-	try {
-		elClickedObj.form.submit();
-	} catch (e) { }
-}
 </script>
+
+<c:import url="/WEB-INF/views/layout/footer.jsp" />

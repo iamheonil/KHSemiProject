@@ -34,13 +34,12 @@ public class BoardUpdateController extends HttpServlet {
 	
 	//전달파라미터 - boardnum
 	Board boardnum = boardService.getBoardno(req);
-	
+	System.out.println(boardService.getBoardno(req));
 	//상세보기 결과 조회
 	Board viewBoard = boardService.view(boardnum);
 	
 	//MODEL로 게시글 전달
 	req.setAttribute("viewBoard", viewBoard);
-	
 	//VIEW지정
 	req.getRequestDispatcher("/WEB-INF/views/board/boardUpdate.jsp").forward(req, resp);
 	
