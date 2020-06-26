@@ -41,6 +41,17 @@ public interface BoardService {
 	 */
 	public List<Board> sList();
 	
+//	/**
+//	 * 페이징 처리하여 보여질 게시글 목록만 조회
+//	 * 
+//	 * @param paging - 페이징 정보 객체
+//	 * @return List<Board>
+//	 */
+//	
+//	public List<Board> list(int category, B_Paging paging);
+
+	
+	
 	/**
 	 * 페이징 처리하여 보여질 게시글 목록만 조회
 	 * 
@@ -49,8 +60,8 @@ public interface BoardService {
 	 */
 	
 	public List<Board> list(B_Paging paging);
-
 	
+//	
 
 	/**
 	 * 페이징 처리로 보여질 게시글목록만 조회
@@ -201,5 +212,6 @@ public interface BoardService {
 	 */
 	
 	public B_Paging getFreePaging(HttpServletRequest req);
+
 
 }

@@ -35,18 +35,26 @@ public class BoardListController extends HttpServlet {
 		
 		// 게시글을 조회
 		List<Board> list = boardService.list(paging);
+//		int category = Integer.parseInt(req.getParameter("searchCategory"));
+//		String keyword = req.getParameter("searchKeyword");
+//		List<Board> list = boardService.list(category, paging);
 	
 		// 공지사항 게시글 조회
 		List<Board> N_list = boardService.nList();
 		
 		
 		//
+		
+//		List<Board> K_list = boardService.selectbo(category, keyword);
+		
 //		List<Board> C_list = boardService.cList();
 
 		//조회된 결과 view 전달
 		req.setAttribute("list", list);
 		
 		req.setAttribute("N_list", N_list);
+		
+//		req.setAttribute("K_list", K_list);
 //		req.setAttribute("C_list", C_list);
 //		System.out.println(N_list);
 		//View 지정

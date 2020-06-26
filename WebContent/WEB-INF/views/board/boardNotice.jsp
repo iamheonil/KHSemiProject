@@ -25,15 +25,21 @@ $(document).ready(function(){
 			$("#btnSearch").click()
 		}
 	})
+	
+// 	$(".ListAll").click(function(){
+// 		$(location).attr("href", "/board/list");
+// 	})
+	
 });
 </script>
 <div id="contents">
 	<div class="container">
-
+		<div>
 		<h2 style="text-align: left;">커뮤니티</h2>
 		<h4 style="text-align: left;">공지사항</h4>
-		
 		<hr>
+		</div>
+		
 		<table class="table table-hover table-condensed">
 			<thead style="background-color: rgb(38, 114, 165);">
 				<tr style="text-align: center;">

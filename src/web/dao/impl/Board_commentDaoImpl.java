@@ -90,23 +90,8 @@ public class Board_commentDaoImpl implements Board_commentDao{
 		conn  = JDBCTemplate.getConnection();
 		
 		String sql = "";
-		sql += "INSERT INTO board_comment ("
-				+ "				c_num,"
-				+ "				b_num,"
-				+ "  			userid,"
-				+ "				c_content,"
-				+ "  			username,"
-				+ "             userrank,"
-				+ "             dept )"
-				+ " 	VALUES ("
-				+ " 			board_comment_seq.nextval,"
-				+ " 			?,"	
-				+ " 			?,"	
-				+ " 			?,"
-				+ "             ?,"
-				+ "             ?,"
-				+ "             ?)";	
-				
+			   sql += "INSERT INTO board_comment( c_num, b_num, userid, c_content, username, userrank, dept )";
+			   sql += "		VALUES ( board_comment_seq.nextval, ?, ?, ?, ?, ?, ?)";
 				try {
 					ps = conn.prepareStatement(sql);
 					
@@ -118,17 +103,25 @@ public class Board_commentDaoImpl implements Board_commentDao{
 					ps.setString(6, comment.getDept());
 					
 					ps.executeUpdate();
+					
 				} catch (SQLException e) {
 					e.printStackTrace();
 				} finally {
 					try {
 						if(ps!=null) 	ps.close();
 						
-					}catch (Exception e) {
+					}catch (SQLException e) {
 							e.printStackTrace();
 					}
 					
 				}
+				System.out.println("댓글번호" + comment.getC_num()); //들어감
+				System.out.println("게시판 번호" + comment.getB_num()); //들어감
+				System.out.println("아이디" +comment.getUserid()); //들어감
+				System.out.println(comment.getC_content());
+				System.out.println(comment.getUsername()); //들어감
+				System.out.println(comment.getUserrank());
+				System.out.println(comment.getDept()); //들어감
 	}
 
 	@Override

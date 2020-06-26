@@ -29,37 +29,44 @@ $(document).ready(function() {
 <script type="text/javascript">
 $(document).ready(function(){ //댓글 입력
 	
-	$("#btnCommInsert").click(function(){
+// 	$("#btnCommInsert").click(function(){
 		
-		$form = $("<form>").attr({
-			action: "/comment/insert",
-			method: "post"
-		}).append(
-			$("<input>").attr({
-				type:"hidden",
-				name:"b_num",
-				value:"${viewBoard.b_num}"
-			})	
-		).append(
-			$("<input>").attr({
-				type:"hidden",
-				name:"userid",
-				value:"${sessionScope.userid }"
-			})
-		).append(
-			$("<textarea>")
-			.attr("username", "content")
-			.css("display", "none")
-			.text($("#commentContent").val())
-		);
-		$(document.body).append($form);
-		$form.submit();
+// 		$form = $("<form>").attr({
+// 			action: "/comment/insert",
+// 			method: "post"
+// 		}).append(
+// 			$("<input>").attr({
+// 				type:"hidden",
+// 				name:"b_num",
+// 				value:"${viewBoard.b_num}"
+// 			})	
+// 		).append(
+// 			$("<input>").attr({
+// 				type:"hidden",
+// 				name:"userid",
+// 				value:"${sessionScope.userid }"
+// 			})
+// 		).append(
+// 			$("<input>").attr({
+// 				type:"hidden",
+// 				name:"userrank",
+// 				value:"${sessionScope.userrank }"
+// 			})		
+// 		).append(
+// 			$("<textarea>").attr("username", "content")
+// 			.css("display", "block")
+// 			.text($("#content").val())
+// 		);
+// 		$(document.body).append($form);
+// 		$form.submit();
 		
 		
+// 	});
+	$("#btnCommInsert").click(function() {
+		//스마트에디터의 내용을<textarea>에 적용하는 함수를 호출한다
+		submitContents( $("#btnCommInsert"));
+		$("form").submit();
 	});
-	
-	
-	
 	
 });
 
@@ -75,8 +82,7 @@ function deleteComment( c_num ) {
 		, succes: function(data){
 			if(data.succes) {
 				
-				$("[data-c_num='"+c_num+"']").remove();
-				
+				$("[data-c_num='"+c_num+"']").remove();				
 			} else {
 				alert("댓글 삭제 실패");
 			}
@@ -102,7 +108,7 @@ function deleteComment( c_num ) {
 <div id="b_num" style="text-align: left; font-size: 13px;">
 글번호 &nbsp;${viewBoard.b_num } 
 </div>
-<div class="category" style="text-align: left; font-size: 13px; color:rgb(38, 114, 165);" onclick="history.go(-1)">
+<div class="category" style="text-align: left; font-size: 13px; color:rgb(38, 114, 165);">
 	카테고리 &nbsp;[${viewBoard.category }]
 </div>
 
@@ -179,13 +185,17 @@ ${viewBoard.b_content }
 
 
 </table>
-
+<form action="/comment/insert" method="post">
 <div class="form-inline">
-	<input type="text" size="10" class="form-control" id="commentWriter" value="${username }" readonly="readonly"/>
-	<textarea rows="3" style="resize: none" cols="100" class="form-control" id="commentContent"></textarea>
+	<input type="hidden" class="form-control" id="b_num" name="b_num" value="${viewBoard.b_num }" readonly="readonly"/>
+	<input type="hidden" class="form-control" id="userid" name="userid" value="${sessionScope.userid }" readonly="readonly"/>
+	<input type="hidden" class="form-control" id="userdept" name="userdept" value="${sessionScope.userdept }" readonly="readonly"/>
+	<input type="hidden" class="form-control" id="userrank" name="userrank" value="${sessionScope.userrank }" readonly="readonly"/>
+	<input type="text" size="8" class="form-control" id="comment" name="username" value="  ${username }" readonly="readonly"/>
+	<textarea rows="3" style="resize: none" cols="80" class="form-control" id="content" name="content"></textarea>
 	<button id="btnCommInsert" class="btn">입력</button>
 </div>
-
+</form>
 
 <!-- <tbody id="commentBody"> -->
 <%-- <c:forEach items="${commentList }" var="comment"> --%>

@@ -146,6 +146,13 @@ public class BoardServiceImpl implements BoardService{
 		
 		return boardDao.selectAll(paging);
 	}
+//	@Override
+//	public List<Board> list(int category, B_Paging paging) {
+//		
+//		
+//		
+//		return boardDao.selectAll(category, paging);
+//	}
 
 	@Override
 	public List<Board> nList(B_Paging paging) {
@@ -268,17 +275,16 @@ public class BoardServiceImpl implements BoardService{
 		}
 		
 		String b_num = (String)req.getParameter("b_num");
-		String userid = (String)req.getParameter("userid");
-		String c_content = req.getParameter("c_content");
-		String username = req.getParameter("username");
+		
 		
 		Board_comment comment = new Board_comment();
 		
 		comment.setB_num(Integer.parseInt(b_num));
-		comment.setUserid(Integer.parseInt(userid));
-		comment.setC_content(c_content);
-		comment.setUsername(username);
-		
+		comment.setUserid((int)req.getSession().getAttribute("userid"));
+		comment.setUsername((String)req.getSession().getAttribute("username"));
+		comment.setC_content(req.getParameter("content"));
+		comment.setDept((String)req.getSession().getAttribute("userdept"));
+		comment.setUserrank((String)req.getSession().getAttribute("userrank"));
 		return comment;
 	}
 
@@ -299,6 +305,14 @@ public class BoardServiceImpl implements BoardService{
 		}
 		
 	}
+
+//	@Override
+//	public List<Board> selectbo(int category, String keyword) {
+//		
+//		ArrayList<Board>
+//		
+//		return null;
+//	}
 
 	
 
