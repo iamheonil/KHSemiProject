@@ -33,15 +33,15 @@ $(document).ready(function(){
 
 /* 사원관리 */
 $(document).ready(function(){
-	$('#').click(function(){
-		$('#contents').load('');
+	$('#deptlist').click(function(){
+		$('#contents').load('/user/modify/basic');
 	})
 })
 
 /* 커뮤니티 */
 $(document).ready(function(){
-	$('#').click(function(){
-		$('#contents').load('');
+	$('#board').click(function(){
+		$('#contents').load('/board/delete');
 	})
 })
 
@@ -55,7 +55,7 @@ $(document).ready(function(){
 /* 전자문서 */
 $(document).ready(function(){
 	$('#document').click(function(){
-		$('#contents').load('');
+		$('#contents').load('/document/delete');
 	})
 })
 
