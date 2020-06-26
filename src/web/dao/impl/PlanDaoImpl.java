@@ -10,7 +10,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import web.dao.face.PlanDao;
-import web.dao.face.User_basicDao;
 import web.dbutil.JDBCTemplate;
 import web.dto.Plan;
 import web.dto.User_basic;

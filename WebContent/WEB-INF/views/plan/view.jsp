@@ -97,7 +97,7 @@
 
 	<div id="calendar"></div>
 
-	<form action="/plan/view" method="post">
+	<form action="/plan/insert" method="post">
 		<table style="width:300px; margin: 0 auto; border-collapse: separate; border-spacing: 0px 30px;">
 			<tr><td>일정명 : </td><td><input type="text" name="plan_name" id="plan_name" size="20" /></td></tr>
 			<tr><td>일정 시작 날짜 : </td><td><input type="text" name="ptime_start" id="ptime_start" size="20" /></td></tr> 

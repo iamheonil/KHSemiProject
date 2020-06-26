@@ -18,7 +18,15 @@ public class PlanInsertController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		
+		System.out.println("insert 확인");
+
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		System.out.println("보낼게");
+		resp.sendRedirect("/plan/view");
 		
 	}
 
