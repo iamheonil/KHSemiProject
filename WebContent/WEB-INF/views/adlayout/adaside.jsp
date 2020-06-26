@@ -18,7 +18,7 @@
 							
 							</span>
 							
-							<span class="admin">관리자</span><br>
+							<span class="admin">${admin }</span><br>
 							<span class="admin">가나다라마바</span><br>
 							<div class="btn-group">
 								<button class="btn btn-primary btn-xs" type="button" aria-expanded="false">로그아웃</button>
@@ -30,9 +30,11 @@
 				<nav id ="admenu">
 					<li class="ad-li"><a href="#" id="adminaddress"><span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;주소록</a></li>
 					
-					<li class="ad-li"><a href="#" id=""><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;사원관리</a></li>
+					<li class="ad-li"><a href="#" id="deptlist"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;사원관리</a></li>
 				
-					<li class="ad-li"><a href="#" id=""><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;조직도</a></li>
+					<li class="ad-li"><a href="#" id=""><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;&nbsp;커뮤니티</a></li>
+					
+<!-- 					<li class="ad-li"><a href="#" id=""><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;조직도</a></li> -->
 				
 					<li class="ad-li"><a href="#" id="document"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;전자문서</a></li>
 				
