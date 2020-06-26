@@ -118,7 +118,7 @@ table {
 
 		<div class="text-center">
 			<button type="button" id="btnCreate" class="btn btn-primary">생성</button>
-			<button type="button" id="btnCancel" class="btn btn-danger">취소</button>
+			<button type="button" id="btnCancel" class="btn btn-primary">취소</button>
 		</div>
 
 	</div>
