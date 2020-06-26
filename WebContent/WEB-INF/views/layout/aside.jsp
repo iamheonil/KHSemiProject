@@ -14,7 +14,7 @@
 				<li>${userdept } ${userrank } ${username }</li>
 				<li>사원번호 ${userid }</li>
 				<li><button class="btn btn-dark" onclick="location.href='/user/modify/detail'" style="color: black;">마이페이지</button> &nbsp;
-					<button class="btn btn-dark" style="color: black;">로그아웃</button></li>
+					<button class="btn btn-dark" style="color: black;" onclick='location.href="/user/logout";'>로그아웃</button></li>
 			</ul>
 			<nav id="admenu">
 

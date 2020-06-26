@@ -14,17 +14,17 @@
 				<li>${userdept } ${userrank } ${username }</li>
 				<li>사원번호 ${userid }</li>
 				<li><button class="btn btn-dark" onclick="location.href='/user/modify/detail'" style="color: black;">마이페이지</button> &nbsp;
-					<button class="btn btn-dark" style="color: black;">로그아웃</button></li>
+					<button class="btn btn-dark" style="color: black;" onclick='location.href="/user/logout";'>로그아웃</button></li>
 			</ul>
 			<nav id="admenu">
 
-				<li class="ad-li"><a href="/document/dolist">&nbsp;&nbsp;전자문서</a></li>
+				<li class="ad-li"><a href="">&nbsp;&nbsp;회원정보변경</a></li>
 
-				<li class="ad-li"><a href="/plan/view">&nbsp;&nbsp;일정관리</a></li>
+				<li class="ad-li"><a href="">&nbsp;&nbsp;휴가신청</a></li>
 		
-				<li class="ad-li"><a href="/board/list">&nbsp;&nbsp;커뮤니티</a></li>
+				<li class="ad-li"><a href="">&nbsp;&nbsp;휴가내역조회</a></li>
 
-				<li class="ad-li"><a href="">&nbsp;&nbsp;주소록</a></li>
+				<li class="ad-li"><a href="">&nbsp;&nbsp;회원탈퇴</a></li>
 						
 			</nav>
 		</ul>
