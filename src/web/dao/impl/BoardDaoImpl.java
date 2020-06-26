@@ -19,7 +19,6 @@ public class BoardDaoImpl implements BoardDao{
 	private PreparedStatement ps = null; //SQL수행객체
 	private ResultSet rs = null; //조회 결과반환 객체
 	
-	
 	@Override
 	public List<Board> selectAll() {
 		

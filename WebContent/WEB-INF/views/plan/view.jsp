@@ -18,7 +18,7 @@
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
 <%-- import aside.jsp --%>
-<c:import url="/WEB-INF/views/layout/aside.jsp" />
+<c:import url="/WEB-INF/views/layout/aside_plan.jsp" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">
 
