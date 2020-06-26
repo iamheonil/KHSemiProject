@@ -42,9 +42,9 @@ padding: 0px;
 				<ul class="aside_nav">
 					<li class="sidemenu-title"><a href="/document/dolist">커뮤니티</a></li>
 					
-					<li class="sidemenu-content"><a href="/document/write">문서기안</a></li>
-					<li class="sidemenu-content"><a href="/document/list/temp">임시저장함</a></li>
-					<li class="sidemenu-content"><a href="/document/list/waitapprove">결재대기함</a></li>
+					<li class="sidemenu-content"><a href="/board/notice">공지사항</a></li>
+					<li class="sidemenu-content"><a href="/board/study">스터디 모집</a></li>
+					<li class="sidemenu-content"><a href="/board/free">사내게시판</a></li>
 				</ul>
 			</nav>
 			

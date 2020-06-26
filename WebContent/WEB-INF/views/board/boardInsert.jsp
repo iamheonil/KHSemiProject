@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:import url="/WEB-INF/views/layout/header.jsp" />
-<c:import url="/WEB-INF/views/layout/aside.jsp" />
+<c:import url="/WEB-INF/views/layout/header_doc.jsp" />
+<c:import url="/WEB-INF/views/layout/aside_board.jsp" />
 
 <script type="text/javascript" src="/resources/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 

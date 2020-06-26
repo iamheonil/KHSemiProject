@@ -3,9 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<c:import url="/WEB-INF/views/layout/header.jsp" />
+<c:import url="/WEB-INF/views/layout/header_doc.jsp" />
+<c:import url="/WEB-INF/views/layout/aside_board.jsp" />
 
-<c:import url="/WEB-INF/views/layout/aside.jsp" />
 <style type="text/css">
 .container {
 	width: auto;
