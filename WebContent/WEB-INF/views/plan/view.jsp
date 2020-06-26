@@ -52,122 +52,44 @@
 		
 		console.log("달력 준비 완료");
 	});
-</script>
-
-<%-- 
-
-<c:forEach items="${allPlan }" var="plan">
-		<tr>
-			<td>${plan.plan_num }</td>
-			<td>${plan.userid }</td>
-			<td>${plan.plan_name }</td>
-			<td><fmt:formatDate value="${plan.ptime_start }"
-					pattern="yyyy-MM-dd" /></td>
-			<td><fmt:formatDate value="${plan.ptime_end }"
-					pattern="yyyy-MM-dd" /></td>
-		</tr>
-		<br>
-</c:forEach> 
-	
-	--%>
-
-<br>
-
-<script type="text/javascript">
-	window.onload = function() {
-		// Button ID => btnAction
-		btnAction.onclick = function() {
-
-			// console.log("btnAction Click!")
-
-			// AJAX 요청 보내기
-			sendRequest("POST", "/plan/view", "", callback);
-
-		}
-
-	}
-
-	//위의 요청의 콜백 함수 
-	function callback() {
-
-		if (httpRequest.readyState == 4) {
-			if (httpRequest.status == 200) {
-
-				// console.log("정상적인 Ajax 요청, 응답 완료");
-
-				print();
-
-			} else {
-				console.log("AJAX 요청, 응답 실패");
-			}
-		}
-
-	}
-
-	function print() {
-
-		console.log("Print Call")
-
-		console.log("response Text");
-		
-		// console.log(${planList });
-
-		// result.innerHTML = ${planList };
-	}
 
 	document.addEventListener('DOMContentLoaded', function() {
-
-		var eventName = '<c:out value='${allPlan }'/>';
-
+		
 		var calendarEl = document.getElementById('calendar');
-
-		// var eventName = ${plan };
-
-		/* 
-		var ptime_Start = ${plan.ptime_start };
-		var ptime_End = ${plan.ptime_end }; */
-
-		// var eventName = '하잉';
-		var ptime_Start = '2020-06-24';
-		var ptime_End = '2020-06-30';
-
+		
+	<c:forEach items="${allPlan }" var="plan">
+		var eventName = '${plan.plan_name }';
+		var ptime_Start = '<fmt:formatDate value="${plan.ptime_start }" pattern="yyyy-MM-dd" />';
+		var ptime_End = '<fmt:formatDate value="${plan.ptime_end }" pattern="yyyy-MM-dd" />';
+	</c:forEach> 
+		
 		var calendar = new FullCalendar.Calendar(calendarEl, {
+			
 			plugins : [ 'interaction', 'dayGrid' ],
 			// defaultDate : '2019-06-12', 기본 날짜 설정을 삭제, 오늘 날짜로 기본 설정
 			editable : true,
 			eventLimit : true, // allow "more" link when too many events
 			locale : 'ko',
-
-			events : [ {
-				title : '휴가',
-				start : '2020-05-31',
-				end : '2020-06-02',
-			}, {
-				title : '프론트단 구현하기',
+			events : [ 
+				<c:forEach items="${allPlan }" var="plan">
+				{
+				title : '${plan.plan_name }',
+				start : '<fmt:formatDate value="${plan.ptime_start }" pattern="yyyy-MM-dd" />',
+				end : '<fmt:formatDate value="${plan.ptime_end }" pattern="yyyy-MM-dd" />'
+				}, 
+			</c:forEach>
+			{
+				title : '',
 				// url : 'http://google.com/',
-				start : '2020-06-22',
-				end : '2020-06-27'
-			}, {
-				title : '돌하르방 만나러 가기',
-				// url : 'http://google.com/',
-				start : '2020-06-19',
-				end : '2020-06-22'
-			}, {
-				title : '중간발표',
-				// url : 'http://google.com/',
-				start : '2020-06-26',
-				end : '2020-06-26'
-			}, {
-				title : '백엔드단 구현하기',
-				// url : 'http://google.com/',
-				start : '2020-06-26',
-				end : '2020-07-01'
+				start : '',
+				end : ''
 			} ]
 		});
 
 		calendar.render();
-		// var testVal = ${allPlan };
+
 	});
+	
 </script>
 
 
@@ -175,7 +97,7 @@
 
 	<div id="calendar"></div>
 
-	<form action="/plan/view" method="post">
+	<form action="/plan/insert" method="post">
 		<table style="width:300px; margin: 0 auto; border-collapse: separate; border-spacing: 0px 30px;">
 			<tr><td>일정명 : </td><td><input type="text" name="plan_name" id="plan_name" size="20" /></td></tr>
 			<tr><td>일정 시작 날짜 : </td><td><input type="text" name="ptime_start" id="ptime_start" size="20" /></td></tr> 
@@ -189,10 +111,6 @@
 <br>
 
 </div>
-
-<button id="btnAction">AJAX 요청</button>
-
-<div id="result"></div>
 
 <%-- import footer --%>
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

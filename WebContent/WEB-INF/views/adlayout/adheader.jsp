@@ -10,18 +10,19 @@
 <head>
 <title>Insert title here</title>
 
-<!-- 부트스트랩 3.3.2 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
 <!-- CDN -->
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	crossorigin="anonymous"></script>
 
-<link rel="stylesheet" href="css/style.css">
-<script src="js/style.js"></script>
+<!-- 부트스트랩 3.3.2 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+<!-- <link rel="stylesheet" href="css/style.css"> -->
+<!-- <script src="js/style.js"></script> -->
 
 <script type="text/javascript">
 
@@ -129,7 +130,7 @@ a {
 
 .ad-li {
 	border-bottom: 4px solid white;
-	height: 100px;
+	height: 70px;
 	display: flex;
 	align-items: center;
 }
@@ -142,7 +143,7 @@ a {
 #admenu a{
 	color: white;
 	width: 100%;
-	font-size: 20px;
+	font-size: 18px;
 	text-decoration: none;
 	
 }
@@ -214,7 +215,7 @@ a {
 	<div id="front-wrap">
 		<div id="header">
 			<ul class="nav-container">
-				<li id="nav-logo"><a href="/admain.jsp"><img src="/logo.png" width="170px;"></a></li>
+				<li id="nav-logo"><a href="/admin/view"><img src="/adlogo2.png" width="200px;"></a></li>
 			</ul>
 		</div>
 		

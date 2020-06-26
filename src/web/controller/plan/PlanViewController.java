@@ -26,7 +26,7 @@ public class PlanViewController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		// 디비에서 정보 가져오기
-		List<Plan> allPlan = planService.getPlan();
+		List<Plan> allPlan = planService.getPlan(req);
 		
 		System.out.println(allPlan);
 		

@@ -7,10 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import web.dao.face.PlanDao;
 import web.dbutil.JDBCTemplate;
-import web.dto.Board;
 import web.dto.Plan;
+import web.dto.User_basic;
 
 public class PlanDaoImpl implements PlanDao {
 
@@ -19,18 +21,19 @@ public class PlanDaoImpl implements PlanDao {
 	private ResultSet rs = null; // SQL조회 결과 객체
 
 	@Override
-	public List<Plan> dbPlan() {
+	public List<Plan> dbPlan(HttpServletRequest req) {
 
 		conn = JDBCTemplate.getConnection();
 
 		String sql = "";
-		sql += "SELECT * FROM PLAN";
+		sql += "SELECT * FROM PLAN WHERE userid = ?";
 
 		// 결과 저장할 List
 		List<Plan> allPlan = new ArrayList<>();
 
 		try {
 			ps = conn.prepareStatement(sql);
+			ps.setInt(1, (int)req.getSession().getAttribute("userid"));
 
 			rs = ps.executeQuery(); // SQL 수행 및 결과집합 저장
 			
@@ -49,7 +52,6 @@ public class PlanDaoImpl implements PlanDao {
 				allPlan.add(p);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			JDBCTemplate.close(rs);
@@ -57,6 +59,17 @@ public class PlanDaoImpl implements PlanDao {
 		}
 
 		return allPlan;
+	}
+
+	@Override
+	public User_basic dbGetId(HttpServletRequest req) {
+		
+		
+		
+		return null;
+
+		
+	
 	}
 
 }

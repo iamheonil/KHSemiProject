@@ -34,6 +34,9 @@ public class AdminAddressListcontroller extends HttpServlet {
 		
 		//게시글 페이징 처리 조회
 		List<User_basic_detail> detailList = addressService.getList(paging);
+
+		//검색어 MODEL값 전달
+//		req.setAttribute("search", search);
 		
 		//페이징 계산결과 MODEL값 전달
 		req.setAttribute("paging", paging);
