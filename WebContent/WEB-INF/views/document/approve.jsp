@@ -70,6 +70,9 @@ h3{
 .table-content > td:nth-child(3){
 	text-align: left;
 }
+.table-content span{
+	color: red;
+}
 </style>
 
 <%-- import header.jsp --%>
@@ -102,7 +105,14 @@ h3{
 <tr class="table-content">
 	<td>${approve.report_type }</td>
 	<td><fmt:formatDate value="${approve.doc_date }" pattern="yyyy-MM-dd"/></td>
-	<td style="text-align: left;"><a href="/document/view?doc_num=${approve.doc_num }">${approve.doc_title }</a></td>
+	<td>
+	<c:if test="${approve.doc_emergency eq 'Y' }">
+	<a href="/document/view?doc_num=${approve.doc_num }"><span>[긴급]</span>${approve.doc_title }</a>
+	</c:if>
+	<c:if test="${approve.doc_emergency != 'Y' }">
+	<a href="/document/view?doc_num=${approve.doc_num }">${approve.doc_title }</a>
+	</c:if>
+	</td>
 	<td>${approve.dept }</td>
 	<td>${approve.userrank }</td>
 	<td>${approve.username }</td>

@@ -69,6 +69,7 @@ h3{
 }
 </style>
 
+
 <%-- import header.jsp --%>
 <c:import url="/WEB-INF/views/layout/header_doc.jsp" />
 
