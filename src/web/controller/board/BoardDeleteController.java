@@ -25,14 +25,7 @@ public class BoardDeleteController extends HttpServlet {
 		@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-			Board board = new Board();
-			
-			req.getParameter("b_num");
-			board.setB_num(Integer.parseInt(req.getParameter("b_num")));
-			
-			boardService.boardDelete(board);
-			
-			resp.sendRedirect("/board/list");
+			req.getRequestDispatcher("/WEB-INF/views/admin/board/delete.jsp").forward(req, resp);
 		}
 		
 }
