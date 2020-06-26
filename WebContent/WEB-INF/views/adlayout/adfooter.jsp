@@ -8,7 +8,7 @@
 		<div class="clearfix"></div>
 		
 		<div id="ft-test">
-			<a href="#"><img src="/logo.png"></a>		
+			<a href="#"><img src="/adlogo.png"></a>		
 		</div>
 		
 		<div id="ft-test1">
