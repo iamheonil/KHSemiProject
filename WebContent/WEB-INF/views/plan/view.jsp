@@ -54,6 +54,8 @@
 	});
 </script>
 
+<%-- 
+
 <c:forEach items="${allPlan }" var="plan">
 		<tr>
 			<td>${plan.plan_num }</td>
@@ -65,7 +67,9 @@
 					pattern="yyyy-MM-dd" /></td>
 		</tr>
 		<br>
-	</c:forEach>
+</c:forEach> 
+	
+	--%>
 
 <br>
 
@@ -135,24 +139,29 @@
 			locale : 'ko',
 
 			events : [ {
-				title : '하위',
-				start : '2020-06-01',
-				end : '2020-06-05'
+				title : '휴가',
+				start : '2020-05-31',
+				end : '2020-06-02',
 			}, {
-				title : '히잉',
+				title : '프론트단 구현하기',
 				// url : 'http://google.com/',
-				start : '2020-06-10',
-				end : '2020-06-15'
+				start : '2020-06-22',
+				end : '2020-06-27'
 			}, {
-				title : '호잉',
+				title : '돌하르방 만나러 가기',
 				// url : 'http://google.com/',
-				start : '2020-06-23',
+				start : '2020-06-19',
+				end : '2020-06-22'
+			}, {
+				title : '중간발표',
+				// url : 'http://google.com/',
+				start : '2020-06-26',
 				end : '2020-06-26'
 			}, {
-				title : eventName,
+				title : '백엔드단 구현하기',
 				// url : 'http://google.com/',
-				start : '2020-06-27',
-				end : '2020-06-31'
+				start : '2020-06-26',
+				end : '2020-07-01'
 			} ]
 		});
 
