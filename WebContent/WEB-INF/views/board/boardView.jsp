@@ -161,7 +161,7 @@ ${viewBoard.b_content }
 <tbody id="commentBody">
 <c:forEach items="${commentList }" var="comment">
 <tr data-c_num="${comment.c_num }">
-	<th>[${comment.dept }&nbsp;${comment.userrank }]&nbsp;${username }
+	<th>[${comment.dept }&nbsp;${comment.userrank }]&nbsp;${comment.username }
 	(<fmt:formatDate value="${comment.c_date }" pattern="yy-MM-dd hh:mm" />)
 		<c:if test="${sessionScope.userid eq comment.userid }">
 		<button class="btn btn-defalut btn-xs"

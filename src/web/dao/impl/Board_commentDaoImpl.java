@@ -33,6 +33,7 @@ public class Board_commentDaoImpl implements Board_commentDao{
 							  + " 			c_num,"
 							  + "			b_num,"
 							  + "			userid,"
+							  + "           username,"
 							  + "			c_content,"
 							  + "           c_date,"
 							  + "           userrank,"
@@ -59,6 +60,7 @@ public class Board_commentDaoImpl implements Board_commentDao{
 				comment.setB_num(rs.getInt("b_num"));
 				comment.setC_num(rs.getInt("c_num"));
 				comment.setUserid(rs.getInt("userid"));
+				comment.setUsername(rs.getString("username"));
 				comment.setC_content(rs.getString("c_content"));
 				comment.setC_date(rs.getDate("c_date"));
 				comment.setUserrank(rs.getString("userrank"));
