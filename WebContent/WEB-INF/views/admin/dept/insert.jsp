@@ -66,8 +66,10 @@ table {
 
 		$("#btnCreate").click(function() {
 
-			//<form> 태그 submit
-			$("form").submit();
+		//임시로 이동 걸어놓습니다
+		location.href="/user/modify/basic";
+// 			//<form> 태그 submit
+// 			$("form").submit();
 		});
 
 		//취소버튼 동작
