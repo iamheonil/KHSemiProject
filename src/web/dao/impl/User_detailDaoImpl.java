@@ -118,4 +118,34 @@ public class User_detailDaoImpl implements User_detailDao {
 		}
 	}
 
+	@Override
+	public User_detail selectUser_detailById(User_detail user_detail) {
+		conn = JDBCTemplate.getConnection();
+		
+		String sql = "SELECT * FROM user_detail WHERE userid = ?";
+		
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, user_detail.getUserid());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				user_detail.setUserid(rs.getInt("userid"));
+				user_detail.setUserphoto_rename(rs.getString("userphoto_rename"));
+				user_detail.setUserbirth(rs.getString("userbirth"));
+				user_detail.setUsergender(rs.getString("usergender"));
+				user_detail.setUserphone(rs.getString("userphone"));
+				user_detail.setUseraddr(rs.getString("useraddr"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		return user_detail;
+	}
 }

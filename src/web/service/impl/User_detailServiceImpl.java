@@ -270,6 +270,16 @@ public class User_detailServiceImpl implements User_detailService {
 		
 		user_detailDao.insertUser_detail(user_detail);
 	}
+	
+	@Override
+	public User_detail getUser_detailById(HttpServletRequest req) {
+		
+		user_detail = new User_detail();
+		user_detail.setUserid((int)req.getSession().getAttribute("userid"));
+				
+		return user_detailDao.selectUser_detailById(user_detail);
+	}
+
 	@Override
 	public void modifyUser_detail(User_detail user_detail) {
 		

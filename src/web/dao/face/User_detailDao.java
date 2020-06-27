@@ -56,4 +56,13 @@ public interface User_detailDao {
 	 * @param password - 임시비밀번호
 	 */
 	public void updatePassword(User_detail user_detail);
+
+
+	/**
+	 * 사번으로 user_detail 정보 가져오기(회원정보변경)
+	 * 
+	 * @param user_detail - 조회하려는 사번
+	 * @return User_detail - 조회한 사원정보
+	 */
+	public User_detail selectUser_detailById(User_detail user_detail);
 }
