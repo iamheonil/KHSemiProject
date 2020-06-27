@@ -76,7 +76,7 @@ function submitContents(elClickedObj){
  <option value="공지사항">공지사항</option>
 </c:if> 
  <option value="스터디">스터디</option>
- <option value="자유수다">자유수다</option>
+ <option value="사내게시판">사내게시판</option>
 </select>
 
 </td>
