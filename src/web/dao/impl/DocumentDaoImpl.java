@@ -214,7 +214,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		return 0;
 	}
 	
-	// 추가!
+	
 	@Override
 	public int selectWaitApproveSearchCntAll(String search, int userid, String startDate, String endDate) {
 		conn = JDBCTemplate.getConnection();
@@ -262,7 +262,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		return cnt;
 	}
 	
-	// 추가!
+	
 	@Override
 	public ArrayList<Map<String, Object>> selectWaitApproveSerach(SearchPaging paging, int userid, String startDate, String endDate) {
 		conn = JDBCTemplate.getConnection();
@@ -271,7 +271,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		
 		String sql = "";
 		sql += "SELECT * FROM (";
-		sql += "	SELECT rownum rnum, DOC.report_type, DOC.doc_date, DOC.doc_title, DOC.dept, DOC.userrank, DOC.username, DOC.doc_emergency FROM (";
+		sql += "	SELECT rownum rnum, DOC.* FROM (";
 		sql += "		SELECT * FROM document D";
 		sql += "	    JOIN report_link R ON D.doc_num = R.doc_num";
 		sql += "	    JOIN user_basic U ON D.userid = U.userid";
@@ -279,10 +279,10 @@ public class DocumentDaoImpl implements DocumentDao {
 		sql += "		AND D.doc_state = '임시저장'"; // 테스트 끝나면 결재중으로 수정해야함!
 		
 		if(paging.getSearch() != null && !"".equals(paging.getSearch())) {
-		sql += "			AND D.doc_title  LIKE ?";
+		sql += "		AND D.doc_title  LIKE ?";
 		}
 		if(startDate != null && !"".equals(startDate) && endDate != null && !"".equals(endDate)) {
-		sql += "			AND D.doc_date BETWEEN ? AND ?";
+		sql += "		AND D.doc_date BETWEEN ? AND ?";
 		}
 		
 		sql += "        ORDER BY D.doc_num DESC";
@@ -315,7 +315,7 @@ public class DocumentDaoImpl implements DocumentDao {
 				
 				//결과값 한 행 처리
 				
-//				d.put("doc_num", rs.getString("doc_num"));
+				d.put("doc_num", rs.getString("doc_num"));
 				d.put("report_type", rs.getString("report_type"));
 				d.put("doc_date", rs.getDate("doc_date"));
 				d.put("doc_title", rs.getString("doc_title"));
@@ -345,8 +345,9 @@ public class DocumentDaoImpl implements DocumentDao {
 		
 		// 처리할 일 - 결재대기함 조회
 		String sql = "";
-		sql += "SELECT rownum rnum, DOC.report_type, DOC.doc_date, DOC.doc_title, DOC.dept, DOC.userrank, DOC.username, Doc.doc_emergency FROM (";
-		sql += "	SELECT * FROM document D";
+		sql += "SELECT rownum rnum, DOC.*";
+		sql += " FROM (";
+		sql += " 	SELECT * FROM document D";
 		sql += "	JOIN report_link R ON D.doc_num = R.doc_num";
 		sql += "	JOIN user_basic U ON D.userid = U.userid";
 		sql += "	WHERE R.receiver_id = ?";
@@ -368,7 +369,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		 		
 				
 				//결과값 한 행 처리
-//				d.put("doc_num", rs.getString("doc_num"));
+				d.put("doc_num", rs.getString("doc_num"));
 				d.put("report_type", rs.getString("report_type"));
 				d.put("doc_date", rs.getDate("doc_date"));
 				d.put("doc_title", rs.getString("doc_title"));

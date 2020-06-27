@@ -30,7 +30,7 @@ padding: 0px;
 		<ul>
 			<ul id="personal">
 				<li id="photo" style="border-radius: 100px;">
-					<img src="https://scontent-ssn1-1.xx.fbcdn.net/v/t1.0-9/22851732_1447343662030847_4635333031465798330_n.png?_nc_cat=110&_nc_sid=85a577&_nc_ohc=RNi4MIIjllEAX9U13Gc&_nc_ht=scontent-ssn1-1.xx&oh=da907adae481ccba598a9b1596fe256c&oe=5F180F0D"
+					<img alt="프로필사진" src="/upload/${userphoto }
 					style="width: 112px; height: 112px; border-radius:100px;">
 				</li>
 				<li>${userdept } ${userrank } ${username }</li>
