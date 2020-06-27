@@ -38,6 +38,16 @@ public class PlanServiceImpl implements PlanService {
 		
 		planDao.dbInsert(req, plan);
 	}
+
+	// 수정 자리
+
+	
+	@Override
+	public void deletePlan(Plan plan) {
+
+		planDao.dbDelete(plan);
+		
+	}
 	
 
 }

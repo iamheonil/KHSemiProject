@@ -26,7 +26,7 @@ public class PlanDaoImpl implements PlanDao {
 		conn = JDBCTemplate.getConnection();
 
 		String sql = "";
-		sql += "SELECT * FROM PLAN WHERE userid = ?";
+		sql += "SELECT * FROM PLAN WHERE userid = ? ORDER BY PTIME_START";
 
 		// 결과 저장할 List
 		List<Plan> allPlan = new ArrayList<>();
@@ -83,6 +83,32 @@ public class PlanDaoImpl implements PlanDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			JDBCTemplate.close(ps);
+		}
+
+	}
+
+	// 수정 자리
+
+	@Override
+	public void dbDelete(Plan plan) {
+		conn = JDBCTemplate.getConnection();
+
+		// SQL 작성
+		String sql = "";
+		sql += "DELETE FROM PLAN WHERE PLAN_NUM = ?";
+
+		try {
+			ps = conn.prepareStatement(sql); // SQL수행 객체
+
+			ps.setInt(1, plan.getPlan_num()); // 일정 번호 가져오기
+
+			ps.executeUpdate(); // SQL 수행
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// DB객체 닫기
 			JDBCTemplate.close(ps);
 		}
 
