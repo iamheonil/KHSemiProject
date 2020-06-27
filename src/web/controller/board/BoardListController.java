@@ -29,7 +29,7 @@ public class BoardListController extends HttpServlet {
 		
 		// 요청 파라미터를 전달을 통해 Paging 객체 생성
 		B_Paging paging = boardService.getPaging(req);
-		System.out.println("BoardListController " + paging);
+//		System.out.println("BoardListController " + paging);
 		//Paging 결과 MODEL값 전달
 		req.setAttribute("paging", paging);
 		

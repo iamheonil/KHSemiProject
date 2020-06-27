@@ -17,7 +17,7 @@ $(document).ready(function(){
 	
 	//글쓰기 버튼을 누르면 이동
 	$("#btnSearch").click(function(){
-		location.href="/board/notice?search="+$("#search").val();
+		location.href="/board/notice?search="+$("#search").val()+"&search2="+$("#search2").val();
 	});
 	
 	$("#search").keydown(function(e) {
@@ -73,10 +73,21 @@ $(document).ready(function(){
 		</c:if>
 		<c:import url="/WEB-INF/views/layout/b_Npaging.jsp" />
 
-		<div class="form-inline text-center">
-			<input class="form-control" type="text" id="search" style="width:250px;" placeholder="검색어를 입력해주세요"/>
-			<button id="btnSearch" class="btn glyphicon glyphicon-search"></button>
+		<div id= "">
+		<select id="search2" style="width:100px;">
+			<option value="1">제목</option>
+			<option value="2">내용</option>
+			<option value="3">이름</option>
+		</select>
+		<input class="form-control" type="text" id="search" style="width:100px"/>
+		<button id="btnSearch" class="btn glyphicon glyphicon-search">검색</button>
 		</div>
+				
+
+<!-- 		<div class="form-inline text-center"> -->
+<!-- 			<input class="form-control" type="text" id="search" style="width:250px;" placeholder="검색어를 입력해주세요"/> -->
+<!-- 			<button id="btnSearch" class="btn glyphicon glyphicon-search"></button> -->
+<!-- 		</div> -->
 	</div>
 </div>
 

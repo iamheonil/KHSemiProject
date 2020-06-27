@@ -15,6 +15,8 @@ public class B_Paging {
 	private int endNo;		//화면에 보이는 페이지의 끝 게시글 번호(rownum)
 	
 	private String search; //검색어
+
+	private int value; //
 	//--- 생성자 4개 ---
 	
 	//총 게시글 수만 입력하는 생성자
@@ -87,14 +89,14 @@ public class B_Paging {
 		endNo = curPage * listCount;
 		
 	}
+
 	@Override
 	public String toString() {
-		return "Paging [curPage=" + curPage + ", totalCount=" + totalCount + ", listCount=" + listCount + ", totalPage="
-				+ totalPage + ", pageCount=" + pageCount + ", startPage=" + startPage + ", endPage=" + endPage
-				+ ", startNo=" + startNo + ", endNo=" + endNo + ", search=" + search + "]";
+		return "B_Paging [curPage=" + curPage + ", totalCount=" + totalCount + ", listCount=" + listCount
+				+ ", totalPage=" + totalPage + ", pageCount=" + pageCount + ", startPage=" + startPage + ", endPage="
+				+ endPage + ", startNo=" + startNo + ", endNo=" + endNo + ", search=" + search + ", value=" + value
+				+ "]";
 	}
-
-
 
 	public int getCurPage() {
 		return curPage;
@@ -176,7 +178,12 @@ public class B_Paging {
 		this.search = search;
 	}
 
+	public int getValue() {
+		return value;
+	}
 
-
+	public void setValue(int value) {
+		this.value = value;
+	}
 
 }

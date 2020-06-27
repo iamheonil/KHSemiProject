@@ -15,9 +15,18 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
+	//글쓰기 버튼 누르면 이동
+	$("#btnWrite").click(function() {
+		location.href="/board/write";
+		
+	});
+	
 	//글쓰기 버튼을 누르면 이동
 	$("#btnSearch").click(function(){
 		location.href="/board/list?search="+$("#search").val();
+		
+		
+	
 	});
 
 	$("#search").keydown(function(e) {
@@ -78,9 +87,10 @@ $(document).ready(function(){
 		</table>
 
 
-
 		<button type="button" class="btn pull-right glyphicon glyphicon-pencil"
-			onclick="location.href='/board/insert'">&nbsp;글쓰기</button>
+			onclick="location.href='/board/insert'">&nbsp;글쓰기
+		</button>
+		
 		<c:import url="/WEB-INF/views/layout/b_paging.jsp" />
 
 		<div class="form-inline text-center">
