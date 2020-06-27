@@ -314,6 +314,8 @@ public class DocumentDaoImpl implements DocumentDao {
 		 		
 				
 				//결과값 한 행 처리
+				
+//				d.put("doc_num", rs.getString("doc_num"));
 				d.put("report_type", rs.getString("report_type"));
 				d.put("doc_date", rs.getDate("doc_date"));
 				d.put("doc_title", rs.getString("doc_title"));
@@ -366,6 +368,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		 		
 				
 				//결과값 한 행 처리
+//				d.put("doc_num", rs.getString("doc_num"));
 				d.put("report_type", rs.getString("report_type"));
 				d.put("doc_date", rs.getDate("doc_date"));
 				d.put("doc_title", rs.getString("doc_title"));
@@ -499,7 +502,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		// 결재대기함 목록조회
 		String sql = "";
 		sql += "SELECT * FROM (";
-		sql += "	SELECT rownum rnum, DOC.report_type, DOC.doc_date, DOC.doc_title, DOC.dept, DOC.userrank, DOC.username, Doc.doc_emergency FROM (";
+		sql += "	SELECT rownum rnum, DOC.doc_num, DOC.report_type, DOC.doc_date, DOC.doc_title, DOC.dept, DOC.userrank, DOC.username, Doc.doc_emergency FROM (";
 		sql += "		SELECT D.*, U.*, R.report_type FROM document D";
 		sql += "	    JOIN report_link R ON D.doc_num = R.doc_num";
 		sql += "	    JOIN user_basic U ON D.userid = U.userid";
@@ -543,6 +546,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		 		
 				
 				//결과값 한 행 처리
+				d.put("doc_num", rs.getString("doc_num"));
 				d.put("report_type", rs.getString("report_type"));
 				d.put("doc_date", rs.getDate("doc_date"));
 				d.put("doc_title", rs.getString("doc_title"));
@@ -573,7 +577,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		// 처리할일 - 결재진행함 목록 조회
 		String sql = "";
 
-		sql += "SELECT rownum rnum, DOC.report_type, DOC.doc_date, DOC.doc_title, DOC.dept, DOC.userrank, DOC.username, Doc.doc_emergency FROM (";
+		sql += "SELECT rownum rnum, DOC.doc_num, DOC.report_type, DOC.doc_date, DOC.doc_title, DOC.dept, DOC.userrank, DOC.username, Doc.doc_emergency FROM (";
 		sql += "	SELECT D.*, U.*, R.report_type FROM document D";
 		sql += "	JOIN report_link R ON D.doc_num = R.doc_num";
 		sql += "	JOIN user_basic U ON D.userid = U.userid";
@@ -597,6 +601,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		 		
 				
 				//결과값 한 행 처리
+				d.put("doc_num", rs.getString("doc_num"));
 				d.put("report_type", rs.getString("report_type"));
 				d.put("doc_date", rs.getDate("doc_date"));
 				d.put("doc_title", rs.getString("doc_title"));
@@ -633,7 +638,6 @@ public class DocumentDaoImpl implements DocumentDao {
 		sql += "		SELECT ";
 		sql += "			D.doc_num, D.doc_title, D.doc_substance, D.doc_content";
 		sql += "			, D.doc_state, D.userid, D.doc_date, D.doc_emergency";
-		sql += "			, D.doc_temp";
 		sql += "			, R.link_num, R.sender_id, R.receiver_id, R.report_type, R.report_version";
 		sql += "			, U.username, U.userrank, U.dept";
 		sql += "		FROM document D";
@@ -795,7 +799,6 @@ public class DocumentDaoImpl implements DocumentDao {
 		sql += "		SELECT ";
 		sql += "			D.doc_num, D.doc_title, D.doc_substance, D.doc_content";
 		sql += "			, D.doc_state, D.userid, D.doc_date, D.doc_emergency";
-		sql += "			, D.doc_temp";
 		sql += "			, R.link_num, R.sender_id, R.receiver_id, R.report_type, R.report_version";
 		sql += "			, U.username, U.userrank, U.dept";
 		sql += "		FROM document D";
