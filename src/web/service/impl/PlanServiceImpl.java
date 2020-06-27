@@ -23,6 +23,21 @@ public class PlanServiceImpl implements PlanService {
 		
 		return planDao.dbPlan(req);
 	}
+
+
+	@Override
+	public void insertPlan(HttpServletRequest req) {
+
+		Plan plan = new Plan();
+		
+		System.out.println(req.getParameter("ptime_start"));
+		
+		plan.setPlan_name(req.getParameter("plan_name"));
+		plan.setPtime_start(req.getParameter("ptime_start"));
+		plan.setPtime_end(req.getParameter("ptime_end"));
+		
+		planDao.dbInsert(req, plan);
+	}
 	
 
 }
