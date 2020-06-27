@@ -284,6 +284,8 @@ public class User_detailServiceImpl implements User_detailService {
 		return user_detailDao.selectUser_detailById(user_detail);
 	}
 
+	
+	
 	// 회원정보변경 시 req세션으로 회원정보 조회
 	@Override
 	public User_detail getModifyUser_detailById(HttpServletRequest req) {
