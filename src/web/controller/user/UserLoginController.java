@@ -53,6 +53,9 @@ public class UserLoginController extends HttpServlet {
 		boolean res = false;
 		res = user_basicService.userLogin(user_detail);
 		
+		// user photo 가져오기
+		user_detail = user_detailService.getUser_detailById(req);
+		
 		if(res) {
 			System.out.println("로그인성공");
 			
@@ -62,6 +65,7 @@ public class UserLoginController extends HttpServlet {
 			session.setAttribute("username", user_basic.getUsername());
 			session.setAttribute("userrank", user_basic.getUserrank());
 			session.setAttribute("userdept", user_basic.getDept());
+			session.setAttribute("userphoto", user_detail.getUserphoto_rename());
 			
 			resp.sendRedirect("/document/dolist");
 		} else {
