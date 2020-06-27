@@ -1,7 +1,7 @@
 package web.controller.admin;
 
 import java.io.IOException;
-
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import web.dto.User_basic;
 import web.service.face.User_basicService;
 import web.service.impl.User_basicServiceImpl;
 
@@ -26,7 +26,9 @@ public class AdminUserBasicListController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		System.out.println("userBasicList [DoGet] 확인");
-
+		
+		//검색 결과이므로 페이징 넣지 않습니다.
+		List<User_basic> list = user_basicService.selectUser_basic(req);
 	}
 
 	}

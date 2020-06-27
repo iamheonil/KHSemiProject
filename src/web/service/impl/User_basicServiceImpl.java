@@ -87,7 +87,7 @@ public class User_basicServiceImpl implements User_basicService {
 		
 	}
 	@Override
-	public List<User_basic> selectUser_basic() {
+	public List<User_basic> selectUser_basic(HttpServletRequest req) {
 		
 		return null;
 	}
