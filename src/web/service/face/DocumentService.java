@@ -7,7 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import web.dto.Document;
-import web.util.Paging;
+import web.dto.User_basic;
 import web.util.SearchPaging;
 
 public interface DocumentService {
@@ -33,6 +33,13 @@ public interface DocumentService {
 	 */
 	public void writeDoc(HttpServletRequest req);
 
+	/**
+	 * 문서 작성 시 사원 조회
+	 * @param user
+	 * @return
+	 */
+	public List<User_basic> userlist();
+	
 
 	/**
 	 * @param req - 요청 정보 객체

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import web.dto.Document;
+import web.dto.User_basic;
 import web.util.Paging;
 import web.util.SearchPaging;
 
@@ -16,6 +17,13 @@ public interface DocumentDao {
 	 * @param doc - DB에 저장할 전자문서 정보
 	 */
 	public void insertDoc(Document doc);
+	
+	/**
+	 * 문서 작성 시 사원 조회
+	 * @param user
+	 * @return
+	 */
+	public List<User_basic> selectUser();
 	
 	/**
 	 * 문서 작성 시 Docno nextval 얻어오기

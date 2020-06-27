@@ -26,6 +26,7 @@ import web.dao.impl.DocumentDaoImpl;
 import web.dao.impl.Report_linkDaoImpl;
 import web.dto.Doc_attach;
 import web.dto.Document;
+import web.dto.User_basic;
 import web.service.face.DocumentService;
 import web.util.SearchPaging;
 
@@ -66,21 +67,6 @@ public class DocumentServiceImpl implements DocumentService{
 	
 	@Override
 	public void writeDoc(HttpServletRequest req) {
-		//----------- urlencoded 처리 -----------
-//		Board board = new Board();
-//
-//		board.setTitle( req.getParameter("title") );
-//		board.setContent( req.getParameter("content") );
-//
-//		//작성자id 처리
-//		board.setId((String) req.getSession().getAttribute("userid"));
-//
-//		if(board.getTitle()==null || "".equals(board.getTitle())) {
-//			board.setTitle("(제목없음)");
-//		}
-//
-//		boardDao.insert(board);
-		//---------------------------------------
 		
 		//게시글 정보 저장할 객체
 		Document doc = null;
@@ -148,6 +134,13 @@ public class DocumentServiceImpl implements DocumentService{
 						e.printStackTrace();
 					}
 					
+				} else if ( "doc_substance".equals(key) ) { //전달파라미터 name이 "doc_substance"
+					try {
+						doc.setDoc_substance( item.getString("UTF-8") );
+					} catch (UnsupportedEncodingException e) {
+						e.printStackTrace();
+					}
+					
 				} else if ( "doc_content".equals(key) ) { //전달파라미터 name이 "doc_content"
 					try {
 						doc.setDoc_content( item.getString("UTF-8") );
@@ -155,7 +148,14 @@ public class DocumentServiceImpl implements DocumentService{
 						e.printStackTrace();
 					}
 					
-				} // key값 비교 if end
+				} else if ( "doc_emergency".equals(key) ) { //전달파라미터 name이 "doc_emergency"
+					try {
+						doc.setDoc_emergency( item.getString("UTF-8") );
+					} catch (UnsupportedEncodingException e) {
+						e.printStackTrace();
+					}
+					
+				}  // key값 비교 if end
 				
 			} // if( item.isFormField() ) end - 폼필드 확인
 			
@@ -178,12 +178,12 @@ public class DocumentServiceImpl implements DocumentService{
 				// 저장될 이름
 				String stored = rename + "." + ext;
 				
-				System.out.println("[TEST] stored file name : " + stored);
+//				System.out.println("[TEST] stored file name : " + stored);
 				
 				// -------- DB에 업로드된 파일에 대한 정보 기록하기 --------
 				docAttach = new Doc_attach();
 				docAttach.setAttach_originname(origin);
-				docAttach.setAttach_rename(rename);
+				docAttach.setAttach_rename(stored);
 				docAttach.setAttach_ext(ext);
 				docAttach.setAttach_size((int)item.getSize());
 				
@@ -200,7 +200,7 @@ public class DocumentServiceImpl implements DocumentService{
 						, stored //저장 파일의 이름(변환됨)
 						);
 				// ------------------------------------
-				
+				System.out.println(req.getServletContext().getRealPath("upload"));
 				try {
 					item.write(up); //실제 업로드(최종 결과 파일 생성)
 					item.delete(); //임시 파일 삭제
@@ -565,6 +565,12 @@ public class DocumentServiceImpl implements DocumentService{
 		documentDao.deleteDocReport_linkList(names);
 		documentDao.deleteDoc_attachList(names);
 		documentDao.deleteDocList(names);
+	}
+
+	@Override
+	public List<User_basic> userlist() {
+		
+		return documentDao.selectUser();
 	}
 
 

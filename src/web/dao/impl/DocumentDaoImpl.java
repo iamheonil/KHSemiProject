@@ -12,6 +12,7 @@ import java.util.Map;
 import web.dao.face.DocumentDao;
 import web.dbutil.JDBCTemplate;
 import web.dto.Document;
+import web.dto.User_basic;
 import web.util.Paging;
 import web.util.SearchPaging;
 
@@ -1151,6 +1152,47 @@ public class DocumentDaoImpl implements DocumentDao {
 			JDBCTemplate.close(ps);
 		}
 		
+	}
+
+	@Override
+	public List<User_basic> selectUser() {
+		
+		conn = JDBCTemplate.getConnection();
+		
+		// 문서등록대장
+		String sql = "";
+		sql += "SELECT username, userrank, dept FROM user_basic";
+		sql += "	ORDER BY userid";
+		
+		List<User_basic> list = new ArrayList<>();
+		
+		User_basic user = null;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
+			
+			//조회 결과 처리
+			while(rs.next()) {
+				user = new User_basic();
+				
+				//결과값 한 행 처리
+				user.setDept(rs.getString("dept"));
+				user.setUsername(rs.getString("username"));
+				user.setUserrank(rs.getString("userrank"));
+				
+				//리스트에 결과값 저장
+				list.add(user);
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+			
+		return list;
 	}
 
 

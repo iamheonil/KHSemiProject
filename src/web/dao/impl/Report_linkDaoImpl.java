@@ -37,7 +37,6 @@ public class Report_linkDaoImpl implements Report_linkDao {
 		//DB연결 객체
 		conn = JDBCTemplate.getConnection();
 		
-		//SQL 작성 - 직접 작성한 문서는 아니고 수신자 경로에 자신이 있으면 조회함
 		String sql = "";
 		sql += "select * FROM report_link R";
 //		sql += "	inner join Document D on D.doc_num = R.doc_num";

@@ -117,7 +117,6 @@ span{
 
 <div class="container">
 <h3>문서정보</h3>
-
 <table class="table table-bordered" style="width: 850px;">
 <tr>
 	<td class="active">제목＊</td>
@@ -144,7 +143,9 @@ span{
 
 <tr id="attach">
 <td class="active">붙임</td>
-<td>${viewAttach.attach_originname }</td>
+<td>
+<a href="/upload/${viewAttach.attach_rename }" download="${viewAttach.attach_originname }">${viewAttach.attach_originname }</a>
+</td>
 </tr>
 
 </table>
