@@ -6,7 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%-- import header.jsp --%>
-<c:import url="/WEB-INF/views/layout/header.jsp" />
+<c:import url="/WEB-INF/views/layout/header_doc.jsp" />
 
 <%-- import aside.jsp --%>
 <c:import url="/WEB-INF/views/layout/aside_mypage.jsp" />
