@@ -21,7 +21,7 @@ public class User_basicServiceImpl implements User_basicService {
 	private User_detail user_detail = new User_detail();
 	
 	@Override
-	public void insertUser_basic(User_basic user_basic) {
+	public void insertUser_basic(HttpServletRequest req) {
 		
 	}
 	
