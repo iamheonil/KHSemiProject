@@ -39,6 +39,10 @@ h4 {
 	padding: 5px;
 }
 
+#dolistAppro li > a {
+	text-decoration: none;
+}
+
 #dolist {
 	width: 1000px;
 	padding-left: 15px;
