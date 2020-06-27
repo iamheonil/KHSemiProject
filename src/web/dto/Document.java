@@ -14,6 +14,7 @@ public class Document {
 	private String doc_emergency; //긴급여부
 	
 	
+	
 	@Override
 	public String toString() {
 		return "Document [doc_num=" + doc_num + ", doc_title=" + doc_title + ", doc_substance=" + doc_substance

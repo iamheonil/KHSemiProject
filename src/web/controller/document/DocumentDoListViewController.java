@@ -1,6 +1,8 @@
 package web.controller.document;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,9 +21,32 @@ public class DocumentDoListViewController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int waitApproveCnt = documentService.getDoListWaitApproveCnt(req);
 		
+		int userid = 0;
+		
+		if(req.getSession().getAttribute("userid") != null && !"".equals(req.getSession().getAttribute("userid"))) {
+			userid = (int) req.getSession().getAttribute("userid");
+		}
+		
+		// 결재대기함 개수
+		int waitApproveCnt = documentService.getDoListWaitApproveCnt(req);
 		req.setAttribute("waitApproveCnt", waitApproveCnt);
+		
+		// 결재대기함 목록
+		ArrayList<Map<String, Object>> waitApproveDoList = documentService.getListWaitApproveDo(userid);
+		req.setAttribute("waitApproveDoList", waitApproveDoList);
+		
+		// 진행문서함 개수
+		int progressCnt = documentService.getDoListProgressCnt(req);
+		req.setAttribute("progressCnt", progressCnt);
+		
+		// 진행문서함 목록
+		ArrayList<Map<String, Object>> progressDoList = documentService.getDoListProgress(userid);
+		req.setAttribute("progressDoList", progressDoList);
+		
+		
+		
+		
 		req.getRequestDispatcher("/WEB-INF/views/document/dolist.jsp").forward(req, resp);
 	}
 }

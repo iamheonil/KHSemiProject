@@ -18,6 +18,30 @@ public class Doc_attachDaoImpl implements Doc_attachDao {
 	
 	@Override
 	public void insertDoc_attach(Doc_attach doc_attach) {
+		conn = JDBCTemplate.getConnection(); //DB 연결
+
+		//다음 게시글 번호 조회 쿼리
+		String sql = "";
+		sql += "INSERT INTO doc_attach(attach_num, doc_num, attach_originname, attach_rename, attach_ext, attach_size)";
+		sql += " VALUES ( doc_attach_seq.nextval, ?, ?, ?, ?, ? )";
+		
+		try {
+			//DB작업
+			ps = conn.prepareStatement(sql);
+
+			ps.setInt(1, doc_attach.getDoc_num());
+			ps.setString(2, doc_attach.getAttach_originname());
+			ps.setString(3, doc_attach.getAttach_rename());
+			ps.setString(4, doc_attach.getAttach_ext());
+			ps.setInt(5, doc_attach.getAttach_size());
+
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
 		
 	}
 

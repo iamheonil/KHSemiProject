@@ -75,6 +75,12 @@ h3{
 .table-content span{
 	color: red;
 }
+
+.title {
+	text-align: left;
+	margin-bottom: 18px;
+	font-weight: bold;
+}
 </style>
 
 <%-- import header.jsp --%>
@@ -85,7 +91,7 @@ h3{
 <div id="contents">
 <div id="templist">
 
-<h3>문서등록대장</h3><br>
+<h3 class="title">문서등록대장</h3>
 
 
 
@@ -95,19 +101,26 @@ h3{
 <div class="container" style="width:930px;">
 <table class="table table-striped table-hover" style="width: 900px;"> <!-- 부트스트랩, table -->
 <tr class="active">
-	<th style="width: 9%;">문서번호</th>
+	<th style="width: 10%;">문서번호</th>
 	<th style="width: 14%;">보고일자</th>
-	<th style="width: 44%;">제목</th>
+	<th style="width: 40%;">제목</th>
 	<th style="width: 8%;">부서</th>
 	<th style="width: 8%;">직위</th>
-	<th style="width: 8%;">보고자</th>
-	<th style="width: 8%;">상태</th>
+	<th style="width: 10%;">보고자</th>
+	<th style="width: 10%;">상태</th>
 </tr>
 <c:forEach items="${AllList }" var="list">
 <tr class="table-content">
 	<td>${list.doc_num }</td>
 	<td><fmt:formatDate value="${list.doc_date }" pattern="yyyy-MM-dd"/></td>
-	<td><a href="/document/view?doc_num=${list.doc_num }">${list.doc_title }</a></td>
+	<td>
+	<c:if test="${list.doc_emergency eq 'Y' }">
+	<a href="/document/view?doc_num=${list.doc_num }"><span>[긴급] </span>${list.doc_title }</a>
+	</c:if>
+	<c:if test="${list.doc_emergency != 'Y' }">
+	<a href="/document/view?doc_num=${list.doc_num }">${list.doc_title }</a>
+	</c:if>
+	</td>
 	<td>${list.dept }</td>
 	<td>${list.userrank }</td>
 	<td>${list.username }</td>

@@ -7,7 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import web.dto.Document;
 import web.service.face.Doc_attachService;
 import web.service.face.DocumentService;
 import web.service.face.Report_linkService;
@@ -32,6 +34,38 @@ public class DocumentWriteController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		Document document = new Document();
+		
+		//세션 객체 얻기
+		HttpSession session = req.getSession();
+		document.setUserid((int)session.getAttribute("userid"));
+
+		
+		
+		documentService.writeDoc(req);
+		
+		resp.sendRedirect("/document/list/temp");
+		
 	}
+//	@Override
+//	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		
+//		Document document = new Document();
+//		
+//		//세션 객체 얻기
+//		HttpSession session = req.getSession();
+//		
+//		document.setDoc_title(req.getParameter("doc_title"));
+//		document.setDoc_substance(req.getParameter("doc_substance"));
+//		document.setDoc_content(req.getParameter("doc_content"));
+////		document.setDoc_substance((String)session.getAttribute("doc_substance"));
+//		document.setDoc_emergency(req.getParameter("chk"));
+//		
+//		document.setUserid((int)session.getAttribute("userid"));
+//		
+//		documentService.writeDoc(document);
+//		
+//		resp.sendRedirect("/document/list/temp");
+//	}
 
 }

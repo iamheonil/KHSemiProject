@@ -48,7 +48,9 @@ h3{
 	margin-top: 10px;
 	padding: 0;
 }
-
+#templist h3{
+	font-weight: bold;
+}
 #templist{
 	width: 1000px;
 	padding: 35px;
@@ -73,6 +75,10 @@ h3{
 .table-content span{
 	color: red;
 }
+.title {
+   text-align: left;
+   margin-bottom: 18px;
+}
 </style>
 
 <%-- import header.jsp --%>
@@ -84,13 +90,10 @@ h3{
 <div id="contents">
 <div id="templist">
 
-<h3>결재한 문서</h3><br>
-
-
-<br><br>
-
 
 <div class="container" style="width:930px;">
+<h3 class="title">결재한 문서</h3>
+<br><br>
 <table class="table table-striped table-hover" style="width: 900px;"> <!-- 부트스트랩, table -->
 <tr class="active">
 	<th style="width: 10%;">구분</th>
@@ -107,7 +110,7 @@ h3{
 	<td><fmt:formatDate value="${approve.doc_date }" pattern="yyyy-MM-dd"/></td>
 	<td>
 	<c:if test="${approve.doc_emergency eq 'Y' }">
-	<a href="/document/view?doc_num=${approve.doc_num }"><span>[긴급]</span>${approve.doc_title }</a>
+	<a href="/document/view?doc_num=${approve.doc_num }"><span>[긴급] </span>${approve.doc_title }</a>
 	</c:if>
 	<c:if test="${approve.doc_emergency != 'Y' }">
 	<a href="/document/view?doc_num=${approve.doc_num }">${approve.doc_title }</a>
@@ -116,6 +119,7 @@ h3{
 	<td>${approve.dept }</td>
 	<td>${approve.userrank }</td>
 	<td>${approve.username }</td>
+<%-- 	<td>${approve.userid }</td> --%>
 	<td>${approve.doc_state }</td>
 	
 </tr>

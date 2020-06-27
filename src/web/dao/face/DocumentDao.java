@@ -71,7 +71,7 @@ public interface DocumentDao {
 	public int selectWaitApproveCntAll();
 	
 	
-	/**
+	/** 추가!
 	 * 결재대기함(검색) 페이징에 필요한 개수 조회
 	 * 
 	 * 
@@ -80,7 +80,7 @@ public interface DocumentDao {
 	public int selectWaitApproveSearchCntAll(String search, int userid, String startDate, String endDate);
 	
 
-	/**
+	/** 추가!
 	 * 결재대기함 값 조회
 	 * 
 	 * @param paging - paging 객체정보
@@ -90,6 +90,14 @@ public interface DocumentDao {
 	 * @return ArrayList<Map<String, Object>> - 조회된 결재대기함 값
 	 */
 	public ArrayList<Map<String, Object>> selectWaitApproveSerach(SearchPaging paging, int userid, String startDate, String endDate);
+	
+	/** 추가!
+	 * 결재대기함 값 조회
+	 * 
+	 * @param userid - 로그인 한 userid정보값
+	 * @return ArrayList<Map<String, Object>> - 조회된 결재대기함 값
+	 */
+	public ArrayList<Map<String, Object>> selectWaitApproveDo(int userid);
 	
 	/**
 	 * 검색값이 없는 결재대기함 페이징 조회(필요x)
@@ -109,41 +117,38 @@ public interface DocumentDao {
 	public Document selectDocumentByDocno(Document doc);
 	
 	
-	/**
+	/** 추가!
 	 * 진행문서함 페이징에 필요한 개수 조회
-	 * 처리할일에도 쓰임
-	 * 
-	 * @return int - 조회된 진행문서함 문서 개수
-	 */
-	public int selectProgressCntAll();
-	
-	
-	/**
-	 * 진행문서함(검색) 페이징에 필요한 개수 조회
-	 * 
-	 * 
-	 * @return int - 조회된 진행문서함 문서 개수
-	 */
-	public int selectProgressSearchCntAll();
-	
-	
-	/**
-	 * 검색값이 있는 진행문서함 페이징 조회
 	 * 
 	 * @param search - 검색 값
-	 * @param paging - Paging 객체정보
-	 * @return List<Document> - 조회된 List<Document>
+	 * @param userid - 로그인 한 userid
+	 * @param startDate - 검색결과 시작 값
+	 * @param endDate - 검색결과 종료 값
+	 * @return int - 조회된 개수
 	 */
-	public List<Document> selectProgressSerach(String search, Paging paging);
+	public int selectProgressCntAll(String search, int userid, String startDate, String endDate);
 	
 	
-	/**
-	 * 검색값이 없는 진행문서함 페이징 조회
+	/** 추가!
+	 * 진행문서함 전체 조회
 	 * 
-	 * @param paging - Paging 객체정보
-	 * @return List<Document> - 조회된 List<Document> 
+	 * @param paging - SearchPaging 객체 정보
+	 * @param userid - 로그인 한 userid 값
+	 * @param startDate - 검색결과 시작 값
+	 * @param endDate - 검색결과 종료 값
+	 * @return ArrayList<Map<String, Object>> - 조회된 진행문서함 값
 	 */
-	public List<Document> selectProgressAll(Paging paging);
+	public ArrayList<Map<String, Object>> selectProgressSerach(SearchPaging paging, int userid, String startDate, String endDate);
+	
+
+	
+	/** 추가!
+	 * 처리할 일 - 진행문서함 값
+	 * 
+	 * @param userid - 로그인 한 userid
+	 * @return ArrayList<Map<String, Object>> - 조회된 진행문서함 값
+	 */
+	public ArrayList<Map<String, Object>> selectProgressDo(int userid);
 	
 	
 	/**
@@ -223,7 +228,7 @@ public interface DocumentDao {
 	 * 
 	 * @return List<Document> - 조호된 List<Document>
 	 */
-	public List<Document> selectDoListProgress();
+	public List<Document> getProgressDo();
 	
 	
 	

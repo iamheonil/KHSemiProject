@@ -126,6 +126,22 @@ h3{
 .active > th {
 	text-align: center;
 }
+
+.table-content > td{ 
+ 	text-align: center; 
+}
+.table-content > td:nth-child(4){
+	text-align: left;
+}
+.table-content span{
+	color: red;
+}
+
+.title {
+	text-align: left;
+	margin-bottom: 18px;
+	font-weight: bold;
+}
 </style>
 
 <%-- import header.jsp --%>
@@ -136,12 +152,9 @@ h3{
 <div id="contents">
 <div id="templist">
 
-<h3>임시저장함</h3><br>
-
-
+<h3 class="title">임시저장함</h3>
 
 <br><br>
-
 
 <div class="container" style="width:930px;">
 <table class="table table-striped table-hover" style="width: 900px;"> <!-- 부트스트랩, table -->
@@ -155,11 +168,11 @@ h3{
 	<th style="width: 10%;">보고자</th>
 </tr>
 <c:forEach items="${TempList }" var="temp">
-<tr>
+<tr class="table-content">
 	<td><input type="checkbox" name="checkRow" value="${temp.doc_num }"/></td>
 	<td>기안</td>
 	<td><fmt:formatDate value="${temp.doc_date }" pattern="yyyy-MM-dd"/></td>
-	<td><a href="/document/view?doc_num=${temp.doc_num }">${temp.doc_title }</a></td>
+	<td><a href="/document/update?doc_num=${temp.doc_num }">${temp.doc_title }</a></td>
 	<td>${temp.dept }</td>
 	<td>${temp.userrank }</td>
 	<td>${temp.username }</td>

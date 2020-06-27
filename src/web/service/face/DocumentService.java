@@ -12,7 +12,7 @@ import web.util.SearchPaging;
 
 public interface DocumentService {
 	
-	/**
+	/** 추가!
 	 * 처리할 일 - 결재 대기함 문서 총 개수
 	 * 
 	 * @param req - req 요청객체
@@ -20,11 +20,11 @@ public interface DocumentService {
 	 */
 	public int getDoListWaitApproveCnt(HttpServletRequest req);
 	
-	/**
+	/** 추가!
 	 * 처리할 일 - 진행 문서함 문서 총 개수
 	 * @return int - 문서 총 개수
 	 */
-	public int getDoListProgressCnt();
+	public int getDoListProgressCnt(HttpServletRequest req);
 	
 	
 	/**
@@ -63,7 +63,7 @@ public interface DocumentService {
 	 */
 	public void deleteDocument(Document doc);
 	
-	/**
+	/** 추가!
 	 * 결재대기함 페이징 처리
 	 * @param req - 요청 정보 객체
 	 * @return Paging - 페이징 객체
@@ -71,16 +71,27 @@ public interface DocumentService {
 	public SearchPaging getWaitApprovePaging(HttpServletRequest req);
 	
 	
-	// 수정피룡!!!
-	/**
+	/** 추가!
+	 * 결재대기함 문서 조회
 	 * 
 	 * @param paging - 페이징 객체
 	 * @param userid - 로그인 한 userid
 	 * @param startDate - 시작 값
 	 * @param endDate - 종료 값
-	 * @return ArrayList<Map<String, Object>> - 조회된 문서등록대장 목록 값
+	 * @return ArrayList<Map<String, Object>> - 조회된 결재대기함 값
 	 */
 	public ArrayList<Map<String, Object>> getListWaitApprove(SearchPaging paging, int userid, String startDate, String endDate);
+	
+	
+	/** 추가!
+	 * 처리할 일에서 보여질 결재대기함 문서 조회
+	 * 
+	 * @param userid - 로그인 한 userid
+	 * @return ArrayList<Map<String, Object>> - 조회된 결재대기함 값
+	 */
+	public ArrayList<Map<String, Object>> getListWaitApproveDo(int userid);
+	
+	
 	
 	
 	/**
@@ -104,20 +115,24 @@ public interface DocumentService {
 	 */
 	public void updateDocument(HttpServletRequest req);
 	
-	/**
+	/** 추가!
 	 * 진행문서함 페이징 처리
 	 * @param req - 요청 정보 객체
-	 * @return Paging - 페이징 객체
+	 * @return SearchPaging - 페이징 객체
 	 */
-	public Paging getProgressPaging(HttpServletRequest req);
+	public SearchPaging getProgressPaging(HttpServletRequest req);
+	
 	
 	/**
 	 * 진행문서함 전체 조회
-	 * @param req - 요청 정보 객체
-	 * @param paging - 페이징 객체
-	 * @return List<Document> - 진행문서함 전체 조회 결과 리스트
+	 * 
+	 * @param paging - SearchPaging 객체 정보
+	 * @param userid - 로그인 한 userid 값
+	 * @param startDate - 검색결과 시작 값
+	 * @param endDate - 검색결과 종료 값
+	 * @return ArrayList<Map<String, Object>> - 조회된 진행문서함 값
 	 */
-	public List<Document> getListProgress(HttpServletRequest req, Paging paging);
+	public ArrayList<Map<String, Object>> getListProgress(SearchPaging paging, int userid, String startDate, String endDate);
 	
 	//------- 완료 -------
 	
@@ -183,9 +198,10 @@ public interface DocumentService {
 	/**
 	 * 처리할일에서 진행문서함 문서 조회(페이징x)
 	 * 
-	 * @return List<Document> - 조회된 List<Document> 정보
+	 * @param userid
+	 * @return ArrayList<Map<String, Object>> - 조회된 진행문서함 조회
 	 */
-	public List<Document> getDoListProgress();
+	public ArrayList<Map<String, Object>> getDoListProgress(int userid);
 
 
 	/**

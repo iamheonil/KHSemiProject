@@ -14,7 +14,19 @@
 
 
 <script type="text/javascript">
-
+// 사원검색하기
+// window.onload = function() {
+	
+// 	//button#btnAction 태그에 click 이벤트 리스너 등록하기
+// 	btnAction.onclick = function() {
+// 		//console.log("btnAction clicked");
+		
+// 		//AJAX요청 보내기
+// 		sendRequest("POST", "/ajax/test", "", callback);
+// // 		callback : 요청에 대한 응답함수
+		
+// 	}
+// }
 $(document).on("click",".guideBox > button", function(){
 	if($(this).next().css("display")=="none"){
 		$(this).next().show();
@@ -99,6 +111,14 @@ window.onload = function(){
 	    }
 	}
 }
+// $('input:checkbox[id="chk"]').attr("Y", true);
+// $('input:checkbox[id="chk"]').attr("N", false);
+
+// var DATA;
+// $('input:checkbox[name=chk]').each(function() {
+//    if($(this).is(':checked'))
+//       $(this).val() = 'y';
+// });
 </script>
 <style type="text/css">
         /* The Modal (background) */
@@ -200,42 +220,43 @@ textarea{
 </div>
 <h3>문서정보</h3>
 
-<form action="#" method="post">
+<form action="/document/write" method="post" enctype="multipart/form-data">
 <table class="table table-bordered" style="width: 900px;">
 <tr>
 	<td class="active">제목＊</td>
 	<td><input type="text" id="doc_title" name="doc_title" style="width: 620px;"/>
-		 &nbsp;<input type="checkbox"/> 긴급</td>
+		 &nbsp;<input type="checkbox" id="chk" name="chk" value="Y"/> 긴급</td>
 </tr>
 
 <tr>
 	<td class="active">문서요지</td>
-	<td><input type="text" id="doc_title" name="doc_title" style="width: 680px;"/></td>
+	<td><input type="text" id="doc_substance" name="doc_substance" style="width: 680px;"/></td>
 </tr>
 
 <tr>
 <td class="active">본문＊</td>
-<td><textarea></textarea></td>
+<td><textarea id="doc_content" name="doc_content"></textarea></td>
 </tr>
 
 <tr id="attach">
 <td class="active">붙임</td>
-<td>첨부파일
-<button id="addAttach">삭제</button>
-<button id="deleteAttach">추가</button>
+<td>
+<!-- <button id="addAttach">삭제</button> -->
+<!-- <button id="deleteAttach">추가</button> -->
+<input type="file" name="upfile" />
 </td>
 </tr>
 
 </table>
-
+<input type="submit" value="확인"/>
 </form>
 
 <br>
 
 
 
-<div class="guideBox">
-<h3>경로정보</h3><button class="btn btn-primary" id="selectpath">경로지정</button>
+<div class="guideBox"> <!-- h3위치 조절하기!! -->
+<h3 style="margin-left: 80px;">경로정보</h3><button class="btn btn-primary" id="selectpath">경로지정</button>
 
 <div style="display:none">
 <table class="table table-bordered"> <!-- c:foreach로 검색 목록 모두 표시 -->
@@ -281,6 +302,7 @@ textarea{
 	<th style="width: 25%;">처리결과</th>
 </tr>
 <%-- <c:forEach items="${boardList }" var="board"> --%>
+
 <tr>
 	<td>기안</td>
 	<td>사원<br>김길동</td>

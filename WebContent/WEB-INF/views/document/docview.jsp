@@ -59,7 +59,6 @@ window.onload = function(){
 	padding: 0;
 	color: #0A2D5D;
 	font-weight: bold;
-	display: inline-block; /* 버튼을 옆에 두기위해 */
 }
 td:first-child{
 	font-weight: bold;
@@ -92,6 +91,12 @@ textarea{
 	float: right;
 	margin-right: 10px;
 }
+h3{
+	text-align: left;
+}
+span{
+	color: red;
+}
 
 </style>
 
@@ -116,7 +121,15 @@ textarea{
 <table class="table table-bordered" style="width: 850px;">
 <tr>
 	<td class="active">제목＊</td>
-	<td>${viewDocument.doc_title }</td>
+<%-- 	<td>${viewDocument.doc_title }</td> --%>
+	<td>
+	<c:if test="${viewDocument.doc_emergency eq 'Y' }">
+	<span>[긴급]</span>${viewDocument.doc_title }
+	</c:if>
+	<c:if test="${viewDocument.doc_emergency != 'Y' }">
+	${viewDocument.doc_title }
+	</c:if>
+	</td>
 </tr>
 
 <tr>

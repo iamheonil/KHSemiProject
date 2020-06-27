@@ -56,8 +56,58 @@ h4 {
 .container {
 	width: 900px;
 }
+
+.active > th {
+	text-align: center;
+}
+
+.table-content > td{ 
+ 	text-align: center; 
+}
+.table-content > td:nth-child(3){
+	text-align: left;
+}
+.table-content span{
+	color: red;
+}
+
+.title {
+	text-align: left;
+	margin-bottom: 18px;
+	font-weight: bold;
+}
 </style>
 
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	
+	
+	if(${waitApproveCnt } > 0) {
+		setInterval(function() {
+			$("#dolistAppro > li:nth-child(1)").css("background", "#0f4c81")
+			$("#dolistAppro > li:nth-child(1) > a").css("color", "white")
+			
+		}, 1000);
+		setInterval(function() {
+			$("#dolistAppro > li:nth-child(1)").css("background", "white")
+			$("#dolistAppro > li:nth-child(1) > a").css("color", "black")
+		}, 2000);
+	}
+	if(${waitApproveCnt } > 0) {
+		setInterval(function() {
+			$("#dolistAppro > li:nth-child(2)").css("background", "#0f4c81")
+			$("#dolistAppro > li:nth-child(2) > a").css("color", "white")
+			
+		}, 1000);
+		setInterval(function() {
+			$("#dolistAppro > li:nth-child(2)").css("background", "white")
+			$("#dolistAppro > li:nth-child(2) > a").css("color", "black")
+		}, 2000);
+	}
+	
+});
+</script>
 
 <%-- import header.jsp --%>
 <c:import url="/WEB-INF/views/layout/header_doc.jsp" />
@@ -67,10 +117,10 @@ h4 {
 <div id="contents">
 	<div id="dolistcon">
 		<div id="dolist">
-			<h4>처리할 일</h4>
+			<h3 class="title">처리할 일</h3>
 			<ul id="dolistAppro">
-				<li><a href="/document/list/waitapprove">결재대기함 : ${waitApproveCnt }건</a></li>
-				<li><a href="/document/list/progress">진행문서함 : 1건</a></li>
+				<li><a href="/document/list/waitapprove" style="font-size: 16px;">결재대기함 : ${waitApproveCnt }건</a></li>
+				<li><a href="/document/list/progress" style="font-size: 16px;">진행문서함 : ${progressCnt }건</a></li>
 			</ul>
 		</div>
 		<br>
@@ -79,7 +129,7 @@ h4 {
 
 
 		<div class="container" style="width: 1000px;">
-			<h4>결재대기함</h4>
+			<h3 class="title">결재대기함</h3>
 			<table class="table table-striped table-hover" style="width: 1000px;">
 				<!-- 부트스트랩, table -->
 				<tr class="active">
@@ -90,25 +140,30 @@ h4 {
 					<th style="width: 10%;">직위</th>
 					<th style="width: 10%;">보고자</th>
 				</tr>
-				<%-- <c:forEach items="${boardList }" var="board"> --%>
-				<tr>
-					<td>검토</td>
-					<%-- 	<td><fmt:formatDate value="${board.writtendate }" pattern="yyyy-MM-dd"/></td> --%>
-					<td>2020-05-23</td>
-					<%-- 	<td><a href="/board/view?boardno=${doc.doc_num }">${doc.doc_title }</a></td> --%>
-					<td>제목1</td>
-					<td>부서1</td>
-					<td>사원</td>
-					<td>이름1</td>
+				<c:forEach items="${waitApproveDoList }" var="waitApprove">
+				<tr class="table-content">
+					<td>${waitApprove.report_type }</td>
+					<td><fmt:formatDate value="${waitApprove.doc_date }" pattern="yyyy-MM-dd"/></td>
+					<td>
+					<c:if test="${waitApprove.doc_emergency eq 'Y' }">
+					<a href="/document/view?doc_num=${waitApprove.doc_num }"><span>[긴급] </span>${waitApprove.doc_title }</a>
+					</c:if>
+					<c:if test="${waitApprove.doc_emergency != 'Y' }">
+					<a href="/document/view?doc_num=${waitApprove.doc_num }">${waitApprove.doc_title }</a>
+					</c:if>
+					</td>
+					<td>${waitApprove.dept }</td>
+					<td>${waitApprove.userrank }</td>
+					<td>${waitApprove.username }</td>
 				</tr>
-				<%-- </c:forEach> --%>
+				</c:forEach>
 			</table>
 
 
 			<br>
 
-			<h4>진행문서함</h4>
-			<table class="table table-striped table-hover table-condensed" style="width:1000px;">
+			<h3 class="title">진행문서함</h3>
+			<table class="table table-striped table-hover " style="width:1000px;">
 				<!-- 부트스트랩, table -->
 				<tr class="active">
 					<th style="width: 10%;">구분</th>
@@ -118,18 +173,23 @@ h4 {
 					<th style="width: 10%;">직위</th>
 					<th style="width: 10%;">보고자</th>
 				</tr>
-				<%-- <c:forEach items="${boardList }" var="board"> --%>
-				<tr>
-					<td>검토</td>
-					<%-- 	<td><fmt:formatDate value="${board.writtendate }" pattern="yyyy-MM-dd"/></td> --%>
-					<td>2020-05-23</td>
-					<%-- 	<td><a href="/board/view?boardno=${doc.doc_num }">${doc.doc_title }</a></td> --%>
-					<td>전자문서 결재에 대한 결과 보고 입니다 아아아</td>
-					<td>부서1</td>
-					<td>사원</td>
-					<td>이름1</td>
+				<c:forEach items="${progressDoList }" var="progress">
+				<tr class="table-content">
+					<td>${progress.report_type }</td>
+					<td><fmt:formatDate value="${progress.doc_date }" pattern="yyyy-MM-dd"/></td>
+					<td>
+					<c:if test="${progress.doc_emergency eq 'Y' }">
+					<a href="/document/view?doc_num=${progress.doc_num }"><span>[긴급] </span>${progress.doc_title }</a>
+					</c:if>
+					<c:if test="${progress.doc_emergency != 'Y' }">
+					<a href="/document/view?doc_num=${progress.doc_num }">${progress.doc_title }</a>
+					</c:if>
+					</td>
+					<td>${progress.dept }</td>
+					<td>${progress.userrank }</td>
+					<td>${progress.username }</td>
 				</tr>
-				<%-- </c:forEach> --%>
+				</c:forEach>
 			</table>
 
 

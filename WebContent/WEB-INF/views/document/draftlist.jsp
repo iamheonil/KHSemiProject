@@ -45,7 +45,9 @@ h3{
 	width: 1000px;
 	padding: 35px;
 }
-
+#templist h3{
+	font-weight: bold;
+}
 h3{
 	margin-top: 10px;
 	padding: 0;
@@ -67,6 +69,13 @@ h3{
 .table-content > td:nth-child(3){
 	text-align: left;
 }
+.title {
+   text-align: left;
+   margin-bottom: 18px;
+}
+.table-content span{
+	color: red;
+}
 </style>
 
 
@@ -79,13 +88,12 @@ h3{
 <div id="contents">
 <div id="templist">
 
-<h3>기안한 문서</h3><br>
 
-
-<br><br>
 
 
 <div class="container" style="width:930px;">
+<h3 class="title">기안한 문서</h3>
+<br><br>
 <table class="table table-striped table-hover" style="width: 900px;"> <!-- 부트스트랩, table -->
 <tr class="active">
 	<th style="width: 10%;">구분</th>
@@ -100,7 +108,15 @@ h3{
 <tr class="table-content">
 	<td>${draft.report_type }</td>
 	<td><fmt:formatDate value="${draft.doc_date }" pattern="yyyy-MM-dd"/></td>
-	<td><a href="/document/view?doc_num=${draft.doc_num }">${draft.doc_title }</a></td>
+<%-- 	<td><a href="/document/view?doc_num=${draft.doc_num }">${draft.doc_title }</a></td> --%>
+	<td>
+	<c:if test="${draft.doc_emergency eq 'Y' }">
+	<a href="/document/view?doc_num=${draft.doc_num }"><span>[긴급]</span>${draft.doc_title }</a>
+	</c:if>
+	<c:if test="${draft.doc_emergency != 'Y' }">
+	<a href="/document/view?doc_num=${draft.doc_num }">${draft.doc_title }</a>
+	</c:if>
+	</td>
 	<td>${draft.dept }</td>
 	<td>${draft.userrank }</td>
 	<td>${draft.username }</td>
