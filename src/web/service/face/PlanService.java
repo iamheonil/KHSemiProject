@@ -15,7 +15,13 @@ public interface PlanService {
 	 */
 	public List<Plan> getPlan(HttpServletRequest req);
 	
-	
+	/**
+	 * 일정을 작성,
+	 * 작성한 일정내역을 DB에 저장한다.
+	 * 
+	 * @param req - 요청정보 객체(일정 정보)
+	 */
+	public void insertPlan(HttpServletRequest req);
 	
 	
 }

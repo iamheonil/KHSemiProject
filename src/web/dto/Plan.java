@@ -7,8 +7,8 @@ public class Plan {
 	private int plan_num;
 	private int userid;
 	private String plan_name;
-	private Date ptime_start;
-	private Date ptime_end;
+	private String ptime_start;
+	private String ptime_end;
 
 	@Override
 	public String toString() {
@@ -40,20 +40,20 @@ public class Plan {
 		this.plan_name = plan_name;
 	}
 
-	public Date getPtime_start() {
+	public String getPtime_start() {
 		return ptime_start;
 	}
 
-	public void setPtime_start(Date ptime_start) {
-		this.ptime_start = ptime_start;
+	public void setPtime_start(String string) {
+		this.ptime_start = string;
 	}
 
-	public Date getPtime_end() {
+	public String getPtime_end() {
 		return ptime_end;
 	}
 
-	public void setPtime_end(Date ptime_end) {
-		this.ptime_end = ptime_end;
+	public void setPtime_end(String string) {
+		this.ptime_end = string;
 	}
 
 }
