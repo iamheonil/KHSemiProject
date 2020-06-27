@@ -247,14 +247,26 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void updateBoard(HttpServletRequest req) {
 		
-		Board board = null;
+		Board board = new Board();
 		
-		board = new Board();
+		board.setCategory(req.getParameter("category"));
+		board.setB_title(req.getParameter("title"));
+		board.setB_content(req.getParameter("content"));
+	
+		String b_num = (String)req.getParameter("b_num");
+		board.setB_num(Integer.parseInt(b_num));
+		//게시글 작성자 id입력
+				board.setUserid((int)req.getSession().getAttribute("userid"));
+				board.setUserrank((String)req.getSession().getAttribute("userrank"));
+				board.setUsername((String)req.getSession().getAttribute("username"));
+				board.setDept((String)req.getSession().getAttribute("userdept"));
 		
-		if(board != null) {
+//				int boardno = boardDao.selectBoardno();
+//				board.setB_num(boardno);
+				
 				boardDao.boardUpdate(board);
-		}
 		
+		System.out.println(board);
 	}
 
 	@Override
