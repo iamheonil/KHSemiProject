@@ -79,6 +79,12 @@ h3{
 .table-content span{
 	color: red;
 }
+
+.title {
+	text-align: left;
+	margin-bottom: 18px;
+	font-weight: bold;
+}
 </style>
 
 <%-- import header.jsp --%>
@@ -89,7 +95,7 @@ h3{
 <div id="contents">
 <div id="templist">
 
-<h3>결재대기함</h3><br>
+<h3 class="title">결재대기함</h3>
 
 
 
@@ -110,7 +116,14 @@ h3{
 <tr class="table-content">
 	<td>${waitApprove.report_type }</td>
 	<td><fmt:formatDate value="${waitApprove.doc_date }" pattern="yyyy-MM-dd"/></td>
-	<td><a href="/document/view?doc_num=${waitApprove.doc_num }">${waitApprove.doc_title }</a></td>
+	<td>
+	<c:if test="${waitApprove.doc_emergency eq 'Y' }">
+	<a href="/document/view?doc_num=${waitApprove.doc_num }"><span>[긴급] </span>${waitApprove.doc_title }</a>
+	</c:if>
+	<c:if test="${waitApprove.doc_emergency != 'Y' }">
+	<a href="/document/view?doc_num=${waitApprove.doc_num }">${waitApprove.doc_title }</a>
+	</c:if>
+	</td>
 	<td>${waitApprove.dept }</td>
 	<td>${waitApprove.userrank }</td>
 	<td>${waitApprove.username }</td>
