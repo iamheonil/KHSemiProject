@@ -75,7 +75,7 @@ function submitContents(elClickedObj){
 <c:if test="${userrank == '차장' or userrank == '부장' or userrank == '팀장'}">
  <option value="공지사항">공지사항</option>
 </c:if> 
- <option value="스터디">스터디</option>
+ <option value="스터디">스터디모집</option>
  <option value="사내게시판">사내게시판</option>
 </select>
 
