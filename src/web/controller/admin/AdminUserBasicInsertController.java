@@ -32,7 +32,7 @@ public class AdminUserBasicInsertController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		
-		user_basicService.insert(req);
+		user_basicService.insertUser_basic(req);
 		
 		resp.sendRedirect("admin/userbasic/list");
 		

@@ -56,6 +56,18 @@ public class DayoffServiceImpl implements DayoffService {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public Dayoff view(HttpServletRequest req) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(HttpServletRequest req) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

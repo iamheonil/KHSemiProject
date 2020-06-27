@@ -13,7 +13,7 @@ public interface User_basicService {
 	 * 사번 추가(관리자)
 	 * 
 	 */
-	public void insertUser_basic(User_basic user_basic);
+	public void insertUser_basic(HttpServletRequest req);
 	
 	
 	/**
@@ -78,5 +78,7 @@ public interface User_basicService {
 	 */
 	
 	public List<User_basic> selectUser_basic();
-	
+
+
+
 }

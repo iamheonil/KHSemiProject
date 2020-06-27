@@ -68,6 +68,21 @@ public interface DayoffService {
 	 * @return Dayoff - 작성한 휴가 신청서
 	 */
 	public void insert(HttpServletRequest req);
+
+	
+	/**
+	 * 휴가 신청서 조회
+	 * @param req
+	 * @return
+	 */
+	public Dayoff view(HttpServletRequest req);
+
+	
+	/**
+	 * 휴가 신청서 삭제
+	 * @param req
+	 */
+	public void delete(HttpServletRequest req);
 	
 	
 }
