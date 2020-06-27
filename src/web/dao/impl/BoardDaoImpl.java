@@ -783,9 +783,9 @@ public class BoardDaoImpl implements BoardDao{
 		
 		//다음 게시글 번호 조회 쿼리
 		String sql = "";
-		sql += "UPDATE board";		
-		sql += " SET b_title = ?,";
-		sql += " category = ?,";
+		sql += " UPDATE board";		
+		sql += " SET category = ?,";
+		sql += " b_title = ?,";
 		sql += " b_content = ?";
 		sql += " WHERE b_num = ?";
 		
@@ -793,9 +793,11 @@ public class BoardDaoImpl implements BoardDao{
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, board.getB_title());
-			ps.setString(2,  board.getB_content());
-			ps.setInt(3, board.getB_num());
+			
+			ps.setString(1, board.getCategory());
+			ps.setString(2, board.getB_title());
+			ps.setString(3,  board.getB_content());
+			ps.setInt(4, board.getB_num());
 			
 			ps.executeUpdate();
 			
@@ -804,8 +806,21 @@ public class BoardDaoImpl implements BoardDao{
 			e.printStackTrace();
 			
 		} finally{
-			JDBCTemplate.close(ps);
+			
+			try {
+				JDBCTemplate.close(ps);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		
+		System.out.println(board.getCategory());
+		System.out.println(board.getB_title());
+		System.out.println(board.getB_content());
+		System.out.println(board.getB_num());
+		
+		
+		
 	}
 
 
