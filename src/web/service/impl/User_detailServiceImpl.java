@@ -275,8 +275,12 @@ public class User_detailServiceImpl implements User_detailService {
 	public User_detail getUser_detailById(HttpServletRequest req) {
 		
 		user_detail = new User_detail();
-		user_detail.setUserid((int)req.getSession().getAttribute("userid"));
+		
+		if(req.getParameter("userid") != null && !"".equals(req.getParameter("userid"))) {
+			user_detail.setUserid(Integer.parseInt(req.getParameter("userid")));
+		}
 				
+		System.out.println("여긴?" + user_detail);
 		return user_detailDao.selectUser_detailById(user_detail);
 	}
 
