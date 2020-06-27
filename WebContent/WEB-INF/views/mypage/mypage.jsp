@@ -17,6 +17,7 @@
 	width: 430px;
 	background: white;
 	vertical-align: middle;
+	margin-left: 100px;
 }
 
 .Form-title {
@@ -78,8 +79,10 @@
 }
 
 .Form-name-Layout {
-	border-bottom: 5px solid #add3f0;
-	margin-bottom: 25px;
+	font-size: 30px;
+	font-weight: bold;
+	text-align: left;
+	margin-bottom: 100px;
 }
 
 .Form-name {
@@ -132,8 +135,8 @@
 }
 
 #userphoto {
-	width: 200px;
-	height: 200px;
+	width: 204px;
+	height: 204px;
 	border: 2px solid black;
 	display: inline-block;
 }
@@ -384,25 +387,17 @@ $(document).ready(function() {
 
 <div id="loginForm">
 			<p class="Form-name-Layout">
-				<span class="Form-name">회원가입</span>
+				회원정보변경
 			</p>
-			<div class="notice">
-				<p style="margin-bottom: 3px">
-					${userdept} ${userrank } ${username }님 환영합니다!
-				</p>
-				<p>
-					계속해서 아래 정보를 입력해주세요.
-				</p>
-			</div>
 			
 
-			<form action="/user/join" method="post" id="joinForm"  enctype="multipart/form-data">
+			<form action="/user/modify/detail" method="post" id="joinForm"  enctype="multipart/form-data">
 			
 			<div class="Form-title">
 				프로필 사진
 			</div>
 			<div class="Form-content" style="text-align: left;">
-				<div id="userphoto"><img alt="프로필사진" src="/upload/2020062604131912.jpg" style="width:200px; height:200px;"></div>
+				<div id="userphoto"><img alt="프로필사진" src="/upload/${user_detail.userphoto_rename }" style="width:200px; height:200px;"></div>
 				<input type="file" name="uphoto" id="uphoto" style="display: inline;"/>
 				<div id="photo_err_msg" class="err_msg"></div>
 			</div>

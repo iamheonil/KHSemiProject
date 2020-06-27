@@ -59,6 +59,8 @@ public class User_detailDaoImpl implements User_detailDao {
 		sql += "INSERT INTO user_detail(usernum, userid, userphoto_origin, userphoto_rename, userpw, userbirth, usergender, userphone, useraddr)";
 		sql += " VALUES(user_detail_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
+		
+			System.out.println("가입하는 정보" + user_detail);
 		try {
 			ps = conn.prepareStatement(sql);
 			
@@ -82,7 +84,44 @@ public class User_detailDaoImpl implements User_detailDao {
 
 	@Override
 	public void updateUser_detail(User_detail user_detail) {
+		conn = JDBCTemplate.getConnection();
 		
+		String sql = "";
+		sql += "UPDATE user_detail SET userpw = ?";
+		if(user_detail.getUserphoto_rename() != null && !"".equals(user_detail.getUserphoto_rename())) {
+			sql += " , userphoto_rename = ?";
+		}
+		if(user_detail.getUseraddr() != null && !"".equals(user_detail.getUseraddr())) {
+			sql += " , useraddr = ?";
+		}
+		if(user_detail.getUserphone() != null && !"".equals(user_detail.getUserphone())) {
+			sql += " , userphone = ?";
+		}
+		sql += " WHERE userid = ?";
+		
+		
+		int index = 1;
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(index++, user_detail.getUserpw());
+			if(user_detail.getUserphoto_rename() != null && !"".equals(user_detail.getUserphoto_rename())) {
+				ps.setString(index++, user_detail.getUserphoto_rename());
+			}
+			if(user_detail.getUseraddr() != null && !"".equals(user_detail.getUseraddr())) {
+				ps.setString(index++, user_detail.getUseraddr());
+			}
+			if(user_detail.getUserphone() != null && !"".equals(user_detail.getUserphone())) {
+				ps.setString(index++, user_detail.getUserphone());
+			}
+			ps.setInt(index++, user_detail.getUserid());
+			
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
 	}
 
 	@Override
@@ -124,6 +163,7 @@ public class User_detailDaoImpl implements User_detailDao {
 		
 		String sql = "SELECT * FROM user_detail WHERE userid = ?";
 		
+		System.out.println("올까?");
 		
 		try {
 			ps = conn.prepareStatement(sql);

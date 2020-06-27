@@ -24,8 +24,9 @@ public interface User_detailService {
 	 */
 	public void joinUser_detail(HttpServletRequest req);
 	
+	
 	/**
-	 * 사번으로 User_detail 정보 가져오기(회원정보변경)
+	 * 사번으로 User_detail 정보 가져오기(로그인 session)
 	 * 
 	 * @param req - req 객체정보
 	 * @return User_detail - 조회한 회원정보
@@ -33,11 +34,20 @@ public interface User_detailService {
 	public User_detail getUser_detailById(HttpServletRequest req);
 	
 	/**
+	 * 사번으로 User_detail 정보 가져오기(회원정보변경)
+	 * 
+	 * @param req - req 객체정보
+	 * @return User_detail - 조회한 회원정보
+	 */
+	public User_detail getModifyUser_detailById(HttpServletRequest req);
+	
+	
+	/**
 	 * 회원정보 수정
 	 * 
-	 * @param user_detail - 수정할 정보
+	 * @param req - req 요청객체
 	 */
-	public void modifyUser_detail(User_detail user_detail);
+	public void modifyUser_detail(HttpServletRequest req);
 	
 	
 	/**

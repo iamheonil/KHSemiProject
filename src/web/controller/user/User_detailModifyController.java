@@ -22,17 +22,24 @@ public class User_detailModifyController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		user_detail = user_detailService.getUser_detailById(req);
+		user_detail = user_detailService.getModifyUser_detailById(req);
+		
+		System.out.println("/usermodify " + user_detail);
 		
 		req.setAttribute("user_detail", user_detail);
 		
 		req.getRequestDispatcher("/WEB-INF/views/mypage/mypage.jsp").forward(req, resp);
-		
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		// 회원정보 변경
+		user_detailService.modifyUser_detail(req);
+		
+		// 변경 성공시 전자문서 메인으로
+		resp.sendRedirect("/document/dolist");
+		
 	}
 	
 }
