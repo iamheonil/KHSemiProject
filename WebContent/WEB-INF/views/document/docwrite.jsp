@@ -12,6 +12,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+<script type="text/javascript" src="/resources/js/document/httpRequest.js"></script>
+
+
 <script type="text/javascript">
 // $(document).ready(function(){
 // 	searchajax();
@@ -130,6 +133,74 @@ $("#selectBtn").click(function(){
 });
 });
 
+
+// ajax
+// var request = new XMLHttpRequest();
+// function searchFunction(){
+// // 	request.open("post", "/UserListServlet?userid="+document.getElementById("userid").valeu());
+// 	//onreadystatechange => 서버와의 통신이 끝났을 때 호출되는 이벤
+// 	request.onreadystatechange = function(){
+// 		var table = document.getElementById("ajaxTable");
+// 		table.innerHTML = "";
+		
+// 		//readyState => 현재 통신상태(4=통신완료)/status=>HTTP와의 통신결과(200=통신성공) 
+// 		if(request.readyState == 4 && request.status == 200){
+// 			//responseText=>서버에서 통신한 자료를 담고 있다
+// 			//eval =>서버에서 받은 자료를 JSON오브젝트로 변환해준다
+
+// 			var object = eval('(' + request.responseText + ')'); 
+// 			var result = object.result;
+
+// 			for(var i = 0; i < result.length; i++){
+// 				var row = table.insertRow(0);
+				
+// 				for(var j = 0; j < result[i].length; j++){
+// 					var cell = row.insertCell(j);
+// 					cell.innerHTML = result[i][j].value;
+// 				}
+// 			}
+// 		}
+// 	}
+// 	request.send();
+// }
+// window.onload = function(){
+// 	searchFunction();
+// }
+// window.onload = function() {
+
+	
+	
+function send(){
+	var s = searchname.value;
+	
+	var params = "searchname="+s;
+	console.log(params)
+	// - - - URL 구성 - - -
+	var url = "/document/write/search"; ///UserSearchController
+	// - - - - - - - - - - -
+	
+	// - - - AJAX 요청 전송 - - -
+	sendRequest("POST", url, params, callback);
+	// - - - - - - - - - - - - - -
+	}
+
+//AJAX 요청 처리 콜백함수
+function callback() {
+	if( httpRequest.readyState == 4 ) { //XHR DONE.
+		if( httpRequest.status == 200 ) { //HTTP 200, OK.
+			console.log("정상적인 응답")
+			
+			//정상응답 처리 함수
+			searchFunction();
+			
+		} else {
+			console.log("AJAX 요청/응답 에러")
+		}
+	}
+}
+
+
+// }
 </script>
 
 <script type="text/javascript">
@@ -160,14 +231,53 @@ window.onload = function(){
 	    }
 	}
 }
-// $('input:checkbox[id="chk"]').attr("Y", true);
-// $('input:checkbox[id="chk"]').attr("N", false);
 
-// var DATA;
-// $('input:checkbox[name=chk]').each(function() {
-//    if($(this).is(':checked'))
-//       $(this).val() = 'y';
-// });
+
+
+//이름으로 사원 검색하기
+$(document).ready(function(){
+	
+	$("#searchname").keydown(function(e) {
+		if(e.keyCode == 13) {
+			searchclick();
+		}
+	})
+	$("#search").click(function(){
+		searchclick();
+	})
+	
+// 	$("#deptSearch").change(function(){
+// 		var dept = $("#deptSearch option:selected").text();
+// 		$("#user-table > tbody > tr").hide();
+// 		var temp1 = $("#userTB> tbody > tr > td#dept:nth-child(n):contains('" + dept + "')");
+		
+// 		$(temp1).parent().show();
+// 	})
+// 	$("#rankSearch").change(function(){
+// 		var dept = $("#rankSearch option:selected").val();
+// 		var temp1 = $("#userTB> tbody > tr > td#rank:nth-child(n):contains('" + rank + "')");
+		
+// 		$(temp1).parent().show();
+		
+// 	})
+	
+function searchclick(){
+		var k = $("#searchname").val();
+		var dept = $("#deptSearch option:selected").text();
+		
+		$("#userTB > tbody > tr").hide();
+		
+		var temp = $("#userTB> tbody > tr > td#name:nth-child(n):contains('" + k + "')");
+		var temp1 = $("#userTB> tbody > tr > td#dept:nth-child(n):contains('" + dept + "')");
+		
+		
+		$(temp).parent().show();
+		$(temp1).parent().show();
+		
+	}
+	
+	
+})
 </script>
 
 <style type="text/css">
@@ -257,10 +367,31 @@ textarea{
 	height: 40px;
 	width: 150px;
 }
-#userTB {overflow-y: auto; height: 100px; }
+#search{
+/* 	display: inline-block; */
+/* 	float: right; */
+}
+#searchname{
+	width: 150px;
+	height: 40px;
+	display: inline-block;
+/* 	float: right; */
+}
+#tb_wrap{
+	
+}
+#userTB {overflow-y: auto; height: 100px;}
 #userTB th { position: sticky; top: 0; background: white;}
 
+ #container {width: 960px; margin: 0 auto;}
+        #container #input-form {text-align: center;}
+        #user-table {margin: 0 auto; text-align: center;}
+        #input-form {margin-top: 10px; margin-bottom: 10px;}
 
+        #user-table {border-collapse: collapse;}
+        #user-table > thead > tr { background-color: #333; color:#fff; }
+        #user-table > thead > tr > th { padding: 8px; width: 150px; }
+        #user-table > tbody > tr > td { border-bottom: 1px solid gray; padding:8px; }
 </style>
 
 <%-- import header.jsp --%>
@@ -274,18 +405,19 @@ textarea{
 
 <div class="container" style="width: 930px">
 <div id="docbutton" align="right">
-<button class="btn btn-primary" id="myBtn">문서처리</button>
-<button class="btn btn-primary" onclick="location.href='/document/list/temp'">임시저장</button>
-<button class="btn btn-primary">닫기</button>
 </div>
 <h3>문서정보</h3>
 
 <form action="/document/write" method="post" enctype="multipart/form-data">
+<input type="button" class="btn btn-primary" id="myBtn" value="문서처리">
+<input type="button" class="btn btn-primary" value="임시저장" 
+onclick="location.href='/document/writetemp'">
+<input type="button" value="닫기" class="btn btn-primary">
 <table class="table table-bordered" style="width: 900px;">
 <tr>
 	<td class="active">제목＊</td>
 	<td><input type="text" id="doc_title" name="doc_title" style="width: 620px;"/>
-		 &nbsp;<input type="checkbox" id="chk" name="doc_emergency" value="Y"/> 긴급</td>
+		 &nbsp;<input type="checkbox" id="doc_emergency" name="doc_emergency" value="Y"/> 긴급</td>
 </tr>
 
 <tr>
@@ -337,7 +469,10 @@ textarea{
 	<option value="resource">부사장</option>
 	<option value="resource">사장</option>
 </select>
-<div class="tb_wrap" style="width:100%; height:200px; overflow:auto">
+<input class="form-control" type="text" id="searchname" name="searchname" 
+	 placeholder="이름으로 검색하기"/>
+<button id="search" class="btn btn-primary">검색</button>
+<div class="tb_wrap" style="width:100%; height:200px; overflow:auto; border: 1px solid #eee;" >
 <table style="width: 100%; border: 0; " id="userTB" class="table table-bordered"> <!-- c:foreach로 검색 목록 모두 표시 -->
 
 <!-- user정보조회된거 -->
@@ -352,10 +487,10 @@ textarea{
 <tbody style="cellspacing:0; cellpadding:0;">
 <c:forEach items="${user }" var="user">
 <tr>
-	<td><input type="checkbox" name="chkuser"/></td>
-	<td>${user.dept }</td>
-	<td>${user.userrank }</td>
-	<td>${user.username }</td><!-- userrank, 보고종류 -->
+	<td><input type="checkbox" name="checkbox"/></td>
+	<td id="dept">${user.dept }</td>
+	<td id="rank">${user.userrank }</td>
+	<td id="name">${user.username }</td><!-- userrank, 보고종류 -->
 </tr>
 </c:forEach>
 </tbody>
@@ -370,6 +505,11 @@ textarea{
 
 </div>
 
+
+
+
+
+<div class="form-group row pull-right">
 <table id="path" class="table table-bordered " style="width: 900px;"> <!-- 부트스트랩, table -->
 <tr class="active">
 	<th style="width: 10%;">구분</th>
@@ -398,7 +538,7 @@ textarea{
 </tr>
 <%-- </c:forEach> --%>
 </table>
-
+</div> <!-- form-group div -->
 
 </div> <!-- div.container -->
 </div> <!-- detail -->

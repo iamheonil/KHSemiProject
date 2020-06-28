@@ -53,8 +53,8 @@ public class DocumentWriteController extends HttpServlet {
 		
 		documentService.writeDoc(req);
 		
-//		Document doc = documentService.getDocumentno(req);
-//		report_linkService.getDocReport_Link(doc);
+		Document doc = documentService.getDocumentno(req);
+		report_linkService.getDocReport_Link(doc);
 		
 		
 		resp.sendRedirect("/document/list/temp");
