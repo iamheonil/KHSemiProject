@@ -6,36 +6,34 @@ import javax.servlet.http.HttpServletRequest;
 
 import web.dto.Dayoff;
 import web.util.Paging;
+import web.util.ad_Day_Paging;
 
 public interface DayoffService {
 	
 
 	/**
-	 * 휴가 신청글 전체 조회
-	 * 
-	 * @return List<Dayoff> - 휴가신청글 전체 조회 결과 리스트
+	 * 게시글 목록 조회
+	 *  
+	 * @return List - 게시글 목록
 	 */
 	public List<Dayoff> getList();
-
-	/**
-	 * 페이징 객체 생성
-	 * 
-	 * 요청정보를 활용하여 curPage를 구하고
-	 * Board 테이블과 curPage 값을 이용한 Paging 객체를 생성하여 반환한다
-	 * 
-	 * @param req - curPage정보를 담고 있는 요청정보 객체
-	 * @return Paging - 페이징 계산이 완료된 결과 객체
-	 */
-	public Paging getPaging(HttpServletRequest req);
-
-	/**
-	 * 페이징 처리하여 보여질 게시글 목록만 조회하기
-	 * 
-	 * @param paging - 페이징 정보 객체
-	 * @return List<Dayoff> - 조회된 게시글 목록
-	 */
-	public List<Dayoff> getList(Paging paging);
 	
+	/**
+	 * 페이징 정보를 활용하여 보여질 게시글 목록만 조회
+	 *  
+	 * @param Paging - 페이징 정보
+	 * @return List - 게시글 목록
+	 */
+	public List<Dayoff> getList(ad_Day_Paging paging);
+	
+	/**
+	 * 요청파라미터 curPage를 파싱한다
+	 * Board TB와 curPage 값을 이용한 Paging 객체를 생성하고 반환
+	 * 
+	 * @param req - 요청정보 객체
+	 * @return Paging - 페이징 정보
+	 */
+	public ad_Day_Paging getPaging(HttpServletRequest req);
 	
 	/**
 	 * 글 작성자인지 판단하기
@@ -67,7 +65,7 @@ public interface DayoffService {
 	 * @param req - 요청 정보 객체
 	 * @return Dayoff - 작성한 휴가 신청서
 	 */
-	public void insert(HttpServletRequest req);
+	public void dayoffWrite(HttpServletRequest req);
 
 	
 	/**
@@ -77,12 +75,20 @@ public interface DayoffService {
 	 */
 	public Dayoff view(HttpServletRequest req);
 
+
+	/**
+	 * 신청서 삭제
+	 * @param dayoff
+	 *
+	 */
+	public void delete(Dayoff dayoff);
+	
 	
 	/**
-	 * 휴가 신청서 삭제
-	 * @param req
+	 * 신청서 목록 삭제
+	 * @param dayoff
 	 */
-	public void delete(HttpServletRequest req);
-	
+	public void deleteDayoff(String names);
+
 	
 }

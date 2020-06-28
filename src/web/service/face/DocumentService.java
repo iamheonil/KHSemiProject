@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import web.dto.Document;
 import web.util.Paging;
 import web.util.SearchPaging;
+import web.util.ad_Day_Paging;
 
 public interface DocumentService {
 	
@@ -210,5 +211,6 @@ public interface DocumentService {
 	 * @param names - 삭제한 게시글 번호 목록들 문자열
 	 */
 	public void deleteDocumentList(String names);
+	
 
 }

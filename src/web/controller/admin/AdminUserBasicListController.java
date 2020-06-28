@@ -29,6 +29,14 @@ public class AdminUserBasicListController extends HttpServlet {
 		
 		//검색 결과이므로 페이징 넣지 않습니다.
 		List<User_basic> list = user_basicService.selectUser_basic(req);
+		
+		//조회 결과 전달
+		req.setAttribute("list", list);
+		
+		//view지정
+		req.getRequestDispatcher("/WEB-INF/views/admin/user/list.jsp").forward(req, resp);
+
+
 	}
 
 	}

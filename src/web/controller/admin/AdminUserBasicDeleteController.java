@@ -28,6 +28,7 @@ public class AdminUserBasicDeleteController extends HttpServlet {
 		
 		user_basicService.deleteUser(userBasic);
 		
+		//목록으로 리다이렉트
 		resp.sendRedirect("/admin/userbasic/list");
 	}
 

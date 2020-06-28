@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import web.dto.Dayoff;
 import web.service.face.DayoffService;
 import web.service.impl.DayoffServiceImpl;
-import web.util.Paging;
+import web.util.ad_Day_Paging;
 
 /**
  * Servlet implementation class AdminDayoffListController
@@ -28,12 +28,15 @@ public class AdminDayoffListController extends HttpServlet {
 		System.out.println("adminDayoffList [DoGet] 확인");
 
 		// 페이징 객체 생성
-		Paging paging = dayoffService.getPaging(req);
+		ad_Day_Paging paging = dayoffService.getPaging(req);
 
 		// 게시글 조회
 		List<Dayoff> list = dayoffService.getList(paging);
+		
+		//페이징계산결과 MODEL값 전달
+		req.setAttribute("paging", paging);
 
-		// 조회 결과 전달
+		//조회결과 MODEL값 전달
 		req.setAttribute("list", list);
 
 		// VIEW 지정

@@ -1,6 +1,7 @@
 package web.util;
 
-public class Paging {
+public class ad_D_paging {
+
 	private int curPage;	//현재 페이지 번호
 
 	private int totalCount;	//총 게시글 수
@@ -14,10 +15,12 @@ public class Paging {
 	private int startNo;	//화면에 보이는 페이지의 시작 게시글 번호(rownum)
 	private int endNo;		//화면에 보이는 페이지의 끝 게시글 번호(rownum)
 	
+	private String search; //검색어
+	
 	//--- 생성자 4개 ---
 	
 	//총 게시글 수만 입력하는 생성자
-	public Paging(int totalCount) {
+	public ad_D_paging(int totalCount) {
 		setTotalCount(totalCount);
 		
 		makePaging();
@@ -25,7 +28,7 @@ public class Paging {
 	
 	//위에꺼보다 이걸 많이 쓰게 될거다
 	//총 게시글 수, 현재 페이지를 입력하는 생성자
-	public Paging(int totalCount, int curPage) {
+	public ad_D_paging(int totalCount, int curPage) {
 		setTotalCount(totalCount);
 		setCurPage(curPage);
 		
@@ -33,7 +36,7 @@ public class Paging {
 	}
 	
 	//총 게시글 수, 현재 페이지, 보여질 게시글 수를 입력하는 생성자
-	public Paging(int totalCount, int curPage, int listCount) {
+	public ad_D_paging(int totalCount, int curPage, int listCount) {
 		setTotalCount(totalCount);
 		setCurPage(curPage);
 		setListCount(listCount);
@@ -42,7 +45,7 @@ public class Paging {
 	}
 
 	//총 게시글 수, 현재 페이지, 보여질 게시글 수, 보여질 페이지 수를 입력하는 생성자
-	public Paging(int totalCount, int curPage, int listCount, int pageCount) {
+	public ad_D_paging(int totalCount, int curPage, int listCount, int pageCount) {
 		setTotalCount(totalCount);
 		setCurPage(curPage);
 		setListCount(listCount);
@@ -87,71 +90,91 @@ public class Paging {
 		
 	}
 	
-	
 	@Override
 	public String toString() {
-		return "Paging [curPage=" + curPage + ", totalCount=" + totalCount + ", listCount=" + listCount + ", totalPage="
-				+ totalPage + ", pageCount=" + pageCount + ", startPage=" + startPage + ", endPage=" + endPage
-				+ ", startNo=" + startNo + ", endNo=" + endNo + "]";
+		return "ad_D_paging [curPage=" + curPage + ", totalCount=" + totalCount + ", listCount=" + listCount
+				+ ", totalPage=" + totalPage + ", pageCount=" + pageCount + ", startPage=" + startPage + ", endPage="
+				+ endPage + ", startNo=" + startNo + ", endNo=" + endNo + ", search=" + search + "]";
 	}
+	
 	public int getCurPage() {
 		return curPage;
 	}
+	
 	public void setCurPage(int curPage) {
 		this.curPage = curPage;
 	}
+	
 	public int getTotalCount() {
 		return totalCount;
 	}
+	
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
 	}
+	
 	public int getListCount() {
 		return listCount;
 	}
+	
 	public void setListCount(int listCount) {
 		this.listCount = listCount;
 	}
+	
 	public int getTotalPage() {
 		return totalPage;
 	}
+	
 	public void setTotalPage(int totalPage) {
 		this.totalPage = totalPage;
 	}
+	
 	public int getPageCount() {
 		return pageCount;
 	}
+	
 	public void setPageCount(int pageCount) {
 		this.pageCount = pageCount;
 	}
+	
 	public int getStartPage() {
 		return startPage;
 	}
+	
 	public void setStartPage(int startPage) {
 		this.startPage = startPage;
 	}
+	
 	public int getEndPage() {
 		return endPage;
 	}
+	
 	public void setEndPage(int endPage) {
 		this.endPage = endPage;
 	}
+	
 	public int getStartNo() {
 		return startNo;
 	}
+	
 	public void setStartNo(int startNo) {
 		this.startNo = startNo;
 	}
+	
 	public int getEndNo() {
 		return endNo;
 	}
+	
 	public void setEndNo(int endNo) {
 		this.endNo = endNo;
 	}
-
 	
+	public String getSearch() {
+		return search;
+	}
 	
-	
-	
+	public void setSearch(String search) {
+		this.search = search;
+	}
 	
 }

@@ -1,6 +1,6 @@
 package web.util;
 
-public class Paging {
+public class ad_Day_Paging {
 	private int curPage;	//현재 페이지 번호
 
 	private int totalCount;	//총 게시글 수
@@ -17,7 +17,7 @@ public class Paging {
 	//--- 생성자 4개 ---
 	
 	//총 게시글 수만 입력하는 생성자
-	public Paging(int totalCount) {
+	public ad_Day_Paging(int totalCount) {
 		setTotalCount(totalCount);
 		
 		makePaging();
@@ -25,7 +25,7 @@ public class Paging {
 	
 	//위에꺼보다 이걸 많이 쓰게 될거다
 	//총 게시글 수, 현재 페이지를 입력하는 생성자
-	public Paging(int totalCount, int curPage) {
+	public ad_Day_Paging(int totalCount, int curPage) {
 		setTotalCount(totalCount);
 		setCurPage(curPage);
 		
@@ -33,7 +33,7 @@ public class Paging {
 	}
 	
 	//총 게시글 수, 현재 페이지, 보여질 게시글 수를 입력하는 생성자
-	public Paging(int totalCount, int curPage, int listCount) {
+	public ad_Day_Paging(int totalCount, int curPage, int listCount) {
 		setTotalCount(totalCount);
 		setCurPage(curPage);
 		setListCount(listCount);
@@ -42,7 +42,7 @@ public class Paging {
 	}
 
 	//총 게시글 수, 현재 페이지, 보여질 게시글 수, 보여질 페이지 수를 입력하는 생성자
-	public Paging(int totalCount, int curPage, int listCount, int pageCount) {
+	public ad_Day_Paging(int totalCount, int curPage, int listCount, int pageCount) {
 		setTotalCount(totalCount);
 		setCurPage(curPage);
 		setListCount(listCount);
@@ -90,7 +90,7 @@ public class Paging {
 	
 	@Override
 	public String toString() {
-		return "Paging [curPage=" + curPage + ", totalCount=" + totalCount + ", listCount=" + listCount + ", totalPage="
+		return "ad_Day_Paging [curPage=" + curPage + ", totalCount=" + totalCount + ", listCount=" + listCount + ", totalPage="
 				+ totalPage + ", pageCount=" + pageCount + ", startPage=" + startPage + ", endPage=" + endPage
 				+ ", startNo=" + startNo + ", endNo=" + endNo + "]";
 	}

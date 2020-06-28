@@ -55,26 +55,31 @@ table, th {
 <div class="content">
 	<h4>휴가 신청서 목록</h4>
 	<div class="container">
-	
 		<table class="table table-hover table-condensed">
 			<tr class="active">
-				<th>휴가 날짜</th>
+				
+				<th>휴가번호</th>
+				<th>사번</th>
+				<th>휴가 시작</th>
+				<th>휴가 종료</th>	
 				<th>휴가 사유</th>
-				<th>작성일</th>
-				<th>휴가 승인 여부</th>
+				<th>휴가 여부</th>
 			</tr>
-		<c:forEach items="${dayoffList }" var="board">
-			<tr>
-				<td>${dayoff.daystart } ~ ${dayoff.dayend }</td>
-				<td>${dayoff.dreason }</td>
-				<td><fmt:formatDate value="${dayoff.writtendate }" pattern="yyyy-MM-dd"/></td>
-				<td>${dayoff.dresult }</td>
-			</tr>
-		</c:forEach>
+			<c:forEach items="${list }" var="dayoff">
+				<tr>
+					<td>${dayoff.daynum }</td>
+					<td>${dayoff.userid }</td>
+					<td>${dayoff.daystart }</td>
+					<td>${dayoff.dayend }</td>
+					<td>${dayoff.dreason }</td>
+					<td>${dayoff.dresult }</td>
+				</tr>
+			</c:forEach>
 		</table>
 
 
-	<c:import url="/WEB-INF/views/layout/paging.jsp" />
+
+	<c:import url="/WEB-INF/views/layout/dayoff_paging.jsp" />
 
 	</div>
 	

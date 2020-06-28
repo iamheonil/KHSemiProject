@@ -203,9 +203,41 @@ public class DocumentDaoImpl implements DocumentDao {
 	@Override
 	public void deleteTemp(Document doc) {
 		
+		conn = JDBCTemplate.getConnection();
+		
+		
+		String sql = "";
+		sql += "DELETE Document";	
+		sql += " WHERE doc_num = ?";
+		
+		//DB 객체
+		PreparedStatement ps = null; 
+		
+		try {
+			//DB작업
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, doc.getDoc_num() );
+
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			try {
+				//DB객체 닫기
+				if(ps!=null)	ps.close();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
+	
+	
 	@Override
 	public void updateDocument(Document doc) {
+		
 		
 	}
 	@Override

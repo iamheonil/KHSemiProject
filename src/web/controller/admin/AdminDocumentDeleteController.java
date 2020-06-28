@@ -24,12 +24,13 @@ public class AdminDocumentDeleteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		Document document = documentService.getDocumentno(req);
+	String names = req.getParameter("names");
 		
-		documentService.deleteDocument(document);
+		if( !"".equals(names) && names != null) {
+			documentService.deleteDocumentList(names);
+		}
 		
-		//리다이렉트
-		resp.sendRedirect("/admin/document");
+		resp.sendRedirect("/admin/view");
 		
 		
 	}

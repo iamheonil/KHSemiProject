@@ -13,36 +13,32 @@ import web.service.impl.DayoffServiceImpl;
 
 
 
-@WebServlet("/dayoff/Write")
+@WebServlet("/dayoff/write")
 public class DayoffWriteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private DayoffService dayoffService = new DayoffServiceImpl();
    
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//	
-//		//로그인 되어있지 않으면 리다이렉트 
-//		if( req.getSession().getAttribute("login") == null ) {
-//					
-//		resp.sendRedirect("/");
-//					
-//		return;
+		
+		System.out.println("Write [doGET] 확인");
+		
+//		if( req.getSession().getAttribute("login") == null) {
+//			
+//			return;
 //		}
-//				
-		//VIEW 지정
-		req.getRequestDispatcher("/WEB-INF/views/dayoff/write.jsp").forward(req, resp);
 		
-	}
-
+		req.getRequestDispatcher("/WEB-INF/views/mypage/write.jsp").forward(req, resp);
+		
+		}
+		@Override
+		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+				
+			System.out.println("휴가 신청서 작성 [POST]확인");
+			
+			dayoffService.dayoffWrite(req);
+			
+			resp.sendRedirect("/document/dolist");
+		}
 	
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
-		//작성글 삽입
-		dayoffService.insert(req);
-		
-		//목록으로 리다이렉션
-		resp.sendRedirect("/dayoff/list");
-		
-	}
-
-}
+ }

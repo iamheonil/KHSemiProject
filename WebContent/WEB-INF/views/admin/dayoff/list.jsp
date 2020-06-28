@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 <!-- 부트스트랩 3.3.2 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <!-- jQuery 2.2.4.min -->
 <script type="text/javascript"
@@ -21,9 +24,9 @@ h4 {
 	color: #0A2D5D;
 	font-weight: bold;
 	font-size: 1.6em;
-	padding : 10px;
-	
+	padding: 10px;
 }
+
 .container {
 	padding-left: 20px;
 	float: left;
@@ -36,18 +39,16 @@ table, th {
 }
 
 .table {
- padding: 20px;
+	padding: 20px;
 }
 
 .content {
-  min-height: 100%;
+	min-height: 100%;
 }
 
 .container {
 	width: 900px;
 }
-
-
 </style>
 
 
@@ -64,12 +65,57 @@ $(document).ready(function() {
 
 	});
 	
-	//버튼 기능, 삭제버튼 기능 구현 필요
+	// 선택체크 삭제
 	$("#btnDelete").click(function() {
+		// 선택된 체크박스
+		var $checkboxes = $("input:checkbox[name='checkRow']:checked");
+		
 
+		var map = $checkboxes.map(function() {
+			return $(this).val();
+		});
+		var names = map.get().join(",");
+
+		
+		var $form = $("<form>")
+			.attr("action", "/admin/dayoff/listDelete")
+			.attr("method", "Post")
+			.append(
+				$("<input>")
+					.attr("type", "hidden")
+					.attr("name", "names")
+					.attr("value", names)
+			);
+		
+		$(document.body).append($form);
+		
+		$form.submit();
+	
 	});
 	
-});
+	
+	function checkAll() {
+		
+		var $checkboxes=$("input:checkbox[name='checkRow']");
+
+		// checkAll 체크상태 (true:전체선택, false:전체해제)
+		var check_status = $("#checkAll").is(":checked");
+		
+		if( check_status ) {
+			// 전체 체크박스를 checked로 바꾸기
+			$checkboxes.each(function() {
+				this.checked = true;	
+			});
+		} else {
+			// 전체 체크박스를 checked 해제하기
+			$checkboxes.each(function() {
+				this.checked = false;	
+			});
+		}
+	}
+	
+	});
+	
 </script>
 
 <%-- <c:import url="/WEB-INF/views/adlayout/adaside.jsp" /> --%>
@@ -77,21 +123,30 @@ $(document).ready(function() {
 <div class="content">
 	<h4>휴가 신청서 목록</h4>
 	<div class="container">
-	
+
 		<table class="table table-hover table-condensed">
 			<tr class="active">
+				<th><input type="checkbox" id="checkAll" onclick="checkAll();" />
+				</th>
 				<th>휴가번호</th>
-				<th>아이디</th>
-				<th>작성일</th>
+				<th>사번</th>
+				<th>휴가 시작</th>
+				<th>휴가 종료</th>
+				<th>휴가 사유</th>
+				<th>휴가 여부</th>
 			</tr>
-		<c:forEach items="${dayoffList }" var="board">
-			<tr>
-				<td><input type="checkbox" name="checkRow" value="${dayoff.daynum  }" /></td>
-				<td>${dayoff.daynum }</td>
-				<td>${dayoff.userno }</td>
-				<td><fmt:formatDate value="${dayoff.writtendate }" pattern="yyyy-MM-dd"/></td>
-			</tr>
-		</c:forEach>
+			<c:forEach items="${list }" var="dayoff">
+				<tr>
+					<td><input type="checkbox" name="checkRow"
+						value="${dayoff.daynum  }" /></td>
+					<td>${dayoff.daynum }</td>
+					<td>${dayoff.userid }</td>
+					<td>${dayoff.daystart }</td>
+					<td>${dayoff.dayend }</td>
+					<td>${dayoff.dreason }</td>
+					<td>${dayoff.dresult }</td>
+				</tr>
+			</c:forEach>
 		</table>
 
 		<div id="btnBox">
@@ -100,10 +155,10 @@ $(document).ready(function() {
 			<button id="btnDelete" class="btn btn-primary">삭제</button>
 		</div>
 
-	<c:import url="/WEB-INF/views/layout/paging.jsp" />
+		<c:import url="/WEB-INF/views/adlayout/ad_Day_Paging.jsp" />
 
 	</div>
-	
+
 </div>
 
 
