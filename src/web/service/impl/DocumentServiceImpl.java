@@ -26,6 +26,7 @@ import web.dao.impl.DocumentDaoImpl;
 import web.dao.impl.Report_linkDaoImpl;
 import web.dto.Doc_attach;
 import web.dto.Document;
+import web.dto.User_basic;
 import web.service.face.DocumentService;
 import web.util.SearchPaging;
 import web.util.ad_Day_Paging;
@@ -542,6 +543,12 @@ public class DocumentServiceImpl implements DocumentService {
 		documentDao.deleteDocReport_linkList(names);
 		documentDao.deleteDoc_attachList(names);
 		documentDao.deleteDocList(names);
+	}
+
+	@Override
+	public List<User_basic> userlist() {
+		
+		return documentDao.selectUser();
 	}
 
 
