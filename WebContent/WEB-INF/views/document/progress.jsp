@@ -112,6 +112,13 @@ h3{
 	<th style="width: 10%;">직위</th>
 	<th style="width: 10%;">보고자</th>
 </tr>
+
+<c:if test="${empty progressList }">
+	<tr class="table-content">
+		<td colspan="6">조회된 문서가 없습니다.</td>
+	</tr>
+</c:if>
+
 <c:forEach items="${progressList }" var="progress">
 <tr class="table-content">
 	<td>${progress.report_type }</td>

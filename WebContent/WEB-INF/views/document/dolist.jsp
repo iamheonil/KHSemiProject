@@ -144,6 +144,13 @@ $(document).ready(function() {
 					<th style="width: 10%;">직위</th>
 					<th style="width: 10%;">보고자</th>
 				</tr>
+				
+				<c:if test="${empty waitApproveDoList }">
+				<tr class="table-content">
+					<td colspan="6">조회된 문서가 없습니다.</td>
+				</tr>
+				</c:if>
+				
 				<c:forEach items="${waitApproveDoList }" var="waitApprove">
 				<tr class="table-content">
 					<td>${waitApprove.report_type }</td>
@@ -177,6 +184,13 @@ $(document).ready(function() {
 					<th style="width: 10%;">직위</th>
 					<th style="width: 10%;">보고자</th>
 				</tr>
+				
+				<c:if test="${empty progressDoList }">
+				<tr class="table-content">
+					<td colspan="6">조회된 문서가 없습니다.</td>
+				</tr>
+				</c:if>
+				
 				<c:forEach items="${progressDoList }" var="progress">
 				<tr class="table-content">
 					<td>${progress.report_type }</td>

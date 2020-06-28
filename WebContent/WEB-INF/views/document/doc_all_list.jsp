@@ -109,6 +109,13 @@ h3{
 	<th style="width: 10%;">보고자</th>
 	<th style="width: 10%;">상태</th>
 </tr>
+
+<c:if test="${empty AllList }">
+	<tr class="table-content">
+		<td colspan="7">조회된 문서가 없습니다.</td>
+	</tr>
+</c:if>
+
 <c:forEach items="${AllList }" var="list">
 <tr class="table-content">
 	<td>${list.doc_num }</td>
