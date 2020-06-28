@@ -12,6 +12,12 @@ public interface Doc_attachDao {
 	 */
 	public void insertDoc_attach(Doc_attach doc_attach);
 	
+	/**
+	 * 임시저장 - 첨부파일 DB 저장
+	 * 
+	 * @param doc_attach - DB에 저장할 첨부파일 정보
+	 */
+	public void updateDoc_attach(Doc_attach doc_attach);
 	
 	/**
 	 * Doc 문서번호로 첨부파일 삭제

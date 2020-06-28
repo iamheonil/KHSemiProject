@@ -48,8 +48,68 @@ public class DocumentDaoImpl implements DocumentDao {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
 		}
 	}
+	
+	@Override
+	public void insertTempDoc(Document doc) {
+		conn = JDBCTemplate.getConnection(); //DB연결
+		
+		// 문서기안에서 임시저장 눌렀을 때
+		String sql = "";
+		sql += "INSERT INTO document(";
+		sql += " doc_num, doc_title, doc_substance, doc_content, ";
+		sql += " doc_state, userid, doc_date, doc_emergency)";
+		sql += " values(?,?,?,?,'임시저장',?,sysdate,?)";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, doc.getDoc_num());
+			ps.setString(2, doc.getDoc_title());
+			ps.setString(3, doc.getDoc_substance());
+			ps.setString(4, doc.getDoc_content());
+			ps.setInt(5, doc.getUserid());
+			ps.setString(6, doc.getDoc_emergency());
+			
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+	}
+	
+	@Override
+	public void updateDoc(Document doc) {
+		System.out.println(doc);
+		conn = JDBCTemplate.getConnection();
+		String sql = "";
+		sql += "UPDATE document SET doc_title = ?, doc_substance = ?, doc_content = ?";
+		sql += " , doc_emergency = ?, doc_date = sysdate";
+		sql += " WHERE userid = ? AND doc_num = ?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, doc.getDoc_title());
+			ps.setString(2, doc.getDoc_substance());
+			ps.setString(3, doc.getDoc_content());
+			ps.setString(4, doc.getDoc_emergency());
+			ps.setInt(5, doc.getUserid());
+			ps.setInt(6, doc.getDoc_num());
+			
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+	}
+	
 	
 	@Override
 	public int selectnextDocno() {
@@ -453,6 +513,8 @@ public class DocumentDaoImpl implements DocumentDao {
 				d = new Document(); //결과값 저장 객체
 				
 				//결과값 한 행 처리
+				
+				d.setDoc_num(rs.getInt("doc_num"));
 				d.setDoc_title(rs.getString("doc_title"));
 				d.setDoc_substance(rs.getString("doc_substance"));
 				d.setDoc_content(rs.getString("doc_content"));

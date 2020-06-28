@@ -18,6 +18,23 @@ public interface DocumentDao {
 	 */
 	public void insertDoc(Document doc);
 	
+	
+	/**
+	 * 문서기안에서 임시저장 눌렀을 때 문서 추가
+	 * 
+	 * @param doc - DB에 저장할 전자문서 정보
+	 */
+	public void insertTempDoc(Document doc);
+	
+	
+	/**
+	 * 문서 임시저장
+	 * 
+	 * @param doc - DB에 저장한ㄹ 전자문서 정보
+	 */
+	public void updateDoc(Document doc);
+	
+	
 	/**
 	 * 문서 작성 시 사원 조회
 	 * @param user
@@ -263,6 +280,9 @@ public interface DocumentDao {
 	 * @param names
 	 */
 	public void deleteDoc_commentList(String names);
+
+
+	
 	
 	
 }

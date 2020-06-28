@@ -41,6 +41,21 @@ public interface DocumentService {
 	 */
 	public List<User_basic> userlist();
 	
+	
+	/**
+	 * 문서기안에서 임시저장 눌렀을 때 문서 추가
+	 * 
+	 * @param req - 요청 정보 객체
+	 */
+	public void insertTempDoc(HttpServletRequest req);
+	
+	
+	/**
+	 * 문서 작성(임시저장)
+	 * @param req - 요청 정보 객체
+	 */
+	public void updateDoc(HttpServletRequest req);
+	
 
 	/**
 	 * @param req - 요청 정보 객체
@@ -218,6 +233,9 @@ public interface DocumentService {
 	 * @param names - 삭제한 게시글 번호 목록들 문자열
 	 */
 	public void deleteDocumentList(String names);
+
+	
+	
 	
 
 }
