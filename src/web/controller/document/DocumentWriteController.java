@@ -1,6 +1,7 @@
 package web.controller.document;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import web.dto.Document;
+import web.dto.User_basic;
 import web.service.face.Doc_attachService;
 import web.service.face.DocumentService;
 import web.service.face.Report_linkService;
@@ -28,6 +30,15 @@ public class DocumentWriteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+//		User_basic user = new User_basic();
+		//세션 객체 얻기
+//		HttpSession session = req.getSession();
+//		user.setUserid((int)session.getAttribute("userid"));
+
+		//사원 정보 조회
+		List<User_basic> user = documentService.userlist();
+		req.setAttribute("user", user);
+		
 		req.getRequestDispatcher("/WEB-INF/views/document/docwrite.jsp").forward(req, resp);
 	}
 
@@ -39,10 +50,12 @@ public class DocumentWriteController extends HttpServlet {
 		//세션 객체 얻기
 		HttpSession session = req.getSession();
 		document.setUserid((int)session.getAttribute("userid"));
-
-		
 		
 		documentService.writeDoc(req);
+		
+//		Document doc = documentService.getDocumentno(req);
+//		report_linkService.getDocReport_Link(doc);
+		
 		
 		resp.sendRedirect("/document/list/temp");
 		

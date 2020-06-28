@@ -51,9 +51,8 @@
 		<ul>
 			<ul id="personal">
 				<li id="photo" style="border-radius: 100px;">
-					<img alt="프로필사진" src="/upload/${userphoto }
-					style="width: 112px; height: 112px; border-radius: 100px;"></li>
-				<li>${userdept }${userrank } ${username }</li>
+					<img alt="프로필사진" src="/upload/${userphoto }" style="width:112px; height:112px; border-radius:100px;">
+				<li>${userdept } ${userrank } ${username }</li>
 				<li>사원번호 ${userid }</li>
 				<li><button class="btn btn-dark"
 						onclick="location.href='/user/modify/detail'"

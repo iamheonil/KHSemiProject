@@ -56,7 +56,7 @@ public class Doc_attachDaoImpl implements Doc_attachDao {
 		//DB연결 객체
 		conn = JDBCTemplate.getConnection();
 		
-		//SQL 작성 - 직접 작성한 문서는 아니고 수신자 경로에 자신이 있으면 조회함
+		
 		String sql = "";
 		sql += "select * FROM doc_attach";
 		sql += "	where doc_num = ?";
@@ -73,7 +73,12 @@ public class Doc_attachDaoImpl implements Doc_attachDao {
 				d = new Doc_attach(); //결과값 저장 객체
 				
 				//결과값 한 행 처리
+				d.setAttach_num(rs.getInt("attach_num"));
+				d.setDoc_num(rs.getInt("doc_num"));
 				d.setAttach_originname(rs.getString("attach_originname"));
+				d.setAttach_rename(rs.getString("attach_rename"));
+				d.setAttach_ext(rs.getString("attach_ext"));
+				d.setAttach_size(rs.getInt("attach_size"));
 			}
 			
 		} catch (SQLException e) {

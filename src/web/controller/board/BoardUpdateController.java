@@ -25,21 +25,31 @@ public class BoardUpdateController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 	System.out.println("updaete [doget] 확인");	
-//	if( req.getSession().getAttribute("login") == null) {
-//		
-//		resp.sendRedirect("/main");
-//		
-//		return;
-//	}	
+	if( req.getSession().getAttribute("login") == null) {
+		
+		resp.sendRedirect("/main");
+		
+		return;
+	}	
+	
+	//전달파라미터 얻기 - b_num
+	Board viewBoard = boardService.getBoardno(req);
+	
+//	Board b_num = boardService.getBoardno(req);
 	
 	//전달파라미터 - boardnum
-	Board boardnum = boardService.getBoardno(req);
-	System.out.println(boardService.getBoardno(req));
+//	Board viewBoard = boardService.view(b_num);
+	
+	
+	
 	//상세보기 결과 조회
-	Board viewBoard = boardService.view(boardnum);
+	viewBoard = boardService.view(viewBoard);
 	
 	//MODEL로 게시글 전달
 	req.setAttribute("viewBoard", viewBoard);
+	System.out.println("viewBoard호출 결과" + viewBoard);
+	
+	
 	//VIEW지정
 	req.getRequestDispatcher("/WEB-INF/views/board/boardUpdate.jsp").forward(req, resp);
 	
@@ -51,7 +61,7 @@ public class BoardUpdateController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 			boardService.updateBoard(req);
-			
+			System.out.println("흠? 수정 안되나요?");
 			resp.sendRedirect("/board/list");
 		
 	}

@@ -49,6 +49,14 @@ public class BoardServiceImpl implements BoardService{
 
 	// -------------------------------게시판 페이징 -----------------------------
 	
+	@Override
+	public void CntComment(HttpServletRequest req) {
+
+		String param = req.getParameter("b_num");
+		
+		
+		
+	}
 	
 	@Override
 	public B_Paging getPaging(HttpServletRequest req) {
@@ -85,16 +93,29 @@ public class BoardServiceImpl implements BoardService{
 			curPage = Integer.parseInt(param);
 			
 		}
-		//Board 테이블의 총 게시글 수 조회
 		
-		int totalCount = boardDao.selectNoticeCntAll();
+		String search = req.getParameter("search");
+		
+		
+		param = req.getParameter("search2");
+		int search2 = 0;
+		if( param!=null && "".equals(param)) {
+			search2 = Integer.parseInt(param);
+		}
+		
+		
+		//Board 테이블의 총 게시글 수 조회
+		int totalCount = boardDao.selectNoticeCntAll(search, search2);
 		
 		//Paging 객체 생성
 		B_Paging paging = new B_Paging(totalCount, curPage);
-		
+		paging.setSearch(search);
 		return paging;
+		
 	}
 
+	
+	
 	@Override
 	public B_Paging getStudyPaging(HttpServletRequest req) {
 		
@@ -107,12 +128,12 @@ public class BoardServiceImpl implements BoardService{
 					
 				}
 				//Board 테이블의 총 게시글 수 조회
-				
 				int totalCount = boardDao.selectStudyCntAll();
+				String search = (String)req.getParameter("search");
 				
 				//Paging 객체 생성
 				B_Paging paging = new B_Paging(totalCount, curPage);
-				
+				paging.setSearch(search);
 				return paging;
 	}
 	
@@ -127,14 +148,17 @@ public class BoardServiceImpl implements BoardService{
 				curPage = Integer.parseInt(param);
 				
 			}
+			String search = (String)req.getParameter("search");
 			//Board 테이블의 총 게시글 수 조회
 			
 			int totalCount = boardDao.selectFreeCntAll();
-			
 			//Paging 객체 생성
 			B_Paging paging = new B_Paging(totalCount, curPage);
+			paging.setSearch(search);
 			
 			return paging;
+			
+			
 	}
 
 
@@ -247,14 +271,26 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void updateBoard(HttpServletRequest req) {
 		
-		Board board = null;
+		Board board = new Board();
 		
-		board = new Board();
+		board.setCategory(req.getParameter("category"));
+		board.setB_title(req.getParameter("title"));
+		board.setB_content(req.getParameter("content"));
+	
+		String b_num = (String)req.getParameter("b_num");
+		board.setB_num(Integer.parseInt(b_num));
+		//게시글 작성자 id입력
+				board.setUserid((int)req.getSession().getAttribute("userid"));
+				board.setUserrank((String)req.getSession().getAttribute("userrank"));
+				board.setUsername((String)req.getSession().getAttribute("username"));
+				board.setDept((String)req.getSession().getAttribute("userdept"));
 		
-		if(board != null) {
+//				int boardno = boardDao.selectBoardno();
+//				board.setB_num(boardno);
+				
 				boardDao.boardUpdate(board);
-		}
 		
+		System.out.println(board);
 	}
 
 	@Override
@@ -305,6 +341,8 @@ public class BoardServiceImpl implements BoardService{
 		}
 		
 	}
+
+
 
 //	@Override
 //	public List<Board> selectbo(int category, String keyword) {

@@ -32,7 +32,7 @@ public class BoardFreeController extends HttpServlet {
 		
 		// 요청 파라미터를 전달을 통해 Paging 객체 생성
 		B_Paging paging = boardService.getFreePaging(req);
-		System.out.println("BoardListController " + paging);
+//		System.out.println("BoardListController " + paging);
 		
 		//Paging 결과 MODEL값 전달
 		req.setAttribute("paging", paging);
@@ -44,7 +44,7 @@ public class BoardFreeController extends HttpServlet {
 		
 		req.setAttribute("F_list", F_list);
 		req.setAttribute("N_list", N_list);
-		System.out.println(F_list);
+//		System.out.println(F_list);
 		//View 지정
 		req.getRequestDispatcher("/WEB-INF/views/board/boardFree.jsp").forward(req, resp);
 		

@@ -129,7 +129,7 @@ function deleteComment( c_num ) {
 <li>
 ${viewBoard.b_date } 조회수 &nbsp; ${viewBoard.hits }
 	<c:if test="${userid eq viewBoard.userid }">
-		<button id="btnDelete" class="btn btn-danger pull-right">삭제</button>
+		<button id="btnDelete" class="btn btn-danger pull-right" onclick="alert('삭제되었습니다.');">삭제</button>
 		<button id="btnUpdate" class="btn btn-info pull-right">수정</button>
 	</c:if>
 	<button id="btnList" class="btn btn-primary pull-right">목록</button>

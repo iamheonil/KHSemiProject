@@ -40,21 +40,22 @@ public class DocumentViewController extends HttpServlet {
 		Document documentno = documentService.getDocumentno(req);
 		System.out.println(documentno);
 		
-		//상세보기 결과 조회 - Document
+		//문서정보 조회 - Document
 		Document viewDocument = documentService.getDocument(documentno);
-		//조회결과 MODEL값 전달
 		req.setAttribute("viewDocument", viewDocument);
 
-		//상세보기 결과 조회 - Doc_comment
+		//의견/지시 결과 조회 - Doc_comment
 		ArrayList<Map<String, Object>> viewComment  = doc_commentService.getDoc_comment(documentno);
-		//조회결과 MODEL값 전달
 		req.setAttribute("viewComment", viewComment);
 		
+		//첨부파일
 		Doc_attach attach = doc_attachService.getDoc_attach(documentno);
 		req.setAttribute("viewAttach", attach);
 		
+		//보고경로
 		Report_link report = report_linkService.getDocReport_Link(documentno);
 		req.setAttribute("viewReport", report);
+		
 		
 		req.getRequestDispatcher("/WEB-INF/views/document/docview.jsp").forward(req, resp);
 		

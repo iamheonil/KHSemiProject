@@ -67,25 +67,29 @@ function submitContents(elClickedObj){
 
 <div>
 <form action="/board/update" method="post">
-<input type="hidden" name="boardno" value="${viewBoard.b_num }" />
-
+<input type="hidden" id="b_num" name="b_num" value="${viewBoard.b_num }" />
 <table class="table table-bordered">
 <tr><td class="info">카테고리</td>
 <td>
 <select id="category" name="category">
+<c:if test="${userrank == '차장' or userrank == '부장' or userrank == '팀장'}">
  <option value="공지사항">공지사항</option>
- <option value="스터디">스터디</option>
- <option value="자유수다">자유수다</option>
+</c:if> 
+ <option value="스터디">스터디모집</option>
+ <option value="사내게시판">사내게시판</option>
 </select>
+
 </td>
 </tr>
+
 <tr><td class="info">아이디</td><td>${userid }</td></tr>
 <tr><td class="info">이름</td><td>${username }</td></tr>
+<tr><td class="info">부서</td><td>${userdept }</td></tr>
+<tr><td class="info">직급</td><td>${userrank }</td></tr>
 <tr><td class="info">제목</td><td><input type="text" name="title" style="width:100%" value="${viewBoard.b_title }"/></td></tr>
 <tr><td class="info" colspan="2">내용</td></tr>
 <tr><td colspan="2">
-	<textarea id="content" name="content" rows="10" cols="100">${viewBoard.b_content }</textarea>
-</td></tr>
+	<textarea id="content" name="content" rows="10" cols="100">${viewBoard.b_content }</textarea></td></tr>
 </table>
 
 </form>

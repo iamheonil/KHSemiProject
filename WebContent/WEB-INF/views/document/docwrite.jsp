@@ -12,7 +12,57 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+<script type="text/javascript">
+// $(document).ready(function(){
+// 	searchajax();
+// })
 
+// function searchajax(){
+// 	$("#search").click(function(){
+// 		var word = $("#search").val();
+// 		if(woard!=''){
+// 			$.ajax({
+// 				type: 'POST',
+// 				url: '/';,
+// 				data: { searchword : word },
+// 				dataType: 'json',
+// 				success: function(result){
+// 					if(result.length>0){
+// 						var str = ''
+// 						for(var i=0; i<result.length; i++){
+// 							str += '<span>'+result[i].data + '</span><br>';
+// 						}
+// 						$("#results").html(str);
+// 					}else {$("#results").html(""); }
+// 				},
+// 				error: function(e){console.log('error:' + e.status);}
+// 			});
+// 		}else{ $("#results").html(""); }
+// 	});
+
+// }
+
+// jQuery.ajax({
+// 	type: "post",
+// 	url : "/컨트롤러",
+// 	data : serDate,
+// 	dataType: "json",
+// 	success: function(obj){
+// 		showempinfo(obj);
+// 	},
+// 	complete: function(xhr, status){
+		
+// 	},
+// 	error: function(xhr, status, error){
+// 		console.log(error);
+// 	}
+// })
+
+// function showempinfo(obj){
+// 	var div document.querySelector('#emptable');
+
+// }
+</script>
 <script type="text/javascript">
 // 사원검색하기
 // window.onload = function() {
@@ -80,7 +130,6 @@ $("#selectBtn").click(function(){
 });
 });
 
-
 </script>
 
 <script type="text/javascript">
@@ -120,6 +169,7 @@ window.onload = function(){
 //       $(this).val() = 'y';
 // });
 </script>
+
 <style type="text/css">
         /* The Modal (background) */
         .modal {
@@ -200,6 +250,16 @@ textarea{
 	float: right;
 	margin-right: 10px;
 }
+.guideBox select{
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	height: 40px;
+	width: 150px;
+}
+#userTB {overflow-y: auto; height: 100px; }
+#userTB th { position: sticky; top: 0; background: white;}
+
 
 </style>
 
@@ -225,7 +285,7 @@ textarea{
 <tr>
 	<td class="active">제목＊</td>
 	<td><input type="text" id="doc_title" name="doc_title" style="width: 620px;"/>
-		 &nbsp;<input type="checkbox" id="chk" name="chk" value="Y"/> 긴급</td>
+		 &nbsp;<input type="checkbox" id="chk" name="doc_emergency" value="Y"/> 긴급</td>
 </tr>
 
 <tr>
@@ -258,33 +318,50 @@ textarea{
 <div class="guideBox"> <!-- h3위치 조절하기!! -->
 <h3 style="margin-left: 80px;">경로정보</h3><button class="btn btn-primary" id="selectpath">경로지정</button>
 
-<div style="display:none">
-<table class="table table-bordered"> <!-- c:foreach로 검색 목록 모두 표시 -->
+<div style="display:none; ">
+<select id="deptSearch" class="selectpicker">
+	<option selected>부서</option>
+	<option value="human">인사팀</option>
+	<option value="account">회계팀</option>
+	<option value="develop">개발팀</option>
+	<option value="sales">영업팀</option>
+	<option value="resource">자재팀</option>
+</select>
+<select id="rankSearch" class="selectpicker">
+	<option selected>직급</option>
+	<option value="human">사원</option>
+	<option value="account">대리</option>
+	<option value="develop">과장</option>
+	<option value="sales">차장</option>
+	<option value="resource">팀장</option>
+	<option value="resource">부사장</option>
+	<option value="resource">사장</option>
+</select>
+<div class="tb_wrap" style="width:100%; height:200px; overflow:auto">
+<table style="width: 100%; border: 0; " id="userTB" class="table table-bordered"> <!-- c:foreach로 검색 목록 모두 표시 -->
+
+<!-- user정보조회된거 -->
+<thead>
 <tr>
-	<td>선택</td>
-	<td>부서</td>
-	<td>직위(직급)</td>
-	<td>성명</td>
+	<th>선택</th>
+	<th>부서</th>
+	<th>직위(직급)</th>
+	<th>성명</th>
 </tr>
+</thead>
+<tbody style="cellspacing:0; cellpadding:0;">
+<c:forEach items="${user }" var="user">
 <tr>
-	<td><input type="checkbox" name="checkbox"/></td>
-	<td>개발팀</td>
-	<td>사원</td>
-	<td>김길동</td>
+	<td><input type="checkbox" name="chkuser"/></td>
+	<td>${user.dept }</td>
+	<td>${user.userrank }</td>
+	<td>${user.username }</td><!-- userrank, 보고종류 -->
 </tr>
-<tr>
-	<td><input type="checkbox" name="checkbox"/></td>
-	<td>개발팀</td>
-	<td>팀장</td>
-	<td>박길동</td>
-</tr>
-<tr>
-	<td><input type="checkbox" name="checkbox"/></td>
-	<td>개발팀</td>
-	<td>부장</td>
-	<td>최길동</td>
-</tr>
+</c:forEach>
+</tbody>
 </table>
+</div>
+
 <button type="button" id="selectBtn">추가</button>
 <br><br>
 </div> <!-- style지정 -->

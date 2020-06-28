@@ -213,5 +213,5 @@ public interface BoardService {
 	
 	public B_Paging getFreePaging(HttpServletRequest req);
 
-
+	public void CntComment(HttpServletRequest req);
 }

@@ -52,6 +52,13 @@ public interface BoardDao {
 	
 	public int selectCntAll();
 	
+	/**
+	 * 게시글의 댓글 수 조회
+	 * 
+	 * 
+	 * @return - 댓글 수
+	 */
+	public int commentCnt();
 
 	/**
 	 * 
@@ -61,7 +68,7 @@ public interface BoardDao {
 	 * @return - 공지사항 전체 게시글 수
 	 */
 	
-	public int selectNoticeCntAll();
+	public int selectNoticeCntAll(String search, int search2);
 
 	/**
 	 * 
