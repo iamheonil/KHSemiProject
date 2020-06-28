@@ -217,7 +217,7 @@ public class DayoffDaoImpl implements DayoffDao {
 	}
 
 	@Override
-	public void updateDresult(Dayoff dayoff) {
+	public void acceptDresult(Dayoff dayoff) {
 
 		// DB연결
 		conn = JDBCTemplate.getConnection();
@@ -225,15 +225,14 @@ public class DayoffDaoImpl implements DayoffDao {
 		// 휴가 신청서 번호 조회 쿼리
 		String sql = "";
 		sql += "UPDATE Dayoff";
-		sql += " SET dreason = ?,";
+		sql += " SET dreason = '승인'";
 		sql += " WHERE daynum = ?";
 		
 	
 		try {
 			ps = conn.prepareStatement(sql);
 			
-			ps.setString(1, dayoff.getDreason());
-			ps.setInt(2, dayoff.getDaynum());
+			ps.setInt(1, dayoff.getDaynum());
 			
 			ps.executeUpdate();
 
@@ -342,6 +341,36 @@ public class DayoffDaoImpl implements DayoffDao {
 
 		// 최종 결과 반환
 		return daynum;
+	}
+
+	@Override
+	public void declineDresult(Dayoff dayoff) {
+
+		// DB연결
+		conn = JDBCTemplate.getConnection();
+
+		// 휴가 신청서 번호 조회 쿼리
+		String sql = "";
+		sql += "UPDATE Dayoff";
+		sql += " SET dreason = '거절'";
+		sql += " WHERE daynum = ?";
+		
+	
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, dayoff.getDaynum());
+			
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
 	}
 
 }

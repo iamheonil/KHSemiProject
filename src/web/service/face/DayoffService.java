@@ -54,11 +54,18 @@ public interface DayoffService {
 	
 
 	/**
-	 * 휴가 승인 여부
+	 * 휴가 승인 
 	 * @param req - 요청정보객체
 	 * @retuen Dayoff - 전달 파라미터 dreason을 포함한 객체
 	 */
-	public void update(HttpServletRequest req);
+	public void accept(HttpServletRequest req);
+	
+	
+	/**
+	 * 휴가 반려
+	 * @param req
+	 */
+	public void decline(HttpServletRequest req);
 	
 	/**
 	 * 휴가 신청서 작성

@@ -47,10 +47,17 @@ public interface DayoffDao {
 	public void insert(Dayoff dayoff);
 	
 	/**
-	 * 휴가 승인/반려
+	 * 휴가 승인
 	 * @param dresult - 휴가 승인 여부 정보 객체
 	 */
-	public void updateDresult(Dayoff dayoff);
+	public void acceptDresult(Dayoff dayoff);
+	
+	/**
+	 * 휴가 거절
+	 * @param dayoff
+	 */
+	public void declineDresult(Dayoff dayoff);
+	
 	
 	/**
 	 * 

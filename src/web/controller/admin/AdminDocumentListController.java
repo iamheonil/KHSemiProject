@@ -52,7 +52,8 @@ public class AdminDocumentListController extends HttpServlet {
 		//조회결과 MODEL값 전달
 		req.setAttribute("AllList", allList);
 		
-	
+		System.out.println("paging" + paging);
+		System.out.println("allList : " + allList);
 		
 		req.getRequestDispatcher("/WEB-INF/views/admin/document/list.jsp").forward(req, resp);
 	}

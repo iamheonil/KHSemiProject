@@ -42,7 +42,7 @@ public class AdminDayoffUpdateController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 	
-		dayoffService.update(req);
+		dayoffService.accept(req);
 		
 		resp.sendRedirect("/admin/view");
 		

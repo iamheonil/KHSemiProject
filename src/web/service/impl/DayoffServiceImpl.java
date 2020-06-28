@@ -65,14 +65,14 @@ public class DayoffServiceImpl implements DayoffService {
 	}
 
 	@Override
-	public void update(HttpServletRequest req) {
+	public void accept(HttpServletRequest req) {
 
 		Dayoff dayoff = null;
 		
 		dayoff = new Dayoff();
 		
 		if(dayoff!= null) {
-			dayoffDao.updateDresult(dayoff);
+			dayoffDao.acceptDresult(dayoff);
 		}
 
 	}
@@ -119,6 +119,17 @@ public class DayoffServiceImpl implements DayoffService {
 	public void delete(Dayoff dayoff) {
 		
 		dayoffDao.deleteDayoff(dayoff);
+	}
+
+	@Override
+	public void decline(HttpServletRequest req) {
+		Dayoff dayoff = null;
+		
+		dayoff = new Dayoff();
+		
+		if(dayoff!= null) {
+			dayoffDao.declineDresult(dayoff);
+		}
 	}
 
 
