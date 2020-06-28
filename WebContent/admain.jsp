@@ -34,7 +34,7 @@ $(document).ready(function(){
 /* 사원관리 */
 $(document).ready(function(){
 	$('#deptlist').click(function(){
-		$('#contents').load('/user/modify/basic');
+		$('#contents').load('/admin/userbasic/view');
 	})
 })
 

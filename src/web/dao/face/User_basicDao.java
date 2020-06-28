@@ -65,4 +65,11 @@ public interface User_basicDao {
 	 * @return List<User_basic> - 조회된 정보
 	 */
 	public List<User_basic> selectUser_basic();
+	
+	/**
+	 * 회원 리스트 삭제
+	 * 
+	 * @param names - 삭제한 유저 사번들 문자열
+	 */
+	public void deleteUser_BasicList(String names);
 }

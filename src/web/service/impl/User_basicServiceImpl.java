@@ -9,6 +9,7 @@ import web.dao.face.User_detailDao;
 import web.dao.impl.User_basicDaoImpl;
 import web.dao.impl.User_detailDaoImpl;
 import web.dbutil.JDBCTemplate;
+import web.dto.Dayoff;
 import web.dto.User_basic;
 import web.dto.User_detail;
 import web.service.face.User_basicService;
@@ -23,6 +24,7 @@ public class User_basicServiceImpl implements User_basicService {
 	@Override
 	public void insertUser_basic(HttpServletRequest req) {
 		
+		user_basicDao.insertUser_basic(user_basic);
 	}
 	
 	// 회원가입 전 사번,이름 확인
@@ -77,10 +79,11 @@ public class User_basicServiceImpl implements User_basicService {
 	}
 	
 	@Override
-	public void modifyUser_basic(User_basic user_basic) {
+	public void modifyUser_basic(HttpServletRequest req) {
 		
-		
+		user_basicDao.updateUser_basic(user_basic);
 	}
+	
 	@Override
 	public void deleteUser(User_basic user_basic) {
 		
@@ -91,5 +94,12 @@ public class User_basicServiceImpl implements User_basicService {
 		
 		return null;
 	}
+
+	@Override
+	public void deleteUserList(String names) {
+		user_basicDao.deleteUser_BasicList(names);
+		
+	}
+
 
 }

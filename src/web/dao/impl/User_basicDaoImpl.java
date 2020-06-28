@@ -1,6 +1,7 @@
 package web.dao.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,6 +20,38 @@ public class User_basicDaoImpl implements User_basicDao {
 	@Override
 	public void insertUser_basic(User_basic user_basic) {
 		
+		   
+		conn = JDBCTemplate.getConnection();
+
+		// 다음 게시글 번호 조회 쿼리
+		String sql = "";
+		sql += "INSERT INTO User_basic(basicnum, userid, username, userrank, dept) ";
+		sql += " VALUES (dayoff_seq.nextval, ?, ?, ?, ?)";
+
+		try {
+			// DB작업
+			ps = conn.prepareStatement(sql);
+
+			ps.setInt(1, user_basic.getUserid());
+			ps.setString(2, user_basic.getUsername());
+			ps.setString(3, user_basic.getUserrank());
+			ps.setString(4, user_basic.getDept());
+
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// DB객체 닫기
+				if (ps != null)
+					ps.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
 	}
 
 	@Override
@@ -61,6 +94,40 @@ public class User_basicDaoImpl implements User_basicDao {
 
 	@Override
 	public void updateUser_basic(User_basic user_basic) {
+		
+		conn = JDBCTemplate.getConnection();
+	
+		String sql = "";
+		sql += "UPDATE User_basic SET";
+		sql += "	username =?";
+		sql += "	userrank =?";
+		sql += "	dept =?";
+		sql += " 	WHERE userid=?";
+
+		try {
+			// DB작업
+			ps = conn.prepareStatement(sql);
+
+			ps.setString(1, user_basic.getUsername());
+			ps.setString(2, user_basic.getUserrank());
+			ps.setString(3, user_basic.getDept());
+			ps.setInt(4, user_basic.getUserid());
+
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// DB객체 닫기
+				if (ps != null)
+					ps.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
 		
 		
 	}
@@ -109,6 +176,34 @@ public class User_basicDaoImpl implements User_basicDao {
 		
 		
 		return user_basic;
+	}
+
+	@Override
+	public void deleteUser_BasicList(String names) {
+		conn = JDBCTemplate.getConnection();
+
+		String sql = "";
+		sql += "DELETE FROM User_basic WHERE userid IN ( " + names + " )";
+
+		try {
+			ps = conn.prepareStatement(sql);
+
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+
+				if (ps != null)
+					ps.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		
 	}
 
 }

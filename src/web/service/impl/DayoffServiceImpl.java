@@ -81,6 +81,7 @@ public class DayoffServiceImpl implements DayoffService {
 	public void dayoffWrite(HttpServletRequest req) {
 		
 		Dayoff dayoff = null;
+		
 		dayoff = new Dayoff();
 		
 		dayoff.setUserid( (int) req.getSession().getAttribute("userid"));

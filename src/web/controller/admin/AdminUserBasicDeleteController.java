@@ -23,10 +23,12 @@ public class AdminUserBasicDeleteController extends HttpServlet {
        
    
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
-		User_basic userBasic = user_basicService.getUser_basic(req);
+		String names = req.getParameter("names");
 		
-		user_basicService.deleteUser(userBasic);
+		if( !"".equals(names) && names != null) {
+			user_basicService.deleteUserList(names);
+		}
+
 		
 		//목록으로 리다이렉트
 		resp.sendRedirect("/admin/userbasic/list");

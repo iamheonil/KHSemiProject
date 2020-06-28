@@ -59,9 +59,9 @@ public interface User_basicService {
 	/**
 	 * 회원정보 수정(관리자)
 	 * 
-	 * @param user_basic - 수정할 정보
+	 * @param req - 수정할 정보
 	 */
-	public void modifyUser_basic(User_basic user_basic);
+	public void modifyUser_basic(HttpServletRequest req);
 
 	
 	/**
@@ -78,6 +78,13 @@ public interface User_basicService {
 	 */
 	
 	public List<User_basic> selectUser_basic(HttpServletRequest req);
+	
+	
+	/**
+	 * 회원 삭제(관리자, 체크박스 삭제)
+	 * @param User_basic
+	 */
+	public void deleteUserList(String names);
 
 
 

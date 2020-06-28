@@ -66,10 +66,9 @@ table {
 
 		$("#btnCreate").click(function() {
 
-		//임시로 이동 걸어놓습니다
-		location.href="/user/modify/basic";
-// 			//<form> 태그 submit
-// 			$("form").submit();
+		
+			//<form> 태그 submit
+			$("form").submit();
 		});
 
 		//취소버튼 동작
@@ -97,7 +96,7 @@ table {
 				<table class="table table-bordered">
 					<tr>
 						<td class="info">사번</td>
-						<td>${userno +1 }</td>
+						<td><input type="text" name="userrank" id="userrank" style="width: 100%" /></td>
 					</tr>
 					<tr>
 						<td class="info">이름</td>

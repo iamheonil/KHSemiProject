@@ -17,14 +17,25 @@ import web.service.impl.User_basicServiceImpl;
 @WebServlet("/admin/userbasic/update")
 public class AdminUserBasicUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	private User_basicService user_basicService = new User_basicServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
+		// view 지정
+		req.getRequestDispatcher("WEB-INF/views/admin/dept/update.jsp").forward(req, resp);
+
 	}
 
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
+		
+		user_basicService.modifyUser_basic(req);
+		
+		resp.sendRedirect("admin/view");
+		
+	}
 	
 }
