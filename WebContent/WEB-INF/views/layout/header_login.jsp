@@ -223,7 +223,11 @@ window.onload = function() {
 		<div class="modal-content">
 			<span class="close">&times;</span>
 			<h2><strong>이용약관</strong></h2><br><br>
-			<p>이용약관 이용약관 이용약관 이용약관 이용약관 이용약관 이용약관 이용약관 이용약관 이용약관 이용약관 이용약관</p>
+			
+			<div>
+				<c:import url="/resources/policy/Terms_of_Use.jsp"></c:import>
+			</div>
+			
 		</div>
 
 	</div>
