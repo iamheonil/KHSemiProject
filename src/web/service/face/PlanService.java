@@ -24,7 +24,12 @@ public interface PlanService {
 	public void insertPlan(HttpServletRequest req);
 	
 
-	// 수정 자리
+	/**
+	 * 일정을 수정한다
+	 * @param req - 수정할 일정의 정보
+	 */
+	public void modifyPlan(HttpServletRequest req, Plan plan);
+	
 	
 	/**
 	 * 일정을 삭제한다

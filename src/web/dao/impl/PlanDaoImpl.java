@@ -26,7 +26,8 @@ public class PlanDaoImpl implements PlanDao {
 		conn = JDBCTemplate.getConnection();
 
 		String sql = "";
-		sql += "SELECT * FROM PLAN WHERE userid = ? ORDER BY PTIME_START";
+		sql += "SELECT PLAN_NUM, USERID, PLAN_NAME, to_char(PTIME_START, 'YYYY-MM-DD') AS PTIME_START, to_char(PTIME_END, 'YYYY-MM-DD') AS PTIME_END FROM PLAN"
+				+ " WHERE userid = ?";
 
 		// 결과 저장할 List
 		List<Plan> allPlan = new ArrayList<>();
@@ -45,8 +46,8 @@ public class PlanDaoImpl implements PlanDao {
 				p.setUserid(rs.getInt("userid"));
 				p.setPlan_num(rs.getInt("plan_num"));
 				p.setPlan_name(rs.getString("plan_name"));
-				p.setPtime_start(rs.getString("ptime_start"));
-				p.setPtime_end(rs.getString("ptime_end"));
+				p.setPtime_start(rs.getString("PTIME_START"));
+				p.setPtime_end(rs.getString("PTIME_END"));
 
 				// 리스트에 결과값 저장
 				allPlan.add(p);
@@ -83,12 +84,37 @@ public class PlanDaoImpl implements PlanDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			// DB객체 닫기
 			JDBCTemplate.close(ps);
 		}
 
 	}
 
-	// 수정 자리
+	@Override
+	public void dbModify(HttpServletRequest req, Plan plan) {
+		
+		conn = JDBCTemplate.getConnection();
+		
+		String sql = "UPDATE PLAN SET PLAN_NAME = ?, PTIME_START = ?, PTIME_END = ? WHERE PLAN_NUM = ?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, plan.getPlan_name());
+			ps.setString(2, plan.getPtime_start());
+			ps.setString(3, plan.getPtime_end());
+			ps.setInt(4, plan.getPlan_num());
+			
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// DB객체 닫기
+			JDBCTemplate.close(ps);
+		}
+		
+	}
 
 	@Override
 	public void dbDelete(Plan plan) {
@@ -113,5 +139,6 @@ public class PlanDaoImpl implements PlanDao {
 		}
 
 	}
+
 
 }

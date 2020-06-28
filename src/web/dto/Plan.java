@@ -1,7 +1,5 @@
 package web.dto;
 
-import java.util.Date;
-
 public class Plan {
 
 	private int plan_num;

@@ -39,7 +39,17 @@ public class PlanServiceImpl implements PlanService {
 		planDao.dbInsert(req, plan);
 	}
 
-	// 수정 자리
+	@Override
+	public void modifyPlan(HttpServletRequest req, Plan plan) {
+
+//		plan.setPlan_num(Integer.parseInt(req.getParameter("plan_num")));
+//		plan.setPlan_name(req.getParameter("plan_name"));
+//		plan.setPtime_start(req.getParameter("ptime_start"));
+//		plan.setPtime_end(req.getParameter("ptime_end"));
+		
+		planDao.dbModify(req, plan);
+		
+	}
 
 	
 	@Override
@@ -48,6 +58,8 @@ public class PlanServiceImpl implements PlanService {
 		planDao.dbDelete(plan);
 		
 	}
+
+
 	
 
 }

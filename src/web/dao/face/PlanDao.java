@@ -25,7 +25,12 @@ public interface PlanDao {
 	public void dbInsert(HttpServletRequest req, Plan plan);
 	
 	// 수정 자리
-	
+	/**
+	 * 일정을 수정한다.
+	 * 
+	 * @param req - Service에서 넘어온 수정 정보
+	 */
+	public void dbModify(HttpServletRequest req, Plan plan);
 	
 	/**
 	 * 일정을 삭제한다.
