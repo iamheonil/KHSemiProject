@@ -44,6 +44,35 @@ public class Doc_attachDaoImpl implements Doc_attachDao {
 		}
 		
 	}
+	
+	
+	
+	@Override
+	public void updateDoc_attach(Doc_attach doc_attach) {
+		conn = JDBCTemplate.getConnection();
+		
+		String sql = "";
+		sql += "UPDATE doc_attach SET attach_originname = ?";
+		sql += " , attach_rename = ?, attach_ext = ?, attach_size = ?";
+		sql += " WHERE doc_num = ?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, doc_attach.getAttach_originname());
+			ps.setString(2, doc_attach.getAttach_rename());
+			ps.setString(3, doc_attach.getAttach_ext());
+			ps.setInt(4, doc_attach.getAttach_size());
+			ps.setInt(5, doc_attach.getDoc_num());
+			
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+	}
 
 	@Override
 	public void deleteDoc_attach(Document doc) {
