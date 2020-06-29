@@ -110,7 +110,22 @@ $(document).ready(function() {
 		}, 2000);
 	}
 	
+	
 });
+/* 주소록 */
+$(document).ready(function(){
+	$('#address').click(function(){
+		$('#contents').load('/admin/address/list');
+	})
+})
+
+/* 주소록 리스트 */
+$(document).ready(function(){
+	$(document).on("click", '.pagination a', function(){
+		$('#contents').load($(this).attr("href"));
+		return false;
+	})
+})
 </script>
 
 <%-- import header.jsp --%>
