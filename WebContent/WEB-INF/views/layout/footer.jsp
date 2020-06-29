@@ -30,7 +30,7 @@
 
 		<div id="footer">
 			<h3 style="text-align: left; margin-left: 80px; margin-top:30px;">
-				<a href="#"><img src="/logo2.png" width="170px;"></a>
+				<a href="/document/dolist"><img src="/logo2.png" width="170px;"></a>
 			</h3>
 			<div style="text-align: right; margin-right: 80px; margin-bottom:20px;">
 				<h5>

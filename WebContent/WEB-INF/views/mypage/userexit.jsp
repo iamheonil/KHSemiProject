@@ -178,25 +178,24 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 <div id="contents">
-
-		<p class="Form-name-Layout">회원탈퇴</p>
-
+	<h2>회원 탈퇴 페이지</h2>
+	<div style="width=70%; margin-left: 310px;">
 		<form action="/user/delete" method="POST">
-			<table style="width:40%; margin-left:35px; border-collapse: separate; border-spacing: 0px 30px; text-align: left;">
+			<table style="width: 70%; margin-left: 35px; border-collapse: separate; border-spacing: 0px 30px; text-align: left;">
 				<tr>
-					<td>탈퇴할 아이디 : <input type="text" id="userid" name="userid" value="${userid }" size="35px" readonly></td>
+					<td style="width: 100%">탈퇴할 아이디 : <input type="text" id="userid" name="userid" value="${userid }" size="35px" readonly></td>
 				</tr>
 
 				<tr>
 					<td>비밀번호를 입력해주세요. <input type="password" id="pw" name="pw" size="27px"></td>
 				</tr>
-				
+
 				<tr>
-					<td><button class="btn btn-danger">회원탈퇴하기</button></td>
+					<td><button class="btn btn-danger" style="width: 73%;">회원탈퇴하기</button></td>
 				</tr>
 			</table>
 		</form>
-
+	</div>
 </div>
 
 <%-- import footer --%>
