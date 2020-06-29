@@ -34,6 +34,16 @@ public interface AddressService {
 	 */
 	public List<User_basic_detail> getList(ad_Paging paging);
 
+
+
+
+
+
+
+
+
+
+
 	
 	
 }
