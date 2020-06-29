@@ -27,17 +27,23 @@ public class AdminBoardListcontroller extends HttpServlet {
 		
 		//paging 객체 생성
 		ad_B_Paging paging = adminboardService.getPaging(req);
-		System.out.println("adminBoard" + paging);
+//		System.out.println("adminBoard" + paging);
 		
-		//Paging 결과 MODEL값 전달
-		req.setAttribute("paging", paging);
 		
 		//게시글 조회
 		List<Board> list = adminboardService.list(paging);
 		
+		for (Board board : list) {
+			System.out.println(board);
+		}
+		
 		//공지사항 게시글 조회
 		List<Board> N_list = adminboardService.nlist(paging);
 		
+
+		//Paging 결과 MODEL값 전달
+		req.setAttribute("paging", paging);
+
 		//조회된 결과 view 전달
 		req.setAttribute("list", list);
 		req.setAttribute("nlist", N_list);
