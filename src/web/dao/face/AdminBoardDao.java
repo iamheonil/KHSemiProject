@@ -13,6 +13,7 @@ public interface AdminBoardDao {
 	 * @return - 전체 게시글 수
 	 */
 	public int selectCntAll();
+	public int selectCntAll(String search);
 
 	/**
 	 * 페이징 대상 게시글 목록 조회
