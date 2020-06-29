@@ -35,6 +35,7 @@ $(document).ready(function() {
 	
 	// 검색어 관련
 	$("#searchBtn").click(function() {
+		
 		$('#contents').load( "/admin/address/list?search="+$("#keyword").val() );
 
 // 		location.href="/admin/address/list?search="+$("#keyword").val()
@@ -72,7 +73,7 @@ $(document).ready(function() {
 	<button id="searchBtn" class="btn btn-primary">Search</button><br><br>
 
 </div> 
-		<div class="">
+		<div class="contents">
 			<table id="check" class="table table-striped table-hover table-condensed">
 				<thead>
 <!-- 				<tr><th colspan="5" style="text-align: center;">주소록</th></tr> -->
@@ -87,11 +88,11 @@ $(document).ready(function() {
 					<c:forEach items="${detailList }" var="detail">
 				<tbody>
 				<tr>
-					<td>${detail.dept }</td>
-					<td>${detail.userrank }</td>
-					<td id="keyword">${detail.username }</td>
-					<td>${detail.useraddr }</td>
-					<td>${detail.userphone }</td>
+					<td class="text-center">${detail.dept }</td>
+					<td class="text-center">${detail.userrank }</td>
+					<td class="text-center">${detail.username }</td>
+					<td class="text-center">${detail.useraddr }</td>
+					<td class="text-center">${detail.userphone }</td>
 				</tr>
 				</tbody>
 					</c:forEach>
