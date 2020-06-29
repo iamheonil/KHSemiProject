@@ -39,7 +39,7 @@ padding: 0px;
 			</ul>
 			<nav id="admenu">
 				<ul class="aside_nav">
-					<li class="sidemenu-title"><a href="/document/dolist">커뮤니티</a></li>
+					<li class="sidemenu-title"><a href="/board/list">커뮤니티</a></li>
 					
 					<li class="sidemenu-content"><a href="/board/notice">공지사항</a></li>
 					<li class="sidemenu-content"><a href="/board/study">스터디 모집</a></li>
