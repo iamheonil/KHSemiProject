@@ -35,6 +35,7 @@ p {
 
 table {
 	size: 0.8em;
+	width: 560px;
 }
 
 .container {
@@ -90,7 +91,7 @@ table {
 		<div>
 
 			<!-- enctype 확인 필요, 날짜 지정 방법에 대해 생각 필요 -->
-			<form action="/user/modify/basic" method="post"
+			<form action="/admin/userbasic/insert" method="post"
 				enctype="application/x-www-form-urlencoded">
 
 				<table class="table table-bordered">

@@ -60,7 +60,7 @@ $(document).ready(function() {
 	
 	//생성 버튼 누르면 이동
 	$("#btnCreate").click(function() {
-		location.href="/user/insert";
+		location.href="/admin/userbasic/insert";
 	});
 
 });

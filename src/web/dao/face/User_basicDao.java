@@ -34,6 +34,12 @@ public interface User_basicDao {
 	 */
 	public User_basic selectById(User_basic user_basic);
 	
+	/**
+	 * 사번 생성 시 basicnum 받아옴
+	 * @return int - 생성할 유저의 basicnum
+	 */
+	public int nextBasicnum();
+	
 	
 	/**
 	 * 아이디찾기

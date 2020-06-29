@@ -64,7 +64,7 @@ $(document).ready(function(){
 /* 전자문서 */
 $(document).ready(function(){
 	$('#document').click(function(){
-		$('#contents').load('/document/delete');
+		$('#contents').load('/admin/document/list');
 	})
 })
 
