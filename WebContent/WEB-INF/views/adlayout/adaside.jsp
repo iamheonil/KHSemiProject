@@ -18,15 +18,16 @@
 							
 							</span>
 							
-							<span class="admin">${admin }</span><br>
-							<span class="admin">가나다라마바</span><br>
+							<span class="admin">${adminid }</span><br>
+							<span class="admin">관리자 번호 : ${adminpw }</span><br>
 							<div class="btn-group">
-								<button class="btn btn-primary btn-xs" type="button" aria-expanded="false">로그아웃</button>
+								<button class="btn btn-primary btn-xs" style="color: black;" onclick='location.href="/admin/login";'>로그아웃</button>
 							</div>
 						</div>
 				</li>
 			
 			</ul>
+			
 				<nav id ="admenu">
 					<li class="ad-li"><a href="#" id="adminaddress"><span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;주소록</a></li>
 					
