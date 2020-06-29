@@ -1,6 +1,9 @@
 package web.util;
 
 public class ad_Paging {
+
+
+
 	private int curPage;	//현재 페이지 번호
 
 	private int totalCount;	//총 게시글 수
@@ -13,6 +16,8 @@ public class ad_Paging {
 	
 	private int startNo;	//화면에 보이는 페이지의 시작 게시글 번호(rownum)
 	private int endNo;		//화면에 보이는 페이지의 끝 게시글 번호(rownum)
+	
+	private String search; //검색어
 	
 	//--- 생성자 4개 ---
 	
@@ -87,70 +92,92 @@ public class ad_Paging {
 		
 	}
 	
-	
 	@Override
 	public String toString() {
-		return "Paging [curPage=" + curPage + ", totalCount=" + totalCount + ", listCount=" + listCount + ", totalPage="
-				+ totalPage + ", pageCount=" + pageCount + ", startPage=" + startPage + ", endPage=" + endPage
-				+ ", startNo=" + startNo + ", endNo=" + endNo + "]";
+		return "ad_Paging [curPage=" + curPage + ", totalCount=" + totalCount + ", listCount=" + listCount
+				+ ", totalPage=" + totalPage + ", pageCount=" + pageCount + ", startPage=" + startPage + ", endPage="
+				+ endPage + ", startNo=" + startNo + ", endNo=" + endNo + ", search=" + search + "]";
 	}
+	
 	public int getCurPage() {
 		return curPage;
 	}
+	
 	public void setCurPage(int curPage) {
 		this.curPage = curPage;
 	}
+	
 	public int getTotalCount() {
 		return totalCount;
 	}
+	
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
 	}
+	
 	public int getListCount() {
 		return listCount;
 	}
+	
 	public void setListCount(int listCount) {
 		this.listCount = listCount;
 	}
+	
 	public int getTotalPage() {
 		return totalPage;
 	}
+	
 	public void setTotalPage(int totalPage) {
 		this.totalPage = totalPage;
 	}
+	
 	public int getPageCount() {
 		return pageCount;
 	}
+	
 	public void setPageCount(int pageCount) {
 		this.pageCount = pageCount;
 	}
+	
 	public int getStartPage() {
 		return startPage;
 	}
+	
 	public void setStartPage(int startPage) {
 		this.startPage = startPage;
 	}
+	
 	public int getEndPage() {
 		return endPage;
 	}
+	
 	public void setEndPage(int endPage) {
 		this.endPage = endPage;
 	}
+	
 	public int getStartNo() {
 		return startNo;
 	}
+	
 	public void setStartNo(int startNo) {
 		this.startNo = startNo;
 	}
+	
 	public int getEndNo() {
 		return endNo;
 	}
+	
 	public void setEndNo(int endNo) {
 		this.endNo = endNo;
 	}
 	
+	public String getSearch() {
+		return search;
+	}
 	
-	
+	public void setSearch(String search) {
+		this.search = search;
+	}
 	
 	
 }
