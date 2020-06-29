@@ -5,14 +5,14 @@ import java.sql.Date;
 public class Doc_comment {
 	private int comm_num;		// 의견/지시 번호
 	private int doc_num;		// 문서번호
-	private String comm_sign;	// 결재종류
+	private String comm_type;	// 결재종류
 	private int receiver_id;	// 결재자
 	private String comm_content;// 의견/지시
 	private Date comm_date;		// 처리시간
 	
 	@Override
 	public String toString() {
-		return "Doc_comment [comm_num=" + comm_num + ", doc_num=" + doc_num + ", comm_sign=" + comm_sign
+		return "Doc_comment [comm_num=" + comm_num + ", doc_num=" + doc_num + ", comm_type=" + comm_type
 				+ ", receiver_id=" + receiver_id + ", comm_content=" + comm_content + ", comm_date=" + comm_date + "]";
 	}
 
@@ -33,11 +33,11 @@ public class Doc_comment {
 	}
 
 	public String getComm_sign() {
-		return comm_sign;
+		return comm_type;
 	}
 
 	public void setComm_sign(String comm_sign) {
-		this.comm_sign = comm_sign;
+		this.comm_type = comm_sign;
 	}
 
 	public int getReceiver_id() {
