@@ -32,11 +32,17 @@ public class AddressServiceImpl implements AddressService {
 			curPage = Integer.parseInt(param);
 		}
 		
+		//전달파라미터 search를 파싱한다
+		String search = req.getParameter("search");
+
 		//Board 테이블의 총 게시글 수를 조회한다
-		int totalCount = adminaddressDao.selectCntAll();
+		int totalCount = adminaddressDao.selectCntAll(search);
 	
 		//Paging 객체 생성 - 현재 페이지(curPage), 총 게시글 수(totalCount) 활용
 		ad_Paging paging = new ad_Paging(totalCount, curPage);
+		
+
+		paging.setSearch(search);
 		
 		//Paging 객체 반환
 		return paging;
@@ -46,6 +52,10 @@ public class AddressServiceImpl implements AddressService {
 	public List<User_basic_detail> getList(ad_Paging paging) {
 		return adminaddressDao.selectAll(paging);
 	}
-	
 
+
+
+	
 }
+
+
