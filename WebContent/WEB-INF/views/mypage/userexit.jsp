@@ -188,11 +188,7 @@
 				</tr>
 
 				<tr>
-					<td>비밀번호 : <input type="password" id="pw" name="pw" size="39px"></td>
-				</tr>
-
-				<tr>
-					<td>비밀번호 확인 : <input type="password" id="pwchk" name="pwchk" size="35px"></td>
+					<td>비밀번호를 입력해주세요. <input type="password" id="pw" name="pw" size="27px"></td>
 				</tr>
 				
 				<tr>
