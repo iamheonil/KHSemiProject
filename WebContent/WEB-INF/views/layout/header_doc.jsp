@@ -20,7 +20,24 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-	
+// $(document).ready(function(){
+// 	$('#adminaddress').click(function(){
+// 		$('#contents').load('/admin/address/list');
+// 	})
+// })
+// /* 주소록 리스트 */
+// $(document).ready(function(){
+// 	$(document).on("click", '.pagination a', function(){
+// 		$('#contents').load($(this).attr("href"));
+// 		return false;
+// 	})
+// })
+$(document).ready(function(){
+	$('#address').click(function(){
+		console.log("클릭")
+// 		$('#contents').load('/admin/address/list');
+	})
+})
 </script>
 
 <style type="text/css">
@@ -346,6 +363,6 @@ a {
 				</ul></li>
 			<li class="li-white"><a href="/plan/view">일정관리</a></li>
 			<li class="li-white"><a href="/board/list">커뮤니티</a></li>
-			<li class="li-white"><a href="#">주소록</a></li>
+			<li class="li-white"><a href="#" id="address">주소록</a></li>
 		</ul>
 	</header>
