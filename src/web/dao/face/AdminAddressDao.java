@@ -21,6 +21,7 @@ public interface AdminAddressDao {
 	 * @return
 	 */
 	public int selectCntAll();
+	public int selectCntAll(String search);
 
 	/**
 	 * 페이징 대상 게시글 조회
@@ -29,6 +30,7 @@ public interface AdminAddressDao {
 	 * @return List<User_detail> - 조회된 목록
 	 */
 	public List<User_basic_detail> selectAll(ad_Paging paging);
+
 
 	
 
