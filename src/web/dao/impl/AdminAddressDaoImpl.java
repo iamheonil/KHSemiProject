@@ -108,6 +108,55 @@ public class AdminAddressDaoImpl implements AdminAddressDao {
 	}
 
 	@Override
+	public int selectCntAll(String search) {
+		
+		conn = JDBCTemplate.getConnection(); //DB연결
+		
+		//SQL 작성
+		String sql = "";
+		sql += "SELECT count(*) cnt FROM (";
+		sql += "		SELECT";
+		sql += "   		 UB.userid, username, userrank, dept";
+		sql += "		    , usernum, userphoto_origin, userphoto_rename";
+		sql += "		    , userpw, userbirth, usergender, userphone, useraddr";
+		sql += "		 FROM user_basic UB, user_detail UD";
+		sql += "		 WHERE UB.userid = UD.userid";
+		if( null != search && !"".equals(search) ) {
+			sql += "       	AND username LIKE ?";
+		}
+		sql += " )";
+		
+		//최종 결과값
+		int cnt = 0;
+		
+		try {
+			//SQL 수행객체
+			ps = conn.prepareStatement(sql);
+			
+			if( null != search && !"".equals(search) ) {
+			ps.setString(1, "%"+search+"%");
+			}
+				
+			//SQL수행 및 결과집합 반환
+			rs = ps.executeQuery();
+			
+			//조회결과 처리
+			while(rs.next()) {
+				cnt = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 객체 닫기
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return cnt;
+	}
+
+	@Override
 	public List<User_basic_detail> selectAll(ad_Paging paging) {
 		
 		//DB연결 객체
@@ -123,6 +172,9 @@ public class AdminAddressDaoImpl implements AdminAddressDao {
 		sql += "		    , userpw, userbirth, usergender, userphone, useraddr";
 		sql += "		 FROM user_basic UB, user_detail UD";
 		sql += "		 WHERE UB.userid = UD.userid";
+		if( null != paging.getSearch() && !"".equals(paging.getSearch()) ) {
+		sql += "       	AND username LIKE ?";
+		}
 		sql += "		 ORDER BY UB.userid DESC";
 		sql += "    )R";
 		sql += " ) RES";
@@ -133,9 +185,14 @@ public class AdminAddressDaoImpl implements AdminAddressDao {
 		
 		try {
 			ps = conn.prepareStatement(sql); //SQL 수행객체
+		
+			int index = 1;
 			
-			ps.setInt(1, paging.getStartNo());	//페이징 게시글 시작 번호
-			ps.setInt(2, paging.getEndNo());	//페이징 게시글 끝 번호
+			if( null != paging.getSearch() && !"".equals(paging.getSearch()) ) {
+			ps.setString(index++, "%" + paging.getSearch() + "%");
+			}
+			ps.setInt(index++, paging.getStartNo());	//페이징 게시글 시작 번호
+			ps.setInt(index++, paging.getEndNo());	//페이징 게시글 끝 번호
 			
 			rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
 			
