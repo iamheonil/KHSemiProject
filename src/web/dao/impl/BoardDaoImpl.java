@@ -447,7 +447,7 @@ public class BoardDaoImpl implements BoardDao{
 			sql += " SELECT rownum rnum, B.* FROM (";
 			sql += "  SELECT";
 			sql += "   		category, b_num, b_title";
-			sql += "  	, b_content, b_date, hits, userid, username, userrank, dept";
+			sql += "  	, b_content, b_date, hits, userid, username, userrank, dept, c_cnt";
 			sql += "    FROM board";
 			sql += " 	WHERE category='공지사항'";
 			
@@ -510,6 +510,7 @@ public class BoardDaoImpl implements BoardDao{
 						board.setUsername(rs.getNString("username"));
 						board.setUserrank(rs.getString("userrank"));
 						board.setDept(rs.getString("dept"));
+						board.setC_cnt(rs.getInt("c_cnt"));
 						
 						list.add(board);
 						
@@ -537,7 +538,7 @@ public class BoardDaoImpl implements BoardDao{
 			sql += " SELECT rownum rnum, B.* FROM (";
 			sql += "  SELECT";
 			sql += "   		category, b_num, b_title";
-			sql += "  	, b_content, b_date, hits, userid, username, userrank, dept";
+			sql += "  	, b_content, b_date, hits, userid, username, userrank, dept, c_cnt";
 			sql += "    FROM board";
 			sql += "       WHERE category='사내게시판' AND b_title LIKE '%'||?||'%'";
 			sql += "	ORDER BY b_num DESC";
@@ -571,7 +572,7 @@ public class BoardDaoImpl implements BoardDao{
 						board.setUsername(rs.getNString("username"));
 						board.setUserrank(rs.getString("userrank"));
 						board.setDept(rs.getString("dept"));
-						
+						board.setC_cnt(rs.getInt("c_cnt"));
 						list.add(board);
 						
 					}
@@ -598,7 +599,7 @@ public class BoardDaoImpl implements BoardDao{
 		sql += " SELECT rownum rnum, B.* FROM (";
 		sql += "  SELECT";
 		sql += "   		category, b_num, b_title";
-		sql += "  	, b_content, b_date, hits, userid, username, userrank, dept";
+		sql += "  	, b_content, b_date, hits, userid, username, userrank, dept, c_cnt";
 		sql += "    FROM board";
 		sql += "       WHERE category='스터디모집' AND b_title LIKE '%'||?||'%'";
 		sql += "	ORDER BY b_num DESC";
@@ -631,7 +632,7 @@ public class BoardDaoImpl implements BoardDao{
 					board.setUsername(rs.getNString("username"));
 					board.setUserrank(rs.getString("userrank"));
 					board.setDept(rs.getString("dept"));
-					
+					board.setC_cnt(rs.getInt("c_cnt"));
 					list.add(board);
 					
 				}

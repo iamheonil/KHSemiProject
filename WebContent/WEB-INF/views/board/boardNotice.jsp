@@ -57,7 +57,8 @@ $(document).ready(function(){
 					<tr class="text-left">
 						<td style="text-align: center;">${i.b_num }</td>
 						<td>${i.category}</td>
-						<td><a href="/board/view?b_num=${i.b_num }">${i.b_title }</a></td>
+						<td><a href="/board/view?b_num=${i.b_num }">${i.b_title }</a>
+						&nbsp;<span style="color:rgb(38, 114, 165);"><c:if test="${i.c_cnt ne 0}">[${i.c_cnt}]</c:if></span></td>
 						<td>${i.userid }</td>
 						<td>${i.username }</td>
 						<td>${i.hits }</td>
