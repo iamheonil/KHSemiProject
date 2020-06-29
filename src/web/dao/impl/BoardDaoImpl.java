@@ -47,7 +47,7 @@ public class BoardDaoImpl implements BoardDao{
 				board.setHits(rs.getInt("hits"));
 				board.setUserid(rs.getInt("userid"));
 				board.setUsername(rs.getString("username"));
-				
+				board.setC_cnt(rs.getInt("c_cnt"));
 				
 				list.add(board);
 			}
@@ -90,6 +90,7 @@ public class BoardDaoImpl implements BoardDao{
 				board.setHits(rs.getInt("hits"));
 				board.setUserid(rs.getInt("userid"));
 				board.setUsername(rs.getString("username"));
+				board.setC_cnt(rs.getInt("c_cnt"));
 				
 				N_list.add(board);
 			}
@@ -130,6 +131,7 @@ public class BoardDaoImpl implements BoardDao{
 				board.setHits(rs.getInt("hits"));
 				board.setUserid(rs.getInt("userid"));
 				board.setUsername(rs.getString("username"));
+				board.setC_cnt(rs.getInt("c_cnt"));
 				
 				F_list.add(board);
 			}
@@ -299,12 +301,9 @@ public class BoardDaoImpl implements BoardDao{
 		
 		return totalCount;
 	}
-	
 	@Override
 	public int selectStudyCntAll() {
-		
-		
-		conn = JDBCTemplate.getConnection(); //DB연결
+	conn = JDBCTemplate.getConnection(); //DB연결
 		
 		//SQL
 		String sql = "";
@@ -330,10 +329,58 @@ public class BoardDaoImpl implements BoardDao{
 			JDBCTemplate.close(ps);
 			
 		}
+		return totalCount;
+	}
+
+	@Override
+	public int selectStudyCntAll(String search) {
+		
+		
+		conn = JDBCTemplate.getConnection(); //DB연결
+		
+		//SQL
+		String sql = "";
+		sql += "SELECT COUNT(*) from (";
+		sql += " SELECT";
+		sql += "		category, b_num, b_title";
+		sql += "       , b_content, b_date, hits, userid, username, userrank, dept, c_cnt";
+		sql += "     FROM board";
+		sql += "     WHERE category='스터디모집'";
+		sql += "     AND 1=1";
+				if(null != search && !"".equals(search)) {
+		sql += "     AND b_title LIKE ?";
+		}
+		sql += ")";
+		//결과 저장 int 생성
+		int totalCount = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql); //sql 수행객체
+			if( null != search && !"".equals(search)) {
+				ps.setNString(1, "%"+search+"%");
+			}
+			rs=ps.executeQuery(); 
+			
+			while(rs.next()) {
+				totalCount = rs.getInt(1);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+			
+		}
 		
 		return totalCount;
 	}
 
+	
+
+
+	
 	@Override
 	public int selectFreeCntAll() {
 	
@@ -368,6 +415,48 @@ public class BoardDaoImpl implements BoardDao{
 		return totalCount;
 	}
 
+	@Override
+	public int selectFreeCntAll(String search) {
+		
+		conn = JDBCTemplate.getConnection(); //DB연결
+		
+		String sql = "";
+		sql += "SELECT COUNT(*) from (";
+		sql += " SELECT";
+		sql += "		category, b_num, b_title";
+		sql += "       , b_content, b_date, hits, userid, username, userrank, dept, c_cnt";
+		sql += "     FROM board";
+		sql += "     WHERE category='사내게시판'";
+		sql += "     AND 1=1";
+				if(null != search && !"".equals(search)) {
+		sql += "     AND b_title LIKE ?";
+		}
+		sql += ")";
+		//결과 저장 int 생성
+		int totalCount = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql); //sql 수행객체
+			if( null != search && !"".equals(search)) {
+				ps.setNString(1, "%"+search+"%");
+			}
+			rs=ps.executeQuery(); 
+			
+			while(rs.next()) {
+				totalCount = rs.getInt(1);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+			
+		}
+		
+		return totalCount;
+	}
 
 
 
@@ -540,7 +629,12 @@ public class BoardDaoImpl implements BoardDao{
 			sql += "   		category, b_num, b_title";
 			sql += "  	, b_content, b_date, hits, userid, username, userrank, dept, c_cnt";
 			sql += "    FROM board";
-			sql += "       WHERE category='사내게시판' AND b_title LIKE '%'||?||'%'";
+			sql += "     WHERE category='사내게시판'";
+			sql += "     AND 1=1";
+			if( null != paging.getSearch() && !"".equals(paging.getSearch())) {
+			sql += "     AND b_title LIKE ?";
+			}
+//			sql += "       WHERE category='사내게시판' AND b_title LIKE '%'||?||'%'";
 			sql += "	ORDER BY b_num DESC";
 			sql += "    ) B";
 //			sql += "     WHERE b_title LIKE '%'||?||'%'";
@@ -553,9 +647,14 @@ public class BoardDaoImpl implements BoardDao{
 				try {
 					ps=conn.prepareStatement(sql);
 					
-					ps.setString(1, paging.getSearch());
-					ps.setInt(2, paging.getStartNo());
-					ps.setInt(3, paging.getEndNo());
+					int index = 1;
+					
+					if( null!= paging.getSearch() && !"".equals(paging.getSearch())) {
+						
+					ps.setString(index++, "%" + paging.getSearch() + "%");
+					}
+					ps.setInt(index++, paging.getStartNo());
+					ps.setInt(index++, paging.getEndNo());
 					
 					rs= ps.executeQuery();
 					while(rs.next()) {
@@ -601,7 +700,12 @@ public class BoardDaoImpl implements BoardDao{
 		sql += "   		category, b_num, b_title";
 		sql += "  	, b_content, b_date, hits, userid, username, userrank, dept, c_cnt";
 		sql += "    FROM board";
-		sql += "       WHERE category='스터디모집' AND b_title LIKE '%'||?||'%'";
+		sql += "       WHERE category='스터디모집'";
+		sql += "       AND 1=1";
+		if( null != paging.getSearch() && !"".equals(paging.getSearch())) {
+		sql += "       AND b_title LIKE ?";
+		}
+//		sql += "       WHERE category='스터디모집' AND b_title LIKE '%'||?||'%'";
 		sql += "	ORDER BY b_num DESC";
 		sql += "    ) B";
 		sql += "     ORDER BY rnum";
@@ -612,13 +716,18 @@ public class BoardDaoImpl implements BoardDao{
 		
 			try {
 				ps=conn.prepareStatement(sql);
-				
-				ps.setString(1, paging.getSearch());
-				ps.setInt(2, paging.getStartNo());
-				ps.setInt(3, paging.getEndNo());
+				int index = 1;
+				if( null != paging.getSearch() && !"".equals(paging.getSearch())) {
+					
+				ps.setString(index++, "%" + paging.getSearch()+ "%");
+				}
+				ps.setInt(index++, paging.getStartNo());
+				ps.setInt(index++, paging.getEndNo());
 				
 				rs= ps.executeQuery();
+				
 				while(rs.next()) {
+					
 					Board board = new Board();
 					
 					//조회 결과담기
@@ -943,9 +1052,8 @@ public class BoardDaoImpl implements BoardDao{
 	}
 
 
-
-
 	
+
 
 
 }

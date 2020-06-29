@@ -121,8 +121,8 @@ public class BoardServiceImpl implements BoardService{
 					
 				}
 				//Board 테이블의 총 게시글 수 조회
-				int totalCount = boardDao.selectStudyCntAll();
 				String search = (String)req.getParameter("search");
+				int totalCount = boardDao.selectStudyCntAll(search);
 				
 				//Paging 객체 생성
 				B_Paging paging = new B_Paging(totalCount, curPage);
@@ -144,7 +144,7 @@ public class BoardServiceImpl implements BoardService{
 			String search = (String)req.getParameter("search");
 			//Board 테이블의 총 게시글 수 조회
 			
-			int totalCount = boardDao.selectFreeCntAll();
+			int totalCount = boardDao.selectFreeCntAll(search);
 			//Paging 객체 생성
 			B_Paging paging = new B_Paging(totalCount, curPage);
 			paging.setSearch(search);

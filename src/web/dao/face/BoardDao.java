@@ -72,7 +72,19 @@ public interface BoardDao {
 	 */
 	
 	public int selectStudyCntAll();
+	public int selectStudyCntAll(String search);
 
+	/**
+	 * 
+	 *  사내게시판 게시글 수 조회
+	 * 
+	 * @return
+	 */
+	
+	public int selectFreeCntAll();
+	public int selectFreeCntAll(String search);
+	
+	
 	/**
 	 * 페이징 대상 게시글 목록 조회
 	 * 
@@ -170,7 +182,6 @@ public interface BoardDao {
 	 */
 	public void boardUpdate(Board board);
 
-	public int selectFreeCntAll();
 
 	
 	
