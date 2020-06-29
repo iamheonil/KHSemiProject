@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import oracle.net.aso.p;
 import web.dto.User_basic_detail;
+import web.dto.User_detail;
 import web.service.face.AddressService;
 import web.service.impl.AddressServiceImpl;
 import web.util.ad_Paging;
@@ -29,12 +31,16 @@ public class AdminAddressListcontroller extends HttpServlet {
 		ad_Paging paging = addressService.getPaging(req);
 		System.out.println("테스트 address list " + paging);
 		
+
+		
+		
 		//게시글 전체 조회
 //		List<User_detail> userList = addressService.getList();
 		
 		//게시글 페이징 처리 조회
 		List<User_basic_detail> detailList = addressService.getList(paging);
 
+		
 		//검색어 MODEL값 전달
 //		req.setAttribute("search", search);
 		
