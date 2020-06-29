@@ -44,7 +44,7 @@ padding: 0px;
 					<li class="sidemenu-content"><a href="/user/modify/detail">회원정보변경</a></li>
 					<li class="sidemenu-content"><a href="/dayoff/write">휴가신청</a></li>
 					<li class="sidemenu-content"><a href="/dayoff/list">휴가내역조회</a></li>
-					<li class="sidemenu-content"><a href="">회원탈퇴</a></li>
+					<li class="sidemenu-content"><a href="/user/delete">회원탈퇴</a></li>
 				</ul>
 			</nav>
 			

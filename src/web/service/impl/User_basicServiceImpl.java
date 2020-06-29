@@ -102,8 +102,10 @@ public class User_basicServiceImpl implements User_basicService {
 	}
 
 	@Override
-	public void deleteUser(User_basic user_basic) {
-
+	public void deleteUser(User_detail user_detail) {
+		
+		user_basicDao.deleteUser_basic(user_detail);
+		
 	}
 
 	@Override

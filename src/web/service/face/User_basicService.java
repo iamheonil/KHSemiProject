@@ -68,7 +68,7 @@ public interface User_basicService {
 	 * 회원탈퇴, 삭제
 	 * 
 	 */
-	public void deleteUser(User_basic user_basic);
+	public void deleteUser(User_detail user_Detail);
 	
 	
 	/**

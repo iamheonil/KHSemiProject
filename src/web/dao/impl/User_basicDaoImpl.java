@@ -10,6 +10,7 @@ import java.util.List;
 import web.dao.face.User_basicDao;
 import web.dbutil.JDBCTemplate;
 import web.dto.User_basic;
+import web.dto.User_detail;
 
 public class User_basicDaoImpl implements User_basicDao {
 	
@@ -133,8 +134,26 @@ public class User_basicDaoImpl implements User_basicDao {
 	}
 
 	@Override
-	public void deleteUser_basic(User_basic user_basic) {
+	public void deleteUser_basic(User_detail User_detail) {
 		
+		conn = JDBCTemplate.getConnection();
+		
+		String sql = "";
+		sql += "DELETE FROM USER_DETAIL WHERE USERID = ?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, User_detail.getUserid());
+			
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
 		
 	}
 

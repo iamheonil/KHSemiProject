@@ -61,7 +61,7 @@
 			
 			plugins : [ 'interaction', 'dayGrid' ],
 			// defaultDate : '2019-06-12', 기본 날짜 설정을 삭제, 오늘 날짜로 기본 설정
-			editable : true,
+			editable : false,
 			eventLimit : true, // allow "more" link when too many events
 			locale : 'ko',
 			displayEventTime: false,

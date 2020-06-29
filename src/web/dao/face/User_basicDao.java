@@ -58,11 +58,11 @@ public interface User_basicDao {
 	
 	
 	/**
-	 * 회원 기본정보 삭제(관리자)
+	 * 회원 기본정보 삭제(회원용)
 	 * 
-	 * @param user_basic - 삭제할 기본정보
+	 * @param user_detail - 삭제할 기본정보
 	 */
-	public void deleteUser_basic(User_basic user_basic);
+	public void deleteUser_basic(User_detail user_detail);
 	
 	
 	/**
