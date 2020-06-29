@@ -22,6 +22,9 @@ $(document).ready(function() {
 	$("#btnDelete").click(function() {
 		$(location).attr("href", "/board/delete?b_num=${viewBoard.b_num}");
 	});
+	
+	$("#commentbody").append("#c_c");
+	
 });
 
 
@@ -158,25 +161,75 @@ ${viewBoard.b_content }
 
 
 <!--  댓글 리스트  -->
+<!-- <table> -->
+<!-- <tbody id="commentBody"> -->
+<%-- <c:forEach items="${commentList }" var="comment"> --%>
+	
+<%-- 	<div style="border: 1px solid gray; width: 600px; padding: 5px; margin-top: 5px; --%>
+<%-- 		margin-left: <c:out value="${20*comment.c_depth }"/>px; display: inline-block"> --%>
+<%-- 		<c:out value="${comment.dept }"/><c:out value="${comment.userrank }"/><c:out value="${comment.username }"/> --%>
+<%-- 		(<fmt:formatDate value="${comment.c_date }" pattern="yy-MM-dd hh:mm" />) --%>
+<%-- 		<c:out value="${comment.c_num }"/> --%>
+<!-- 		</div> -->
+<%-- 		<c:if test="${sessionScope.userid eq comment.userid }"> --%>
+<!-- 		<button class="btn btn-defalut btn-xs" -->
+<%-- 			onclick="alert('삭제되었습니다.'); deleteComment(${comment.c_num}); history.go(0);">삭제	 --%>
+<!-- 		</button> -->
+<%-- 		</c:if> --%>
+
+<%-- <tr style="text-align: left;" id="content"><td>${comment.c_content }<hr></td></tr> --%>
+		
+<%-- </c:forEach> --%>
+
+
+<!-- </tbody> -->
+<!-- </table> -->
 <table>
 <tbody id="commentBody">
 <c:forEach items="${commentList }" var="comment">
-<tr data-c_num="${comment.c_num }">
-	<th>[${comment.dept }&nbsp;${comment.userrank }]&nbsp;${comment.username }
+
+	<tr data-c_num="${comment.c_num }">
+		<th>[${comment.dept }&nbsp;${comment.userrank }]&nbsp;${comment.username }
 	(<fmt:formatDate value="${comment.c_date }" pattern="yy-MM-dd hh:mm" />)
+		
+		
 		<c:if test="${sessionScope.userid eq comment.userid }">
-		<button class="btn btn-defalut btn-xs"
+		<button class="btn btn-default btn-xs"
 			onclick="alert('삭제되었습니다.'); deleteComment(${comment.c_num}); history.go(0);">삭제	
 		</button>
 		</c:if>
+		
+		
 	</th>
 </tr>
-
-<tr style="text-align: left;" id="content"><td>${comment.c_content }<hr></td></tr>
+<tr style="text-align: left;" id="content"><td>${comment.c_content }</td></tr>
 </c:forEach>
 </tbody>
 </table>
-<!--  댓글 입력 -->
+
+<div id="c_c">
+<c:forEach items="${c_commentList}" var="c_comment">
+<input type="hidden" class="c_num" id="c_num" name="c_num" value="${c_comment.c_num }"/>
+<tr data-c_cnum="${c_comment.c_cnum }">
+	<th>[${c_comment.dept }&nbsp;${c_comment.userrank }]&nbsp;${c_comment.username }
+	(<fmt:formatDate value="${c_comment.c_cdate }" pattern="yy-MM-dd hh:mm" />)
+
+		<c:if test="${sessionScope.userid eq c_comment.userid }">
+		<button class="btn btn-default btn-xs"
+			onclick="alert('삭제되었습니다.'); deleteComment(${c_comment.c_num}); history.go(0)">삭제
+			</button>
+		</c:if>
+
+	</th>
+</tr>
+<tr style="text-align: left;" id="c_content"><td>${c_comment.c_ccontent }</td></tr>
+</c:forEach>
+</div>
+
+
+
+
+<!-----------  댓글 입력  -------------->
 <table>
 <!--  비로그인  -->
 <c:if test="${not login }">

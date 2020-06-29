@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import web.dto.Board;
 import web.dto.Board_comment;
+import web.dto.Comment_comment;
 import web.util.B_Paging;
 
 public interface BoardService {
@@ -114,6 +115,16 @@ public interface BoardService {
 	public Board getBoardno(HttpServletRequest req);
 
 	/**
+	 * 
+	 * 코멘트 번호 조회
+	 * 
+	 * @param req 요청
+	 * @return commentno 조회된 결과
+	 */
+	
+	public Board_comment getCommentno(HttpServletRequest req);
+	
+	/**
 	 * 게시글 번호를 통해 게시글 상세조회
 	 * 
 	 * @param boardnum
@@ -160,7 +171,15 @@ public interface BoardService {
 	 * @return List - 댓글 리스트
 	 */
 	public List<Board_comment> getCommentList(Board board);
-
+	
+	/**
+	 * 댓글의 댓글리스트(대댓글)
+	 * 
+	 * @param board - 대댓글
+	 * @return List - 대댓글
+	 */
+	
+	public List<Comment_comment> getC_CommentList(Board_comment comment);
 	/**
 	 * 
 	 * 댓글 전달파라미터 꺼내기
@@ -214,4 +233,7 @@ public interface BoardService {
 	public B_Paging getFreePaging(HttpServletRequest req);
 
 	public void CntComment(HttpServletRequest req);
+
+
+
 }

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import web.dto.Board;
 import web.dto.Board_comment;
+import web.dto.Comment_comment;
 import web.service.face.BoardService;
 import web.service.impl.BoardServiceImpl;
 
@@ -27,10 +28,12 @@ public class BoardViewController extends HttpServlet {
 		//전달 파라미터 얻기 
 		Board boardnum = boardService.getBoardno(req);
 		
-		
+		Board_comment commentnum = boardService.getCommentno(req);
 		//상세보기 결과 조회 
 		Board viewBoard = boardService.view(boardnum);
 		
+		req.setAttribute("commentnum", commentnum);
+//		_comment 
 		//죄회결과 MODEL값 전달
 		req.setAttribute("viewBoard", viewBoard);
 		
@@ -39,9 +42,14 @@ public class BoardViewController extends HttpServlet {
 		System.out.println(boardService.getName(viewBoard));
 		
 		//댓글 리스트 전달
-		Board_comment comment  = new Board_comment();
+//		Board_comment comment  = new Board_comment();
 		List<Board_comment> commentList = boardService.getCommentList(viewBoard);
 		req.setAttribute("commentList", commentList);
+		
+		//대댓글 리스트 전달
+//		Comment_comment c_comment = new Comment_comment();
+		List<Comment_comment> c_commentList = boardService.getC_CommentList(commentnum);
+		req.setAttribute("c_commentList", c_commentList);
 		
 		
 		//VIEW forward

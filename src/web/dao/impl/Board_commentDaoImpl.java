@@ -7,10 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import jdk.nashorn.internal.scripts.JD;
 import web.dao.face.Board_commentDao;
 import web.dbutil.JDBCTemplate;
 import web.dto.Board;
 import web.dto.Board_comment;
+import web.dto.Comment_comment;
 
 public class Board_commentDaoImpl implements Board_commentDao{
 
@@ -68,6 +70,7 @@ public class Board_commentDaoImpl implements Board_commentDao{
 				
 				commentList.add(comment);
 				
+				
 			}
 			
 		} catch (SQLException e) {
@@ -82,10 +85,59 @@ public class Board_commentDaoImpl implements Board_commentDao{
 			
 			
 		}
-		
+		System.out.println(commentList);
 		return commentList;
 	}
-
+	
+	@Override
+	public List<Comment_comment> selectC_Comment(Board_comment comment) {
+		
+		conn = JDBCTemplate.getConnection();
+		
+		String sql = "";
+		sql += " SELECT * FROM (SELECT rownum rnum, B.*FROM (SELECT c_num, c_cnum, userid, username, c_ccontent, c_cdate, userrank, dept FROM comment_comment WHERE c_num = ? ORDER BY c_cdate) B) ORDER BY rnum";
+		
+		List c_commentList = new ArrayList();
+		
+			try {
+				ps = conn.prepareStatement(sql);
+				
+				ps.setInt(1, comment.getC_num());
+				
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					Comment_comment c_comment = new Comment_comment();
+					
+					c_comment.setRnum(rs.getInt("rnum"));
+					c_comment.setC_num(rs.getInt("c_num"));
+					c_comment.setC_cnum(rs.getInt("c_cnum"));
+					c_comment.setUserid(rs.getInt("userid"));
+					c_comment.setUsername(rs.getString("username"));
+					c_comment.setC_ccontent(rs.getString("c_ccontent"));
+					c_comment.setC_cdate(rs.getDate("c_cdate"));
+					c_comment.setUserrank(rs.getNString("userrank"));
+					c_comment.setDept(rs.getString("dept"));
+					
+					c_commentList.add(c_comment);
+					System.out.println("엥"+c_comment.getC_num());
+					System.out.println("흐음"+c_comment.getC_ccontent());
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if(rs!=null)	rs.close();
+					if(ps!=null) 	ps.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+					
+				}
+			} 
+			System.out.println("댓글리스트 : " + c_commentList);
+		return c_commentList;
+	}
+	
 	@Override
 	public void insertComment(Board_comment comment) {
 		
@@ -181,5 +233,7 @@ public class Board_commentDaoImpl implements Board_commentDao{
 		
 		return cnt;
 	}
+
+
 
 }

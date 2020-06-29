@@ -13,6 +13,7 @@ import web.dao.impl.BoardDaoImpl;
 import web.dao.impl.Board_commentDaoImpl;
 import web.dto.Board;
 import web.dto.Board_comment;
+import web.dto.Comment_comment;
 import web.service.face.BoardService;
 import web.util.B_Paging;
 
@@ -211,7 +212,22 @@ public class BoardServiceImpl implements BoardService{
 		}
 		return boardno;
 	}
-
+	
+	@Override
+	public Board_comment getCommentno(HttpServletRequest req) {
+		
+		Board_comment commentno = new Board_comment();
+		
+		// c_num 가져오기
+		String param = req.getParameter("c_num");
+		if(param!=null && !"".equals(param)) {
+			
+			commentno.setC_num(Integer.parseInt(param));
+		}
+		
+		return commentno;
+	}
+	
 	@Override
 	public Board view(Board boardnum) {
 		
@@ -298,7 +314,16 @@ public class BoardServiceImpl implements BoardService{
 		
 		return board_commentDao.selectComment(board);
 	}
+	
 
+	@Override
+	public List<Comment_comment> getC_CommentList(Board_comment comment) {
+		
+		
+		return board_commentDao.selectC_Comment(comment);
+	}
+
+	
 	@Override
 	public Board_comment getComment(HttpServletRequest req) {
 		
@@ -323,7 +348,8 @@ public class BoardServiceImpl implements BoardService{
 		comment.setUserrank((String)req.getSession().getAttribute("userrank"));
 		return comment;
 	}
-
+	
+	
 	@Override
 	public void insertComment(Board_comment comment) {
 		board_commentDao.insertComment(comment);
@@ -341,6 +367,8 @@ public class BoardServiceImpl implements BoardService{
 		}
 		
 	}
+
+
 
 
 
