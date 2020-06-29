@@ -51,6 +51,7 @@ $(document).ready(function(){
 		
 	})
 	
+	
 })
 
 //전체 체크/해제
@@ -74,6 +75,18 @@ function checkAll() {
 	}
 }
 
+$(document).ready(function(){
+	$("#search").keydown(function(e) {
+		if(e.keyCode == 13) {
+			$("#btnSearch").click()
+		}
+	})
+	
+	$("#btnSearch").click(function() {
+		$('#contents').load( "/admin/board/list?search="+$("#search").val() );
+
+	})
+});
 
 </script>
 
@@ -129,11 +142,11 @@ function checkAll() {
 		<button id="btnDelete" class="btn btn-primary pull-right">삭제</button>
 
 
-		<c:import url="/WEB-INF/views/adlayout/ad_B_paging.jsp" />
-
+		<!-- 검색 -->
 		<div class="form-inline text-center">
 			<input class="form-control" type="text" id="search" style="width:250px;" placeholder="검색어를 입력해주세요"/>
 			<button id="btnSearch" class="btn glyphicon glyphicon-search"></button>
 		</div>
+		<c:import url="/WEB-INF/views/adlayout/ad_B_paging.jsp" />
 	</div>
 </div>
