@@ -30,14 +30,17 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 		//검색어
 		String search = (String)req.getParameter("search");
 		
-		int totalCount = adminboardDao.selectCntAll();
-		
+		int totalCount = adminboardDao.selectCntAll(search);
+//		System.out.println("getPaging - " + search);
+//		System.out.println("getPaging - " + totalCount);
+
 		//Paging 객체 생성
 		ad_B_Paging paging = new ad_B_Paging(totalCount, curPage);
 		
 		//검색어
 		paging.setSearch(search);
 		
+		System.out.println("getPaging - " + paging);
 		return paging;
 	}
 
