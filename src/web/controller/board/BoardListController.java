@@ -44,7 +44,8 @@ public class BoardListController extends HttpServlet {
 		
 		
 		//
-		
+//		int commentCnt = boardService.CntComment(req);
+//		System.out.println(commentCnt);
 //		List<Board> K_list = boardService.selectbo(category, keyword);
 		
 //		List<Board> C_list = boardService.cList();

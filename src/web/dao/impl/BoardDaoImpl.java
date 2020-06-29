@@ -48,6 +48,7 @@ public class BoardDaoImpl implements BoardDao{
 				board.setUserid(rs.getInt("userid"));
 				board.setUsername(rs.getString("username"));
 				
+				
 				list.add(board);
 			}
 			
@@ -169,6 +170,7 @@ public class BoardDaoImpl implements BoardDao{
 				board.setHits(rs.getInt("hits"));
 				board.setUserid(rs.getInt("userid"));
 				board.setUsername(rs.getString("username"));
+				board.setC_cnt(rs.getInt("c_cnt"));
 				
 				S_list.add(board);
 			}
@@ -217,6 +219,54 @@ public class BoardDaoImpl implements BoardDao{
 		return totalCount;
 		
 	}
+	
+	@Override
+	public int selectCntAll(String search) {
+
+		      conn = JDBCTemplate.getConnection(); //DB연결
+		      
+		      //SQL
+		      String sql = "";
+		      sql += "SELECT COUNT(*) from (";
+		      sql += "  SELECT";
+		      sql += "         category, b_num, b_title";
+		      sql += "     , b_content, b_date, hits, userid, username, userrank, dept, c_cnt";
+		      sql += "    FROM board";
+		      sql += "       WHERE 1=1";
+		      		if( null != search && !"".equals(search)) {
+		      sql += "       AND b_title LIKE ?";
+		      }
+		      sql += " )";
+		      
+		      
+		      //결과 저장 int 생성
+		      int totalCount = 0;
+		      
+		      try {
+		         ps = conn.prepareStatement(sql); //sql 수행객체
+		         if( null != search && !"".equals(search)) {
+		         ps.setString(1, "%"+search+"%");
+		         }
+		         rs=ps.executeQuery(); 
+		         
+		         while(rs.next()) {
+		            totalCount = rs.getInt(1);
+		            
+		         }
+		      } catch (SQLException e) {
+		         e.printStackTrace();
+		      } finally {
+		         
+		         JDBCTemplate.close(rs);
+		         JDBCTemplate.close(ps);
+		         
+		      }
+		      
+		      return totalCount;
+		      
+	
+	}
+
 	@Override
 	public int selectNoticeCntAll(String search, int search2) {
 		
@@ -332,9 +382,12 @@ public class BoardDaoImpl implements BoardDao{
 		sql += " SELECT rownum rnum, B.* FROM (";
 		sql += "  SELECT";
 		sql += "   		category, b_num, b_title";
-		sql += "  	, b_content, b_date, hits, userid, username, userrank, dept";
+		sql += "  	, b_content, b_date, hits, userid, username, userrank, dept, c_cnt";
 		sql += "    FROM board";
-		sql += "       WHERE b_title LIKE '%'||?||'%'";
+		sql += "       WHERE 1=1";
+		if( null != paging.getSearch() && !"".equals(paging.getSearch())) {
+		sql += "       AND b_title Like ?";
+		}
 		sql += "	ORDER BY b_num DESC";
 		sql += "    ) B";
 		sql += "     ORDER BY rnum";
@@ -345,10 +398,12 @@ public class BoardDaoImpl implements BoardDao{
 		
 			try {
 				ps=conn.prepareStatement(sql);
-				
-				ps.setString(1, paging.getSearch());
-				ps.setInt(2, paging.getStartNo());
-				ps.setInt(3, paging.getEndNo());
+				int index = 1;
+				if( null != paging.getSearch() && !"".equals(paging.getSearch())) {
+				ps.setString(index++, "%" + paging.getSearch()+"%");
+				}
+				ps.setInt(index++, paging.getStartNo());
+				ps.setInt(index++, paging.getEndNo());
 				
 				rs= ps.executeQuery();
 				while(rs.next()) {
@@ -365,6 +420,7 @@ public class BoardDaoImpl implements BoardDao{
 					board.setUsername(rs.getNString("username"));
 					board.setUserrank(rs.getString("userrank"));
 					board.setDept(rs.getString("dept"));
+					board.setC_cnt(rs.getInt("c_cnt"));
 					
 					list.add(board);
 					
@@ -859,36 +915,32 @@ public class BoardDaoImpl implements BoardDao{
 
 
 	@Override
-	public int commentCnt() {
-		
-		conn= JDBCTemplate.getConnection(); //DB연결
+	public void updateCoCnt(int b_num) {
+		conn = JDBCTemplate.getConnection();
 		
 		String sql = "";
-		sql += "SELECT COUNT(*) FROM board_comment";
-		sql += " WHERE b_num = ?";
+		sql += "update board b set b.c_cnt = (select count(*) from board_comment where b_num = b.b_num) WHERE b.b_num = ?";
+	
 		
-		//결과 저장 int 생성
-		int totalCount = 0;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, b_num);
+			
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			try {
 				
-				try {
-					ps = conn.prepareStatement(sql); //sql 수행객체
-					rs=ps.executeQuery(); 
-					
-					while(rs.next()) {
-						totalCount = rs.getInt(1);
-						
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					
-					JDBCTemplate.close(rs);
-					JDBCTemplate.close(ps);
-					
-				}
+				JDBCTemplate.close(ps);
 				
-		return totalCount;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
+
 
 
 

@@ -50,14 +50,6 @@ public class BoardServiceImpl implements BoardService{
 
 	// -------------------------------게시판 페이징 -----------------------------
 	
-	@Override
-	public void CntComment(HttpServletRequest req) {
-
-		String param = req.getParameter("b_num");
-		
-		
-		
-	}
 	
 	@Override
 	public B_Paging getPaging(HttpServletRequest req) {
@@ -74,7 +66,7 @@ public class BoardServiceImpl implements BoardService{
 		String search = (String)req.getParameter("search");
 		
 		
-		int totalCount = boardDao.selectCntAll();
+		int totalCount = boardDao.selectCntAll(search);
 		
 		//Paging 객체 생성
 		B_Paging paging = new B_Paging(totalCount, curPage);
@@ -210,6 +202,7 @@ public class BoardServiceImpl implements BoardService{
 			
 			boardno.setB_num(Integer.parseInt(param));
 		}
+//		System.out.println("게시글번호" + boardno);
 		return boardno;
 	}
 	
@@ -224,7 +217,7 @@ public class BoardServiceImpl implements BoardService{
 			
 			commentno.setC_num(Integer.parseInt(param));
 		}
-		
+		System.out.println("댓글번호" + commentno);
 		return commentno;
 	}
 	
@@ -241,6 +234,16 @@ public class BoardServiceImpl implements BoardService{
 		return board;
 	}
 
+	@Override
+	public Board_comment viewComment(Board_comment commentnum) {
+		
+		Board_comment comment = board_commentDao.selectCommentByCommentno(commentnum);
+		
+		return comment;
+	}
+	
+	
+	
 	@Override
 	public String getName(Board viewBoard) {
 		return boardDao.selectNameByUserid(viewBoard);
@@ -316,12 +319,12 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 
-	@Override
-	public List<Comment_comment> getC_CommentList(Board_comment comment) {
-		
-		
-		return board_commentDao.selectC_Comment(comment);
-	}
+//	@Override
+//	public List<Comment_comment> getC_CommentList(Board_comment comment) {
+//		
+//		
+//		return board_commentDao.selectC_Comment(comment);
+//	}
 
 	
 	@Override
@@ -367,6 +370,12 @@ public class BoardServiceImpl implements BoardService{
 		}
 		
 	}
+
+	@Override
+	public void updateCoCnt(int b_num) {
+		boardDao.updateCoCnt(b_num);
+	}
+
 
 
 

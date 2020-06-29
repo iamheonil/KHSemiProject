@@ -70,7 +70,6 @@ public class Board_commentDaoImpl implements Board_commentDao{
 				
 				commentList.add(comment);
 				
-				
 			}
 			
 		} catch (SQLException e) {
@@ -85,59 +84,59 @@ public class Board_commentDaoImpl implements Board_commentDao{
 			
 			
 		}
-		System.out.println(commentList);
+		System.out.println("댓글리스트" + commentList);
 		return commentList;
 	}
 	
-	@Override
-	public List<Comment_comment> selectC_Comment(Board_comment comment) {
-		
-		conn = JDBCTemplate.getConnection();
-		
-		String sql = "";
-		sql += " SELECT * FROM (SELECT rownum rnum, B.*FROM (SELECT c_num, c_cnum, userid, username, c_ccontent, c_cdate, userrank, dept FROM comment_comment WHERE c_num = ? ORDER BY c_cdate) B) ORDER BY rnum";
-		
-		List c_commentList = new ArrayList();
-		
-			try {
-				ps = conn.prepareStatement(sql);
-				
-				ps.setInt(1, comment.getC_num());
-				
-				rs = ps.executeQuery();
-				
-				while(rs.next()) {
-					Comment_comment c_comment = new Comment_comment();
-					
-					c_comment.setRnum(rs.getInt("rnum"));
-					c_comment.setC_num(rs.getInt("c_num"));
-					c_comment.setC_cnum(rs.getInt("c_cnum"));
-					c_comment.setUserid(rs.getInt("userid"));
-					c_comment.setUsername(rs.getString("username"));
-					c_comment.setC_ccontent(rs.getString("c_ccontent"));
-					c_comment.setC_cdate(rs.getDate("c_cdate"));
-					c_comment.setUserrank(rs.getNString("userrank"));
-					c_comment.setDept(rs.getString("dept"));
-					
-					c_commentList.add(c_comment);
-					System.out.println("엥"+c_comment.getC_num());
-					System.out.println("흐음"+c_comment.getC_ccontent());
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					if(rs!=null)	rs.close();
-					if(ps!=null) 	ps.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-					
-				}
-			} 
-			System.out.println("댓글리스트 : " + c_commentList);
-		return c_commentList;
-	}
-	
+//	@Override
+//	public List<Comment_comment> selectC_Comment(Board_comment comment) {
+//		
+//		conn = JDBCTemplate.getConnection();
+//		
+//		String sql = "";
+//		sql += " SELECT * FROM (SELECT rownum rnum, B.*FROM (SELECT c_num, c_cnum, userid, username, c_ccontent, c_cdate, userrank, dept FROM comment_comment WHERE c_num = ? ORDER BY c_cdate) B) ORDER BY rnum";
+//		
+//		List c_commentList = new ArrayList();
+//		
+//			try {
+//				ps = conn.prepareStatement(sql);
+//				
+//				ps.setInt(1, comment.getC_num());
+//				
+//				rs = ps.executeQuery();
+//				
+//				while(rs.next()) {
+//					Comment_comment c_comment = new Comment_comment();
+//					
+//					c_comment.setRnum(rs.getInt("rnum"));
+//					c_comment.setC_num(rs.getInt("c_num"));
+//					c_comment.setC_cnum(rs.getInt("c_cnum"));
+//					c_comment.setUserid(rs.getInt("userid"));
+//					c_comment.setUsername(rs.getString("username"));
+//					c_comment.setC_ccontent(rs.getString("c_ccontent"));
+//					c_comment.setC_cdate(rs.getDate("c_cdate"));
+//					c_comment.setUserrank(rs.getNString("userrank"));
+//					c_comment.setDept(rs.getString("dept"));
+//					
+//					c_commentList.add(c_comment);
+//					System.out.println("엥"+c_comment.getC_num());
+//					System.out.println("흐음"+c_comment.getC_ccontent());
+//				}
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			} finally {
+//				try {
+//					if(rs!=null)	rs.close();
+//					if(ps!=null) 	ps.close();
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//					
+//				}
+//			} 
+//			System.out.println("댓글리스트 : " + c_commentList);
+//		return c_commentList;
+//	}
+//	
 	@Override
 	public void insertComment(Board_comment comment) {
 		
@@ -232,6 +231,54 @@ public class Board_commentDaoImpl implements Board_commentDao{
 			}
 		
 		return cnt;
+	}
+
+	@Override
+	public Board_comment selectCommentByCommentno(Board_comment commentnum) {
+		
+		//DB연결
+		
+		conn = JDBCTemplate.getConnection();
+		
+		String sql = "";
+		sql += "SELECT * FROM board_comment";
+		sql += " WHERE c_num = ?";
+		
+		//조회 결과 저장
+		Board_comment viewComment = null; 
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, commentnum.getC_num());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				viewComment = new Board_comment();
+				
+				viewComment.setB_num(rs.getInt("b_num"));
+				viewComment.setC_num(rs.getInt("c_num"));
+				viewComment.setC_content(rs.getString("c_content"));
+				viewComment.setC_date(rs.getDate("c_date"));
+				viewComment.setDept(rs.getString("dept"));
+				viewComment.setRnum(rs.getInt("rnum"));
+				viewComment.setUserid(rs.getInt("userid"));
+				viewComment.setUsername(rs.getString("username"));
+				viewComment.setUserrank(rs.getString("userrank"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+			
+		}
+		
+		
+		
+		return viewComment;
 	}
 
 

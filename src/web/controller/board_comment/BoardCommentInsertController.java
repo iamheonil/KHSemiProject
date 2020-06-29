@@ -33,7 +33,7 @@ public class BoardCommentInsertController extends HttpServlet {
 		Board_comment comment = boardService.getComment(req);
 		
 		boardService.insertComment(comment);
-		
+		boardService.updateCoCnt(comment.getB_num());
 		resp.sendRedirect("/board/view?b_num="+comment.getB_num());
 		}
 	

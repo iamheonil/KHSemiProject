@@ -48,7 +48,7 @@ $(document).ready(function(){
 			
 			<!-- 공지사항 띄우기 -->
 			<thead style="board: 1px solid #ffc6c9; background-color: #ffe3e4; color: #ff4e59;">
-				<c:forEach items="${N_list }" var="i">
+				<c:forEach items="${N_list }" var="i" begin="0" end="4" step="1">
 					<tr class="text-left info">
 						<td style="text-align: center;">${i.b_num }</td>
 						<td>${i.category}</td>

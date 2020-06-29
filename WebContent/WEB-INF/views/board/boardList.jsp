@@ -59,11 +59,11 @@ $(document).ready(function(){
 			</thead>
 
 			<thead style="board: 1px solid #ffc6c9; background-color: #ffe3e4; color: #ff4e59;">
-				<c:forEach items="${N_list }" var="i">
+				<c:forEach items="${N_list }" var="i" begin="0" end="4" step="1">
 					<tr class="text-left info">
 						<td style="text-align: center;">${i.b_num }</td>
 						<td>${i.category}</td>
-						<td><a href="/board/view?b_num=${i.b_num }">${i.b_title }</a></td>
+						<td><a href="/board/view?b_num=${i.b_num }">${i.b_title }&nbsp;<c:if test="${i.c_cnt ne 0}">[${i.c_cnt}]</c:if></a></td>
 						<td>${i.userid }</td>
 						<td>${i.username }</td>
 						<td>${i.hits }</td>
@@ -77,7 +77,7 @@ $(document).ready(function(){
 				<tr class="text-left">
 					<td style="text-align: center;">${i.b_num }</td>
 					<td>${i.category }</td>
-					<td><a href="/board/view?b_num=${i.b_num }">${i.b_title }</a></td>
+					<td><a href="/board/view?b_num=${i.b_num }">${i.b_title }&nbsp;<c:if test="${i.c_cnt ne 0}">[${i.c_cnt}]</c:if></a></td>
 					<td>${i.userid }</td>
 					<td>${i.username }</td>
 					<td>${i.hits }</td>

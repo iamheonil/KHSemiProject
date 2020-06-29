@@ -32,11 +32,13 @@ public class Board {
 	
 	private String dept;
 
+	private int c_cnt;
+
 	@Override
 	public String toString() {
 		return "Board [category=" + category + ", b_num=" + b_num + ", b_title=" + b_title + ", b_content=" + b_content
 				+ ", b_date=" + b_date + ", hits=" + hits + ", userid=" + userid + ", username=" + username
-				+ ", userrank=" + userrank + ", dept=" + dept + "]";
+				+ ", userrank=" + userrank + ", dept=" + dept + ", c_cnt=" + c_cnt + "]";
 	}
 
 	public String getCategory() {
@@ -118,6 +120,15 @@ public class Board {
 	public void setDept(String dept) {
 		this.dept = dept;
 	}
+
+	public int getC_cnt() {
+		return c_cnt;
+	}
+
+	public void setC_cnt(int c_cnt) {
+		this.c_cnt = c_cnt;
+	}
+	
 	
 	
 }

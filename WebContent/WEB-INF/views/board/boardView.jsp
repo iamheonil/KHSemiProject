@@ -23,7 +23,7 @@ $(document).ready(function() {
 		$(location).attr("href", "/board/delete?b_num=${viewBoard.b_num}");
 	});
 	
-	$("#commentbody").append("#c_c");
+// 	$("#commentbody").append("#c_c");
 	
 });
 
@@ -209,14 +209,14 @@ ${viewBoard.b_content }
 
 <div id="c_c">
 <c:forEach items="${c_commentList}" var="c_comment">
-<input type="hidden" class="c_num" id="c_num" name="c_num" value="${c_comment.c_num }"/>
-<tr data-c_cnum="${c_comment.c_cnum }">
+<input type="hidden" class="c_num" id="c_num" name="c_num" value="${c_comment.cc_num }"/>
+<tr data-c_num="${c_comment.c_num }">
 	<th>[${c_comment.dept }&nbsp;${c_comment.userrank }]&nbsp;${c_comment.username }
 	(<fmt:formatDate value="${c_comment.c_cdate }" pattern="yy-MM-dd hh:mm" />)
 
 		<c:if test="${sessionScope.userid eq c_comment.userid }">
 		<button class="btn btn-default btn-xs"
-			onclick="alert('삭제되었습니다.'); deleteComment(${c_comment.c_num}); history.go(0)">삭제
+			onclick="alert('삭제되었습니다.'); deleteComment(${c_comment.c_cnum}); history.go(0)">삭제
 			</button>
 		</c:if>
 

@@ -133,6 +133,15 @@ public interface BoardService {
 	public Board view(Board boardnum);
 
 	/**
+	 * 코멘트 번호를 통해 게시글 조회
+	 * 
+	 * @param commentnum
+	 * @return board_comment
+	 */
+	public Board_comment viewComment(Board_comment commentnum);
+
+	
+	/**
 	 * userid를 이용한 이름 조회
 	 * 
 	 * @param viewBoard - 조회할 게시글 정보
@@ -178,8 +187,8 @@ public interface BoardService {
 	 * @param board - 대댓글
 	 * @return List - 대댓글
 	 */
-	
-	public List<Comment_comment> getC_CommentList(Board_comment comment);
+//	
+//	public List<Comment_comment> getC_CommentList(Board_comment comment);
 	/**
 	 * 
 	 * 댓글 전달파라미터 꺼내기
@@ -232,7 +241,9 @@ public interface BoardService {
 	
 	public B_Paging getFreePaging(HttpServletRequest req);
 
-	public void CntComment(HttpServletRequest req);
+
+	
+	public void updateCoCnt(int b_num);
 
 
 

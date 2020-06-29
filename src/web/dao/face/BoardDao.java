@@ -51,15 +51,8 @@ public interface BoardDao {
 	 */
 	
 	public int selectCntAll();
+	public int selectCntAll(String search);
 	
-	/**
-	 * 게시글의 댓글 수 조회
-	 * 
-	 * 
-	 * @return - 댓글 수
-	 */
-	public int commentCnt();
-
 	/**
 	 * 
 	 * 공지사항 게시글 수 조회
@@ -178,6 +171,10 @@ public interface BoardDao {
 	public void boardUpdate(Board board);
 
 	public int selectFreeCntAll();
+
+	
+	
+	public void updateCoCnt(int b_num);
 
 
 	
