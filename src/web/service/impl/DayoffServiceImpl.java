@@ -1,12 +1,13 @@
 package web.service.impl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import web.dao.face.DayoffDao;
 import web.dao.impl.DayoffDaoImpl;
-import web.dto.Board;
 import web.dto.Dayoff;
 import web.service.face.DayoffService;
 import web.util.ad_Day_Paging;
@@ -41,11 +42,6 @@ public class DayoffServiceImpl implements DayoffService {
 		return paging;
 	}
 
-	@Override
-	public boolean checkId(HttpServletRequest req) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public Dayoff getDaynum(HttpServletRequest req) {
@@ -65,49 +61,61 @@ public class DayoffServiceImpl implements DayoffService {
 	}
 
 	@Override
-	public void accept(HttpServletRequest req) {
-
-		Dayoff dayoff = null;
+	public Dayoff getDayoffById(HttpServletRequest req) {
 		
-		dayoff = new Dayoff();
 		
-		if(dayoff!= null) {
-			dayoffDao.acceptDresult(dayoff);
-		}
+		return null;
+	}
+	
+	@Override
+	public void accept(String names) {
+			
+		dayoffDao.acceptDresult(names);
+	
 
 	}
 
+	@Override
+	public void decline(String names) {
+	
+		dayoffDao.declineDresult(names);
+		
+	}
+	
 	@Override
 	public void dayoffWrite(HttpServletRequest req) {
 		
-		Dayoff dayoff = null;
+		//휴가 신청서 정보 저장할 객체
+		Dayoff dayoff = new Dayoff();
 		
-		dayoff = new Dayoff();
+		//신청서 작성자 id 입력
+		dayoff.setUserid((int) req.getSession().getAttribute("userid"));
 		
-		dayoff.setUserid( (int) req.getSession().getAttribute("userid"));
-		
+		//휴가 신청서 번호 생성
 		int daynum = dayoffDao.selectDaynum();
+
+		//게시글 번호 입력
+		dayoff.setDaynum(daynum);
 		
-		if(dayoff != null) {
-			
-			//게시글 번호 입력
-			dayoff.setDaynum(daynum);
-			
-			//게시글 삽입
-			dayoffDao.insert(dayoff);
+		String param = null;
+		
+		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			param = req.getParameter("daystart");
+			dayoff.setDaystart( f.parse(param) );
+
+			param = req.getParameter("daystart");
+			dayoff.setDayend( f.parse(param) );
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
+		dayoff.setDreason(req.getParameter("dreason"));
 		
-		
-		dayoffDao.insert(dayoff); //휴가 신청서 삽입
+		//게시글 삽입
+		dayoffDao.insert(dayoff);
 	
 	}
 
-
-	@Override
-	public Dayoff view(HttpServletRequest req) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void deleteDayoff(String names) {
@@ -122,16 +130,6 @@ public class DayoffServiceImpl implements DayoffService {
 		dayoffDao.deleteDayoff(dayoff);
 	}
 
-	@Override
-	public void decline(HttpServletRequest req) {
-		Dayoff dayoff = null;
-		
-		dayoff = new Dayoff();
-		
-		if(dayoff!= null) {
-			dayoffDao.declineDresult(dayoff);
-		}
-	}
 
 
 }
