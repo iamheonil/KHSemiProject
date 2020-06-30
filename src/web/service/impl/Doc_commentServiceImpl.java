@@ -19,4 +19,9 @@ public class Doc_commentServiceImpl implements Doc_commentService {
 		return doc_commentDao.selectDoc_commentByDocno(doc);
 	}
 
+	@Override
+	public void insertDoc_comment(Doc_comment comm) {
+		doc_commentDao.insertDoc_comment(comm);
+	}
+
 }

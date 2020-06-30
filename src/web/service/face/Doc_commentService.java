@@ -16,6 +16,8 @@ public interface Doc_commentService {
 	 */
 	public ArrayList<Map<String, Object>> getDoc_comment(Document doc);
 	
+	public void insertDoc_comment(Doc_comment comm);
+	
 	
 	
 	

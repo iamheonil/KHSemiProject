@@ -187,6 +187,9 @@ public class DocumentDaoImpl implements DocumentDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
 		}
 		
 		System.out.println("임시저장함 검색 조회 결과 개수" + cnt);
@@ -308,185 +311,199 @@ public class DocumentDaoImpl implements DocumentDao {
 	}
 	
 	
-	@Override
-	public int selectWaitApproveSearchCntAll(String search, int userid, String startDate, String endDate) {
-		conn = JDBCTemplate.getConnection();
-		
-		// 결재대기함(검색) 조회 개수 조회
-		String sql = "";
-		sql += "SELECT count(*) FROM document D";
-		sql += "	JOIN report_link R ON D.doc_num = R.doc_num AND R.receiver_id = ? AND D.doc_state = '결재중'"; // 테스트 끝나면 결재중으로 바꿔야함
-		sql += "	JOIN doc_comment C ON D.doc_num = C.doc_num AND C.receiver_id = ? AND C.comm_content IS NULL";
-		sql += "	JOIN user_basic U ON C.receiver_id = U.userid";
-		sql += "	WHERE 1=1";
-		if(search != null && !"".equals(search)) { // 검색어 값에 따른 쿼리
-		sql += "	AND doc_title  LIKE ?";
-		}
-		if(startDate != null && !"".equals(startDate) && endDate != null && !"".equals(endDate)) { // 날짜 값에 따른 쿼리
-		sql += "	AND doc_date BETWEEN ? AND ?";
-		}
-		
-		int cnt = 0; // 결과조회개수
-		
-		int index = 1;
-		try {
-			ps = conn.prepareStatement(sql);
-			
-			ps.setInt(index++, userid);
-			ps.setInt(index++, userid);
-			if(search != null && !"".equals(search)) {
-			ps.setString(index++, "%"+search+"%");
-			}
-			if(startDate != null && !"".equals(startDate) && endDate != null && !"".equals(endDate)) {
-			ps.setString(index++, startDate);
-			ps.setString(index++, endDate);
-			}
-			
-			rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
-			
-			//조회 결과 처리
-			while(rs.next()) {
-				cnt = rs.getInt(1);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(ps);
-		}
-		
-		System.out.println("결재대기함 검색 조회 결과 개수" + cnt);
-		return cnt;
-	}
+	   @Override
+	   public int selectWaitApproveSearchCntAll(String search, int userid, String startDate, String endDate) {
+	      conn = JDBCTemplate.getConnection();
+	      
+	      // 결재대기함(검색) 조회 개수 조회
+	      String sql = "";
+	      sql += "SELECT count(*) FROM document D";
+	      sql += "   JOIN report_link R ON D.doc_num = R.doc_num AND D.doc_state = '결재중' AND R.sender_id = ?";
+	      sql += "   JOIN doc_comment C ON R.sender_id = C.receiver_id";
+	      sql += "   JOIN user_basic U ON D.userid = U.userid";
+	      sql += "   WHERE C.comm_content IS NULL AND (";
+	      sql += "   SELECT c.comm_content FROM DOC_COMMENT C";
+	      sql += "   INNER JOIN DOCUMENT D ON D.DOC_NUM = C.DOC_NUM";
+	      sql += "   INNER JOIN report_link R ON R.DOC_NUM = D.DOC_NUM AND r.sender_id = c.receiver_id";
+	      sql += "   WHERE R.RECEIVER_ID = ? AND D.doc_state = '결재중'";
+	      sql += "   ) IS NOT NULL";
+	      if(search != null && !"".equals(search)) { // 검색어 값에 따른 쿼리
+	      sql += "   AND D.doc_title  LIKE ?";
+	      }
+	      if(startDate != null && !"".equals(startDate) && endDate != null && !"".equals(endDate)) { // 날짜 값에 따른 쿼리
+	      sql += "   AND D.doc_date BETWEEN ? AND ?";
+	      }
+	      
+	      int cnt = 0; // 결과조회개수
+	      
+	      int index = 1;
+	      try {
+	         ps = conn.prepareStatement(sql);
+	         
+	         ps.setInt(index++, userid);
+	         ps.setInt(index++, userid);
+	         if(search != null && !"".equals(search)) {
+	         ps.setString(index++, "%"+search+"%");
+	         }
+	         if(startDate != null && !"".equals(startDate) && endDate != null && !"".equals(endDate)) {
+	         ps.setString(index++, startDate);
+	         ps.setString(index++, endDate);
+	         }
+	         
+	         rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
+	         
+	         //조회 결과 처리
+	         while(rs.next()) {
+	            cnt = rs.getInt(1);
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         JDBCTemplate.close(rs);
+	         JDBCTemplate.close(ps);
+	      }
+	      
+	      System.out.println("결재대기함 검색 조회 결과 개수" + cnt);
+	      return cnt;
+	   }
+
 	
 	
-	@Override
-	public ArrayList<Map<String, Object>> selectWaitApproveSerach(SearchPaging paging, int userid, String startDate, String endDate) {
-		conn = JDBCTemplate.getConnection();
-		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-		
-		
-		String sql = "";
-		sql += "SELECT * FROM (";
-		sql += "	SELECT rownum rnum, DOC.* FROM (";
-		sql += "		SELECT * FROM document D";
-		sql += "	    JOIN report_link R ON D.doc_num = R.doc_num AND R.receiver_id = 297 AND D.doc_state = '결재중'"; // 테스트 끝나면 결재중으로 수정해야함!
-		sql += "	    JOIN doc_comment C ON D.doc_num = C.doc_num AND C.receiver_id = 297 AND C.comm_content IS NULL";
-		sql += "		JOIN user_basic U ON C.receiver_id = U.userid";
-		sql += "		WHERE 1=1"; 
-		
-		if(paging.getSearch() != null && !"".equals(paging.getSearch())) {
-		sql += "		AND D.doc_title  LIKE ?";
-		}
-		if(startDate != null && !"".equals(startDate) && endDate != null && !"".equals(endDate)) {
-		sql += "		AND D.doc_date BETWEEN ? AND ?";
-		}
-		
-		sql += "        ORDER BY D.doc_num DESC";
-		sql += "	)DOC";
-		sql += " )";
-		sql += " WHERE rnum BETWEEN ? AND ?";
+	   @Override
+	   public ArrayList<Map<String, Object>> selectWaitApproveSerach(SearchPaging paging, int userid, String startDate, String endDate) {
+	      conn = JDBCTemplate.getConnection();
+	      ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+	      
+	      String sql = "";
+	      sql += "SELECT * FROM (";
+	      sql += "   SELECT rownum rnum, DOC.* FROM (";
+	      sql += "      SELECT * FROM document D";
+	      sql += "       JOIN report_link R ON D.doc_num = R.doc_num AND D.doc_state = '결재중' AND R.sender_id = ?"; // 테스트 끝나면 결재중으로 수정해야함!
+	      sql += "       JOIN doc_comment C ON R.sender_id = C.receiver_id";
+	      sql += "      JOIN user_basic U ON D.userid = U.userid";
+	      sql += "      WHERE C.comm_content IS NULL AND ("; 
+	      sql += "      SELECT c.comm_content FROM DOC_COMMENT C"; 
+	      sql += "      INNER JOIN DOCUMENT D ON D.DOC_NUM = C.DOC_NUM"; 
+	      sql += "      INNER JOIN report_link R ON R.DOC_NUM = D.DOC_NUM AND r.sender_id = c.receiver_id"; 
+	      sql += "      WHERE R.RECEIVER_ID = ? AND D.doc_state = '결재중'"; 
+	      sql += "      ) IS NOT NULL"; 
+	      
+	      if(paging.getSearch() != null && !"".equals(paging.getSearch())) {
+	      sql += "      AND D.doc_title  LIKE ?";
+	      }
+	      if(startDate != null && !"".equals(startDate) && endDate != null && !"".equals(endDate)) {
+	      sql += "      AND D.doc_date BETWEEN ? AND ?";
+	      }
+	      
+	      sql += "        ORDER BY D.doc_num DESC";
+	      sql += "   )DOC";
+	      sql += " )";
+	      sql += " WHERE rnum BETWEEN ? AND ?";
 
-		int index=1;
-		try {
-			ps = conn.prepareStatement(sql);
-			
-//			ps.setInt(index++, userid);
-//			ps.setInt(index++, userid);
-			if(paging.getSearch() != null && !"".equals(paging.getSearch())) {
-				ps.setString(index++, "%"+paging.getSearch()+"%");
-			}
-			if(startDate != null && !"".equals(startDate) && endDate != null && !"".equals(endDate)) {
-				ps.setString(index++, startDate);
-				ps.setString(index++, endDate);
-			}
-			
-			ps.setInt(index++, paging.getStartNo());
-			ps.setInt(index++, paging.getEndNo());
-			
-			rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
-			
-			//조회 결과 처리
-			while(rs.next()) {
-				Map<String, Object> d = new HashMap<String, Object>(); //결과값 저장 객체
-		 		
-				
-				//결과값 한 행 처리
-				
-				d.put("doc_num", rs.getString("doc_num"));
-				d.put("report_type", rs.getString("report_type"));
-				d.put("doc_date", rs.getDate("doc_date"));
-				d.put("doc_title", rs.getString("doc_title"));
-				d.put("dept", rs.getString("dept"));
-				d.put("userrank", rs.getString("userrank"));
-				d.put("username", rs.getString("username"));
-				d.put("doc_emergency", rs.getString("doc_emergency"));
-				
-				//리스트에 결과값 저장
-				list.add(d);
-			}
-		}catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(ps);
-		}
-			
-		return list;
-	}
+	      int index=1;
+	      try {
+	         ps = conn.prepareStatement(sql);
+	         
+	         ps.setInt(index++, userid);
+	         ps.setInt(index++, userid);
+	         if(paging.getSearch() != null && !"".equals(paging.getSearch())) {
+	            ps.setString(index++, "%"+paging.getSearch()+"%");
+	         }
+	         if(startDate != null && !"".equals(startDate) && endDate != null && !"".equals(endDate)) {
+	            ps.setString(index++, startDate);
+	            ps.setString(index++, endDate);
+	         }
+	         
+	         ps.setInt(index++, paging.getStartNo());
+	         ps.setInt(index++, paging.getEndNo());
+	         
+	         rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
+	         
+	         //조회 결과 처리
+	         while(rs.next()) {
+	            Map<String, Object> d = new HashMap<String, Object>(); //결과값 저장 객체
+	             
+	            
+	            //결과값 한 행 처리
+	            
+	            d.put("doc_num", rs.getString("doc_num"));
+	            d.put("report_type", rs.getString("report_type"));
+	            d.put("doc_date", rs.getDate("doc_date"));
+	            d.put("doc_title", rs.getString("doc_title"));
+	            d.put("dept", rs.getString("dept"));
+	            d.put("userrank", rs.getString("userrank"));
+	            d.put("username", rs.getString("username"));
+	            d.put("doc_emergency", rs.getString("doc_emergency"));
+	            
+	            //리스트에 결과값 저장
+	            list.add(d);
+	         }
+	      }catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         JDBCTemplate.close(rs);
+	         JDBCTemplate.close(ps);
+	      }
+	      return list;
+	   }
+
 	
 
-	@Override
-	public ArrayList<Map<String, Object>> selectWaitApproveDo(int userid) {
-		conn = JDBCTemplate.getConnection();
-		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-		
-		// 처리할 일 - 결재대기함 조회
-		String sql = "";
-		sql += "SELECT rownum rnum, DOC.* FROM (";
-		sql += "	SELECT * FROM document D";
-		sql += " 	JOIN report_link R ON D.doc_num = R.doc_num AND R.receiver_id = ? AND D.doc_state = '결재중'";
-		sql += "	JOIN doc_comment C ON D.doc_num = C.doc_num AND C.receiver_id = ? AND C.comm_content IS NULL";
-		sql += "	JOIN user_basic U ON C.receiver_id = U.userid";
-		sql += "    ORDER BY D.doc_num DESC";
-		sql += " )DOC";
+	   @Override
+	   public ArrayList<Map<String, Object>> selectWaitApproveDo(int userid) {
+	      conn = JDBCTemplate.getConnection();
+	      ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+	      
+	      // 처리할 일 - 결재대기함 조회
+	      String sql = "";
+	      sql += "SELECT rownum rnum, DOC.* FROM (";
+	      sql += "   SELECT * FROM document D";
+	      sql += "    JOIN report_link R ON D.doc_num = R.doc_num AND D.doc_state = '결재중' AND R.sender_id = ?";
+	      sql += "   JOIN doc_comment C ON R.sender_id = C.receiver_id";
+	      sql += "   JOIN user_basic U ON D.userid = U.userid";
+	      sql += "   WHERE C.comm_content IS NULL AND (";
+	      sql += "   SELECT c.comm_content FROM DOC_COMMENT C";
+	      sql += "   INNER JOIN DOCUMENT D ON D.DOC_NUM = C.DOC_NUM";
+	      sql += "   INNER JOIN report_link R ON R.DOC_NUM = D.DOC_NUM AND r.sender_id = c.receiver_id";
+	      sql += "   WHERE R.RECEIVER_ID = ? AND D.doc_state = '결재중'";
+	      sql += "   ) IS NOT NULL";
+	      sql += "    ORDER BY D.doc_num DESC";
+	      sql += " )DOC";
 
-		int index=1;
-		try {
-			ps = conn.prepareStatement(sql);
-			
-			ps.setInt(index++, userid);
-			ps.setInt(index++, userid);
-			
-			rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
-			
-			//조회 결과 처리
-			while(rs.next()) {
-				Map<String, Object> d = new HashMap<String, Object>(); //결과값 저장 객체
-		 		
-				
-				//결과값 한 행 처리
-				d.put("doc_num", rs.getString("doc_num"));
-				d.put("report_type", rs.getString("report_type"));
-				d.put("doc_date", rs.getDate("doc_date"));
-				d.put("doc_title", rs.getString("doc_title"));
-				d.put("dept", rs.getString("dept"));
-				d.put("userrank", rs.getString("userrank"));
-				d.put("username", rs.getString("username"));
-				d.put("doc_emergency", rs.getString("doc_emergency"));
-				
-				//리스트에 결과값 저장
-				list.add(d);
-			}
-		}catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(ps);
-		}
-			
-		return list;
-	}
+	      int index=1;
+	      try {
+	         ps = conn.prepareStatement(sql);
+	         
+	         ps.setInt(index++, userid);
+	         ps.setInt(index++, userid);
+	         
+	         rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
+	         
+	         //조회 결과 처리
+	         while(rs.next()) {
+	            Map<String, Object> d = new HashMap<String, Object>(); //결과값 저장 객체
+	            
+	            //결과값 한 행 처리
+	            d.put("doc_num", rs.getString("doc_num"));
+	            d.put("report_type", rs.getString("report_type"));
+	            d.put("doc_date", rs.getDate("doc_date"));
+	            d.put("doc_title", rs.getString("doc_title"));
+	            d.put("dept", rs.getString("dept"));
+	            d.put("userrank", rs.getString("userrank"));
+	            d.put("username", rs.getString("username"));
+	            d.put("doc_emergency", rs.getString("doc_emergency"));
+	            
+	            //리스트에 결과값 저장
+	            list.add(d);
+	         }
+	      }catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         JDBCTemplate.close(rs);
+	         JDBCTemplate.close(ps);
+	      }
+	      return list;
+	   }
 	
 	
 	@Override
@@ -542,186 +559,179 @@ public class DocumentDaoImpl implements DocumentDao {
 	
 	
 	
-	@Override
-	public int selectProgressCntAll(String search, int userid, String startDate, String endDate) {
-		conn = JDBCTemplate.getConnection();		
-		
-		// 진행문서함(검색) 조회 개수 조회
-		String sql = "";
-		sql += "SELECT count(*) FROM (";
-		sql += "	SELECT DISTINCT D.* FROM document D";
-		sql += " 	JOIN report_link R ON D.doc_num = R.doc_num";
-		sql += " 	WHERE 1=1";
-		sql += " 	AND ( R.receiver_id = ? OR R.sender_id = ?)";
-		sql += " 	AND D.doc_state = '임시저장'"; // 테스트 끝나면 결재중으로 수정해야함!
-		if(search != null && !"".equals(search)) { // 검색어 값에 따른 쿼리
-		sql += "	AND D.doc_title  LIKE ?";
-		}
-		if(startDate != null && !"".equals(startDate) && endDate != null && !"".equals(endDate)) { // 날짜 값에 따른 쿼리
-		sql += "	AND D.doc_date BETWEEN ? AND ?";
-		}
-		sql += " )";
-		
-		
-		int cnt = 0; // 결과조회개수
-		
-		int index = 1;
-		try {
-			ps = conn.prepareStatement(sql);
-			
-			ps.setInt(index++, userid);
-			ps.setInt(index++, userid);
-			if(search != null && !"".equals(search)) {
-			ps.setString(index++, "%"+search+"%");
-			}
-			if(startDate != null && !"".equals(startDate) && endDate != null && !"".equals(endDate)) {
-			ps.setString(index++, startDate);
-			ps.setString(index++, endDate);
-			}
-			
-			rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
-			
-			//조회 결과 처리
-			while(rs.next()) {
-				cnt = rs.getInt(1);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		System.out.println("진행문서함 검색 조회 결과 개수" + cnt);
-		return cnt;
-	}
-	
-	
-	@Override
-	public ArrayList<Map<String, Object>> selectProgressSerach(SearchPaging paging, int userid, String startDate, String endDate) {
-		conn = JDBCTemplate.getConnection();
-		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-		
-		// 결재대기함 목록조회
-		String sql = "";
-		sql += "SELECT * FROM (";
-		sql += "	SELECT rownum rnum, DOC.doc_num, DOC.report_type, DOC.doc_date, DOC.doc_title, DOC.dept, DOC.userrank, DOC.username, Doc.doc_emergency FROM (";
-		sql += "		SELECT D.*, U.*, R.report_type FROM document D";
-		sql += "	    JOIN report_link R ON D.doc_num = R.doc_num";
-		sql += "	    JOIN user_basic U ON D.userid = U.userid";
-		sql += "		WHERE 1=1";
-		sql += "		AND R.receiver_id = ?";
-		sql += "		AND D.doc_state = '임시저장'"; // 테스트 끝나면 결재중으로 수정해야함!
-		
-		if(paging.getSearch() != null && !"".equals(paging.getSearch())) {
-		sql += "		AND D.doc_title  LIKE ?";
-		}
-		if(startDate != null && !"".equals(startDate) && endDate != null && !"".equals(endDate)) {
-		sql += "		AND D.doc_date BETWEEN ? AND ?";
-		}
-		
-		sql += "        ORDER BY D.doc_num DESC";
-		sql += "	)DOC";
-		sql += " )";
-		sql += " WHERE rnum BETWEEN ? AND ?";
+	   @Override
+	   public int selectProgressCntAll(String search, int userid, String startDate, String endDate) {
+	      conn = JDBCTemplate.getConnection();      
+	      
+	      // 진행문서함(검색) 조회 개수 조회
+	      String sql = "";
+	      sql += "SELECT count(*) FROM document D";
+	      sql += "   JOIN report_link R ON D.doc_num = R.doc_num AND D.doc_state = '결재중' AND R.sender_id = ?";
+	      sql += "    JOIN doc_comment C ON R.sender_id = C.receiver_id";
+	      sql += "    JOIN user_basic U ON D.userid = U.userid";
+	      sql += "    WHERE C.comm_content IS NOT NULL";
+	      if(search != null && !"".equals(search)) { // 검색어 값에 따른 쿼리
+	      sql += "   AND D.doc_title  LIKE ?";
+	      }
+	      if(startDate != null && !"".equals(startDate) && endDate != null && !"".equals(endDate)) { // 날짜 값에 따른 쿼리
+	      sql += "   AND D.doc_date BETWEEN ? AND ?";
+	      }
+	      
+	      int cnt = 0; // 결과조회개수
+	      
+	      int index = 1;
+	      try {
+	         ps = conn.prepareStatement(sql);
+	         
+	         ps.setInt(index++, userid);
+	         if(search != null && !"".equals(search)) {
+	         ps.setString(index++, "%"+search+"%");
+	         }
+	         if(startDate != null && !"".equals(startDate) && endDate != null && !"".equals(endDate)) {
+	         ps.setString(index++, startDate);
+	         ps.setString(index++, endDate);
+	         }
+	         
+	         rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
+	         
+	         //조회 결과 처리
+	         while(rs.next()) {
+	            cnt = rs.getInt(1);
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      }
+	      System.out.println("진행문서함 검색 조회 결과 개수" + cnt);
+	      return cnt;
+	   }
 
-		int index=1;
-		try {
-			ps = conn.prepareStatement(sql);
-			
-			ps.setInt(index++, userid);
-			if(paging.getSearch() != null && !"".equals(paging.getSearch())) {
-				ps.setString(index++, "%"+paging.getSearch()+"%");
-			}
-			if(startDate != null && !"".equals(startDate) && endDate != null && !"".equals(endDate)) {
-				ps.setString(index++, startDate);
-				ps.setString(index++, endDate);
-			}
-			
-			ps.setInt(index++, paging.getStartNo());
-			ps.setInt(index++, paging.getEndNo());
-			
-			rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
-			
-			//조회 결과 처리
-			while(rs.next()) {
-				Map<String, Object> d = new HashMap<String, Object>(); //결과값 저장 객체
-		 		
-				
-				//결과값 한 행 처리
-				d.put("doc_num", rs.getString("doc_num"));
-				d.put("report_type", rs.getString("report_type"));
-				d.put("doc_date", rs.getDate("doc_date"));
-				d.put("doc_title", rs.getString("doc_title"));
-				d.put("dept", rs.getString("dept"));
-				d.put("userrank", rs.getString("userrank"));
-				d.put("username", rs.getString("username"));
-				d.put("doc_emergency", rs.getString("doc_emergency"));
-				
-				//리스트에 결과값 저장
-				list.add(d);
-			}
-		}catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(ps);
-		}
-			
-		return list;
-	}
 	
 	
-	@Override
-	public ArrayList<Map<String, Object>> selectProgressDo(int userid) {
-		conn = JDBCTemplate.getConnection();
-		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-		
-		// 처리할일 - 결재진행함 목록 조회
-		String sql = "";
+	   @Override
+	   public ArrayList<Map<String, Object>> selectProgressSerach(SearchPaging paging, int userid, String startDate, String endDate) {
+	      conn = JDBCTemplate.getConnection();
+	      ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+	      
+	      // 진행문서함 목록조회
+	      String sql = "";
+	      sql += "SELECT * FROM (";
+	      sql += "   SELECT rownum rnum, DOC.doc_num, DOC.report_type, DOC.doc_date, DOC.doc_title, DOC.dept, DOC.userrank, DOC.username, Doc.doc_emergency FROM (";
+	      sql += "      SELECT * FROM document D";
+	      sql += "       JOIN report_link R ON D.doc_num = R.doc_num AND D.doc_state = '결재중' AND R.sender_id = ?";
+	      sql += "       JOIN doc_comment C ON R.sender_id = C.receiver_id";
+	      sql += "       JOIN user_basic U ON D.userid = U.userid";
+	      sql += "      WHERE C.comm_content IS NOT NULL";
+	      
+	      if(paging.getSearch() != null && !"".equals(paging.getSearch())) {
+	      sql += "      AND D.doc_title  LIKE ?";
+	      }
+	      if(startDate != null && !"".equals(startDate) && endDate != null && !"".equals(endDate)) {
+	      sql += "      AND D.doc_date BETWEEN ? AND ?";
+	      }
+	      
+	      sql += "        ORDER BY D.doc_num DESC";
+	      sql += "   )DOC";
+	      sql += " )";
+	      sql += " WHERE rnum BETWEEN ? AND ?";
 
-		sql += "SELECT rownum rnum, DOC.doc_num, DOC.report_type, DOC.doc_date, DOC.doc_title, DOC.dept, DOC.userrank, DOC.username, Doc.doc_emergency FROM (";
-		sql += "	SELECT D.*, U.*, R.report_type FROM document D";
-		sql += "	JOIN report_link R ON D.doc_num = R.doc_num";
-		sql += "	JOIN user_basic U ON D.userid = U.userid";
-		sql += "	WHERE 1=1";
-		sql += "	AND R.receiver_id = ?";
-		sql += "	AND D.doc_state = '임시저장'"; // 테스트 끝나면 결재중으로 수정해야함!
-		sql += "    ORDER BY D.doc_num DESC";
-		sql += " )DOC";
+	      int index=1;
+	      try {
+	         ps = conn.prepareStatement(sql);
+	         
+	         ps.setInt(index++, userid);
+	         if(paging.getSearch() != null && !"".equals(paging.getSearch())) {
+	            ps.setString(index++, "%"+paging.getSearch()+"%");
+	         }
+	         if(startDate != null && !"".equals(startDate) && endDate != null && !"".equals(endDate)) {
+	            ps.setString(index++, startDate);
+	            ps.setString(index++, endDate);
+	         }
+	         
+	         ps.setInt(index++, paging.getStartNo());
+	         ps.setInt(index++, paging.getEndNo());
+	         
+	         rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
+	         
+	         //조회 결과 처리
+	         while(rs.next()) {
+	            Map<String, Object> d = new HashMap<String, Object>(); //결과값 저장 객체
+	             
+	            
+	            //결과값 한 행 처리
+	            d.put("doc_num", rs.getString("doc_num"));
+	            d.put("report_type", rs.getString("report_type"));
+	            d.put("doc_date", rs.getDate("doc_date"));
+	            d.put("doc_title", rs.getString("doc_title"));
+	            d.put("dept", rs.getString("dept"));
+	            d.put("userrank", rs.getString("userrank"));
+	            d.put("username", rs.getString("username"));
+	            d.put("doc_emergency", rs.getString("doc_emergency"));
+	            
+	            //리스트에 결과값 저장
+	            list.add(d);
+	         }
+	      }catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         JDBCTemplate.close(rs);
+	         JDBCTemplate.close(ps);
+	      }
+	      return list;
+	   }
 
-		int index=1;
-		try {
-			ps = conn.prepareStatement(sql);
-			
-			ps.setInt(index++, userid);
-			
-			rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
-			
-			//조회 결과 처리
-			while(rs.next()) {
-				Map<String, Object> d = new HashMap<String, Object>(); //결과값 저장 객체
-		 		
-				
-				//결과값 한 행 처리
-				d.put("doc_num", rs.getString("doc_num"));
-				d.put("report_type", rs.getString("report_type"));
-				d.put("doc_date", rs.getDate("doc_date"));
-				d.put("doc_title", rs.getString("doc_title"));
-				d.put("dept", rs.getString("dept"));
-				d.put("userrank", rs.getString("userrank"));
-				d.put("username", rs.getString("username"));
-				d.put("doc_emergency", rs.getString("doc_emergency"));
-				
-				//리스트에 결과값 저장
-				list.add(d);
-			}
-		}catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(ps);
-		}
-			
-		return list;
-	}
+	
+	
+	   @Override
+	   public ArrayList<Map<String, Object>> selectProgressDo(int userid) {
+	      conn = JDBCTemplate.getConnection();
+	      ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+	      
+	      // 처리할일 - 진행문서함 목록 조회
+	      String sql = "";
+
+	      sql += "SELECT rownum rnum, DOC.doc_num, DOC.report_type, DOC.doc_date, DOC.doc_title, DOC.dept, DOC.userrank, DOC.username, Doc.doc_emergency FROM (";
+	      sql += "   SELECT * FROM document D";
+	      sql += "   JOIN report_link R ON D.doc_num = R.doc_num AND D.doc_state = '결재중' AND R.sender_id = ?";
+	      sql += "   JOIN doc_comment C ON R.sender_id = C.receiver_id";
+	      sql += "   JOIN user_basic U ON D.userid = U.userid";
+	      sql += "   WHERE C.comm_content IS NOT NULL";
+	      sql += "    ORDER BY D.doc_num DESC";
+	      sql += " )DOC";
+
+	      int index=1;
+	      try {
+	         ps = conn.prepareStatement(sql);
+	         
+	         ps.setInt(index++, userid);
+	         
+	         rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
+	         
+	         //조회 결과 처리
+	         while(rs.next()) {
+	            Map<String, Object> d = new HashMap<String, Object>(); //결과값 저장 객체
+	             
+	            
+	            //결과값 한 행 처리
+	            d.put("doc_num", rs.getString("doc_num"));
+	            d.put("report_type", rs.getString("report_type"));
+	            d.put("doc_date", rs.getDate("doc_date"));
+	            d.put("doc_title", rs.getString("doc_title"));
+	            d.put("dept", rs.getString("dept"));
+	            d.put("userrank", rs.getString("userrank"));
+	            d.put("username", rs.getString("username"));
+	            d.put("doc_emergency", rs.getString("doc_emergency"));
+	            
+	            //리스트에 결과값 저장
+	            list.add(d);
+	         }
+	      }catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         JDBCTemplate.close(rs);
+	         JDBCTemplate.close(ps);
+	      }
+	      return list;
+	   }
 	
 	
 	
@@ -1081,6 +1091,9 @@ public class DocumentDaoImpl implements DocumentDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
 		}
 		
 		System.out.println("문서등록대장 검색 조회 결과 개수" + cnt);
@@ -1294,48 +1307,53 @@ public class DocumentDaoImpl implements DocumentDao {
 		return list;
 	}
 
-//	public ArrayList<Map<String, Object>> selectReportComment(){
-//		// 문서등록대장
-//		String sql = "";
-//		sql += "SELECT * FROM (";
-//		sql += "WHERE rnum BETWEEN ? AND ?";
-//		
-//		int index=1;
-//		try {
-//			ps = conn.prepareStatement(sql);
-//			
-//			ps.setInt(index++, paging.getStartNo());
-//			ps.setInt(index++, paging.getEndNo());
-//			
-//			rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
-//			
-//			//조회 결과 처리
-//			while(rs.next()) {
-//				Map<String, Object> d = new HashMap<String, Object>(); //결과값 저장 객체
-//		 		
-//				
-//				//결과값 한 행 처리
+	public ArrayList<Map<String, Object>> selectReportComment(Document doc){
+		
+		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+
+		
+		String sql = "";
+		sql += "SELECT D.*, R.*, U.username, U.userrank, C.comm_content, C.comm_date FROM document D";
+		sql += "	inner join doc_comment C on D.doc_num = C.doc_num";
+		sql += "	inner join report_link R on D.doc_num = R.doc_num";
+		sql += "	inner join user_basic U on R.receiver_id = U.userid";
+		sql += "	where doc_num = ?";
+	
+		sql += "    and r.receiver_id = c.receiver_id";
+		
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, doc.getDoc_num());
+			
+			rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
+			
+			//조회 결과 처리
+			while(rs.next()) {
+				Map<String, Object> d = new HashMap<String, Object>(); //결과값 저장 객체
+		 		
+				
+				//결과값 한 행 처리
 //				d.put("doc_num", rs.getInt("doc_num"));
-//				d.put("doc_date", rs.getDate("doc_date"));
-//				d.put("doc_title", rs.getString("doc_title"));
-//				d.put("dept", rs.getString("dept"));
-//				d.put("userrank", rs.getString("userrank"));
-//				d.put("username", rs.getString("username"));
-//				d.put("doc_state", rs.getString("doc_state"));
-//				d.put("doc_emergency", rs.getString("doc_emergency"));
-//				
-//				//리스트에 결과값 저장
-//				list.add(d);
-//			}
-//		}catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			JDBCTemplate.close(rs);
-//			JDBCTemplate.close(ps);
-//		}
-//			
-//		return list;
-//	}
+				d.put("report_type", rs.getString("report_type"));
+				d.put("username", rs.getString("username"));
+				d.put("userrank", rs.getString("userrank"));
+				d.put("comm_content", rs.getString("comm_content"));
+				d.put("comm_date", rs.getDate("comm_date"));
+				
+				//리스트에 결과값 저장
+				list.add(d);
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+			
+		return list;
+	}
 	
 	
 }

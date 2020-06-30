@@ -97,6 +97,8 @@ public class DocumentServiceImpl implements DocumentService {
 		Report_link report_link = new Report_link();
 		
 		String users = null;
+		
+		String comm = null;
 
 		// 파일업로드 형태의 데이터가 맞는지 검사
 		boolean isMultipart = false;
@@ -182,7 +184,8 @@ public class DocumentServiceImpl implements DocumentService {
 		               
 		            } else if ( "approve_comment".equals(key) ) { //전달파라미터 name이 "approve_comment"
 		               try {
-		            	  docComment.setComm_content( item.getString("UTF-8") );
+//		            	  docComment.setComm_content( item.getString("UTF-8") );
+		            	  comm = item.getString("UTF-8");
 		               } catch (UnsupportedEncodingException e) {
 		                  e.printStackTrace();
 		               }
@@ -294,6 +297,8 @@ public class DocumentServiceImpl implements DocumentService {
 			// report_linkInsert에 문서번호 넣기
 			report_linkInsert.setDoc_num(doc.getDoc_num());
 			
+			docComment.setDoc_num(docno);
+			
 			// sender_id, receiver_id, report_type 정보 넣기
 			for(int i=0; i<=userInfo.length; i++) {
 				if(i==0) {
@@ -312,6 +317,20 @@ public class DocumentServiceImpl implements DocumentService {
 				// 보고경로 추가
 				report_linkDao.updateReport_link(report_linkInsert);
 			}
+			
+			for(int i=0; i<=userInfo.length; i++) {
+				if(i==0) {
+					docComment.setReceiver_id(userid);
+					docComment.setComm_content(comm);
+//					System.out.println(comm);
+				} else {
+					docComment.setReceiver_id(Integer.parseInt(userInfo[i-1]));
+					docComment.setComm_content(null);
+					docComment.setComm_date(null);
+				}
+				// 보고경로 추가
+				doc_commentDao.insertDoc_comment(docComment);
+			}
 		}
 
 		// 첨부파일 정보가 있을 경우
@@ -323,17 +342,6 @@ public class DocumentServiceImpl implements DocumentService {
 			doc_attachDao.insertDoc_attach(docAttach);
 		}
 		
-		//의견지시 정보 있을 경우
-		if (docComment != null) {
-			// 게시글 번호 입력
-			docComment.setDoc_num(docno);
-			docComment.setReceiver_id((int) req.getSession().getAttribute("userid"));
-			// 의견지시 삽입
-			doc_commentDao.insertDoc_comment(docComment);
-		}
-		
-		
-
 	}
 	
 	@Override
@@ -518,6 +526,10 @@ public class DocumentServiceImpl implements DocumentService {
 			// 보고경로 users 저장할 객체
 			String users = null;
 
+			String comm = null;
+			
+			Doc_comment docComment = new Doc_comment();
+			
 			// 파일업로드 형태의 데이터가 맞는지 검사
 			boolean isMultipart = false;
 			isMultipart = ServletFileUpload.isMultipartContent(req);
@@ -627,6 +639,14 @@ public class DocumentServiceImpl implements DocumentService {
 							e.printStackTrace();
 						}
 
+					}else if ( "approve_comment".equals(key) ) { //전달파라미터 name이 "approve_comment"
+		               try {
+	//				            	  docComment.setComm_content( item.getString("UTF-8") );
+		            	  comm = item.getString("UTF-8");
+		               } catch (UnsupportedEncodingException e) {
+		                  e.printStackTrace();
+		               }
+				               
 					} // key값 비교 if end
 
 				} // if( item.isFormField() ) end - 폼필드 확인
@@ -729,7 +749,21 @@ public class DocumentServiceImpl implements DocumentService {
 					report_linkDao.updateReport_link(report_linkInsert);
 				}
 				
+				for(int i=0; i<=userInfo.length; i++) {
+					if(i==0) {
+						docComment.setReceiver_id(userid);
+						docComment.setComm_content(comm);
+//						System.out.println(comm);
+					} else {
+						docComment.setReceiver_id(Integer.parseInt(userInfo[i-1]));
+						docComment.setComm_content(null);
+						docComment.setComm_date(null);
+					}
+					// 보고경로 추가
+					doc_commentDao.insertDoc_comment(docComment);
+				}
 			}
+			
 
 			// 첨부파일 정보가 있을 경우
 			if (docAttach != null) {
@@ -1052,6 +1086,11 @@ public class DocumentServiceImpl implements DocumentService {
 	public List<User_basic> userlist() {
 		
 		return documentDao.selectUser();
+	}
+	
+	public ArrayList<Map<String, Object>> viewReportComment(Document doc){
+		
+		return documentDao.selectReportComment(doc);
 	}
 
 

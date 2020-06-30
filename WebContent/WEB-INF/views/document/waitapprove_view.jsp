@@ -148,8 +148,8 @@ span{
 <!-- 결재대기함에 조회되는 문서일때 문서처리 버튼있음 -->
 
 <div id="docbutton" align="right">
-<button class="btn btn-primary" onclick="history.back(-1)">닫기</button>
 <input type="button" class="btn btn-primary" id="myBtn" value="문서처리">
+<button class="btn btn-primary" onclick="history.back(-1)">닫기</button>
 </div>
 
 <div class="container">
@@ -200,16 +200,36 @@ span{
 	<th style="width: 25%;">처리결과</th>
 </tr>
 <%-- <c:if  --%>
-<c:forEach items="${viewComment }" var="comment">
+<c:forEach items="${viewReportComment }" var="recomm">
 <tr>
-	<td>${comment.report_type }</td>
-	<td>${comment.userrank }<br>
-	${comment.username }</td><!-- userrank, 보고종류 -->
-	<td>${comment.comm_content }</td>
-	<td>${comment.username }</td>
-	<td><fmt:formatDate value="${comment.comm_date }" pattern="yyyy-MM-dd"/><br>
-	<fmt:formatDate value="${comment.comm_date }" pattern="hh:MM:ss"/></td>
+	<td>${recomm.report_type }</td>
+	<td>${recomm.userrank }<br>
+	${recomm.username }</td><!-- userrank, 보고종류 -->
+	<td>${recomm.comm_content }</td>
+	<c:if test="${recomm.comm_content ne null}">
+		<td>${recomm.username }</td>
+	</c:if>
+	<c:if test="${recomm.comm_content eq null }">
+		<td></td>
+	</c:if>
+	<c:if test="${recomm.comm_content ne null  }">
+	<td><fmt:formatDate value="${recomm.comm_date }" pattern="yyyy-MM-dd"/><br>
+	<fmt:formatDate value="${recomm.comm_date }" pattern="HH24:MM:SS"/></td>
+	</c:if>
+	<c:if test="${recomm.comm_content eq null  }">
+	<td></td>
+	</c:if>
 </tr>
+<%-- <c:forEach items="${viewComment }" var="comment"> --%>
+<!-- <tr> -->
+<%-- 	<td>${comment.report_type }</td> --%>
+<%-- 	<td>${comment.userrank }<br> --%>
+<%-- 	${comment.username }</td><!-- userrank, 보고종류 --> --%>
+<%-- 	<td>${comment.comm_content }</td> --%>
+<%-- 	<td>${comment.username }</td> --%>
+<%-- 	<td><fmt:formatDate value="${comment.comm_date }" pattern="yyyy-MM-dd"/><br> --%>
+<%-- 	<fmt:formatDate value="${comment.comm_date }" pattern="hh:MM:ss"/></td> --%>
+<!-- </tr> -->
 
 </c:forEach>
 </table>
@@ -235,9 +255,9 @@ span{
 	
 	<tr>
 		<td class="active">처리구분</td>
-		<td><input type="radio" id="approve_type" name="approve_type"/>결재</td>
-		<td><input type="radio" id="approve_type" name="approve_type"/>결재</td>
-		<td><input type="radio" id="approve_type" name="approve_type"/>결재</td>
+		<td><input type="radio" id="approve_type" name="approve_type" value="결재"/> 결재 <!-- name변경!!! -->
+		<input type="radio" id="approve_type" name="approve_type" value="중단"/> 중단
+		</td>
 	</tr>
 	
 	<tr>
@@ -247,7 +267,7 @@ span{
 	</table>                                                         
 <!--     <p>Some text in the Modal..</p> -->
 
-	<input type="submit" onclick="location.href='/document/write'" value="확인">
+	<input type="submit" onclick="location.href='/document/approve/view'" value="확인">
 	<button>닫기</button>
   </div>
 </div>

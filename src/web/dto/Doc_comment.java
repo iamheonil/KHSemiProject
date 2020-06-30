@@ -10,10 +10,20 @@ public class Doc_comment {
 	private String comm_content;// 의견/지시
 	private Date comm_date;		// 처리시간
 	
+	
+
 	@Override
 	public String toString() {
 		return "Doc_comment [comm_num=" + comm_num + ", doc_num=" + doc_num + ", comm_type=" + comm_type
 				+ ", receiver_id=" + receiver_id + ", comm_content=" + comm_content + ", comm_date=" + comm_date + "]";
+	}
+
+	public String getComm_type() {
+		return comm_type;
+	}
+
+	public void setComm_type(String comm_type) {
+		this.comm_type = comm_type;
 	}
 
 	public int getComm_num() {
@@ -30,14 +40,6 @@ public class Doc_comment {
 
 	public void setDoc_num(int doc_num) {
 		this.doc_num = doc_num;
-	}
-
-	public String getComm_sign() {
-		return comm_type;
-	}
-
-	public void setComm_sign(String comm_sign) {
-		this.comm_type = comm_sign;
 	}
 
 	public int getReceiver_id() {

@@ -37,7 +37,7 @@ function makeUsersearch() {
 	$("tbody.usersearch").html( newUsersearch )
 	
 	if( '0' != $('#deptSearch').val()) {
-		$("tbody.usersearch tr td:nth-child(2)").each(function() {
+		$("tbody.usersearch tr td:nth-child(3)").each(function() {
 			if( $(this).text() != $('#deptSearch').val() ) {
 				$(this).parent("tr").remove();
 			}
@@ -45,7 +45,7 @@ function makeUsersearch() {
 	}
 
 	if( '0' != $('#rankSearch').val()) {
-		$("tbody.usersearch tr td:nth-child(3)").each(function() {
+		$("tbody.usersearch tr td:nth-child(4)").each(function() {
 			if( $(this).text() != $('#rankSearch').val() ) {
 				$(this).parent("tr").remove();
 			}
@@ -53,7 +53,7 @@ function makeUsersearch() {
 	}
 
 	if( null != $('#searchname').val() && '' != $('#searchname').val()) {
-		$("tbody.usersearch tr td:nth-child(4)").each(function() {
+		$("tbody.usersearch tr td:nth-child(5)").each(function() {
 			if( $(this).text().indexOf($('#searchname').val()) < 0 ) {
 				$(this).parent("tr").remove();
 			}
@@ -245,6 +245,10 @@ window.onload = function(){
 	    }
 	}
 }
+document.addEventListener('keydown',function(event){
+    if(event.keyCode === 13)
+        event.preventDefault();
+},true);
 
 
 </script>

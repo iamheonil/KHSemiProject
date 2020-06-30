@@ -281,7 +281,7 @@ public interface DocumentDao {
 	 */
 	public void deleteDoc_commentList(String names);
 
-
+	public ArrayList<Map<String, Object>> selectReportComment(Document doc);
 	
 	
 	

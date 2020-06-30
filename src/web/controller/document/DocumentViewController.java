@@ -56,6 +56,8 @@ public class DocumentViewController extends HttpServlet {
 		Report_link report = report_linkService.getDocReport_Link(documentno);
 		req.setAttribute("viewReport", report);
 		
+		ArrayList<Map<String, Object>> reportcomm = documentService.viewReportComment(documentno);
+		req.setAttribute("viewReportComment", reportcomm);
 		
 		req.getRequestDispatcher("/WEB-INF/views/document/docview.jsp").forward(req, resp);
 		

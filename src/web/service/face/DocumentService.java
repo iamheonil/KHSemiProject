@@ -235,7 +235,6 @@ public interface DocumentService {
 	public void deleteDocumentList(String names);
 
 	
-	
-	
+	public ArrayList<Map<String, Object>> viewReportComment(Document doc);
 
 }

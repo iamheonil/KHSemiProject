@@ -83,17 +83,28 @@ public class Doc_commentDaoImpl implements Doc_commentDao {
 		conn = JDBCTemplate.getConnection(); //DB 연결
 
 		//다음 게시글 번호 조회 쿼리
-		String sql = "";
-		sql += "INSERT INTO doc_comment(comm_num, doc_num, comm_type, receiver_id, comm_content, comm_date)";
-		sql += " VALUES ( doc_comment_seq.nextval, ?, '결재', ?, ?, sysdate )";
 		
+//		sql += "INSERT INTO doc_comment(comm_num, doc_num, comm_type, receiver_id, comm_content, comm_date)";
+//		sql += "INSERT INTO doc_comment(comm_num, doc_num, comm_type, receiver_id, comm_content, comm_date)";
+//		sql += " VALUES ( doc_comment_seq.nextval(), ?, ?, ?, ?, sysdate )";
+//		sql += " WHERE receiver_id = ?";
+//		sql += " AND doc_num = ?";
+		
+		String sql = "";
+		sql += "UPDATE doc_comment ";
+		sql += " SET comm_type = ?,";
+		sql += " comm_content = ?,";
+		sql += " comm_date= sysdate";
+		sql += " where receiver_id = ?";
+		sql += " and doc_num = ?";
 		try {
 			//DB작업
 			ps = conn.prepareStatement(sql);
 
-			ps.setInt(1, doc_comment.getDoc_num());
-			ps.setInt(2, doc_comment.getReceiver_id()); //receiver_id는 본인 사번?
-			ps.setString(3, doc_comment.getComm_content());
+			ps.setString(1, doc_comment.getComm_type());
+			ps.setString(2, doc_comment.getComm_content());
+			ps.setInt(3, doc_comment.getReceiver_id());
+			ps.setInt(4, doc_comment.getDoc_num());
 
 			ps.executeUpdate();
 			
