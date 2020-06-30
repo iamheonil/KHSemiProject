@@ -98,7 +98,7 @@ $(document).ready(function() {
 			$("#dolistAppro > li:nth-child(1) > a").css("color", "black")
 		}, 2000);
 	}
-	if(${waitApproveCnt } > 0) {
+	if(${progressCnt } > 0) {
 		setInterval(function() {
 			$("#dolistAppro > li:nth-child(2)").css("background", "#0f4c81")
 			$("#dolistAppro > li:nth-child(2) > a").css("color", "white")

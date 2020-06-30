@@ -118,7 +118,7 @@ h3{
 <%-- 	<td><a href="/document/view?doc_num=${draft.doc_num }">${draft.doc_title }</a></td> --%>
 	<td>
 	<c:if test="${draft.doc_emergency eq 'Y' }">
-	<a href="/document/view?doc_num=${draft.doc_num }"><span>[긴급]</span>${draft.doc_title }</a>
+	<a href="/document/view?doc_num=${draft.doc_num }"><span>[긴급] </span>${draft.doc_title }</a>
 	</c:if>
 	<c:if test="${draft.doc_emergency != 'Y' }">
 	<a href="/document/view?doc_num=${draft.doc_num }">${draft.doc_title }</a>
