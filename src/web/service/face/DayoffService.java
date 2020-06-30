@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import web.dto.Dayoff;
+import web.dto.User_detail;
 import web.util.Paging;
 import web.util.ad_Day_Paging;
 
@@ -35,13 +36,14 @@ public interface DayoffService {
 	 */
 	public ad_Day_Paging getPaging(HttpServletRequest req);
 	
+	
 	/**
-	 * 글 작성자인지 판단하기
+	 * 사번으로 Dayoff 정보 가져오기(로그인 session?)
 	 * 
-	 * @param req - 요청 정보 객체
-	 * @return boolean - true : 로그인한 사람이 글 작성자
+	 * @param req - req 객체정보
+	 * @return Dayoff - 조회한 휴가신청서 정보(리스트?)
 	 */
-	public boolean checkId(HttpServletRequest req);
+	public Dayoff getDayoffById(HttpServletRequest req);
 	
 
 	/**
@@ -55,32 +57,26 @@ public interface DayoffService {
 
 	/**
 	 * 휴가 승인 
-	 * @param req - 요청정보객체
+	 * @param
 	 * @retuen Dayoff - 전달 파라미터 dreason을 포함한 객체
 	 */
-	public void accept(HttpServletRequest req);
+	public void accept(String names);
 	
 	
 	/**
 	 * 휴가 반려
-	 * @param req
+	 * @param 
 	 */
-	public void decline(HttpServletRequest req);
+	public void decline(String names);
 	
 	/**
 	 * 휴가 신청서 작성
-	 * @param req - 요청 정보 객체
+	 * @param 
 	 * @return Dayoff - 작성한 휴가 신청서
 	 */
 	public void dayoffWrite(HttpServletRequest req);
 
 	
-	/**
-	 * 휴가 신청서 조회
-	 * @param req
-	 * @return
-	 */
-	public Dayoff view(HttpServletRequest req);
 
 
 	/**
@@ -93,7 +89,7 @@ public interface DayoffService {
 	
 	/**
 	 * 신청서 목록 삭제
-	 * @param dayoff
+	 * @param da
 	 */
 	public void deleteDayoff(String names);
 

@@ -29,6 +29,13 @@ public class Board_comment {
 	
 	private String dept;
 
+	@Override
+	public String toString() {
+		return "Board_comment [rnum=" + rnum + ", c_num=" + c_num + ", b_num=" + b_num + ", c_date=" + c_date
+				+ ", c_content=" + c_content + ", userid=" + userid + ", username=" + username + ", userrank="
+				+ userrank + ", dept=" + dept + "]";
+	}
+
 	public int getRnum() {
 		return rnum;
 	}
@@ -101,10 +108,9 @@ public class Board_comment {
 		this.dept = dept;
 	}
 
-	@Override
-	public String toString() {
-		return "Board_comment [rnum=" + rnum + ", c_num=" + c_num + ", b_num=" + b_num + ", c_date=" + c_date
-				+ ", c_content=" + c_content + ", userid=" + userid + ", username=" + username + ", userrank="
-				+ userrank + ", dept=" + dept + "]";
-	}
+	
+
+	
+	
+	
 }

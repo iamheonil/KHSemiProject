@@ -27,7 +27,8 @@ public class BoardDaoImpl implements BoardDao{
 		
 		//SQL 작성
 		String sql = "";
-		sql += "SELECT * FROM board";
+		sql += "SELECT category, b_nu, b_title, b_content, b_date, hits, userid, username, userrank, dept, c_cnt  FROM board";
+		sql += " WHERE c_cnt = (SELECT count(*) FROM board_comment board.b_num = b_num)";
 		sql += " ORDER BY b_num DESC";
 		
 		//쿼리 결과를 저장할 list 생성
@@ -238,6 +239,7 @@ public class BoardDaoImpl implements BoardDao{
 		      		if( null != search && !"".equals(search)) {
 		      sql += "       AND b_title LIKE ?";
 		      }
+//		      sql += " 		AND c_cnt = (SELECT count(*) FROM board_comment board.b_num = b_num)";
 		      sql += " )";
 		      
 		      

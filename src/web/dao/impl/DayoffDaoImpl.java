@@ -1,7 +1,6 @@
 package web.dao.impl;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -188,18 +187,22 @@ public class DayoffDaoImpl implements DayoffDao {
 		// 다음 게시글 번호 조회 쿼리
 		String sql = "";
 		sql += "INSERT INTO Dayoff(daynum, userid, daystart, dayend, dreason, dresult) ";
-		sql += " VALUES (dayoff_seq.nextval, ?, ?, ?, ?, 0)";
+		sql += " VALUES (dayoff_seq.nextval, ?, ?, ?, ?, '대기')";
 
 		try {
 			// DB작업
 			ps = conn.prepareStatement(sql);
-
+			
+			System.out.println("dayoff : " + dayoff);
+			System.out.println("getDaystart : " + dayoff.getDaystart());
+			
 			ps.setInt(1, dayoff.getUserid());
-			ps.setDate(2, (Date) dayoff.getDaystart());
-			ps.setDate(3, (Date) dayoff.getDayend());
+			ps.setDate(2, new java.sql.Date( dayoff.getDaystart().getTime() ) );
+			ps.setDate(3, new java.sql.Date( dayoff.getDayend().getTime() ) );
 			ps.setString(4, dayoff.getDreason());
 
 			ps.executeUpdate();
+			
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -217,7 +220,7 @@ public class DayoffDaoImpl implements DayoffDao {
 	}
 
 	@Override
-	public void acceptDresult(Dayoff dayoff) {
+	public void acceptDresult(String names) {
 
 		// DB연결
 		conn = JDBCTemplate.getConnection();
@@ -225,27 +228,61 @@ public class DayoffDaoImpl implements DayoffDao {
 		// 휴가 신청서 번호 조회 쿼리
 		String sql = "";
 		sql += "UPDATE Dayoff";
-		sql += " SET dreason = '승인'";
-		sql += " WHERE daynum = ?";
+		sql += " SET dresult = '승인'";
+		sql += " WHERE daynum  IN ( " + names + " )";
 		
-	
 		try {
 			ps = conn.prepareStatement(sql);
-			
-			ps.setInt(1, dayoff.getDaynum());
-			
+
 			ps.executeUpdate();
 
 		} catch (SQLException e) {
-
 			e.printStackTrace();
-
 		} finally {
-			JDBCTemplate.close(ps);
+			try {
+
+				if (ps != null)
+					ps.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}
 
+	@Override
+	public void declineDresult(String names) {
+		
+		// DB연결
+		conn = JDBCTemplate.getConnection();
+		
+		// 휴가 신청서 번호 조회 쿼리
+		String sql = "";
+		sql += "UPDATE Dayoff";
+		sql += " SET dresult = '거절'";
+		sql += " WHERE daynum IN ( " + names + " )";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+
+				if (ps != null)
+					ps.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
 	@Override
 	public void deleteDayoff(Dayoff dayoff) {
 
@@ -318,12 +355,11 @@ public class DayoffDaoImpl implements DayoffDao {
 		String sql = "";
 		sql += "SELECT dayoff_seq.nextval FROM dual";
 
-		// 결과 저장할 변수
+		//신청서 번호
 		int daynum = 0;
 
 		try {
 			ps = conn.prepareStatement(sql); // SQL수행 객체
-
 			rs = ps.executeQuery(); // SQL 수행 및 결과집합 저장
 
 			// 조회 결과 처리
@@ -343,34 +379,6 @@ public class DayoffDaoImpl implements DayoffDao {
 		return daynum;
 	}
 
-	@Override
-	public void declineDresult(Dayoff dayoff) {
 
-		// DB연결
-		conn = JDBCTemplate.getConnection();
-
-		// 휴가 신청서 번호 조회 쿼리
-		String sql = "";
-		sql += "UPDATE Dayoff";
-		sql += " SET dreason = '거절'";
-		sql += " WHERE daynum = ?";
-		
-	
-		try {
-			ps = conn.prepareStatement(sql);
-			
-			ps.setInt(1, dayoff.getDaynum());
-			
-			ps.executeUpdate();
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-
-		} finally {
-			JDBCTemplate.close(ps);
-		}
-		
-	}
 
 }

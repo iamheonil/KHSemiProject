@@ -47,20 +47,20 @@ public class BoardViewController extends HttpServlet {
 		
 		
 		
-//		_comment 
-		Board_comment commentnum = boardService.getCommentno(req);
+////		_comment 
+//		Board_comment commentnum = boardService.getCommentno(req);
 //		req.setAttribute("commentnum", commentnum);
 //		Board_comment viewComment = boardService.viewComment(commentnum);
-//		
+//////		
 //		req.setAttribute("viewComment", viewComment);
-		
-//		System.out.println("니가 널뜨니?"+req.getParameter("cc_num"));
-		
-		//대댓글 리스트 전달
+//		
+//		System.out.println("니가 널뜨니?"+req.getParameter("c_num"));
+//		
+//		//대댓글 리스트 전달
 //		Comment_comment c_comment = new Comment_comment();
 //		List<Comment_comment> c_commentList = boardService.getC_CommentList(commentnum);
 //		req.setAttribute("c_commentList", c_commentList);
-//		
+		
 		
 		//VIEW forward
 		req.getRequestDispatcher("/WEB-INF/views/board/boardView.jsp").forward(req, resp);

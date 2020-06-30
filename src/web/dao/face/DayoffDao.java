@@ -30,33 +30,33 @@ public interface DayoffDao {
 	 * @return int - 총 게시글 수
 	 */
 	public int selectCntAll();
-
+	
 	/**
-	 * 다음 게시글 번호 반환
-	 *  게시글 테이블과 첨부파일 테이블에 입력될 게시글번호를
-	 * 시퀀스를 통해 추출한다
-	 * 
-	 * @return - 다음 게시글 번호
+	 * 다음 휴가 신청서 번호 반환
+	 * @return int
 	 */
 	public int selectDaynum();
+
 	
 	/**
 	 * 휴가 신청서 작성
+	 * 
+	 * 신청서 내용을 DB에 저장
 	 * @param dayoff - 삽입될 휴가 신청서 내용
 	 */
 	public void insert(Dayoff dayoff);
 	
 	/**
 	 * 휴가 승인
-	 * @param dresult - 휴가 승인 여부 정보 객체
+	 * @param - 승인할 게시글 번호 목록들 문자열
 	 */
-	public void acceptDresult(Dayoff dayoff);
+	public void acceptDresult(String names);
 	
 	/**
 	 * 휴가 거절
-	 * @param dayoff
+	 * @param - 거절할 게시글 번호 목록들 문자열
 	 */
-	public void declineDresult(Dayoff dayoff);
+	public void declineDresult(String names);
 	
 	
 	/**
@@ -73,6 +73,9 @@ public interface DayoffDao {
 	 * @param names - 삭제한 게시글 번호 목록들 문자열
 	 */
 	public void deleteDayoffList(String names);
+
+	
+	
 
 	
 }

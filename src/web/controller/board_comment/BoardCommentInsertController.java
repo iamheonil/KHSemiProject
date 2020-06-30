@@ -21,11 +21,13 @@ public class BoardCommentInsertController extends HttpServlet {
 
 	private BoardService boardService = new BoardServiceImpl();
 	
+	
 	@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		 doPost(req,resp);
 		}
+	
 	
 	@Override
 		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
