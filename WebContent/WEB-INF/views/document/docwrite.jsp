@@ -434,7 +434,7 @@ textarea{
 <div class="guideBox">
 <h3 style="float:left;">경로정보</h3><input type="button" class="btn btn-primary" id="selectpath" value="경로지정"/>
 
-<div style="display:none; ">
+<div style="display:none; clear: both;">
 <select id="deptSearch" class="selectpicker">
 	<option value="0" selected>부서</option>
 	<option>인사팀</option>
