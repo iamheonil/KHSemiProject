@@ -33,12 +33,16 @@ public class BoardCommentDeleteController extends HttpServlet {
 		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		Board_comment comment = new Board_comment();
-	
+//		comment = boardService.getComment(req);
+		
+		
 		String c_num = (String) req.getParameter("c_num");
 		
 		comment.setC_num( Integer.parseInt(c_num));
 		
 		boolean succes = boardService.deleteComment(comment);
+//		boardService.updateCoCnt(comment.getB_num());
+		
 		
 		resp.getWriter().append("{\"succes\":"+succes+"}");
 		

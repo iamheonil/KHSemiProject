@@ -5,6 +5,7 @@ import java.util.List;
 
 import web.dto.Board;
 import web.dto.Board_comment;
+import web.dto.Comment_comment;
 
 public interface Board_commentDao {
 
@@ -18,14 +19,16 @@ public interface Board_commentDao {
 	
 	public List<Board_comment> selectComment(Board board);
 	
+	
 	/**
 	 * 코멘트의 코멘트를 조회
 	 * 
 	 * @param board - 댓글이 조회될 게시글
 	 * @return List - 조회된 대댓글 리스트
 	 */
-	
+//	
 //	public List<Comment_comment> selectC_Comment(Board_comment comment); 
+//	public List<Comment_comment> selectC_Comment(); 
 
 	/**
 	 * 코멘트 INSERT
@@ -58,6 +61,6 @@ public interface Board_commentDao {
 	 * @param commentnum
 	 * @return
 	 */
-	public Board_comment selectCommentByCommentno(Board_comment commentnum);
+//	public Board_comment selectCommentByCommentno(Board_comment commentnum);
 	
 }

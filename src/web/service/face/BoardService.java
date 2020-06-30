@@ -138,7 +138,7 @@ public interface BoardService {
 	 * @param commentnum
 	 * @return board_comment
 	 */
-	public Board_comment viewComment(Board_comment commentnum);
+//	public Board_comment viewComment(Board_comment commentnum);
 
 	
 	/**
@@ -188,6 +188,14 @@ public interface BoardService {
 	 * @return List - 대댓글
 	 */
 //	
+//	public List<Comment_comment> getC_CommentList(Board_comment comment);
+//	/**
+//	 * 댓글의 댓글리스트(대댓글)
+//	 * 
+//	 * @param board - 대댓글
+//	 * @return List - 대댓글
+//	 */
+////	
 //	public List<Comment_comment> getC_CommentList(Board_comment comment);
 	/**
 	 * 

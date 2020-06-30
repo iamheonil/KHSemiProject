@@ -14,7 +14,7 @@ import web.service.face.DayoffService;
 import web.service.impl.DayoffServiceImpl;
 import web.util.Paging;
 
-@WebServlet("/admin/dayoff/accept")
+@WebServlet("/admin/dayoff/update")
 public class AdminDayoffUpdateController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -28,7 +28,7 @@ public class AdminDayoffUpdateController extends HttpServlet {
 		Dayoff viewDayoff = dayoffService.getDaynum(req);
 		
 		//휴가 신청서 조회
-		viewDayoff = dayoffService.view(req);
+//		viewDayoff = dayoffService.view(req);
 		
 		//휴가 신청서 전달
 		req.setAttribute("viewDayoff", viewDayoff);
@@ -42,7 +42,7 @@ public class AdminDayoffUpdateController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 	
-		dayoffService.accept(req);
+//		dayoffService.accept(req);
 		
 		resp.sendRedirect("/admin/view");
 		

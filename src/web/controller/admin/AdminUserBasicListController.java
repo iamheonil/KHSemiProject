@@ -35,9 +35,9 @@ public class AdminUserBasicListController extends HttpServlet {
 		// 조회 결과 전달
 		req.setAttribute("search", search);
 		
-		List<User_basic> userbasiclist = user_basicService.selectUser_basic(search);
+//		List<User_basic> userbasiclist = user_basicService.selectUser_basic(search);
 		
-		req.setAttribute("userbasiclist", userbasiclist);
+//		req.setAttribute("userbasiclist", userbasiclist);
 		
 		// view지정
 		req.getRequestDispatcher("/WEB-INF/views/admin/userbasic/list.jsp").forward(req, resp);
