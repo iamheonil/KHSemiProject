@@ -20,6 +20,19 @@
 	text-align: center;
 }
 
+.title {
+	text-align: left;
+	margin-bottom: 18px;
+	font-weight: bold;
+}
+.wrap {
+	text-align: center;
+	width: auto;
+	margin: 0 auto;
+	
+}
+
+
 </style>
 
 <script type="text/javascript">
@@ -89,52 +102,51 @@ $(document).ready(function(){
 });
 
 </script>
+	<div id="contents">
 
-<div id="contents">
 	<div class="container">
 
-		<h2 style="text-align: left;">커뮤니티</h2>
-		
+		<h2 class="title">커뮤니티</h2>
 		<hr>
+		<br>
+		
 		<table class="table table-hover table-condensed">
-			<thead style="background-color: rgb(38, 114, 165);">
-				<tr style="text-align: center;">
-					<th style="width: 5%"><input type="checkbox" id="checkAll" onclick="checkAll();"/></th>
-					<th style="width: 10a%">글 번호</th>
-					<th style="width: 15%;">카테고리</th>
-					<th style="width: 30%;">제목</th>
-					<th style="width: 10%;">아이디</th>
-					<th style="width: 7%;">이름</th>
-					<th style="width: 13%;">조회수</th>
-					<th style="width: 10%;">작성일</th>
+			<thead>
+				<tr class="info" style="text-align: center;">
+					<th style="width: 5%; text-align: center;"><input type="checkbox" id="checkAll" onclick="checkAll();"/></th>
+					<th style="width: 5a%; text-align: center;">글 번호</th>
+					<th style="width: 12%; text-align: center;">카테고리</th>
+					<th style="width: 30%; text-align: center;">제목</th>
+					<th style="width: 13%; text-align: center;">아이디</th>
+					<th style="width: 7%; text-align: center;">이름</th>
+					<th style="width: 10%; text-align: center;">조회수</th>
+					<th style="width: 13%; text-align: center;">작성일</th>
 				</tr>
 			</thead>
-
-			<thead style="board: 1px solid #ffc6c9; background-color: #ffe3e4; color: #ff4e59;">
+			
 				<c:forEach items="${N_list }" var="a">
-					<tr class="text-left info">
+					<tr class="info">
 						<td><input type="checkbox" name="checkRow" value="${a.b_num }"/></td>
 						<td style="text-align: center;">${a.b_num }</td>
-						<td>${a.category}</td>
-						<td>${a.b_title }</td>
-						<td>${a.userid }</td>
-						<td>${a.username }</td>
-						<td>${a.hits }</td>
+						<td style="text-align: center;">${a.category}</td>
+						<td style="text-align: left;">${a.b_title }</td>
+						<td style="text-align: center;">${a.userid }</td>
+						<td style="text-align: center;">${a.username }</td>
+						<td style="text-align: center;">${a.hits }</td>
 						<td><fmt:formatDate value="${a.b_date }" pattern="yyyy-MM-dd" /></td>
 					</tr>
 				</c:forEach>
-			</thead>
 
 			<c:forEach items="${list }" var="a">
 
-				<tr class="text-left">
+				<tr class="table-content">
 					<td><input type="checkbox" name="checkRow" value="${a.b_num }"/></td>
 					<td style="text-align: center;">${a.b_num }</td>
-					<td>${a.category }</td>
-					<td>${a.b_title }</td>
-					<td>${a.userid }</td>
-					<td>${a.username }</td>
-					<td>${a.hits }</td>
+					<td style="text-align: center;">${a.category }</td>
+					<td style="text-align: left;">${a.b_title }</td>
+					<td style="text-align: center;">${a.userid }</td>
+					<td style="text-align: center;">${a.username }</td>
+					<td style="text-align: center;">${a.hits }</td>
 					<td><fmt:formatDate value="${a.b_date }" pattern="yyyy-MM-dd" /></td>
 				</tr>
 			</c:forEach>
@@ -146,7 +158,8 @@ $(document).ready(function(){
 		<div class="form-inline text-center">
 			<input class="form-control" type="text" id="search" style="width:250px;" placeholder="검색어를 입력해주세요"/>
 			<button id="btnSearch" class="btn glyphicon glyphicon-search"></button>
-		</div>
 		<c:import url="/WEB-INF/views/adlayout/ad_B_paging.jsp" />
-	</div>
+		</div>
+		</div>
+	
 </div>
