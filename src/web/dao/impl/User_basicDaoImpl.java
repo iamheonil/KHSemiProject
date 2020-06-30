@@ -1,7 +1,6 @@
 package web.dao.impl;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -223,6 +222,12 @@ public class User_basicDaoImpl implements User_basicDao {
 		}
 
 		
+	}
+
+	@Override
+	public int nextBasicnum() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
