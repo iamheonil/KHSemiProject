@@ -358,15 +358,24 @@ textarea{
 #userTB {overflow-y: auto; height: 100px;}
 #userTB th { position: sticky; top: 0; background: white;}
 
- #container {width: 960px; margin: 0 auto;}
-        #container #input-form {text-align: center;}
-        #user-table {margin: 0 auto; text-align: center;}
-        #input-form {margin-top: 10px; margin-bottom: 10px;}
+#container {width: 960px; margin: 0 auto;}
+#container #input-form {text-align: center;}
+#user-table {margin: 0 auto; text-align: center;}
+#input-form {margin-top: 10px; margin-bottom: 10px;}
 
-        #user-table {border-collapse: collapse;}
-        #user-table > thead > tr { background-color: #333; color:#fff; }
-        #user-table > thead > tr > th { padding: 8px; width: 150px; }
-        #user-table > tbody > tr > td { border-bottom: 1px solid gray; padding:8px; }
+#user-table {border-collapse: collapse;}
+#user-table > thead > tr { background-color: #333; color:#fff; }
+#user-table > thead > tr > th { padding: 8px; width: 150px; }
+#user-table > tbody > tr > td { border-bottom: 1px solid gray; padding:8px; }
+
+.report_type_layout {
+	margin: 20px 0px;
+}
+
+.report_type_layout > input {
+	margin: 20px 0px;
+	font-size: 16px;
+}
 </style>
 
 <%-- import header.jsp --%>
@@ -380,13 +389,14 @@ textarea{
 
 <form id="docform" method="post" enctype="multipart/form-data">
 <div class="container" style="width: 930px">
-<div id="docbutton" align="right">
-</div>
-<h3>문서정보</h3>
 
+<div id="docbutton" align="right">
+<h3 style="float:left;">문서정보</h3>
 <button type="button" class="btn btn-primary" id="myBtn">문서처리</button>
-<button type="submit" onclick="javascript: form.action='/document/update';" class="btn btn-primary" >임시저장</button>
+<button type="submit" onclick="javascript: form.action='/document/writetemp';" class="btn btn-primary" >임시저장</button>
 <button class="btn btn-primary" onclick="javascript: history.go(-1)">닫기</button>
+</div>
+
 <table class="table table-bordered" style="width: 900px;">
 <tr>
 	<td class="active">제목＊</td>
@@ -421,8 +431,8 @@ textarea{
 
 
 
-<div class="guideBox"> <!-- h3위치 조절하기!! -->
-<h3 style="margin-left: 80px;">경로정보</h3><input type="button" class="btn btn-primary" id="selectpath" value="경로지정"/>
+<div class="guideBox">
+<h3 style="float:left;">경로정보</h3><input type="button" class="btn btn-primary" id="selectpath" value="경로지정"/>
 
 <div style="display:none; ">
 <select id="deptSearch" class="selectpicker">
@@ -462,6 +472,7 @@ textarea{
 </thead>
 <tbody class="usersearch" style="cellspacing:0; cellpadding:0;">
 <c:forEach items="${user }" var="user">
+<c:if test="${user.userid > 0 }">
 <tr>
 	<td><input type="checkbox" name="checkbox"/></td>
 	<td id="name">${user.userid }</td><!-- userrank, 보고종류 -->
@@ -469,16 +480,19 @@ textarea{
 	<td id="rank">${user.userrank }</td>
 	<td id="name">${user.username }</td><!-- userrank, 보고종류 -->
 </tr>
+</c:if>
 </c:forEach>
 </tbody>
 </table>
 </div>
 
+<div class="report_type_layout">
 <input type="radio" name="report_type" value="검토" checked="checked"/> 검토
 <input type="radio" name="report_type" value="결재" /> 결재
 
 <button type="button" class="btn btn-primary" id="selectBtn">추가</button>
 <button type="button" class="btn btn-danger" id="deleteBtn">전체삭제</button>
+</div>
 
 <br><br>
 </div> <!-- style지정 -->
