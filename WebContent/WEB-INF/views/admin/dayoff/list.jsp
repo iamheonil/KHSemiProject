@@ -137,29 +137,26 @@ $(document).ready(function() {
 	
 	});
 	
+});
+//전체 체크/해제
+function checkAll() {
+	// checkbox들
+	var $checkboxes=$("input:checkbox[name='checkRow']");
+	// checkAll 체크상태 (true:전체선택, false:전체해제)
+	var check_status = $("#checkAll").is(":checked");
 	
-	function checkAll() {
-		
-		var $checkboxes=$("input:checkbox[name='checkRow']");
-
-		// checkAll 체크상태 (true:전체선택, false:전체해제)
-		var check_status = $("#checkAll").is(":checked");
-		
-		if( check_status ) {
-			// 전체 체크박스를 checked로 바꾸기
-			$checkboxes.each(function() {
-				this.checked = true;	
-			});
-		} else {
-			// 전체 체크박스를 checked 해제하기
-			$checkboxes.each(function() {
-				this.checked = false;	
-			});
-		}
+	if( check_status ) {
+		// 전체 체크박스를 checked로 바꾸기
+		$checkboxes.each(function() {
+			this.checked = true;	
+		});
+	} else {
+		// 전체 체크박스를 checked 해제하기
+		$checkboxes.each(function() {
+			this.checked = false;	
+		});
 	}
-	
-	});
-	
+}
 </script>
 
 <%-- <c:import url="/WEB-INF/views/adlayout/adaside.jsp" /> --%>
@@ -170,8 +167,7 @@ $(document).ready(function() {
 
 		<table class="table table-hover table-condensed">
 			<tr class="active">
-				<th><input type="checkbox" id="checkAll" onclick="checkAll();" />
-				</th>
+				<th><input type="checkbox" id="checkAll" onclick="checkAll();" /></th>
 				<th>휴가번호</th>
 				<th>사번</th>
 				<th>휴가 시작</th>
@@ -181,8 +177,7 @@ $(document).ready(function() {
 			</tr>
 			<c:forEach items="${list }" var="dayoff">
 				<tr>
-					<td><input type="checkbox" name="checkRow"
-						value="${dayoff.daynum  }" /></td>
+					<td><input type="checkbox" name="checkRow" value="${dayoff.daynum  }" /></td>
 					<td>${dayoff.daynum }</td>
 					<td>${dayoff.userid }</td>
 					<td>${dayoff.daystart }</td>
