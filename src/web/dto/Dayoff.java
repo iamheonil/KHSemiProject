@@ -12,11 +12,13 @@ public class Dayoff {
 	private String dresult;
 	
 	
+
 	@Override
 	public String toString() {
-		return "Dayoff [daynum=" + daynum + ", userid=" + userid + ", daystart=" + daystart + ", dreason=" + dreason
-				+ ", dresult=" + dresult + "]";
+		return "Dayoff [daynum=" + daynum + ", userid=" + userid + ", daystart=" + daystart + ", dayend=" + dayend
+				+ ", dreason=" + dreason + ", dresult=" + dresult + "]";
 	}
+	
 	public int getDaynum() {
 		return daynum;
 	}
