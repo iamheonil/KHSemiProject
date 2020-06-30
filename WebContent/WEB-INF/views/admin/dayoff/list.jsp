@@ -57,12 +57,56 @@ $(document).ready(function() {
 	
 	//버튼 기능, 승인버튼 기능 필요
 	$("#btnAccept").click(function() {
+		// 선택된 체크박스
+		var $checkboxes = $("input:checkbox[name='checkRow']:checked");
+		
 
+		var map = $checkboxes.map(function() {
+			return $(this).val();
+		});
+		var names = map.get().join(",");
+
+		
+		var $form = $("<form>")
+			.attr("action", "/admin/dayoff/accept")
+			.attr("method", "Post")
+			.append(
+				$("<input>")
+					.attr("type", "hidden")
+					.attr("name", "names")
+					.attr("value", names)
+			);
+		
+		$(document.body).append($form);
+		
+		$form.submit();
 	});
 
 	//버튼 기능, 반려버튼 기능 필요
 	$("#btnDecline").click(function() {
+		// 선택된 체크박스
+		var $checkboxes = $("input:checkbox[name='checkRow']:checked");
+		
 
+		var map = $checkboxes.map(function() {
+			return $(this).val();
+		});
+		var names = map.get().join(",");
+
+		
+		var $form = $("<form>")
+			.attr("action", "/admin/dayoff/decline")
+			.attr("method", "Post")
+			.append(
+				$("<input>")
+					.attr("type", "hidden")
+					.attr("name", "names")
+					.attr("value", names)
+			);
+		
+		$(document.body).append($form);
+		
+		$form.submit();
 	});
 	
 	// 선택체크 삭제
@@ -151,7 +195,7 @@ $(document).ready(function() {
 
 		<div id="btnBox">
 			<button id="btnAccept" class="btn btn-primary">승인</button>
-			<button id="Decline" class="btn btn-primary">반려</button>
+			<button id="btnDecline" class="btn btn-primary">반려</button>
 			<button id="btnDelete" class="btn btn-primary">삭제</button>
 		</div>
 
