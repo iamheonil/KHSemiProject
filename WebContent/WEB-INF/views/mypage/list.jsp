@@ -18,7 +18,7 @@
 	src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 
-<jsp:include page="/WEB-INF/views/layout/header.jsp" />
+<jsp:include page="/WEB-INF/views/layout/header_doc.jsp" />
 
 <style type="text/css">
 h4 {
@@ -37,7 +37,7 @@ h4 {
 
 table, th {
 	text-align: center;
-}
+}	
 
 .table {
 	padding: 20px;
@@ -52,7 +52,7 @@ table, th {
 }
 </style>
 
-<jsp:include page="/WEB-INF/views/layout/aside.jsp" />
+<jsp:include page="/WEB-INF/views/layout/aside_mypage.jsp" />
 
 
 <div class="content">
@@ -60,7 +60,6 @@ table, th {
 	<div class="container">
 		<table class="table table-hover table-condensed">
 			<tr class="active">
-
 				<th>휴가번호</th>
 				<th>사번</th>
 				<th>휴가 시작</th>
