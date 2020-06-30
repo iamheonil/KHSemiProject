@@ -228,7 +228,7 @@ public class DayoffDaoImpl implements DayoffDao {
 		// 휴가 신청서 번호 조회 쿼리
 		String sql = "";
 		sql += "UPDATE Dayoff";
-		sql += " SET dreason = '승인'";
+		sql += " SET dresult = '승인'";
 		sql += " WHERE daynum  IN ( " + names + " )";
 		
 		try {
@@ -260,7 +260,7 @@ public class DayoffDaoImpl implements DayoffDao {
 		// 휴가 신청서 번호 조회 쿼리
 		String sql = "";
 		sql += "UPDATE Dayoff";
-		sql += " SET dreason = '거절'";
+		sql += " SET dresult = '거절'";
 		sql += " WHERE daynum IN ( " + names + " )";
 		
 		try {
