@@ -25,11 +25,12 @@ import web.dao.impl.Doc_commentDaoImpl;
 import web.dao.impl.DocumentDaoImpl;
 import web.dao.impl.Report_linkDaoImpl;
 import web.dto.Doc_attach;
+import web.dto.Doc_comment;
 import web.dto.Document;
+import web.dto.Report_link;
 import web.dto.User_basic;
 import web.service.face.DocumentService;
 import web.util.SearchPaging;
-import web.util.ad_Day_Paging;
 
 public class DocumentServiceImpl implements DocumentService {
 
@@ -89,6 +90,13 @@ public class DocumentServiceImpl implements DocumentService {
 
 		// 첨부파일 정보 저장할 객체
 		Doc_attach docAttach = null;
+		
+		//의견/지시 정보 저장할 객체
+		Doc_comment docComment = new Doc_comment();
+		
+		Report_link report_link = new Report_link();
+		
+		String users = null;
 
 		// 파일업로드 형태의 데이터가 맞는지 검사
 		boolean isMultipart = false;
@@ -103,6 +111,7 @@ public class DocumentServiceImpl implements DocumentService {
 
 		// 게시글 정보 저장할 객체 생성
 		doc = new Document();
+		
 
 		// 디스트기반 아이템 팩토리
 		DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -171,7 +180,34 @@ public class DocumentServiceImpl implements DocumentService {
 		                  e.printStackTrace();
 		               }
 		               
-		            }  // key값 비교 if end
+		            } else if ( "approve_comment".equals(key) ) { //전달파라미터 name이 "approve_comment"
+		               try {
+		            	  docComment.setComm_content( item.getString("UTF-8") );
+		               } catch (UnsupportedEncodingException e) {
+		                  e.printStackTrace();
+		               }
+			               
+				    }else if ("users".equals(key)) { // 전달파라미터 name이 "userid"
+						try {
+							
+//							String[] users = "1,2,3".split(",");
+//							String[] users = item.getString("UTF-8").split(",");
+							
+							users = item.getString("UTF-8");
+							
+						} catch (UnsupportedEncodingException e) {
+							e.printStackTrace();
+						}
+
+					} else if ("types".equals(key)) { // 전달파라미터 name이 "type"
+						try {
+							
+							report_link.setReport_type(item.getString("UTF-8"));
+						} catch (UnsupportedEncodingException e) {
+							e.printStackTrace();
+						}
+
+					}   // key값 비교 if end
 
 			} // if( item.isFormField() ) end - 폼필드 확인
 
@@ -228,6 +264,13 @@ public class DocumentServiceImpl implements DocumentService {
 
 		// 문서 작성자 id 입력
 		doc.setUserid((int) req.getSession().getAttribute("userid"));
+		
+		// 사번 결과 확인
+		int userid = 0;
+		if(req.getSession().getAttribute("userid") != null && !"".equals(req.getSession().getAttribute("userid"))) {
+			userid = (int) req.getSession().getAttribute("userid");
+		}
+		
 
 		// 문서 번호 생성 - Dao 이용
 		int docno = documentDao.selectnextDocno();
@@ -238,17 +281,58 @@ public class DocumentServiceImpl implements DocumentService {
 			doc.setDoc_num(docno);
 			// 게시글 삽입
 			documentDao.insertDoc(doc);
+			
+			//기존 보고경로 삭제
+			report_linkDao.deleteReport_link(doc);
+			
+			String[] userInfo = users.split(",");
+			String[] typeInfo = report_link.getReport_type().split(",");
+			
+			// DB에 추가할 객체 report_linkInsert 생성
+			Report_link report_linkInsert = new Report_link();
+			
+			// report_linkInsert에 문서번호 넣기
+			report_linkInsert.setDoc_num(doc.getDoc_num());
+			
+			// sender_id, receiver_id, report_type 정보 넣기
+			for(int i=0; i<=userInfo.length; i++) {
+				if(i==0) {
+					report_linkInsert.setSender_id(0);
+					report_linkInsert.setReceiver_id(userid);
+					report_linkInsert.setReport_type("기안");
+				} else if(i==1) {
+					report_linkInsert.setSender_id(userid);
+					report_linkInsert.setReceiver_id(Integer.parseInt(userInfo[i-1]));
+					report_linkInsert.setReport_type(typeInfo[i-1]);
+				} else {
+					report_linkInsert.setSender_id(Integer.parseInt(userInfo[i-2]));
+					report_linkInsert.setReceiver_id(Integer.parseInt(userInfo[i-1]));
+					report_linkInsert.setReport_type(typeInfo[i-1]);
+				}
+				// 보고경로 추가
+				report_linkDao.updateReport_link(report_linkInsert);
+			}
 		}
 
 		// 첨부파일 정보가 있을 경우
 		if (docAttach != null) {
 			// 게시글 번호 입력
 			docAttach.setDoc_num(docno);
-			System.out.println(docAttach);
+//			System.out.println(docAttach);
 			// 첨부파일 삽입
-//			boardDao.insertFile(boardFile);
 			doc_attachDao.insertDoc_attach(docAttach);
 		}
+		
+		//의견지시 정보 있을 경우
+		if (docComment != null) {
+			// 게시글 번호 입력
+			docComment.setDoc_num(docno);
+			docComment.setReceiver_id((int) req.getSession().getAttribute("userid"));
+			// 의견지시 삽입
+			doc_commentDao.insertDoc_comment(docComment);
+		}
+		
+		
 
 	}
 	
@@ -424,9 +508,15 @@ public class DocumentServiceImpl implements DocumentService {
 	public void updateDoc(HttpServletRequest req) {
 		// 게시글 정보 저장할 객체
 			Document doc = null;
-
+			
 			// 첨부파일 정보 저장할 객체
 			Doc_attach docAttach = null;
+
+			// 보고경로 정보 저장할 객체
+			Report_link report_link = new Report_link();
+			
+			// 보고경로 users 저장할 객체
+			String users = null;
 
 			// 파일업로드 형태의 데이터가 맞는지 검사
 			boolean isMultipart = false;
@@ -491,7 +581,6 @@ public class DocumentServiceImpl implements DocumentService {
 					} else if ( "doc_emergency".equals(key) ) { //전달파라미터 name이 "doc_emergency"
 						try {
 							doc.setDoc_emergency(item.getString("UTF-8"));
-							System.out.println("durls ????" + doc);
 						} catch (UnsupportedEncodingException e) {
 							e.printStackTrace();
 						}
@@ -513,6 +602,27 @@ public class DocumentServiceImpl implements DocumentService {
 					} else if ("doc_num".equals(key)) { // 전달파라미터 name이 "doc_num"
 						try {
 							doc.setDoc_num(Integer.parseInt(item.getString("UTF-8")));
+							report_link.setDoc_num(Integer.parseInt(item.getString("UTF-8")));
+						} catch (UnsupportedEncodingException e) {
+							e.printStackTrace();
+						}
+
+					} else if ("users".equals(key)) { // 전달파라미터 name이 "userid"
+						try {
+							
+//							String[] users = "1,2,3".split(",");
+//							String[] users = item.getString("UTF-8").split(",");
+							
+							users = item.getString("UTF-8");
+							
+						} catch (UnsupportedEncodingException e) {
+							e.printStackTrace();
+						}
+
+					} else if ("types".equals(key)) { // 전달파라미터 name이 "type"
+						try {
+							
+							report_link.setReport_type(item.getString("UTF-8"));
 						} catch (UnsupportedEncodingException e) {
 							e.printStackTrace();
 						}
@@ -574,13 +684,51 @@ public class DocumentServiceImpl implements DocumentService {
 
 			// 문서 작성자 id 입력
 			doc.setUserid((int) req.getSession().getAttribute("userid"));
-
+			
+			// 사번 결과 확인
+			int userid = 0;
+			if(req.getSession().getAttribute("userid") != null && !"".equals(req.getSession().getAttribute("userid"))) {
+				userid = (int) req.getSession().getAttribute("userid");
+			}
+			
 			
 			// 문서 정보가 있을 경우
 			if (doc != null) {
 				System.out.println("doc doc 수정정보" + doc);
 				// 게시글 수정
 				documentDao.updateDoc(doc);
+				
+				//기존 보고경로 삭제
+				report_linkDao.deleteReport_link(doc);
+				
+				String[] userInfo = users.split(",");
+				String[] typeInfo = report_link.getReport_type().split(",");
+				
+				// DB에 추가할 객체 report_linkInsert 생성
+				Report_link report_linkInsert = new Report_link();
+				
+				// report_linkInsert에 문서번호 넣기
+				report_linkInsert.setDoc_num(doc.getDoc_num());
+				
+				// sender_id, receiver_id, report_type 정보 넣기
+				for(int i=0; i<=userInfo.length; i++) {
+					if(i==0) {
+						report_linkInsert.setSender_id(0);
+						report_linkInsert.setReceiver_id(userid);
+						report_linkInsert.setReport_type("기안");
+					} else if(i==1) {
+						report_linkInsert.setSender_id(userid);
+						report_linkInsert.setReceiver_id(Integer.parseInt(userInfo[i-1]));
+						report_linkInsert.setReport_type(typeInfo[i-1]);
+					} else {
+						report_linkInsert.setSender_id(Integer.parseInt(userInfo[i-2]));
+						report_linkInsert.setReceiver_id(Integer.parseInt(userInfo[i-1]));
+						report_linkInsert.setReport_type(typeInfo[i-1]);
+					}
+					// 보고경로 추가
+					report_linkDao.updateReport_link(report_linkInsert);
+				}
+				
 			}
 
 			// 첨부파일 정보가 있을 경우
@@ -591,6 +739,7 @@ public class DocumentServiceImpl implements DocumentService {
 				doc_attachDao.updateDoc_attach(docAttach);
 			}
 	}
+	
 	
 	@Override
 	public SearchPaging getTempSearchPaging(HttpServletRequest req) {

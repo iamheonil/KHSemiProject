@@ -16,81 +16,166 @@
 
 
 <script type="text/javascript">
-// $(document).ready(function(){
-// 	searchajax();
-// })
-
-// function searchajax(){
-// 	$("#search").click(function(){
-// 		var word = $("#search").val();
-// 		if(woard!=''){
-// 			$.ajax({
-// 				type: 'POST',
-// 				url: '/';,
-// 				data: { searchword : word },
-// 				dataType: 'json',
-// 				success: function(result){
-// 					if(result.length>0){
-// 						var str = ''
-// 						for(var i=0; i<result.length; i++){
-// 							str += '<span>'+result[i].data + '</span><br>';
-// 						}
-// 						$("#results").html(str);
-// 					}else {$("#results").html(""); }
-// 				},
-// 				error: function(e){console.log('error:' + e.status);}
-// 			});
-// 		}else{ $("#results").html(""); }
-// 	});
-
-// }
-
-// jQuery.ajax({
-// 	type: "post",
-// 	url : "/컨트롤러",
-// 	data : serDate,
-// 	dataType: "json",
-// 	success: function(obj){
-// 		showempinfo(obj);
-// 	},
-// 	complete: function(xhr, status){
-		
-// 	},
-// 	error: function(xhr, status, error){
-// 		console.log(error);
-// 	}
-// })
-
-// function showempinfo(obj){
-// 	var div document.querySelector('#emptable');
-
-// }
-</script>
-<script type="text/javascript">
-// 사원검색하기
-// window.onload = function() {
+var newUsersearch = null;
+$(document).ready(function() {
 	
-// 	//button#btnAction 태그에 click 이벤트 리스너 등록하기
-// 	btnAction.onclick = function() {
-// 		//console.log("btnAction clicked");
-		
-// 		//AJAX요청 보내기
-// 		sendRequest("POST", "/ajax/test", "", callback);
-// // 		callback : 요청에 대한 응답함수
-		
-// 	}
-// }
-$(document).on("click",".guideBox > button", function(){
+	newUsersearch = $("tbody.usersearch").clone().eq(0).html();
+	
+	$("#deptSearch").change(function() {
+		makeUsersearch();
+	})
+	$("#rankSearch").change(function() {
+		makeUsersearch();
+	})
+	$("#searchname").keyup(function() {
+		makeUsersearch();
+	})
+})
+
+function makeUsersearch() {
+	
+	$("tbody.usersearch").html( newUsersearch )
+	
+	if( '0' != $('#deptSearch').val()) {
+		$("tbody.usersearch tr td:nth-child(2)").each(function() {
+			if( $(this).text() != $('#deptSearch').val() ) {
+				$(this).parent("tr").remove();
+			}
+		})
+	}
+
+	if( '0' != $('#rankSearch').val()) {
+		$("tbody.usersearch tr td:nth-child(3)").each(function() {
+			if( $(this).text() != $('#rankSearch').val() ) {
+				$(this).parent("tr").remove();
+			}
+		})
+	}
+
+	if( null != $('#searchname').val() && '' != $('#searchname').val()) {
+		$("tbody.usersearch tr td:nth-child(4)").each(function() {
+			if( $(this).text().indexOf($('#searchname').val()) < 0 ) {
+				$(this).parent("tr").remove();
+			}
+		})
+	}
+
+}
+</script>
+
+<script type="text/javascript">
+$(document).on("click",".guideBox > #selectpath", function(){ //변경됨
 	if($(this).next().css("display")=="none"){
 		$(this).next().show();
-		$(this).children("table").text("[닫기]");
 	}else{
 		$(this).next().hide();
-		$(this).children("table").text("[열기]");
 	}
 });
 $(document).ready(function(){
 
+	$("#selectBtn").click(function(){
+		
+		var checkbox = $("input[name=checkbox]:checked"); // 체크
+		var radiobox = $("input[name=checkbox]:checked"); // 보고 종류
+		
+		// 체크된 체크박스 값을 가져온다
+		checkbox.each(function(i) {
+			
+			console.log( $(this).parent().parent().children().eq(1) )
+			console.log( $(this).parent().parent().children().eq(3) )
+			console.log( $(this).parent().parent().children().eq(4) )
+			
+			var type = $(":input:radio[name=report_type]:checked").val();
+			var userid = $(this).parent().parent().children().eq(1).text();
+			var dept = $(this).parent().parent().children().eq(3).text();
+			var name = $(this).parent().parent().children().eq(4).text();
+			
+			var $tr = $("<tr>")
+
+			var $td1 = $("<td>").html(dept + "<br>" + name)
+			var $td2 = $("<td>").html(type)
+			
+			var $input1 = $("<input>").attr({
+				type: "hidden"
+				, name: "userid"
+				, value: userid
+			})
+			
+			var $input2 = $("<input>").attr({
+				type: "hidden"
+				, name: "type"
+				, value: type
+			})
+			
+			
+			
+			$tr.append( $td2 ).append( $td1 ).append($("<td>")).append($("<td>")).append($("<td>"))
+				.append( $input1 ).append( $input2 )
+			
+			$(".link").append( $tr )
+		}); // checkbox.each -- end
+		
+	 	checkbox.prop("checked", false)
+		checkbox.prop("disabled", true)
+		
+	}); // $("#selectBtn").click(function() -- end
+
+
+
+
+	// $(".checktest").click(function() {
+	$("#docform").submit(function() {
+		console.log( $("tbody.link tr input[name='userid']") );
+		console.log( $("tbody.link tr input[name='type']") );
+		
+		var users = $("tbody.link tr input[name='userid']").map(function() {
+			return $(this).val();
+		})
+		.get()
+		.join();
+		
+		var types = $("tbody.link tr input[name='type']").map(function() {
+			return $(this).val();
+		})
+		.get()
+		.join();
+		
+		
+		console.log(".checktest clicked")
+		
+		$("<input>").attr({
+			type: "hidden"
+			, name: "users"
+			, value: users
+		}).appendTo( $("#docform") )
+		
+		$("<input>").attr({
+			type: "hidden"
+			, name: "types"
+			, value: types
+		}).appendTo( $("#docform") )
+		
+		console.log(".checktest end")
+		
+	})
+
+	// 보고경로 삭제
+	$("#deleteBtn").click(function() {
+		console.log("클릭됌")
+		
+		var checkbox = $("input[name=checkbox]:checked");
+		
+		checkbox.each(function(i) {
+			$(".link > tr:nth-child(2)").remove();
+			$("input[type='hidden']").remove();
+			checkbox.prop("checked", false)
+			checkbox.prop("disabled", false)
+			console.log("삭제완료")
+		})
+	})
+	
+	
+	
 $("#selectBtn").click(function(){
 	var rowData = new Array();
 	var tdArr = new Array();
@@ -119,88 +204,17 @@ $("#selectBtn").click(function(){
 		tdArr.push(userid);
 		tdArr.push(name);
 		
-		console.log("부서 : " + dept);
-		console.log("직위 : " + dept);
-		console.log("userid : " + userid);
-		console.log("name : " + name);
+// 		console.log("부서 : " + dept);
+// 		console.log("직위 : " + dept);
+// 		console.log("userid : " + userid);
+// 		console.log("name : " + name);
 		//console.log("email : " + email);
 	});
 	
-	$("#ex3_Result1").html(" * 체크된 Row의 모든 데이터 = "+rowData);	
-	$("#ex3_Result2").html(tdArr);	
-	$("#add").html(" * 체크된 Row의 모든 데이터 = "+rowData);	
-	$("#add").html(tdArr);	
 });
 });
 
 
-// ajax
-// var request = new XMLHttpRequest();
-// function searchFunction(){
-// // 	request.open("post", "/UserListServlet?userid="+document.getElementById("userid").valeu());
-// 	//onreadystatechange => 서버와의 통신이 끝났을 때 호출되는 이벤
-// 	request.onreadystatechange = function(){
-// 		var table = document.getElementById("ajaxTable");
-// 		table.innerHTML = "";
-		
-// 		//readyState => 현재 통신상태(4=통신완료)/status=>HTTP와의 통신결과(200=통신성공) 
-// 		if(request.readyState == 4 && request.status == 200){
-// 			//responseText=>서버에서 통신한 자료를 담고 있다
-// 			//eval =>서버에서 받은 자료를 JSON오브젝트로 변환해준다
-
-// 			var object = eval('(' + request.responseText + ')'); 
-// 			var result = object.result;
-
-// 			for(var i = 0; i < result.length; i++){
-// 				var row = table.insertRow(0);
-				
-// 				for(var j = 0; j < result[i].length; j++){
-// 					var cell = row.insertCell(j);
-// 					cell.innerHTML = result[i][j].value;
-// 				}
-// 			}
-// 		}
-// 	}
-// 	request.send();
-// }
-// window.onload = function(){
-// 	searchFunction();
-// }
-// window.onload = function() {
-
-	
-	
-function send(){
-	var s = searchname.value;
-	
-	var params = "searchname="+s;
-	console.log(params)
-	// - - - URL 구성 - - -
-	var url = "/document/write/search"; ///UserSearchController
-	// - - - - - - - - - - -
-	
-	// - - - AJAX 요청 전송 - - -
-	sendRequest("POST", url, params, callback);
-	// - - - - - - - - - - - - - -
-	}
-
-//AJAX 요청 처리 콜백함수
-function callback() {
-	if( httpRequest.readyState == 4 ) { //XHR DONE.
-		if( httpRequest.status == 200 ) { //HTTP 200, OK.
-			console.log("정상적인 응답")
-			
-			//정상응답 처리 함수
-			searchFunction();
-			
-		} else {
-			console.log("AJAX 요청/응답 에러")
-		}
-	}
-}
-
-
-// }
 </script>
 
 <script type="text/javascript">
@@ -233,51 +247,6 @@ window.onload = function(){
 }
 
 
-
-//이름으로 사원 검색하기
-$(document).ready(function(){
-	
-	$("#searchname").keydown(function(e) {
-		if(e.keyCode == 13) {
-			searchclick();
-		}
-	})
-	$("#search").click(function(){
-		searchclick();
-	})
-	
-// 	$("#deptSearch").change(function(){
-// 		var dept = $("#deptSearch option:selected").text();
-// 		$("#user-table > tbody > tr").hide();
-// 		var temp1 = $("#userTB> tbody > tr > td#dept:nth-child(n):contains('" + dept + "')");
-		
-// 		$(temp1).parent().show();
-// 	})
-// 	$("#rankSearch").change(function(){
-// 		var dept = $("#rankSearch option:selected").val();
-// 		var temp1 = $("#userTB> tbody > tr > td#rank:nth-child(n):contains('" + rank + "')");
-		
-// 		$(temp1).parent().show();
-		
-// 	})
-	
-function searchclick(){
-		var k = $("#searchname").val();
-		var dept = $("#deptSearch option:selected").text();
-		
-		$("#userTB > tbody > tr").hide();
-		
-		var temp = $("#userTB> tbody > tr > td#name:nth-child(n):contains('" + k + "')");
-		var temp1 = $("#userTB> tbody > tr > td#dept:nth-child(n):contains('" + dept + "')");
-		
-		
-		$(temp).parent().show();
-		$(temp1).parent().show();
-		
-	}
-	
-	
-})
 </script>
 
 <style type="text/css">
@@ -377,8 +346,10 @@ textarea{
 	display: inline-block;
 /* 	float: right; */
 }
-#tb_wrap{
-	
+#type_radio{
+	display: inline-block;
+	border: 1px solid #eee;
+	height: 
 }
 #userTB {overflow-y: auto; height: 100px;}
 #userTB th { position: sticky; top: 0; background: white;}
@@ -398,21 +369,20 @@ textarea{
 <c:import url="/WEB-INF/views/layout/header_doc.jsp" />
 
 <c:import url="/WEB-INF/views/layout/aside_doc.jsp" />
-		
+
 <div id="contents">
 <div id="docdetail">
 
 
+<form id="docform" method="post" enctype="multipart/form-data">
 <div class="container" style="width: 930px">
 <div id="docbutton" align="right">
 </div>
 <h3>문서정보</h3>
 
-<form action="/document/write" method="post" enctype="multipart/form-data">
-<input type="button" class="btn btn-primary" id="myBtn" value="문서처리">
-<input type="button" class="btn btn-primary" value="임시저장" 
-onclick="location.href='/document/writetemp'">
-<input type="button" value="닫기" class="btn btn-primary">
+<button type="button" class="btn btn-primary" id="myBtn">문서처리</button>
+<button type="submit" onclick="javascript: form.action='/document/update';" class="btn btn-primary" >임시저장</button>
+<button class="btn btn-primary" onclick="javascript: history.go(-1)">닫기</button>
 <table class="table table-bordered" style="width: 900px;">
 <tr>
 	<td class="active">제목＊</td>
@@ -441,37 +411,38 @@ onclick="location.href='/document/writetemp'">
 
 </table>
 <input type="submit" value="확인"/>
-</form>
+
 
 <br>
 
 
 
 <div class="guideBox"> <!-- h3위치 조절하기!! -->
-<h3 style="margin-left: 80px;">경로정보</h3><button class="btn btn-primary" id="selectpath">경로지정</button>
+<h3 style="margin-left: 80px;">경로정보</h3><input type="button" class="btn btn-primary" id="selectpath" value="경로지정"/>
 
 <div style="display:none; ">
 <select id="deptSearch" class="selectpicker">
-	<option selected>부서</option>
-	<option value="human">인사팀</option>
-	<option value="account">회계팀</option>
-	<option value="develop">개발팀</option>
-	<option value="sales">영업팀</option>
-	<option value="resource">자재팀</option>
+	<option value="0" selected>부서</option>
+	<option>인사팀</option>
+	<option>회계팀</option>
+	<option>개발팀</option>
+	<option>영업팀</option>
+	<option>자재팀</option>
 </select>
 <select id="rankSearch" class="selectpicker">
-	<option selected>직급</option>
-	<option value="human">사원</option>
-	<option value="account">대리</option>
-	<option value="develop">과장</option>
-	<option value="sales">차장</option>
-	<option value="resource">팀장</option>
-	<option value="resource">부사장</option>
-	<option value="resource">사장</option>
+	<option value="0" selected>직급</option>
+	<option>사원</option>
+	<option>대리</option>
+	<option>과장</option>
+	<option>차장</option>
+	<option>팀장</option>
+	<option>부사장</option>
+	<option>사장</option>
 </select>
+
 <input class="form-control" type="text" id="searchname" name="searchname" 
 	 placeholder="이름으로 검색하기"/>
-<button id="search" class="btn btn-primary">검색</button>
+<!-- <button type="button" id="search" class="btn btn-primary">검색</button> -->
 <div class="tb_wrap" style="width:100%; height:200px; overflow:auto; border: 1px solid #eee;" >
 <table style="width: 100%; border: 0; " id="userTB" class="table table-bordered"> <!-- c:foreach로 검색 목록 모두 표시 -->
 
@@ -479,15 +450,17 @@ onclick="location.href='/document/writetemp'">
 <thead>
 <tr>
 	<th>선택</th>
+	<th>사번</th>
 	<th>부서</th>
 	<th>직위(직급)</th>
 	<th>성명</th>
 </tr>
 </thead>
-<tbody style="cellspacing:0; cellpadding:0;">
+<tbody class="usersearch" style="cellspacing:0; cellpadding:0;">
 <c:forEach items="${user }" var="user">
 <tr>
 	<td><input type="checkbox" name="checkbox"/></td>
+	<td id="name">${user.userid }</td><!-- userrank, 보고종류 -->
 	<td id="dept">${user.dept }</td>
 	<td id="rank">${user.userrank }</td>
 	<td id="name">${user.username }</td><!-- userrank, 보고종류 -->
@@ -497,7 +470,12 @@ onclick="location.href='/document/writetemp'">
 </table>
 </div>
 
-<button type="button" id="selectBtn">추가</button>
+<input type="radio" name="report_type" value="검토" checked="checked"/> 검토
+<input type="radio" name="report_type" value="결재" /> 결재
+
+<button type="button" class="btn btn-primary" id="selectBtn">추가</button>
+<button type="button" class="btn btn-danger" id="deleteBtn">전체삭제</button>
+
 <br><br>
 </div> <!-- style지정 -->
 <div id="ex3_Result1"></div>
@@ -511,6 +489,7 @@ onclick="location.href='/document/writetemp'">
 
 <div class="form-group row pull-right">
 <table id="path" class="table table-bordered " style="width: 900px;"> <!-- 부트스트랩, table -->
+<thead>
 <tr class="active">
 	<th style="width: 10%;">구분</th>
 	<th style="width: 15%;">직위/성명</th>
@@ -518,26 +497,20 @@ onclick="location.href='/document/writetemp'">
 	<th style="width: 10%;">서명</th>
 	<th style="width: 25%;">처리결과</th>
 </tr>
-<%-- <c:forEach items="${boardList }" var="board"> --%>
+</thead>
+<tbody class="link">
 
 <tr>
 	<td>기안</td>
-	<td>사원<br>김길동</td>
-<%-- 	<td><a href="/board/view?boardno=${doc.doc_num }">${doc.doc_title }</a></td> --%>
-	<td>의견1</td>
-	<td>이름1</td>
-<%-- 	<td><fmt:formatDate value="${board.writtendate }" pattern="yyyy-MM-dd"/></td> --%>
-	<td>2020-05-23<br>13:40:30</td>
-</tr>
-<tr>
-	<td id="add"></td>
-	<td></td>
+	<td>${userrank }<br>${username }</td>
 	<td></td>
 	<td></td>
 	<td></td>
 </tr>
-<%-- </c:forEach> --%>
+
+</tbody>
 </table>
+<button type="button" class="checktest">테스트</button>
 </div> <!-- form-group div -->
 
 </div> <!-- div.container -->
@@ -553,36 +526,34 @@ onclick="location.href='/document/writetemp'">
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
-<form action="">
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
 	<h3>문서 처리</h3>
 	<table class="table table-bordered" style="width: 100%;">
 	<tr>
-		<td class="active" id="doc_title">제목</td>
+		<td class="active">제목</td>
 		<td>제목1</td>
 	</tr>
 	
 	<tr>
 		<td class="active">처리구분</td>
-		<td><input type="radio" id="doc_type" name="doc_title"/>결재</td>
+		<td><input type="radio" id="approve_type" name="approve_type"/>결재</td>
 	</tr>
 	
 	<tr>
 	<td class="active">의견/지시</td>
-	<td><textarea id="doc_comment"></textarea></td>
+	<td><textarea id="approve_comment" name="approve_comment"></textarea></td>
 	</tr>
 	</table>                                                         
 <!--     <p>Some text in the Modal..</p> -->
 
-	<button>확인</button>
+	<input type="submit" onclick="location.href='/document/write'" value="확인">
 	<button>닫기</button>
   </div>
-</form>
 </div>
+</form>
 
-	
-	
+
 <%-- import footer --%>
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

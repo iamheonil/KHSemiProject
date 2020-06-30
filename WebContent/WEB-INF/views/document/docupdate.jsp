@@ -12,71 +12,55 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+
 <script type="text/javascript">
-// $(document).ready(function(){
-// 	searchajax();
-// })
-
-// function searchajax(){
-// 	$("#search").click(function(){
-// 		var word = $("#search").val();
-// 		if(woard!=''){
-// 			$.ajax({
-// 				type: 'POST',
-// 				url: '/';,
-// 				data: { searchword : word },
-// 				dataType: 'json',
-// 				success: function(result){
-// 					if(result.length>0){
-// 						var str = ''
-// 						for(var i=0; i<result.length; i++){
-// 							str += '<span>'+result[i].data + '</span><br>';
-// 						}
-// 						$("#results").html(str);
-// 					}else {$("#results").html(""); }
-// 				},
-// 				error: function(e){console.log('error:' + e.status);}
-// 			});
-// 		}else{ $("#results").html(""); }
-// 	});
-
-// }
-
-// jQuery.ajax({
-// 	type: "post",
-// 	url : "/컨트롤러",
-// 	data : serDate,
-// 	dataType: "json",
-// 	success: function(obj){
-// 		showempinfo(obj);
-// 	},
-// 	complete: function(xhr, status){
-		
-// 	},
-// 	error: function(xhr, status, error){
-// 		console.log(error);
-// 	}
-// })
-
-// function showempinfo(obj){
-// 	var div document.querySelector('#emptable');
-
-// }
-</script>
-<script type="text/javascript">
-// 사원검색하기
-// window.onload = function() {
+//사원 검색
+var newUsersearch = null;
+$(document).ready(function() {
 	
-// 	//button#btnAction 태그에 click 이벤트 리스너 등록하기
-// 	btnAction.onclick = function() {
-// 		//console.log("btnAction clicked");
-		
-// 		//AJAX요청 보내기
-// 		sendRequest("POST", "/ajax/test", "", callback);
-// // 		callback : 요청에 대한 응답함수
-		
-// 	}
-// }
+	newUsersearch = $("tbody.usersearch").clone().eq(0).html();
+	
+	$("#deptSearch").change(function() {
+		makeUsersearch();
+	})
+	$("#rankSearch").change(function() {
+		makeUsersearch();
+	})
+	$("#searchname").keyup(function() {
+		makeUsersearch();
+	})
+})
+
+function makeUsersearch() {
+	
+	$("tbody.usersearch").html( newUsersearch )
+	
+	if( '0' != $('#deptSearch').val()) {
+		$("tbody.usersearch tr td:nth-child(2)").each(function() {
+			if( $(this).text() != $('#deptSearch').val() ) {
+				$(this).parent("tr").remove();
+			}
+		})
+	}
+
+	if( '0' != $('#rankSearch').val()) {
+		$("tbody.usersearch tr td:nth-child(3)").each(function() {
+			if( $(this).text() != $('#rankSearch').val() ) {
+				$(this).parent("tr").remove();
+			}
+		})
+	}
+
+	if( null != $('#searchname').val() && '' != $('#searchname').val()) {
+		$("tbody.usersearch tr td:nth-child(4)").each(function() {
+			if( $(this).text().indexOf($('#searchname').val()) < 0 ) {
+				$(this).parent("tr").remove();
+			}
+		})
+	}
+
+}
+
 $(document).on("click",".guideBox > button", function(){
 	if($(this).next().css("display")=="none"){
 		$(this).next().show();
@@ -86,60 +70,111 @@ $(document).on("click",".guideBox > button", function(){
 		$(this).children("table").text("[열기]");
 	}
 });
+
 $(document).ready(function(){
 
 $("#selectBtn").click(function(){
-	var rowData = new Array();
-	var tdArr = new Array();
-	var checkbox = $("input[name=checkbox]:checked");
+	
+	var checkbox = $("input[name=checkbox]:checked"); // 체크
+	var radiobox = $("input[name=checkbox]:checked"); // 보고 종류
 	
 	// 체크된 체크박스 값을 가져온다
 	checkbox.each(function(i) {
-	
 		
-		// checkbox.parent() : checkbox의 부모는 <td>이다.
-		// checkbox.parent().parent() : <td>의 부모이므로 <tr>이다.
-		var tr = checkbox.parent().parent().eq(i);
-		var td = tr.children();
+		console.log( $(this).parent().parent().children().eq(1) )
+		console.log( $(this).parent().parent().children().eq(3) )
+		console.log( $(this).parent().parent().children().eq(4) )
 		
-		// 체크된 row의 모든 값을 배열에 담는다.
-		rowData.push(tr.text());
+		var type = $(":input:radio[name=report_type]:checked").val();
+		var userid = $(this).parent().parent().children().eq(1).text();
+		var dept = $(this).parent().parent().children().eq(3).text();
+		var name = $(this).parent().parent().children().eq(4).text();
 		
-		// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
-		var dept = td.eq(1).text();
-		var userid = td.eq(2).text();
-		var name = td.eq(3).text();
-		
-		
-		
-		// 가져온 값을 배열에 담는다.
-		tdArr.push(dept);
-		tdArr.push(userid);
-		tdArr.push(name);
-		
-		console.log("tdArr : " + tdArr.length)
-		console.log("부서 : " + dept);
-		console.log("직위 : " + dept);
-		console.log("userid : " + userid);
-		console.log("name : " + name);
-		
-	
-	// 반복되게 해야하는데...
-// 	for(var i=1; i<=tdArr.length; i+3) {
-		$("#name").html("<input id=\"" + dept + "\" value=\""+tdArr[1]+"\" /><br><input id=\"" + userid + "\" value=\""+tdArr[2]+"\" />");
-// 		console.log("실행"+i)
-// 	}
-	
-	});
-	
-	$("#ex3_Result1").html(" * 체크된 Row의 모든 데이터 = "+rowData);	
-	$("#ex3_Result2").html(tdArr);	
-// 	$("#add").html(" * 체크된 Row의 모든 데이터 = "+rowData);	
-	
-	
-});
-});
+		var $tr = $("<tr>")
 
+		var $td1 = $("<td>").html(dept + "<br>" + name)
+		var $td2 = $("<td>").html(type)
+		
+		var $input1 = $("<input>").attr({
+			type: "hidden"
+			, name: "userid"
+			, value: userid
+		})
+		
+		var $input2 = $("<input>").attr({
+			type: "hidden"
+			, name: "type"
+			, value: type
+		})
+		
+		
+		
+		$tr.append( $td2 ).append( $td1 ).append($("<td>")).append($("<td>")).append($("<td>"))
+			.append( $input1 ).append( $input2 )
+		
+		$(".link").append( $tr )
+	}); // checkbox.each -- end
+	
+	checkbox.prop("checked", false)
+	checkbox.prop("disabled", true)
+	
+}); // $("#selectBtn").click(function() -- end
+
+
+
+
+// $(".checktest").click(function() {
+$("#docform").submit(function() {
+	console.log( $("tbody.link tr input[name='userid']") );
+	console.log( $("tbody.link tr input[name='type']") );
+	
+	var users = $("tbody.link tr input[name='userid']").map(function() {
+		return $(this).val();
+	})
+	.get()
+	.join();
+	
+	var types = $("tbody.link tr input[name='type']").map(function() {
+		return $(this).val();
+	})
+	.get()
+	.join();
+	
+	
+	console.log(".checktest clicked")
+	
+	$("<input>").attr({
+		type: "hidden"
+		, name: "users"
+		, value: users
+	}).appendTo( $("#docform") )
+	
+	$("<input>").attr({
+		type: "hidden"
+		, name: "types"
+		, value: types
+	}).appendTo( $("#docform") )
+	
+	console.log(".checktest end")
+	
+})
+
+// 보고경로 삭제
+$("#deleteBtn").click(function() {
+	console.log("클릭됌")
+	
+	var checkbox = $("input[name=checkbox]:disabled");
+	
+	checkbox.each(function(i) {
+		$(".link > tr:nth-child(2)").remove();
+		$("input[type='hidden']").remove();
+		checkbox.prop("checked", false)
+		checkbox.prop("disabled", false)
+		console.log("삭제완료")
+	})
+})
+
+});
 </script>
 
 <script type="text/javascript">
@@ -240,6 +275,12 @@ td:first-child{
 	font-weight: bold;
 	width: 200px;
 }
+#searchname{
+	width: 150px;
+	height: 40px;
+	display: inline-block;
+/* 	float: right; */
+}
 
 input[type=checkbox] {
 	transform : scale(1.5);
@@ -282,15 +323,15 @@ textarea{
 
 <c:import url="/WEB-INF/views/layout/aside_doc.jsp" />
 		
+<form id="docform" method="post" enctype="multipart/form-data">
 <div id="contents">
 <div id="docdetail">
 
 
-<form  method="post" enctype="multipart/form-data">
 <div class="container" style="width: 930px">
 <div id="docbutton" align="right">
 <button type="button" class="btn btn-primary" id="myBtn">문서처리</button>
-<button type="submit" onclick="javascript: form.action='/document/update';"class="btn btn-primary" >임시저장</button>
+<button type="submit" onclick="javascript: form.action='/document/update';" class="btn btn-primary" >임시저장</button>
 <button class="btn btn-primary" onclick="javascript: history.go(-1)">닫기</button>
 </div>
 <h3>문서정보</h3>
@@ -329,7 +370,6 @@ textarea{
 
 </table>
 <input type="submit" value="확인"/>
-</form>
 
 <br>
 
@@ -340,49 +380,60 @@ textarea{
 
 <div style="display:none; ">
 <select id="deptSearch" class="selectpicker">
-	<option selected>부서</option>
-	<option value="human">인사팀</option>
-	<option value="account">회계팀</option>
-	<option value="develop">개발팀</option>
-	<option value="sales">영업팀</option>
-	<option value="resource">자재팀</option>
+	<option value="0" selected>부서</option>
+	<option>인사팀</option>
+	<option>회계팀</option>
+	<option>개발팀</option>
+	<option>영업팀</option>
+	<option>자재팀</option>
 </select>
 <select id="rankSearch" class="selectpicker">
-	<option selected>직급</option>
-	<option value="human">사원</option>
-	<option value="account">대리</option>
-	<option value="develop">과장</option>
-	<option value="sales">차장</option>
-	<option value="resource">팀장</option>
-	<option value="resource">부사장</option>
-	<option value="resource">사장</option>
+	<option value="0" selected>직급</option>
+	<option>사원</option>
+	<option>대리</option>
+	<option>과장</option>
+	<option>차장</option>
+	<option>팀장</option>
+	<option>부사장</option>
+	<option>사장</option>
 </select>
-<div class="tb_wrap" style="width:100%; height:200px; overflow:auto">
+
+<input class="form-control" type="text" id="searchname" name="searchname" 
+	 placeholder="이름으로 검색하기"/>
+<button type="button" id="search" class="btn btn-primary">검색</button>
+<div class="tb_wrap" style="width:100%; height:200px; overflow:auto; border: 1px solid #eee;" >
 <table style="width: 100%; border: 0; " id="userTB" class="table table-bordered"> <!-- c:foreach로 검색 목록 모두 표시 -->
+
 
 <!-- user정보조회된거 -->
 <thead>
 <tr>
 	<th>선택</th>
+	<th>사번</th>
 	<th>부서</th>
 	<th>직위(직급)</th>
 	<th>성명</th>
 </tr>
 </thead>
-<tbody style="cellspacing:0; cellpadding:0;">
+<tbody class="usersearch" style="cellspacing:0; cellpadding:0;">
 <c:forEach items="${user }" var="user">
 <tr>
 	<td><input type="checkbox" name="checkbox"/></td>
-	<td>${user.dept }</td>
-	<td>${user.userrank }</td>
-	<td>${user.username }</td><!-- userrank, 보고종류 -->
+	<td id="name">${user.userid }</td><!-- userrank, 보고종류 -->
+	<td id="dept">${user.dept }</td>
+	<td id="rank">${user.userrank }</td>
+	<td id="name">${user.username }</td><!-- userrank, 보고종류 -->
 </tr>
 </c:forEach>
 </tbody>
 </table>
 </div>
 
-<button type="button" id="selectBtn">추가</button>
+<input type="radio" name="report_type" value="검토" checked="checked"/> 검토
+<input type="radio" name="report_type" value="결재" /> 결재
+
+<button type="button" class="btn btn-primary" id="selectBtn">추가</button>
+<button type="button" class="btn btn-danger" id="deleteBtn">전체삭제</button>
 <br><br>
 </div> <!-- style지정 -->
 <div id="ex3_Result1"></div>
@@ -391,6 +442,7 @@ textarea{
 </div>
 
 <table id="path" class="table table-bordered " style="width: 900px;"> <!-- 부트스트랩, table -->
+<thead>
 <tr class="active">
 	<th style="width: 10%;">구분</th>
 	<th style="width: 15%;">직위/성명</th>
@@ -398,7 +450,8 @@ textarea{
 	<th style="width: 10%;">서명</th>
 	<th style="width: 25%;">처리결과</th>
 </tr>
-<%-- <c:forEach items="${boardList }" var="board"> --%>
+</thead>
+<tbody class="link">
 
 <tr>
 	<td>기안</td>
@@ -407,16 +460,10 @@ textarea{
 	<td></td>
 	<td></td>
 </tr>
-<tr id=add>
-	<td id="type"></td>
-	<td id="name"></td>
-	<td></td>
-	<td></td>
-	<td></td>
-</tr>
-<%-- </c:forEach> --%>
-</table>
 
+</tbody>
+</table>
+<button type="button" class="checktest">테스트</button>
 
 </div> <!-- div.container -->
 </div> <!-- detail -->
@@ -431,7 +478,6 @@ textarea{
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
-<form action="">
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
@@ -454,13 +500,13 @@ textarea{
 	</table>                                                         
 <!--     <p>Some text in the Modal..</p> -->
 
-	<button>확인</button>
+	<input type="submit" onclick="javascript: form.action='/document/write';" value="확인">
 	<button>닫기</button>
   </div>
-</form>
 </div>
 
-	
+</form>
+
 	
 <%-- import footer --%>
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

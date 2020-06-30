@@ -23,12 +23,50 @@ public class Report_linkDaoImpl implements Report_linkDao {
 
 	@Override
 	public void deleteReport_link(Document doc) {
+		conn = JDBCTemplate.getConnection();
 		
+		String sql = "";
+		sql += "DELETE FROM report_link WHERE doc_num = ?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, doc.getDoc_num());
+			
+			ps.executeUpdate();
+			
+			System.out.println("report_linnk 삭제완료");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
 	}
 
 	@Override
-	public void updateReport_link(Document doc) {
+	public void updateReport_link(Report_link report_link) {
+		conn = JDBCTemplate.getConnection();
 		
+		String sql = "";
+		sql += "INSERT INTO report_link(link_num, doc_num, sender_id, receiver_id, report_type, report_version)";
+		sql += " VALUES(report_link_seq.nextval, ?, ?, ?, ?, 1)";
+		
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, report_link.getDoc_num());
+			ps.setInt(2, report_link.getSender_id());
+			ps.setInt(3, report_link.getReceiver_id());
+			ps.setString(4, report_link.getReport_type());
+			
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
 	}
 	
 	@Override

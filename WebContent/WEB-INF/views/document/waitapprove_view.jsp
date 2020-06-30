@@ -13,6 +13,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 
+
 <script type="text/javascript">
 
 // 팝업창 띄우기
@@ -97,6 +98,42 @@ span{
 	color: red;
 }
 
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+    
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 60%; /* Could be more or less, depending on screen size */                          
+        }
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
 </style>
 
 <%-- import header.jsp --%>
@@ -112,8 +149,7 @@ span{
 
 <div id="docbutton" align="right">
 <button class="btn btn-primary" onclick="history.back(-1)">닫기</button>
-<%-- <c:if test="${ }"></c:if> --%>
-<!-- <input type="button" class="btn btn-primary" id="myBtn" value="문서처리"> -->
+<input type="button" class="btn btn-primary" id="myBtn" value="문서처리">
 </div>
 
 <div class="container">
@@ -182,7 +218,40 @@ span{
 </div> <!-- div.container -->
 </div> <!-- detail -->
 
+<!-- 문서처리 팝업창 -->
 
+<!-- The Modal -->
+<form method="post">
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+	<h3>문서 처리</h3>
+	<table class="table table-bordered" style="width: 100%;">
+	<tr>
+		<td class="active">제목</td>
+		<td>제목1</td>
+	</tr>
+	
+	<tr>
+		<td class="active">처리구분</td>
+		<td><input type="radio" id="approve_type" name="approve_type"/>결재</td>
+		<td><input type="radio" id="approve_type" name="approve_type"/>결재</td>
+		<td><input type="radio" id="approve_type" name="approve_type"/>결재</td>
+	</tr>
+	
+	<tr>
+	<td class="active">의견/지시</td>
+	<td><textarea id="approve_comment" name="approve_comment"></textarea></td>
+	</tr>
+	</table>                                                         
+<!--     <p>Some text in the Modal..</p> -->
+
+	<input type="submit" onclick="location.href='/document/write'" value="확인">
+	<button>닫기</button>
+  </div>
+</div>
+</form>
 
 
 	

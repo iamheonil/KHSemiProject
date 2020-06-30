@@ -125,10 +125,10 @@ h3{
 	<td><fmt:formatDate value="${waitApprove.doc_date }" pattern="yyyy-MM-dd"/></td>
 	<td>
 	<c:if test="${waitApprove.doc_emergency eq 'Y' }">
-	<a href="/document/view?doc_num=${waitApprove.doc_num }"><span>[긴급] </span>${waitApprove.doc_title }</a>
+	<a href="/document/approve/view?doc_num=${waitApprove.doc_num }"><span>[긴급] </span>${waitApprove.doc_title }</a>
 	</c:if>
 	<c:if test="${waitApprove.doc_emergency != 'Y' }">
-	<a href="/document/view?doc_num=${waitApprove.doc_num }">${waitApprove.doc_title }</a>
+	<a href="/document/approve/view?doc_num=${waitApprove.doc_num }">${waitApprove.doc_title }</a>
 	</c:if>
 	</td>
 	<td>${waitApprove.dept }</td>

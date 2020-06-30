@@ -26,7 +26,7 @@ public interface Report_linkDao {
 	 * 문서 수정 시 보고경로 수정
 	 * @param doc - 수정할 문서번호정보
 	 */
-	public void updateReport_link(Document doc);
+	public void updateReport_link(Report_link report_link);
 	
 	/**
 	 * 문서번호로 보고경로정보 얻기

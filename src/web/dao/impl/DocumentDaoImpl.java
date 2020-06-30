@@ -315,10 +315,10 @@ public class DocumentDaoImpl implements DocumentDao {
 		// 결재대기함(검색) 조회 개수 조회
 		String sql = "";
 		sql += "SELECT count(*) FROM document D";
-		sql += " JOIN report_link R";
-		sql += " 	ON D.doc_num = R.doc_num";
-		sql += " 	WHERE R.receiver_id = ?";
-		sql += " 	AND D.doc_state = '임시저장'"; // 테스트 끝나면 결재중으로 수정해야함!
+		sql += "	JOIN report_link R ON D.doc_num = R.doc_num AND R.receiver_id = ? AND D.doc_state = '결재중'"; // 테스트 끝나면 결재중으로 바꿔야함
+		sql += "	JOIN doc_comment C ON D.doc_num = C.doc_num AND C.receiver_id = ? AND C.comm_content IS NULL";
+		sql += "	JOIN user_basic U ON C.receiver_id = U.userid";
+		sql += "	WHERE 1=1";
 		if(search != null && !"".equals(search)) { // 검색어 값에 따른 쿼리
 		sql += "	AND doc_title  LIKE ?";
 		}
@@ -332,6 +332,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			
+			ps.setInt(index++, userid);
 			ps.setInt(index++, userid);
 			if(search != null && !"".equals(search)) {
 			ps.setString(index++, "%"+search+"%");
@@ -349,6 +350,9 @@ public class DocumentDaoImpl implements DocumentDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
 		}
 		
 		System.out.println("결재대기함 검색 조회 결과 개수" + cnt);
@@ -366,10 +370,10 @@ public class DocumentDaoImpl implements DocumentDao {
 		sql += "SELECT * FROM (";
 		sql += "	SELECT rownum rnum, DOC.* FROM (";
 		sql += "		SELECT * FROM document D";
-		sql += "	    JOIN report_link R ON D.doc_num = R.doc_num";
-		sql += "	    JOIN user_basic U ON D.userid = U.userid";
-		sql += "		WHERE R.receiver_id = ?";
-		sql += "		AND D.doc_state = '임시저장'"; // 테스트 끝나면 결재중으로 수정해야함!
+		sql += "	    JOIN report_link R ON D.doc_num = R.doc_num AND R.receiver_id = 297 AND D.doc_state = '결재중'"; // 테스트 끝나면 결재중으로 수정해야함!
+		sql += "	    JOIN doc_comment C ON D.doc_num = C.doc_num AND C.receiver_id = 297 AND C.comm_content IS NULL";
+		sql += "		JOIN user_basic U ON C.receiver_id = U.userid";
+		sql += "		WHERE 1=1"; 
 		
 		if(paging.getSearch() != null && !"".equals(paging.getSearch())) {
 		sql += "		AND D.doc_title  LIKE ?";
@@ -387,7 +391,8 @@ public class DocumentDaoImpl implements DocumentDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			
-			ps.setInt(index++, userid);
+//			ps.setInt(index++, userid);
+//			ps.setInt(index++, userid);
 			if(paging.getSearch() != null && !"".equals(paging.getSearch())) {
 				ps.setString(index++, "%"+paging.getSearch()+"%");
 			}
@@ -438,13 +443,11 @@ public class DocumentDaoImpl implements DocumentDao {
 		
 		// 처리할 일 - 결재대기함 조회
 		String sql = "";
-		sql += "SELECT rownum rnum, DOC.*";
-		sql += " FROM (";
-		sql += " 	SELECT * FROM document D";
-		sql += "	JOIN report_link R ON D.doc_num = R.doc_num";
-		sql += "	JOIN user_basic U ON D.userid = U.userid";
-		sql += "	WHERE R.receiver_id = ?";
-		sql += "	AND D.doc_state = '임시저장'"; // 테스트 끝나면 결재중으로 수정해야함!
+		sql += "SELECT rownum rnum, DOC.* FROM (";
+		sql += "	SELECT * FROM document D";
+		sql += " 	JOIN report_link R ON D.doc_num = R.doc_num AND R.receiver_id = ? AND D.doc_state = '결재중'";
+		sql += "	JOIN doc_comment C ON D.doc_num = C.doc_num AND C.receiver_id = ? AND C.comm_content IS NULL";
+		sql += "	JOIN user_basic U ON C.receiver_id = U.userid";
 		sql += "    ORDER BY D.doc_num DESC";
 		sql += " )DOC";
 
@@ -452,6 +455,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			
+			ps.setInt(index++, userid);
 			ps.setInt(index++, userid);
 			
 			rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
@@ -1255,7 +1259,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		
 		// 문서등록대장
 		String sql = "";
-		sql += "SELECT username, userrank, dept FROM user_basic";
+		sql += "SELECT username, userrank, dept, userid FROM user_basic";
 		sql += "	ORDER BY userid";
 		
 		List<User_basic> list = new ArrayList<>();
@@ -1275,6 +1279,7 @@ public class DocumentDaoImpl implements DocumentDao {
 				user.setDept(rs.getString("dept"));
 				user.setUsername(rs.getString("username"));
 				user.setUserrank(rs.getString("userrank"));
+				user.setUserid(rs.getInt("userid"));
 				
 				//리스트에 결과값 저장
 				list.add(user);
@@ -1289,7 +1294,48 @@ public class DocumentDaoImpl implements DocumentDao {
 		return list;
 	}
 
-
+//	public ArrayList<Map<String, Object>> selectReportComment(){
+//		// 문서등록대장
+//		String sql = "";
+//		sql += "SELECT * FROM (";
+//		sql += "WHERE rnum BETWEEN ? AND ?";
+//		
+//		int index=1;
+//		try {
+//			ps = conn.prepareStatement(sql);
+//			
+//			ps.setInt(index++, paging.getStartNo());
+//			ps.setInt(index++, paging.getEndNo());
+//			
+//			rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
+//			
+//			//조회 결과 처리
+//			while(rs.next()) {
+//				Map<String, Object> d = new HashMap<String, Object>(); //결과값 저장 객체
+//		 		
+//				
+//				//결과값 한 행 처리
+//				d.put("doc_num", rs.getInt("doc_num"));
+//				d.put("doc_date", rs.getDate("doc_date"));
+//				d.put("doc_title", rs.getString("doc_title"));
+//				d.put("dept", rs.getString("dept"));
+//				d.put("userrank", rs.getString("userrank"));
+//				d.put("username", rs.getString("username"));
+//				d.put("doc_state", rs.getString("doc_state"));
+//				d.put("doc_emergency", rs.getString("doc_emergency"));
+//				
+//				//리스트에 결과값 저장
+//				list.add(d);
+//			}
+//		}catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			JDBCTemplate.close(rs);
+//			JDBCTemplate.close(ps);
+//		}
+//			
+//		return list;
+//	}
 	
 	
 }

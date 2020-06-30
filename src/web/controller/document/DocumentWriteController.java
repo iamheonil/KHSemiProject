@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import web.dto.Doc_comment;
 import web.dto.Document;
+import web.dto.Report_link;
 import web.dto.User_basic;
 import web.service.face.Doc_attachService;
 import web.service.face.DocumentService;
@@ -30,11 +32,6 @@ public class DocumentWriteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-//		User_basic user = new User_basic();
-		//세션 객체 얻기
-//		HttpSession session = req.getSession();
-//		user.setUserid((int)session.getAttribute("userid"));
-
 		//사원 정보 조회
 		List<User_basic> user = documentService.userlist();
 		req.setAttribute("user", user);
@@ -52,6 +49,11 @@ public class DocumentWriteController extends HttpServlet {
 		document.setUserid((int)session.getAttribute("userid"));
 		
 		documentService.writeDoc(req);
+		
+		Doc_comment dcomm = new Doc_comment();
+		String approveComm = req.getParameter("approve_comment");
+		dcomm.setComm_content(approveComm);
+		
 		
 		Document doc = documentService.getDocumentno(req);
 		report_linkService.getDocReport_Link(doc);
