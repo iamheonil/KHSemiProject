@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import web.dao.face.User_basicDao;
 import web.dto.User_basic;
 import web.service.face.User_basicService;
 import web.service.impl.User_basicServiceImpl;
@@ -26,16 +27,30 @@ public class AdminUserBasicListController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		System.out.println("userBasicList [DoGet] 확인");
-
-		// 검색 결과이므로 페이징 넣지 않습니다.
-		List<User_basic> list = user_basicService.selectUser_basic(req);
-
+		
+		//검색 결과 가져옴
+		String search = req.getParameter("search");
+		System.out.println("Userbasic : " + search);
+	
 		// 조회 결과 전달
-		req.setAttribute("list", list);
-
+		req.setAttribute("search", search);
+		
+		List<User_basic> userbasiclist = user_basicService.selectUser_basic(search);
+		
+		req.setAttribute("userbasiclist", userbasiclist);
+		
 		// view지정
-		req.getRequestDispatcher("/WEB-INF/views/admin/dept/list.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/admin/userbasic/list.jsp").forward(req, resp);
 
 	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
+		
+	}
+	
+	
 
 }

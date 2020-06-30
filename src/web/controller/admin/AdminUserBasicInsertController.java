@@ -24,7 +24,7 @@ public class AdminUserBasicInsertController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		//view 지정
-		req.getRequestDispatcher("/WEB-INF/views/admin/dept/insert.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/admin/userbasic/insert.jsp").forward(req, resp);
 		
 	}
 
@@ -34,7 +34,7 @@ public class AdminUserBasicInsertController extends HttpServlet {
 		
 		user_basicService.insertUser_basic(req);
 		
-		resp.sendRedirect("admin/userbasic/list");
+		resp.sendRedirect("/admin/userbasic/list");
 		
 	}
 

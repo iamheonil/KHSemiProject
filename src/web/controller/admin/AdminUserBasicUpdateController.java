@@ -24,7 +24,7 @@ public class AdminUserBasicUpdateController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		// view 지정
-		req.getRequestDispatcher("WEB-INF/views/admin/dept/update.jsp").forward(req, resp);
+		req.getRequestDispatcher("WEB-INF/views/admin/userbasic/update.jsp").forward(req, resp);
 
 	}
 
@@ -34,7 +34,7 @@ public class AdminUserBasicUpdateController extends HttpServlet {
 		
 		user_basicService.modifyUser_basic(req);
 		
-		resp.sendRedirect("admin/view");
+		resp.sendRedirect("/admin/view");
 		
 	}
 	
