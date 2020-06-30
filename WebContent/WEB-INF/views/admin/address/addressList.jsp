@@ -27,6 +27,12 @@
 	
 }
 
+.title {
+	text-align: left;
+	margin-bottom: 18px;
+	font-weight: bold;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -55,8 +61,6 @@ $(document).ready(function() {
 		<!-- float 해제 -->
 		<div class="clearfix"></div>
 
-<h3>주소록 목록</h3>
-<hr>
 
 <!-- float 해제 -->
 <!-- <div class="clearfix"></div> -->
@@ -66,15 +70,11 @@ $(document).ready(function() {
 <div class="container">
 	<div class="wrap">
 	
-<div class="form-inline" style="text-align: right;">
-
-	<input class="form-control" type="text" id="keyword" name="keyword" 
-		 placeholder="이름을 입력하세요"/>
-	<button id="searchBtn" class="btn btn-primary">Search</button><br><br>
-
-</div> 
 		<div class="contents">
-			<table id="check" class="table table-striped table-hover table-condensed">
+<h2 class="title">주소록 목록</h2>
+<hr>
+<br>
+			<table id="check" class="table table-striped table-hover">
 				<thead>
 <!-- 				<tr><th colspan="5" style="text-align: center;">주소록</th></tr> -->
 				<tr class="info">
@@ -86,20 +86,22 @@ $(document).ready(function() {
 				</tr>
 				</thead>
 					<c:forEach items="${detailList }" var="detail">
-				<tbody>
-				<tr>
+				<tr class="table-content">
 					<td class="text-center">${detail.dept }</td>
 					<td class="text-center">${detail.userrank }</td>
 					<td class="text-center">${detail.username }</td>
 					<td class="text-center">${detail.useraddr }</td>
 					<td class="text-center">${detail.userphone }</td>
 				</tr>
-				</tbody>
 					</c:forEach>
 				
 			</table>
 			
-			
+	<div class="form-inline text-center">
+	<input class="form-control" type="text" id="keyword" name="keyword" 
+		style="width:180px;" placeholder="이름을 입력하세요"/>
+	<button id="searchBtn" class="btn btn-primary">Search</button>
+	</div>
 				<c:import url="/WEB-INF/views/adlayout/ad_paging.jsp" />
 				
 		</div>
