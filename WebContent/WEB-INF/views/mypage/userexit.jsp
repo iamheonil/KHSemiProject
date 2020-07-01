@@ -179,6 +179,9 @@
 
 <div id="contents">
 	<h2>회원 탈퇴 페이지</h2>
+	<h4>탈퇴 시 재 가입이 불가합니다. <br>
+		작성글과 댓글은 자동으로 삭제되지 않습니다. <br>
+		동의하시면 아래 비밀번호를 입력 후 회원탈퇴를 진행해주세요.</h4>
 	<div style="width=70%; margin-left: 310px;">
 		<form action="/user/delete" method="POST">
 			<table style="width: 70%; margin-left: 35px; border-collapse: separate; border-spacing: 0px 30px; text-align: left;">

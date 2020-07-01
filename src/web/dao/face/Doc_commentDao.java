@@ -34,5 +34,7 @@ public interface Doc_commentDao {
 	public void insertDoc_comment(Doc_comment doc_comment);
 	
 	
+	public void updateDoc_comment(Doc_comment comm);
+	
 	
 }
