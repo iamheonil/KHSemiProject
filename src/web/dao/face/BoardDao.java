@@ -51,7 +51,7 @@ public interface BoardDao {
 	 */
 	
 	public int selectCntAll();
-	public int selectCntAll(String search);
+	public int selectCntAll(String search, int search2);
 	
 	/**
 	 * 
@@ -60,7 +60,7 @@ public interface BoardDao {
 	 * 
 	 * @return - 공지사항 전체 게시글 수
 	 */
-	
+	public int selectNoticeCntAll();
 	public int selectNoticeCntAll(String search, int search2);
 
 	/**

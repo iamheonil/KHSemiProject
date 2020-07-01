@@ -84,6 +84,11 @@ $(document).ready(function(){
 		<c:import url="/WEB-INF/views/layout/b_Spaging.jsp" />
 
 		<div class="form-inline text-center">
+			<select id= "search2" style="width:100px;">
+				<option value="1">제목</option>
+				<option value="2">내용</option>			
+				<option value="3">작성자</option>
+			</select>
 			<input class="form-control" type="text" id="search" style="width:250px;" placeholder="검색어를 입력해주세요"/>
 			<button id="btnSearch" class="btn glyphicon glyphicon-search"></button>
 		</div>
