@@ -77,7 +77,7 @@ public interface User_basicService {
 	 * @return List<User_basic> - 조회된 회원정보
 	 */
 	
-	public List<User_basic> selectUser_basic(HttpServletRequest req);
+	public List<User_basic> selectUser_basic(String search);
 	
 	
 	/**

@@ -107,12 +107,12 @@ public class User_basicServiceImpl implements User_basicService {
 		user_basicDao.deleteUser_basic(user_detail);
 		
 	}
-
+	
 	@Override
-	public List<User_basic> selectUser_basic(HttpServletRequest req) {
-
-		return null;
+	public List<User_basic> selectUser_basic(String search) {
+		return user_basicDao.selectUser_basic(search);
 	}
+
 
 	@Override
 	public void deleteUserList(String names) {

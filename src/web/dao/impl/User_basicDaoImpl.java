@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import web.dao.face.User_basicDao;
@@ -26,7 +27,7 @@ public class User_basicDaoImpl implements User_basicDao {
 		// 다음 게시글 번호 조회 쿼리
 		String sql = "";
 		sql += "INSERT INTO User_basic(basicnum, userid, username, userrank, dept) ";
-		sql += " VALUES (dayoff_seq.nextval, ?, ?, ?, ?)";
+		sql += " VALUES (basicnum_seq.nextval, ?, ?, ?, ?)";
 
 		try {
 			// DB작업
@@ -157,9 +158,49 @@ public class User_basicDaoImpl implements User_basicDao {
 	}
 
 	@Override
-	public List<User_basic> selectUser_basic() {
+	public List<User_basic> selectUser_basic(String search) {
 		
-		return null;
+
+		conn = JDBCTemplate.getConnection();
+		List<User_basic> list = new ArrayList<>();
+		
+		User_basic user_basic = null;
+		
+		String sql = "";
+		sql += "SELECT userid, username, userrank, dept FROM user_basic";
+		sql += " WHERE 1=1";
+		if( search != null && !"".equals(search)) {
+		sql += " AND username LIKE ?";
+		}
+		sql += "	ORDER BY userid";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			if( search != null && !"".equals(search)) {
+			ps.setString(1, "%"+search+"%");
+			}
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				user_basic = new User_basic();
+				
+				user_basic.setUserid(rs.getInt("userid"));
+				user_basic.setUsername(rs.getString("username"));
+				user_basic.setUserrank(rs.getString("userrank"));
+				user_basic.setDept(rs.getString("dept"));
+				
+				list.add(user_basic);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return list;
 	}
 
 	@Override

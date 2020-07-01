@@ -114,7 +114,7 @@ caption {
 		<c:forEach items="${userbasiclist }" var="userbasic">
 			<tr>
 				<td>${userbasic.userid }</td>
-				<td>${userbasic.username }</td>
+				<td><a href="/admin/userbasic/modify?userid=${userbasic.userid }"></a>${userbasic.username }</td>
 				<td>${userbasic.userrank }</td>
 				<td>${userbasic.dept }</td>
 			</tr>

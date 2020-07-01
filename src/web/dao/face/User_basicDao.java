@@ -70,7 +70,7 @@ public interface User_basicDao {
 	 * 
 	 * @return List<User_basic> - 조회된 정보
 	 */
-	public List<User_basic> selectUser_basic();
+	public List<User_basic> selectUser_basic(String search);
 	
 	/**
 	 * 회원 리스트 삭제
