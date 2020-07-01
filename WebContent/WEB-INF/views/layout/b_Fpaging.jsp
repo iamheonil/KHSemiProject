@@ -37,7 +37,7 @@
 	
 	<!-- 보고 있는 페이지번호 강조 (.active) -->
 	<c:if test="${paging.curPage eq i }">
-		<li class="active"><a href="/board/free?curPage=${i }&search=${param.search }&search2=${param.search2}">${i }</a></li>
+		<li class="active"><a href="/board/free?curPage=${i }&search=${param.search }&search2=${param.search2 }">${i }</a></li>
 	</c:if>
 	
 	<!-- 보고 있는 페이지번호가 아니면 평소 모양으로 보여주기 -->
@@ -58,7 +58,7 @@
 	
 	<!-- 다음 페이징 리스트로 가기 -->
 	<c:if test="${paging.endPage ne paging.totalPage }">
-	<li><a href="/board/free?curPage=${paging.startPage + paging.pageCount }&search2=${param.search }&search2=${param.search2}">&raquo;</a></li>
+	<li><a href="/board/free?curPage=${paging.startPage + paging.pageCount }&search=${param.search }&search2=${param.search2 }">&raquo;</a></li>
 	</c:if>
 
 	<c:if test="${paging.endPage eq paging.totalPage }">
