@@ -8,6 +8,8 @@ import web.dao.face.User_basicDao;
 import web.dao.face.User_detailDao;
 import web.dao.impl.User_basicDaoImpl;
 import web.dao.impl.User_detailDaoImpl;
+import web.dbutil.JDBCTemplate;
+import web.dto.Dayoff;
 import web.dto.User_basic;
 import web.dto.User_detail;
 import web.service.face.User_basicService;
@@ -84,18 +86,14 @@ public class User_basicServiceImpl implements User_basicService {
 	}
 
 	@Override
-	public void modifyUser_basic(HttpServletRequest req) {
-		// 사원정보 저장할 객체
-		User_basic userb = new User_basic();
-
-		// 사번 생성 - Dao 이용    
-		int usernum = user_basicDao.nextBasicnum();
-
-		// basicnum 입력
-		userb.setBasicnum(usernum);
-
+	public User_basic modifyUser_basic(User_basic userid) {
 		// 유저 삽입
-		user_basicDao.updateUser_basic(userb);
+		user_basicDao.updateUser_basic(userid);
+		
+		//유저 조회
+		User_basic user = user_basicDao.selectById(userid);
+		
+		return user;
 
 	}
 
@@ -117,5 +115,6 @@ public class User_basicServiceImpl implements User_basicService {
 		user_basicDao.deleteUser_BasicList(names);
 
 	}
+
 
 }
