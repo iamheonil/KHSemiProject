@@ -23,9 +23,5 @@ public class Doc_commentServiceImpl implements Doc_commentService {
 	public void insertDoc_comment(Doc_comment comm) {
 		doc_commentDao.insertDoc_comment(comm);
 	}
-	
-	public void updateDoc_comment(Doc_comment comm) {
-		doc_commentDao.updateDoc_comment(comm);
-	}
 
 }
