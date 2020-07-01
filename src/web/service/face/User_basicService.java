@@ -59,10 +59,9 @@ public interface User_basicService {
 	/**
 	 * 회원정보 수정(관리자)
 	 * 
-	 * @param userid - 수정할 정보
-	 * @return 
+	 * @param req - 수정할 정보
 	 */
-	public User_basic modifyUser_basic(User_basic userid);
+	public void modifyUser_basic(HttpServletRequest req);
 
 	
 	/**
