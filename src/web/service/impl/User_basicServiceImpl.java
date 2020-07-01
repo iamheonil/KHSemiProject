@@ -86,14 +86,18 @@ public class User_basicServiceImpl implements User_basicService {
 	}
 
 	@Override
-	public User_basic modifyUser_basic(User_basic userid) {
+	public void modifyUser_basic(HttpServletRequest req) {
+		// 사원정보 저장할 객체
+		User_basic userb = new User_basic();
+
+		// 사번 생성 - Dao 이용    
+		int usernum = user_basicDao.nextBasicnum();
+
+		// basicnum 입력
+		userb.setBasicnum(usernum);
+
 		// 유저 삽입
-		user_basicDao.updateUser_basic(userid);
-		
-		//유저 조회
-		User_basic user = user_basicDao.selectById(userid);
-		
-		return user;
+		user_basicDao.updateUser_basic(userb);
 
 	}
 
@@ -115,6 +119,5 @@ public class User_basicServiceImpl implements User_basicService {
 		user_basicDao.deleteUser_BasicList(names);
 
 	}
-
 
 }

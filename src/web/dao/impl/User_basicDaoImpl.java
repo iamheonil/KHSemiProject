@@ -104,7 +104,6 @@ public class User_basicDaoImpl implements User_basicDao {
 		sql += "	userrank =?";
 		sql += "	dept =?";
 		sql += " 	WHERE userid=?";
-		
 
 		try {
 			// DB작업
