@@ -28,7 +28,7 @@ public class BoardFreeController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("게시판 목록 호출 완료 [GET]");
+//		System.out.println("게시판 목록 호출 완료 [GET]");
 		
 		// 요청 파라미터를 전달을 통해 Paging 객체 생성
 		B_Paging paging = boardService.getFreePaging(req);

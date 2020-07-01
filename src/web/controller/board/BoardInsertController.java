@@ -21,7 +21,7 @@ public class BoardInsertController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-	System.out.println("Write [doGET] 확인");
+//	System.out.println("Write [doGET] 확인");
 	if( req.getSession().getAttribute("login") == null) {
 		
 		return;
@@ -33,7 +33,7 @@ public class BoardInsertController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		System.out.println("글쓰기 [POST]확인");
+//		System.out.println("글쓰기 [POST]확인");
 		boardService.boardInsert(req);
 		resp.sendRedirect("/board/list");
 	}

@@ -63,16 +63,24 @@ public class BoardServiceImpl implements BoardService{
 		}
 		//Board 테이블의 총 게시글 수 조회
 		//검색어
-		String search = (String)req.getParameter("search");
+		String search = req.getParameter("search");
 		
 		
-		int totalCount = boardDao.selectCntAll(search);
+		param = req.getParameter("search2");
+		int search2 = 0;
+		if( param!=null && !"".equals(param)) {
+			search2 = Integer.parseInt(param);
+		}
+		
+		
+		int totalCount = boardDao.selectCntAll(search, search2);
 		
 		//Paging 객체 생성
 		B_Paging paging = new B_Paging(totalCount, curPage);
 		
 		//검색어
 		paging.setSearch(search);
+		paging.setValue(search2);
 		
 		return paging;
 	}
@@ -92,7 +100,7 @@ public class BoardServiceImpl implements BoardService{
 		
 		param = req.getParameter("search2");
 		int search2 = 0;
-		if( param!=null && "".equals(param)) {
+		if( param!=null && !"".equals(param)) {
 			search2 = Integer.parseInt(param);
 		}
 		
@@ -103,6 +111,7 @@ public class BoardServiceImpl implements BoardService{
 		//Paging 객체 생성
 		B_Paging paging = new B_Paging(totalCount, curPage);
 		paging.setSearch(search);
+		paging.setValue(search2);
 		return paging;
 		
 	}
@@ -121,12 +130,20 @@ public class BoardServiceImpl implements BoardService{
 					
 				}
 				//Board 테이블의 총 게시글 수 조회
-				String search = (String)req.getParameter("search");
-				int totalCount = boardDao.selectStudyCntAll(search);
+				String search = req.getParameter("search");
 				
+				param = req.getParameter("search2");
+				int search2 = 0;
+				if( param!=null && !"".equals(param)) {
+					search2 = Integer.parseInt(param);
+				}
+				
+				
+				int totalCount = boardDao.selectStudyCntAll(search, search2);
 				//Paging 객체 생성
 				B_Paging paging = new B_Paging(totalCount, curPage);
 				paging.setSearch(search);
+				paging.setValue(search2);
 				return paging;
 	}
 	
