@@ -82,7 +82,7 @@ public interface BoardDao {
 	 */
 	
 	public int selectFreeCntAll();
-	public int selectFreeCntAll(String search);
+	public int selectFreeCntAll(String search, int search2);
 	
 	
 	/**
