@@ -197,8 +197,6 @@ public interface DocumentService {
 	 */
 	public SearchPaging getDocumentPaging(HttpServletRequest req);
 	
-	
-
 	/**
 	 * 문서등록대장 전체 조회
 	 * 
@@ -209,15 +207,6 @@ public interface DocumentService {
 	 */
 	public ArrayList<Map<String, Object>> getListDocumentAll(SearchPaging paging, String startDate, String endDate);
 
-	
-	/**
-	 * 처리할일에서 결재대기함 문서 조회(페이징x)
-	 * 
-	 * @return List<Document> - 조회된 List<Document> 정보
-	 */
-	public List<Document> getDoListWaitApprove();
-	
-	
 	/**
 	 * 처리할일에서 진행문서함 문서 조회(페이징x)
 	 * 

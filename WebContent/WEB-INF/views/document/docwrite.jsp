@@ -393,7 +393,7 @@ textarea{
 <div id="docbutton" align="right">
 <h3 style="float:left;">문서정보</h3>
 <button type="button" class="btn btn-primary" id="myBtn">문서처리</button>
-<button type="submit" onclick="javascript: form.action='/document/writetemp';" class="btn btn-primary" >임시저장</button>
+<!-- <button type="submit" onclick="javascript: form.action='/document/writetemp';" class="btn btn-primary" >임시저장</button> -->
 <button class="btn btn-primary" onclick="javascript: history.go(-1)">닫기</button>
 </div>
 
@@ -547,11 +547,6 @@ textarea{
     <span class="close">&times;</span>
 	<h3>문서 처리</h3>
 	<table class="table table-bordered" style="width: 100%;">
-	<tr>
-		<td class="active">제목</td>
-		<td>제목1</td>
-	</tr>
-	
 	<tr>
 		<td class="active">처리구분</td>
 		<td><input type="radio" id="approve_type" name="approve_type" checked="checked" />결재</td>

@@ -82,22 +82,8 @@ public interface DocumentDao {
 	 */
 	public void deleteTemp(Document doc);
 	
-	/**
-	 * 문서 수정
-	 * @param doc - 수정할 docno를 포함한 Document객체
-	 */
-	public void updateDocument(Document doc);
 	
-	/**
-	 * 결재대기함 페이징에 필요한 개수 조회
-	 * 처리할일에도 쓰임
-	 * 
-	 * @return int - 조회된 결재대기함의 문서 개수
-	 */
-	public int selectWaitApproveCntAll();
-	
-	
-	/** 추가!
+	/** 
 	 * 결재대기함(검색) 페이징에 필요한 개수 조회
 	 * 
 	 * 
@@ -124,14 +110,6 @@ public interface DocumentDao {
 	 * @return ArrayList<Map<String, Object>> - 조회된 결재대기함 값
 	 */
 	public ArrayList<Map<String, Object>> selectWaitApproveDo(int userid);
-	
-	/**
-	 * 검색값이 없는 결재대기함 페이징 조회(필요x)
-	 * 
-	 * @param paging - Paging 객체정보
-	 * @return List<Document> - 조회된 List<Document> 
-	 */
-	public List<Document> selectWaitApproveAll(Paging paging);
 	
 	
 	/**
@@ -186,14 +164,6 @@ public interface DocumentDao {
 	
 	
 	/**
-	 * 기안한문서(검색) 페이징에 필요한 개수 조회
-	 * 
-	 * @return int - 조회된 기안한문서 문서 개수
-	 */
-	public int selectDraftSearchCntAll();
-	
-	
-	/**
 	 * 검색값이 없는 기안한문서 페이징 조회
 	 * 
 	 * @param paging - Paging 객체정보
@@ -239,24 +209,6 @@ public interface DocumentDao {
 	 * @return ArrayList<Map<String, Object>> - 조회된 문서등록대장 값
 	 */
 	public ArrayList<Map<String, Object>> selectDocumentAll(SearchPaging paging, String startDate, String endDate);
-	
-
-	/**
-	 * 처리할일에서 결재대기함 문서 조회(페이징x)
-	 * 
-	 * @return List<Document> - 조호된 List<Document>
-	 */
-	public List<Document> selectDoListWaitApprove();
-	
-	
-	/**
-	 * 처리할일에서 진행문서함 문서 조회(페이징x)
-	 * 
-	 * @return List<Document> - 조호된 List<Document>
-	 */
-	public List<Document> getProgressDo();
-	
-	
 	
 	/**
 	 * 체크박스로 삭제하기

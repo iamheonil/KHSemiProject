@@ -69,21 +69,6 @@ public class DocumentServiceImpl implements DocumentService {
 
    @Override
    public void writeDoc(HttpServletRequest req) {
-      // ----------- urlencoded 처리 -----------
-//      Board board = new Board();
-//
-//      board.setTitle( req.getParameter("title") );
-//      board.setContent( req.getParameter("content") );
-//
-//      //작성자id 처리
-//      board.setId((String) req.getSession().getAttribute("userid"));
-//
-//      if(board.getTitle()==null || "".equals(board.getTitle())) {
-//         board.setTitle("(제목없음)");
-//      }
-//
-//      boardDao.insert(board);
-      // ---------------------------------------
 
       // 게시글 정보 저장할 객체
       Document doc = null;
@@ -231,7 +216,7 @@ public class DocumentServiceImpl implements DocumentService {
             // 저장될 이름
             String stored = rename + "." + ext;
 
-            System.out.println("[TEST] stored file name : " + stored);
+//            System.out.println("[TEST] stored file name : " + stored);
 
             // -------- DB에 업로드된 파일에 대한 정보 기록하기 --------
             docAttach = new Doc_attach();
@@ -240,9 +225,6 @@ public class DocumentServiceImpl implements DocumentService {
             docAttach.setAttach_ext(ext);
             docAttach.setAttach_size((int) item.getSize());
 
-            // DB에 기록하기
-//            fileDao.insert(uploadFile);
-//            doc_attachDao.insertDoc_attach(docAttach);
             // -------------------------------------------
 
             // --- 로컬 저장소의 파일 객체 생성 ---
@@ -1060,11 +1042,11 @@ public class DocumentServiceImpl implements DocumentService {
       return documentDao.selectDocumentAll(paging, startDate, endDate);
    }
 
-   @Override
-   public List<Document> getDoListWaitApprove() {
-
-      return documentDao.selectDoListWaitApprove();
-   }
+//   @Override
+//   public List<Document> getDoListWaitApprove() {
+//
+//      return documentDao.selectDoListWaitApprove();
+//   }
 
    @Override
    public ArrayList<Map<String, Object>> getDoListProgress(int userid) {
