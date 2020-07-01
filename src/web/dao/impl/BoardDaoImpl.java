@@ -224,7 +224,7 @@ public class BoardDaoImpl implements BoardDao{
 	}
 	
 	@Override
-	public int selectCntAll(String search, int search2) {
+	public int selectCntAll(String search) {
 
 		      conn = JDBCTemplate.getConnection(); //DB연결
 		      
@@ -236,15 +236,8 @@ public class BoardDaoImpl implements BoardDao{
 		      sql += "     , b_content, b_date, hits, userid, username, userrank, dept, c_cnt";
 		      sql += "    FROM board";
 		      sql += "       WHERE 1=1";
-//		      		if( null != search && !"".equals(search)) {
-//		      sql += "       AND b_title LIKE ?";
-//		      }
-		      if(search2 == 1) {
-		      sql += "    AND b_title LIKE ?";
-		      } else if(search2 == 2) {
-		      sql += "    AND b_content LIKE ?";  
-		      } else if(search2 == 3) {
-		      sql += "    AND username LIKE ?";
+		      		if( null != search && !"".equals(search)) {
+		      sql += "       AND b_title LIKE ?";
 		      }
 //		      sql += " 		AND c_cnt = (SELECT count(*) FROM board_comment board.b_num = b_num)";
 		      sql += " )";
@@ -255,11 +248,8 @@ public class BoardDaoImpl implements BoardDao{
 		      
 		      try {
 		         ps = conn.prepareStatement(sql); //sql 수행객체
-//		         if( null != search && !"".equals(search)) {
-//		         ps.setString(1, "%"+search+"%");
-//		         }
-		         if( search2 == 1 || search2 == 2 || search2 == 3) {
-		        	 ps.setString(1, "%" + search2 + "%");
+		         if( null != search && !"".equals(search)) {
+		         ps.setString(1, "%"+search+"%");
 		         }
 		         rs=ps.executeQuery(); 
 		         
@@ -280,37 +270,7 @@ public class BoardDaoImpl implements BoardDao{
 		      
 	
 	}
-	@Override
-	public int selectNoticeCntAll() {
-		conn = JDBCTemplate.getConnection(); //DB연결
-		
-		//SQL
-		String sql = "";
-		sql += "SELECT COUNT(*) from board";
-		sql += " WHERE category='공지사항'";
-		
-		//결과 저장 int 생성
-		int totalCount = 0;
-		
-		try {
-			ps = conn.prepareStatement(sql); //sql 수행객체
-			rs=ps.executeQuery(); 
-			
-			while(rs.next()) {
-				totalCount = rs.getInt(1);
-				
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(ps);
-			
-		}
-		
-		return totalCount;
-	}
+
 	@Override
 	public int selectNoticeCntAll(String search, int search2) {
 		
@@ -516,16 +476,9 @@ public class BoardDaoImpl implements BoardDao{
 		sql += "  	, b_content, b_date, hits, userid, username, userrank, dept, c_cnt";
 		sql += "    FROM board";
 		sql += "       WHERE 1=1";
-//		if( null != paging.getSearch() && !"".equals(paging.getSearch())) {
-//		sql += "       AND b_title Like ?";
-//		}
-		if(paging.getValue() == 1) {
-			sql += "    AND b_title LIKE ?";
-			} else if(paging.getValue() == 2) {
-			sql += "    AND b_content LIKE ?";	
-			} else if(paging.getValue() == 3) {
-			sql += "    AND username LIKE ?";	
-			}
+		if( null != paging.getSearch() && !"".equals(paging.getSearch())) {
+		sql += "       AND b_title Like ?";
+		}
 		sql += "	ORDER BY b_num DESC";
 		sql += "    ) B";
 		sql += "     ORDER BY rnum";
@@ -537,12 +490,8 @@ public class BoardDaoImpl implements BoardDao{
 			try {
 				ps=conn.prepareStatement(sql);
 				int index = 1;
-//				if( null != paging.getSearch() && !"".equals(paging.getSearch())) {
-//				ps.setString(index++, "%" + paging.getSearch()+"%");
-//				}
-				if(paging.getValue() == 1 || paging.getValue() == 2 || paging.getValue() == 3) {
-					
-					ps.setString(index++, "%" + paging.getSearch() + "%");
+				if( null != paging.getSearch() && !"".equals(paging.getSearch())) {
+				ps.setString(index++, "%" + paging.getSearch()+"%");
 				}
 				ps.setInt(index++, paging.getStartNo());
 				ps.setInt(index++, paging.getEndNo());
@@ -1103,9 +1052,6 @@ public class BoardDaoImpl implements BoardDao{
 			}
 		}
 	}
-
-
-	
 
 
 	
