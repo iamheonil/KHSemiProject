@@ -255,7 +255,7 @@ span{
 	
 	<tr>
 		<td class="active">처리구분</td>
-		<td><input type="radio" id="approve_type" name="approve_type" value="결재"/> 결재 <!-- name변경!!! -->
+		<td><input type="radio" id="approve_type" name="approve_type" value="결재" checked="checked" /> 결재 <!-- name변경!!! -->
 		<input type="radio" id="approve_type" name="approve_type" value="중단"/> 중단
 		</td>
 	</tr>

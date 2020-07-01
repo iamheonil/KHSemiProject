@@ -1400,5 +1400,25 @@ public class DocumentDaoImpl implements DocumentDao {
 		}
 	}
 	
+	@Override
+	public void updateDocStateStop(Doc_comment comm) {
+		conn = JDBCTemplate.getConnection();
+		
+		String sql = "";
+		sql += "UPDATE document SET doc_state = '중단'";
+		sql += " WHERE doc_num = ?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, comm.getDoc_num());
+			
+			ps.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+	}
 	
 }

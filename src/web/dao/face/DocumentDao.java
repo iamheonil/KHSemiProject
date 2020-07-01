@@ -290,6 +290,13 @@ public interface DocumentDao {
 	 * @param comm - 문서번호
 	 */
 	public void updateDocState(Doc_comment comm);
+
+	/**
+	 * 보고타입이 중단일 떄 문서상태 중단으로 변경
+	 * 
+	 * @param comm - 문서번호
+	 */
+	public void updateDocStateStop(Doc_comment comm);
 	
 	
 }

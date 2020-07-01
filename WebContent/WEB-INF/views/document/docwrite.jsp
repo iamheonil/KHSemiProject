@@ -424,7 +424,6 @@ textarea{
 </tr>
 
 </table>
-<input type="submit" value="확인"/>
 
 
 <br>
@@ -528,7 +527,6 @@ textarea{
 
 </tbody>
 </table>
-<button type="button" class="checktest">테스트</button>
 </div> <!-- form-group div -->
 
 </div> <!-- div.container -->
@@ -556,7 +554,7 @@ textarea{
 	
 	<tr>
 		<td class="active">처리구분</td>
-		<td><input type="radio" id="approve_type" name="approve_type"/>결재</td>
+		<td><input type="radio" id="approve_type" name="approve_type" checked="checked" />결재</td>
 	</tr>
 	
 	<tr>
