@@ -178,7 +178,7 @@ span{
 	</c:if>
 	<c:if test="${recomm.comm_content ne null  }">
 	<td><fmt:formatDate value="${recomm.comm_date }" pattern="yyyy-MM-dd"/><br>
-	<fmt:formatDate value="${recomm.comm_date }" pattern="hh:MM:ss"/></td>
+	<fmt:formatDate value="${recomm.comm_date }" pattern="HH:mm:ss"/></td>
 	</c:if>
 	<c:if test="${recomm.comm_content eq null  }">
 	<td></td>

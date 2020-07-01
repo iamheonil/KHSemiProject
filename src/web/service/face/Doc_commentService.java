@@ -18,6 +18,8 @@ public interface Doc_commentService {
 	
 	public void insertDoc_comment(Doc_comment comm);
 	
+	public void updateDoc_comment(Doc_comment comm);
+	
 	
 	
 	

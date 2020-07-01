@@ -88,7 +88,7 @@ public class DocumentWaitApproveViewController extends HttpServlet {
 		
 		System.out.println(dcomm);
 		
-		doc_commentService.insertDoc_comment(dcomm);
+		doc_commentService.updateDoc_comment(dcomm);
 		
 //		documentService.writeDoc(req);
 		

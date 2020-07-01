@@ -214,7 +214,7 @@ span{
 	</c:if>
 	<c:if test="${recomm.comm_content ne null  }">
 	<td><fmt:formatDate value="${recomm.comm_date }" pattern="yyyy-MM-dd"/><br>
-	<fmt:formatDate value="${recomm.comm_date }" pattern="HH24:MM:SS"/></td>
+	<fmt:formatDate value="${recomm.comm_date }" pattern="HH:mm:ss"/></td>
 	</c:if>
 	<c:if test="${recomm.comm_content eq null  }">
 	<td></td>
@@ -248,10 +248,10 @@ span{
     <span class="close">&times;</span>
 	<h3>문서 처리</h3>
 	<table class="table table-bordered" style="width: 100%;">
-	<tr>
-		<td class="active">제목</td>
-		<td>제목1</td>
-	</tr>
+<!-- 	<tr> -->
+<!-- 		<td class="active">제목</td> -->
+<!-- 		<td>제목1</td> -->
+<!-- 	</tr> -->
 	
 	<tr>
 		<td class="active">처리구분</td>
