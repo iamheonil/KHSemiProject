@@ -23,7 +23,7 @@ public interface DayoffDao {
 	 * 해당 유저의 게시글 목록 조회
 	 * @return - List - 조회된 게시글 목록
 	 */
-	public List<Dayoff> selectById(HttpServletRequest req);
+	public List<Dayoff> selectById(String param);
 	
 	
 	/**

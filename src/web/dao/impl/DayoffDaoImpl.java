@@ -382,7 +382,7 @@ public class DayoffDaoImpl implements DayoffDao {
 	}
 
 	@Override
-	public List<Dayoff> selectById(HttpServletRequest req) {
+	public List<Dayoff> selectById(String userid) {
 
 		conn = JDBCTemplate.getConnection();
 
@@ -409,7 +409,7 @@ public class DayoffDaoImpl implements DayoffDao {
 			// SQL 수행 및 결과 저장
 			rs = ps.executeQuery();
 	
-//			ps.setInt(1, x);
+//			ps.setInt(1, userid.);
 
 			// SQL 수행 결과 처리
 			while (rs.next()) {

@@ -261,7 +261,7 @@ public class User_basicDaoImpl implements User_basicDao {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
+		}	
 
 		
 	}

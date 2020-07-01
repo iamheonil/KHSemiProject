@@ -66,7 +66,7 @@ caption {
 
 			
 			var $form = $("<form>")
-				.attr("action", "/admin/userbasic/list")
+				.attr("action", "/admin/userbasic/delete")
 				.attr("method", "Post")
 				.append(
 					$("<input>")
