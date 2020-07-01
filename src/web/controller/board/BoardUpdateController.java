@@ -24,7 +24,7 @@ public class BoardUpdateController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-	System.out.println("updaete [doget] 확인");	
+//	System.out.println("updaete [doget] 확인");	
 	if( req.getSession().getAttribute("login") == null) {
 		
 		resp.sendRedirect("/main");
@@ -47,7 +47,7 @@ public class BoardUpdateController extends HttpServlet {
 	
 	//MODEL로 게시글 전달
 	req.setAttribute("viewBoard", viewBoard);
-	System.out.println("viewBoard호출 결과" + viewBoard);
+//	System.out.println("viewBoard호출 결과" + viewBoard);
 	
 	
 	//VIEW지정
@@ -61,7 +61,7 @@ public class BoardUpdateController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 			boardService.updateBoard(req);
-			System.out.println("흠? 수정 안되나요?");
+//			System.out.println("흠? 수정 안되나요?");
 			resp.sendRedirect("/board/list");
 		
 	}

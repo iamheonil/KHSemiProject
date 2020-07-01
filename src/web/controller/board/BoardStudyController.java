@@ -27,11 +27,11 @@ public class BoardStudyController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("게시판 목록 호출 완료 [GET]");
+//		System.out.println("게시판 목록 호출 완료 [GET]");
 		
 		// 요청 파라미터를 전달을 통해 Paging 객체 생성
 		B_Paging paging = boardService.getStudyPaging(req);
-		System.out.println("BoardListController " + paging);
+//		System.out.println("BoardListController " + paging);
 		//Paging 결과 MODEL값 전달
 		req.setAttribute("paging", paging);
 		
@@ -42,7 +42,7 @@ public class BoardStudyController extends HttpServlet {
 		
 		req.setAttribute("S_list", S_list);
 		req.setAttribute("N_list", N_list);
-		System.out.println(S_list);
+//		System.out.println(S_list);
 		//View 지정
 		req.getRequestDispatcher("/WEB-INF/views/board/boardStudy.jsp").forward(req, resp);
 		
