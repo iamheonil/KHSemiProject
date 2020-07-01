@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import web.dto.Doc_comment;
 import web.dto.Document;
 import web.dto.User_basic;
 import web.util.Paging;
@@ -283,6 +284,12 @@ public interface DocumentDao {
 
 	public ArrayList<Map<String, Object>> selectReportComment(Document doc);
 	
+	/**
+	 * 마지막 보고자가 의견 달을 떄 문서상태 결재완료로 변경
+	 * 
+	 * @param comm - 문서번호
+	 */
+	public void updateDocState(Doc_comment comm);
 	
 	
 }

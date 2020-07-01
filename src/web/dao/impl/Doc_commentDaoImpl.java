@@ -166,4 +166,36 @@ public class Doc_commentDaoImpl implements Doc_commentDao {
 		
 		
 	}
+	
+	
+	@Override
+	public int getMaxCommNumByDocNum(Doc_comment comm) {
+		conn = JDBCTemplate.getConnection();
+		
+		String sql = "";
+		sql += "SELECT count(*) FROM doc_comment";
+		sql += "	WHERE 1=1";
+		sql += "	AND comm_content IS NOT NULL";
+		sql += "	AND comm_num = (SELECT max(comm_num) FROM doc_comment WHERE doc_num = ?)";
+		
+		int res = 0; // 조회 결과
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, comm.getDoc_num());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				res = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		return res;
+	}
+	
 }

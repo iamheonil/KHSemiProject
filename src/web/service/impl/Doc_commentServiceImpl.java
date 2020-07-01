@@ -1,11 +1,12 @@
 package web.service.impl;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import web.dao.face.Doc_commentDao;
+import web.dao.face.DocumentDao;
 import web.dao.impl.Doc_commentDaoImpl;
+import web.dao.impl.DocumentDaoImpl;
 import web.dto.Doc_comment;
 import web.dto.Document;
 import web.service.face.Doc_commentService;
@@ -13,6 +14,7 @@ import web.service.face.Doc_commentService;
 public class Doc_commentServiceImpl implements Doc_commentService {
 
 	private Doc_commentDao doc_commentDao = new Doc_commentDaoImpl();
+	private DocumentDao documentDao = new DocumentDaoImpl(); 
 	
 	@Override
 	public ArrayList<Map<String, Object>> getDoc_comment(Document doc) {
@@ -24,8 +26,20 @@ public class Doc_commentServiceImpl implements Doc_commentService {
 		doc_commentDao.insertDoc_comment(comm);
 	}
 	
+	@Override
 	public void updateDoc_comment(Doc_comment comm) {
+		
 		doc_commentDao.updateDoc_comment(comm);
+		
+		System.out.println("의견작성완료");
+		
+		if(doc_commentDao.getMaxCommNumByDocNum(comm) > 0) {
+			System.out.println("마지마기~");
+			documentDao.updateDocState(comm);
+		}
+			
 	}
+	
+	
 
 }

@@ -36,5 +36,13 @@ public interface Doc_commentDao {
 	
 	public void updateDoc_comment(Doc_comment comm);
 	
+	/**
+	 * 보고경로의 최대 숫자 알아오기
+	 * 
+	 * @param comm - 조회하려는 doc_num정보
+	 * @return int - 결과 값
+	 */
+	public int getMaxCommNumByDocNum(Doc_comment comm);
+	
 	
 }
