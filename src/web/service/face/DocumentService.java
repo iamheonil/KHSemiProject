@@ -124,19 +124,6 @@ public interface DocumentService {
 	 */
 	public Document getDocument(Document doc);
 	
-
-	
-	/**
-	 * 문서 처리 - 의견/지시 작성, 문서처리구분 선택
-	 * @param doc - 처리할 문서 Documentno를 포함하는 객체
-	 */
-	public void writeDoc_comment(Document doc);
-	
-	/**
-	 * 문서 수정
-	 * @param req - 매개변수 맞는지 확인하기!!!
-	 */
-	public void updateDocument(HttpServletRequest req);
 	
 	/** 추가!
 	 * 진행문서함 페이징 처리

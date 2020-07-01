@@ -34,6 +34,7 @@ public class Doc_commentServiceImpl implements Doc_commentService {
 		
 		if(comm.getComm_type().equals("중단")) {
 			documentDao.updateDocStateStop(comm);
+			return;
 		}
 		
 		

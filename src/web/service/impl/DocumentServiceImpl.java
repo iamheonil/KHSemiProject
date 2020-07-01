@@ -876,15 +876,6 @@ public class DocumentServiceImpl implements DocumentService {
       return documentDao.selectDocumentByDocno(doc);
    }
 
-   @Override
-   public void writeDoc_comment(Document doc) {
-
-   }
-
-   @Override
-   public void updateDocument(HttpServletRequest req) {
-
-   }
 
    // 추라!
    @Override
@@ -1042,11 +1033,6 @@ public class DocumentServiceImpl implements DocumentService {
       return documentDao.selectDocumentAll(paging, startDate, endDate);
    }
 
-//   @Override
-//   public List<Document> getDoListWaitApprove() {
-//
-//      return documentDao.selectDoListWaitApprove();
-//   }
 
    @Override
    public ArrayList<Map<String, Object>> getDoListProgress(int userid) {
