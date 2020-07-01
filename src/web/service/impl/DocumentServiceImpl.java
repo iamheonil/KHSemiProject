@@ -236,7 +236,7 @@ public class DocumentServiceImpl implements DocumentService {
             // -------- DB에 업로드된 파일에 대한 정보 기록하기 --------
             docAttach = new Doc_attach();
             docAttach.setAttach_originname(origin);
-            docAttach.setAttach_rename(rename);
+            docAttach.setAttach_rename(stored);
             docAttach.setAttach_ext(ext);
             docAttach.setAttach_size((int) item.getSize());
 
