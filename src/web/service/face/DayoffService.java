@@ -43,7 +43,7 @@ public interface DayoffService {
 	 * @param req - req 객체정보
 	 * @return Dayoff - 조회한 휴가신청서 정보(리스트?)
 	 */
-	public Dayoff getDayoffById(HttpServletRequest req);
+	public List<Dayoff> getDayoffById(HttpServletRequest req);
 	
 
 	/**

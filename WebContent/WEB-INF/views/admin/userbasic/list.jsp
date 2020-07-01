@@ -94,6 +94,25 @@ caption {
 		}
 		})
 	});
+	
+	function checkAll() {
+		// checkbox들
+		var $checkboxes=$("input:checkbox[name='checkRow']");
+		// checkAll 체크상태 (true:전체선택, false:전체해제)
+		var check_status = $("#checkAll").is(":checked");
+		
+		if( check_status ) {
+			// 전체 체크박스를 checked로 바꾸기
+			$checkboxes.each(function() {
+				this.checked = true;	
+			});
+		} else {
+			// 전체 체크박스를 checked 해제하기
+			$checkboxes.each(function() {
+				this.checked = false;	
+			});
+		}
+	}
 </script>
 
 <%-- <c:import url="/WEB-INF/views/adlayout/adaside.jsp" /> --%>
@@ -106,20 +125,28 @@ caption {
 
 	<table class="table table-hover table-condensed">
 		<tr class="info">
-			<th style="width: 10%">사번</th>
-			<th style="width: 50%">이름</th>
-			<th style="width: 15%">직급</th>
-			<th style="width: 10%">부서</th>
+			<th><input type="checkbox" id="checkAll" onclick="checkAll();" /></th>
+			<th>사번</th>
+			<th>이름</th>
+			<th>직급</th>
+			<th>부서</th>
 		</tr>
 		<c:forEach items="${userbasiclist }" var="userbasic">
 			<tr>
+				<td><input type="checkbox" name="checkRow" value="${userbasic.userid }" /></td>
 				<td>${userbasic.userid }</td>
-				<td><a href="/admin/userbasic/modify?userid=${userbasic.userid }"></a>${userbasic.username }</td>
+				<td><a href="/admin/userbasic/modify?userid=${userbasic.userid }">${userbasic.username }</a>&nbsp;</td>
 				<td>${userbasic.userrank }</td>
 				<td>${userbasic.dept }</td>
 			</tr>
 		</c:forEach>
 	</table>
+	
+	
+		<div class="btnBox">
+				<button type="button" id="btnDelete" class="btn btn-danger">삭제</button>
+		</div>
+		<hr>
 
 <%-- 	<jsp:include page="/WEB-INF/views/layout/paging.jsp" /> --%>
 

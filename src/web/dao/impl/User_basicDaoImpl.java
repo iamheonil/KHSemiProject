@@ -101,9 +101,9 @@ public class User_basicDaoImpl implements User_basicDao {
 		String sql = "";
 		sql += "UPDATE User_basic SET";
 		sql += "	username =?";
-		sql += "	userrank =?";
-		sql += "	dept =?";
-		sql += " 	WHERE userid=?";
+		sql += "	,userrank =?";
+		sql += "	,dept =?";
+		sql += " 	WHERE userid is ?";
 		
 
 		try {

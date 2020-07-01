@@ -61,10 +61,9 @@ public class DayoffServiceImpl implements DayoffService {
 	}
 
 	@Override
-	public Dayoff getDayoffById(HttpServletRequest req) {
+	public List<Dayoff> getDayoffById(HttpServletRequest req) {
 		
-		
-		return null;
+		return dayoffDao.selectById(req);
 	}
 	
 	@Override

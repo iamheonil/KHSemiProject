@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import web.dto.Dayoff;
 import web.service.face.DayoffService;
@@ -26,21 +27,26 @@ public class DayoffListController extends HttpServlet {
 
 		System.out.println("DayoffList [DoGet] 확인");
 
-		// 페이징 객체 생성
-		ad_Day_Paging paging = dayoffService.getPaging(req);
-
-		// 게시글 조회
-		List<Dayoff> list = dayoffService.getList(paging);
+		//로그인 체크
+//		if( req.getSession().getAttribute("login") == null) {
+//			
+//			return;
+//		}
 		
-		//페이징계산결과 MODEL값 전달
-		req.setAttribute("paging", paging);
+		//세션 객체 생성
+		HttpSession session = req.getSession();
+		
+		//세션에서 유저아이디 받아오기
+		session.setAttribute("userid", req.getParameter("userid"));
+	
+		// 게시글 조회
+		List<Dayoff> list = dayoffService.getDayoffById(req);
 
 		//조회결과 MODEL값 전달
 		req.setAttribute("list", list);
 
 		// VIEW 지정
 		req.getRequestDispatcher("/WEB-INF/views/mypage/list.jsp").forward(req, resp);
-
 	}
 
 }

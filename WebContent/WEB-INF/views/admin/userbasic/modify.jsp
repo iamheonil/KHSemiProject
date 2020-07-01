@@ -1,17 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<!-- 부트스트랩 3.3.2 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	pageEncoding="UTF-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<!-- jQuery 2.2.4.min -->
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 
 <script type="text/javascript">
@@ -23,15 +15,6 @@ $(document).ready(function() {
 		//<form> 태그 submit
 		$("form").submit();
 		
-	});
-	
-	//삭제버튼 동작
-	$("#btnDelete").click(function() {
-		
-		$('#contents').load("/admin/userbasic/delete");
-		
-	});
-	
 	
 	//취소버튼 동작
 	$("#btnCancel").click(function() {
@@ -77,6 +60,10 @@ caption {
 }
 </style>
 
+<%-- <c:import url="/WEB-INF/views/adlayout/adheader.jsp" /> --%>
+
+<%-- <c:import url="/WEB-INF/views/adlayout/adaside.jsp" /> --%>
+
 <div class="content">
 	<div class="container">
 		<h4>사원 기본 정보 수정</h4>
@@ -94,29 +81,31 @@ caption {
 				<tr>
 					<td id="username">이름</td>
 					<td><input type="text" name="username" maxlength="50"
-						value="${user_basic.username }"></td>
+						value="${user_basic.userid }"></td>
 				</tr>
 
 				<tr>
 					<td id="userrank">부서</td>
 					<td><input type="text" name="userrank" maxlength="50"
-						value="${user_basic.userrank }"></td>
+						value="${user_basic.userid }"></td>
 				</tr>
 
 				<tr>
 					<td id="deptno">직위</td>
 					<td><input type="text" name="deptno" maxlength="50"
-						value="${user_basic.deptno }"></td>
+						value="${user_basic.userid }"></td>
 				</tr>
 			</table>
 
 			<div class="Form-content">
 				<button type="button" id="btnModity" class="btn btn-primary">수정</button>
-				<button type="button" id="btnDelete" class="btn btn-danger">삭제</button>
 				<button type="button" id="btnCancel" class="btn btn-danger">취소</button>
 			</div>
 		</form>
 	</div>
 </div>
+
+
+<%-- <c:import url="/WEB-INF/views/adlayout/adfooter.jsp" /> --%>
 
 
