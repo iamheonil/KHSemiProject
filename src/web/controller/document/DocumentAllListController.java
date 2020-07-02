@@ -23,11 +23,11 @@ public class DocumentAllListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		// 로그인정보 없으면 로그인페이지로
-		if( req.getSession().getAttribute("userid") == "" ) {
-			resp.sendRedirect("/");
-			return;
-		}
+		//로그인 되어있지 않으면 리다이렉트 
+	      if( req.getSession().getAttribute("login") == null ) {
+	         resp.sendRedirect("/");
+	         return;
+	      }
 		
 		String startDate = null; // 검색 날짜시작 값 변수
 		String endDate = null;  // 검색 날짜종료 값 변수
@@ -43,11 +43,11 @@ public class DocumentAllListController extends HttpServlet {
 		
 		//요청 파라미터를 전달하여 Paging 객체 생성하기
 		SearchPaging paging = documentService.getDocumentPaging(req);
-		System.out.println("DocumentALlListController - " + paging);
+//		System.out.println("DocumentALlListController - " + paging);
 
 		//게시글 전체 조회
 		ArrayList<Map<String, Object>> allList = documentService.getListDocumentAll(paging, startDate, endDate);
-		System.out.println(allList);
+//		System.out.println(allList);
 		
 		//Paging처리 결과 MODEL값 전달
 		req.setAttribute("paging", paging);

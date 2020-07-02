@@ -85,7 +85,7 @@ public class DocumentDaoImpl implements DocumentDao {
 	
 	@Override
 	public void updateDoc(Document doc) {
-		System.out.println(doc);
+//		System.out.println(doc);
 		conn = JDBCTemplate.getConnection();
 		String sql = "";
 		sql += "UPDATE document SET doc_title = ?, doc_substance = ?, doc_content = ?";
@@ -193,7 +193,7 @@ public class DocumentDaoImpl implements DocumentDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("임시저장함 검색 조회 결과 개수" + cnt);
+//		System.out.println("임시저장함 검색 조회 결과 개수" + cnt);
 		return cnt;
 	}
 	
@@ -301,18 +301,6 @@ public class DocumentDaoImpl implements DocumentDao {
 	
 	
 	@Override
-	public void updateDocument(Document doc) {
-		
-		
-	}
-	@Override
-	public int selectWaitApproveCntAll() {
-		
-		return 0;
-	}
-	
-	
-	@Override
 	public int selectWaitApproveSearchCntAll(String search, int userid, String startDate, String endDate) {
 		conn = JDBCTemplate.getConnection();
 		
@@ -359,7 +347,7 @@ public class DocumentDaoImpl implements DocumentDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("결재대기함 검색 조회 결과 개수" + cnt);
+//		System.out.println("결재대기함 검색 조회 결과 개수" + cnt);
 		return cnt;
 	}
 	
@@ -492,12 +480,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		return list;
 	}
 	
-	
-	@Override
-	public List<Document> selectWaitApproveAll(Paging paging) {
-		
-		return null;
-	}
+
 	@Override
 	public Document selectDocumentByDocno(Document doc) {
 		
@@ -598,9 +581,12 @@ public class DocumentDaoImpl implements DocumentDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);			
 		}
 		
-		System.out.println("진행문서함 검색 조회 결과 개수" + cnt);
+//		System.out.println("진행문서함 검색 조회 결과 개수" + cnt);
 		return cnt;
 	}
 	
@@ -825,11 +811,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		//최종 결과 반환
 		return totalCount;
 	}
-	@Override
-	public int selectDraftSearchCntAll() {
-		
-		return 0;
-	}
+
 	
 	@Override
 	public ArrayList<Map<String, Object>> selectDraftAll(SearchPaging paging, int userid, String startDate, String endDate) {
@@ -1120,7 +1102,7 @@ public class DocumentDaoImpl implements DocumentDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("문서등록대장 검색 조회 결과 개수" + cnt);
+//		System.out.println("문서등록대장 검색 조회 결과 개수" + cnt);
 		return cnt;
 	}
 	
@@ -1192,18 +1174,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		return list;
 	}
 	
-	@Override
-	public List<Document> selectDoListWaitApprove() {
-		
-		return null;
-	}
-	
-	
-	@Override
-	public List<Document> getProgressDo() {
-		
-		return null;
-	}
+
 	
 	
 	@Override
@@ -1400,5 +1371,25 @@ public class DocumentDaoImpl implements DocumentDao {
 		}
 	}
 	
+	@Override
+	public void updateDocStateStop(Doc_comment comm) {
+		conn = JDBCTemplate.getConnection();
+		
+		String sql = "";
+		sql += "UPDATE document SET doc_state = '중단'";
+		sql += " WHERE doc_num = ?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, comm.getDoc_num());
+			
+			ps.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+	}
 	
 }

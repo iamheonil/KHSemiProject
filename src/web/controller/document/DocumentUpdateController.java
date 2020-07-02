@@ -34,6 +34,12 @@ public class DocumentUpdateController extends HttpServlet {
 	private Doc_commentService doc_commentService = new Doc_commentServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		//로그인 되어있지 않으면 리다이렉트 
+	    if( req.getSession().getAttribute("login") == null ) {
+	       resp.sendRedirect("/");
+	       return;
+	    }
 		//전달파라미터 얻기 - documentno
 		Document documentno = documentService.getDocumentno(req);
 		System.out.println(documentno);
