@@ -37,6 +37,12 @@ $(document).ready(function(){
 		$('#contents').load('/admin/userbasic/view');
 	})
 })
+/* 삭제관리 */
+$(document).ready(function(){
+	$('#userdelete').click(function(){
+		$('#contents').load('/admin/userdetail/delete');
+	})
+})
 
 /* 커뮤니티 */
 $(document).ready(function(){

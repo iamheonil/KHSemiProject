@@ -8,8 +8,6 @@ import web.dao.face.User_basicDao;
 import web.dao.face.User_detailDao;
 import web.dao.impl.User_basicDaoImpl;
 import web.dao.impl.User_detailDaoImpl;
-import web.dbutil.JDBCTemplate;
-import web.dto.Dayoff;
 import web.dto.User_basic;
 import web.dto.User_detail;
 import web.service.face.User_basicService;
@@ -19,7 +17,6 @@ public class User_basicServiceImpl implements User_basicService {
 	private User_basicDao user_basicDao = new User_basicDaoImpl();
 	private User_detailDao user_detailDao = new User_detailDaoImpl();
 	private User_basic user_basic = new User_basic();
-	private User_detail user_detail = new User_detail();
 
 	@Override
 	public void insertUser_basic(HttpServletRequest req) {
@@ -32,7 +29,11 @@ public class User_basicServiceImpl implements User_basicService {
 
 		// basicnum 입력
 		userb.setBasicnum(usernum);
-
+		userb.setUserid(Integer.parseInt(req.getParameter("userid")));
+		userb.setUsername(req.getParameter("username"));
+		userb.setUserrank(req.getParameter("userrank"));
+		userb.setDept(req.getParameter("dept"));
+		
 		// 유저 삽입
 		user_basicDao.insertUser_basic(userb);
 	}
@@ -61,11 +62,19 @@ public class User_basicServiceImpl implements User_basicService {
 
 		return user_basicDao.selectById(user_basic);
 	}
+	@Override
+	public User_basic selectByUserid(User_basic user_basic) {
+
+		return user_basicDao.selectById(user_basic);
+	}
 
 	@Override
 	public User_basic getUser_basic(HttpServletRequest req) {
 
 		// 파싱
+//		if (req.getParameter("basicnum") != null && !"".equals(req.getParameter("basicnum"))) {
+//			user_basic.setBasicnum(Integer.parseInt(req.getParameter("basicnum")));
+//		}
 		if (req.getParameter("userid") != null && !"".equals(req.getParameter("userid"))) {
 			user_basic.setUserid(Integer.parseInt(req.getParameter("userid")));
 		}
@@ -86,14 +95,28 @@ public class User_basicServiceImpl implements User_basicService {
 	}
 
 	@Override
-	public User_basic modifyUser_basic(User_basic userid) {
-		// 유저 삽입
-		user_basicDao.updateUser_basic(userid);
+	public User_basic modifyUser_basic(HttpServletRequest req) {
 		
-		//유저 조회
-		User_basic user = user_basicDao.selectById(userid);
+		//객체 생성
+		user_basic = new User_basic();
+
+		if (req.getParameter("userid") != null && !"".equals(req.getParameter("userid"))) {
+			user_basic.setUserid(Integer.parseInt(req.getParameter("userid")));
+		}
+
+		if (req.getParameter("username") != null && !"".equals(req.getParameter("username"))) {
+			user_basic.setUsername(req.getParameter("username"));
+		}
+
+		if (req.getParameter("userrank") != null && !"".equals(req.getParameter("userrank"))) {
+			user_basic.setUserrank(req.getParameter("userrank"));
+		}
+
+		if (req.getParameter("deptno") != null && !"".equals(req.getParameter("deptno"))) {
+			user_basic.setDept(req.getParameter("deptno"));
+		}
 		
-		return user;
+		return user_basicDao.updateUser_basic(user_basic);
 
 	}
 
@@ -111,8 +134,8 @@ public class User_basicServiceImpl implements User_basicService {
 
 
 	@Override
-	public void deleteUserList(String names) {
-		user_basicDao.deleteUser_BasicList(names);
+	public void deleteUserList(User_detail user_detail) {
+		user_basicDao.deleteUser_DetailList(user_detail);
 
 	}
 

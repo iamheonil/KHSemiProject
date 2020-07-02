@@ -15,6 +15,7 @@ import web.util.ad_Day_Paging;
 public class DayoffServiceImpl implements DayoffService {
 
 	private DayoffDao dayoffDao = new DayoffDaoImpl();
+	private Dayoff dayoff = new Dayoff();
 
 	@Override
 	public List<Dayoff> getList() {
@@ -61,11 +62,21 @@ public class DayoffServiceImpl implements DayoffService {
 	}
 
 	@Override
-	public List<Dayoff> getDayoffById(HttpServletRequest req) {
+	public Dayoff getDayoff(HttpServletRequest req) {
+
+		// 파싱
+		if(req.getParameter("userid")!=null && !"".equals(req.getParameter("userid"))) {
+			dayoff.setUserid(Integer.parseInt(req.getParameter("userid")));
+		}
 		
-		String param = req.getParameter("userid");
+		//이 부분을 잘 모르겠음...
+		return dayoff;
+	}
+	
+	@Override
+	public List<Dayoff> getDayoffById(int userid) {
 		
-		return dayoffDao.selectById(param);
+		return dayoffDao.selectById(userid);
 	}
 	
 	@Override
@@ -130,6 +141,7 @@ public class DayoffServiceImpl implements DayoffService {
 		
 		dayoffDao.deleteDayoff(dayoff);
 	}
+
 
 
 

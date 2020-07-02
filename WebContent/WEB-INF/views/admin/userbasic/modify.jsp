@@ -14,8 +14,8 @@ $(document).ready(function() {
 		
 		//<form> 태그 submit
 		$("form").submit();
+	});
 		
-	
 	//취소버튼 동작
 	$("#btnCancel").click(function() {
 		history.go(-1);
@@ -24,11 +24,10 @@ $(document).ready(function() {
 </script>
 
 <style type="text/css">
-h4 {
-	color: #0A2D5D;
+.title {
+	text-align: left;
+	margin-bottom: 18px;
 	font-weight: bold;
-	padding: 20px;
-	font-size: 1.7em;
 }
 
 
@@ -66,10 +65,10 @@ caption {
 
 <div class="content">
 	<div class="container">
-		<h4>사원 기본 정보 수정</h4>
+		<h2 class="title">사원 기본 정보 수정</h2>
 		<hr>
 
-		<form action="/admin/userbasic/update" method="post">
+		<form action="/admin/userbasic/modify" method="post">
 
 			<table>
 				<tr>
@@ -81,19 +80,19 @@ caption {
 				<tr>
 					<td id="username">이름</td>
 					<td><input type="text" name="username" maxlength="50"
-						value="${user_basic.userid }"></td>
+						value="${user_basic.username }"></td>
 				</tr>
 
 				<tr>
 					<td id="userrank">부서</td>
 					<td><input type="text" name="userrank" maxlength="50"
-						value="${user_basic.userid }"></td>
+						value="${user_basic.dept }"></td>
 				</tr>
 
 				<tr>
 					<td id="deptno">직위</td>
 					<td><input type="text" name="deptno" maxlength="50"
-						value="${user_basic.userid }"></td>
+						value="${user_basic.userrank }"></td>
 				</tr>
 			</table>
 

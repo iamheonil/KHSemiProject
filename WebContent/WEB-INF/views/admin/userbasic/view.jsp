@@ -6,12 +6,11 @@
 
 
 <style type="text/css">
-h4 {
-	text-align: center;
-	color: #0A2D5D;
+
+.title {
+	text-align: left;
+	margin-bottom: 18px;
 	font-weight: bold;
-	margin: 40px 0 40px 0;
-	font-size: 1.6em;
 }
 
 p {
@@ -59,9 +58,10 @@ $(document).ready(function() {
 
 <div class="contents">
 	<div class="container">
-	<h4>사원관리</h4>
+	<h2 class="title">사원관리</h2>
 	<hr>
-		<p class="bg-info">사원 수정 및 삭제를 위해 사원을 검색해주세요.</p>
+	<br>
+		<p class="bg-info">사원 수정 및 삭제를 위해 사원의 이름을 검색해주세요.</p>
 <!-- 		<form action="/admin/userbasic/list" method="post"> -->
 		<div class="form-inline text-center" id="formSearch">
 			<input class="form-control" type="text" id="search" />

@@ -6,9 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
 import web.dao.face.DayoffDao;
 import web.dbutil.JDBCTemplate;
 import web.dto.Dayoff;
@@ -382,7 +379,7 @@ public class DayoffDaoImpl implements DayoffDao {
 	}
 
 	@Override
-	public List<Dayoff> selectById(String userid) {
+	public List<Dayoff> selectById(int userid) {
 
 		conn = JDBCTemplate.getConnection();
 
@@ -396,8 +393,8 @@ public class DayoffDaoImpl implements DayoffDao {
 		sql += "	, dreason";
 		sql += "	, dresult";
 		sql += " FROM Dayoff";
-		sql += " ORDER BY rnum DESC";
 		sql += " WHERE userid = ?";
+		sql += " ORDER BY daynum DESC";
 
 		// 최종 결과를 저장할 List
 		List<Dayoff> list = new ArrayList<Dayoff>();
@@ -405,26 +402,26 @@ public class DayoffDaoImpl implements DayoffDao {
 		try {
 			// SQL 수행 객체
 			ps = conn.prepareStatement(sql);
-
+			
+			ps.setInt(1, userid);
+			
 			// SQL 수행 및 결과 저장
 			rs = ps.executeQuery();
-	
-//			ps.setInt(1, userid.);
 
 			// SQL 수행 결과 처리
 			while (rs.next()) {
 
-				Dayoff dayoff = new Dayoff();
+				Dayoff doff = new Dayoff();
 
-				dayoff.setDaynum(rs.getInt("daynum"));
-				dayoff.setUserid(rs.getInt("userid"));
-				dayoff.setDaystart(rs.getDate("daystart"));
-				dayoff.setDayend(rs.getDate("dayend"));
-				dayoff.setDreason(rs.getString("dreason"));
-				dayoff.setDresult(rs.getString("dresult"));
+				doff.setDaynum(rs.getInt("daynum"));
+				doff.setUserid(rs.getInt("userid"));
+				doff.setDaystart(rs.getDate("daystart"));
+				doff.setDayend(rs.getDate("dayend"));
+				doff.setDreason(rs.getString("dreason"));
+				doff.setDresult(rs.getString("dresult"));
 
-				list.add(dayoff);
-			}
+				list.add(doff);
+			}	
 
 		} catch (SQLException e) {
 			e.printStackTrace();

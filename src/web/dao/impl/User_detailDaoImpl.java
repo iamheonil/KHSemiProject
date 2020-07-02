@@ -125,8 +125,29 @@ public class User_detailDaoImpl implements User_detailDao {
 	}
 
 	@Override
-	public void deleteUser_detail(User_detail user_detail) {
-		
+	public void deleteUser_detail(String names) {
+		conn = JDBCTemplate.getConnection();
+
+		String sql = "";
+		sql += "DELETE FROM User_detail WHERE userid=?";
+
+		try {
+			ps = conn.prepareStatement(sql);
+
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+
+				if (ps != null)
+					ps.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}	
 	}
 
 	@Override

@@ -20,19 +20,7 @@
 <%-- <c:import url="/WEB-INF/views/adlayout/adheader.jsp" /> --%>
 
 <style type="text/css">
-h4 {
-	color: #0A2D5D;
-	font-weight: bold;
-	font-size: 1.6em;
-	padding: 10px;
-}
 
-.container {
-	padding-left: 20px;
-	float: left;
-	position: relative;
-	width: 900px;
-}
 
 table, th {
 	text-align: center;
@@ -47,7 +35,14 @@ table, th {
 }
 
 .container {
-	width: 900px;
+	width: auto;
+	height: auto;
+	text-align: center;
+}
+.title {
+	text-align: left;
+	margin-bottom: 18px;
+	font-weight: bold;
 }
 </style>
 
@@ -161,12 +156,14 @@ function checkAll() {
 
 <%-- <c:import url="/WEB-INF/views/adlayout/adaside.jsp" /> --%>
 
-<div class="content">
-	<h4>휴가 신청서 목록</h4>
 	<div class="container">
+<div class="content">
+	<h2 class="title">휴가 관리</h2>
+<hr>
+<br>
 
-		<table class="table table-hover table-condensed">
-			<tr class="active">
+		<table class="table table-hover table-striped">
+			<tr class="info">
 				<th><input type="checkbox" id="checkAll" onclick="checkAll();" /></th>
 				<th>휴가번호</th>
 				<th>사번</th>
@@ -176,7 +173,7 @@ function checkAll() {
 				<th>휴가 여부</th>
 			</tr>
 			<c:forEach items="${list }" var="dayoff">
-				<tr>
+				<tr class="table-content">
 					<td><input type="checkbox" name="checkRow" value="${dayoff.daynum  }" /></td>
 					<td>${dayoff.daynum }</td>
 					<td>${dayoff.userid }</td>

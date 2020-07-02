@@ -25,6 +25,8 @@ public class AdminBoardListcontroller extends HttpServlet {
 
 		System.out.println("관리자 게시판 목록");
 		
+		
+		
 		//paging 객체 생성
 		ad_B_Paging paging = adminboardService.getPaging(req);
 //		System.out.println("adminBoard" + paging);

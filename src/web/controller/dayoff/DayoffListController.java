@@ -40,10 +40,10 @@ public class DayoffListController extends HttpServlet {
 		session.setAttribute("userid", req.getParameter("userid"));
 	
 		// 게시글 조회
-		List<Dayoff> list = dayoffService.getDayoffById(req);
+//		List<Dayoff> list = dayoffService.getDayoffById(req);
 
 		//조회결과 MODEL값 전달
-		req.setAttribute("list", list);
+//		req.setAttribute("list", list);
 
 		// VIEW 지정
 		req.getRequestDispatcher("/WEB-INF/views/mypage/list.jsp").forward(req, resp);

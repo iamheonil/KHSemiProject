@@ -38,12 +38,19 @@ public interface DayoffService {
 	
 	
 	/**
+	 * 전달파라미터 dayoff 정보값 얻어오기
+	 * @param req - 요청정보 객체
+	 * @return Dayoff - 객체 정보
+	 */
+	public Dayoff getDayoff(HttpServletRequest req);
+	
+	
+	/**
 	 * 사번으로 Dayoff 정보 가져오기(로그인 session?)
 	 * 
-	 * @param req - req 객체정보
 	 * @return Dayoff - 조회한 휴가신청서 정보(리스트?)
 	 */
-	public List<Dayoff> getDayoffById(HttpServletRequest req);
+	public List<Dayoff> getDayoffById(int userid);
 	
 
 	/**

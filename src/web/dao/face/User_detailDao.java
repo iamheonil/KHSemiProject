@@ -35,11 +35,11 @@ public interface User_detailDao {
 	
 	
 	/**
-	 * 회원 상세정보 삭제(관리자)
+	 * 회원 상세정보 삭제(관리자) - 리스트 삭제합니다!
 	 * 
 	 * @param user_basic - 삭제할 상세정보
 	 */
-	public void deleteUser_detail(User_detail user_detail);
+	public void deleteUser_detail(String names);
 	
 	
 	/**

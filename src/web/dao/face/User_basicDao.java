@@ -53,8 +53,9 @@ public interface User_basicDao {
 	 * 회원 기본정보 변경(관리자)
 	 * 
 	 * @param user_basic - 변경할 기본정보
+	 * @return 
 	 */
-	public void updateUser_basic(User_basic user_basic);
+	public User_basic updateUser_basic(User_basic user_basic);
 	
 	
 	/**
@@ -75,7 +76,7 @@ public interface User_basicDao {
 	/**
 	 * 회원 리스트 삭제
 	 * 
-	 * @param names - 삭제한 유저 사번들 문자열
+	 * @param names - 삭제한 유저 사번
 	 */
-	public void deleteUser_BasicList(String names);
+	public void deleteUser_DetailList(User_detail user_detail);
 }

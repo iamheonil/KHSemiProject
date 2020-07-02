@@ -110,7 +110,7 @@ $(document).ready(function(){
 		<hr>
 		<br>
 		
-		<table class="table table-hover table-condensed">
+		<table class="table table-hover table-striped">
 			<thead>
 				<tr class="info" style="text-align: center;">
 					<th style="width: 5%; text-align: center;"><input type="checkbox" id="checkAll" onclick="checkAll();"/></th>

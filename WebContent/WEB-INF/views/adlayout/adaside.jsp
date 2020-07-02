@@ -19,7 +19,7 @@
 							</span>
 							
 							<span class="admin">${adminid }</span><br>
-							<span class="admin">관리자 번호 : ${adminpw }</span><br>
+							<span class="admin">${adminid } 님 안녕하세요.</span><br>
 							<div class="btn-group">
 								<button class="btn btn-primary btn-xs" style="color: black;" onclick='location.href="/admin/login";'>로그아웃</button>
 							</div>
@@ -32,6 +32,8 @@
 					<li class="ad-li"><a href="#" id="adminaddress"><span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;주소록</a></li>
 					
 					<li class="ad-li"><a href="#" id="deptlist"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;사원관리</a></li>
+					
+					<li class="ad-li"><a href="#" id="userdelete"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;사원삭제</a></li>
 				
 					<li class="ad-li"><a href="#" id="board"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;&nbsp;커뮤니티</a></li>
 					

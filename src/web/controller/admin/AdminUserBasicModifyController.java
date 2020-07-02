@@ -18,26 +18,61 @@ import web.service.impl.User_basicServiceImpl;
 public class AdminUserBasicModifyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
 	private User_basicService user_basicService = new User_basicServiceImpl();
+	private User_basic user_basic = new User_basic();
+
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		//전달파라미터 얻기 - userid
-		User_basic userid = user_basicService.getUser_basic(req);
-		System.out.println("userid : " + userid);
+		user_basic = user_basicService.getUser_basic(req);
+		user_basic = user_basicService.selectByUserid(user_basic);
 		
-		//상세보기 결과 조회
-		User_basic modiUser = user_basicService.modifyUser_basic(userid);
-		req.setAttribute("modiUser", modiUser);
+		System.out.println("usermodify - basic :" + user_basic);
 		
-		//조회결과 MODEL값 전달
-		req.setAttribute("userid", userid);
+		req.setAttribute("user_basic", user_basic);
 
 		// view 지정
 		req.getRequestDispatcher("/WEB-INF/views/admin/userbasic/modify.jsp").forward(req, resp);
 		
 	}
 
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		//회원정보 변경
+		user_basicService.modifyUser_basic(req);
+		
+
+		//변경 후 관리자 메인 페이지로
+		resp.sendRedirect("/admin/view");
+		
+		
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

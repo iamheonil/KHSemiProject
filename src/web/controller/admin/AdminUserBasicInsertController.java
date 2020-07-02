@@ -34,7 +34,7 @@ public class AdminUserBasicInsertController extends HttpServlet {
 		
 		user_basicService.insertUser_basic(req);
 		
-		resp.sendRedirect("/admin/userbasic/list");
+		resp.sendRedirect("/admin/view");
 		
 	}
 

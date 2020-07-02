@@ -45,6 +45,13 @@ public interface User_basicService {
 	 * @return User_basic - 조회된 정보 값
 	 */
 	public User_basic selectAllByUserid(User_basic user_basic);
+	/**
+	 * 사번으로 user_basic 정보 가져오기
+	 * 
+	 * @param user_basic - 조회할 정보
+	 * @return User_basic - 조회된 정보 값
+	 */
+	public User_basic selectByUserid(User_basic user_basic);
 	
 	
 	/**
@@ -61,7 +68,7 @@ public interface User_basicService {
 	 * 
 	 * @param req - 수정할 정보
 	 */
-	public User_basic modifyUser_basic(User_basic userid);
+	public User_basic modifyUser_basic(HttpServletRequest req);
 
 	
 	/**
@@ -81,10 +88,10 @@ public interface User_basicService {
 	
 	
 	/**
-	 * 회원 삭제(관리자, 체크박스 삭제)
-	 * @param User_basic
+	 * 회원 삭제(관리자 삭제)
+	 * @param User_detail
 	 */
-	public void deleteUserList(String names);
+	public void deleteUserList(User_detail user_detail);
 
 
 

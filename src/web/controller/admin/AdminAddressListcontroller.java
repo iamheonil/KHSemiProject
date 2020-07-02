@@ -24,6 +24,7 @@ public class AdminAddressListcontroller extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	    
 		
 		//TEST
 //		System.out.println("주소록 목록 호출");

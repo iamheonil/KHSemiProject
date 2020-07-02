@@ -3,8 +3,6 @@ package web.dao.face;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import web.dto.Dayoff;
 import web.util.ad_Day_Paging;
 
@@ -23,7 +21,7 @@ public interface DayoffDao {
 	 * 해당 유저의 게시글 목록 조회
 	 * @return - List - 조회된 게시글 목록
 	 */
-	public List<Dayoff> selectById(String param);
+	public List<Dayoff> selectById(int userid);
 	
 	
 	/**

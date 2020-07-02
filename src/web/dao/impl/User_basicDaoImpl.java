@@ -27,7 +27,7 @@ public class User_basicDaoImpl implements User_basicDao {
 		// 다음 게시글 번호 조회 쿼리
 		String sql = "";
 		sql += "INSERT INTO User_basic(basicnum, userid, username, userrank, dept) ";
-		sql += " VALUES (basicnum_seq.nextval, ?, ?, ?, ?)";
+		sql += " VALUES (User_basic_seq.nextval, ?, ?, ?, ?)";
 
 		try {
 			// DB작업
@@ -94,7 +94,7 @@ public class User_basicDaoImpl implements User_basicDao {
 	}
 
 	@Override
-	public void updateUser_basic(User_basic user_basic) {
+	public User_basic updateUser_basic(User_basic user_basic) {
 		
 		conn = JDBCTemplate.getConnection();
 	
@@ -103,7 +103,7 @@ public class User_basicDaoImpl implements User_basicDao {
 		sql += "	username =?";
 		sql += "	,userrank =?";
 		sql += "	,dept =?";
-		sql += " 	WHERE userid is ?";
+		sql += " 	WHERE userid =?";
 		
 
 		try {
@@ -130,6 +130,8 @@ public class User_basicDaoImpl implements User_basicDao {
 			}
 
 		}
+		
+		return user_basic;
 		
 		
 	}
@@ -222,6 +224,7 @@ public class User_basicDaoImpl implements User_basicDao {
 			while(rs.next()) {
 				user_basic = new User_basic();
 				
+//				user_basic.setBasicnum(rs.getInt("basicnum"));
 				user_basic.setUserid(rs.getInt("userid"));
 				user_basic.setUsername(rs.getString("username"));
 				user_basic.setUserrank(rs.getString("userrank"));
@@ -239,14 +242,16 @@ public class User_basicDaoImpl implements User_basicDao {
 	}
 
 	@Override
-	public void deleteUser_BasicList(String names) {
+	public void deleteUser_DetailList(User_detail user_detail) {
 		conn = JDBCTemplate.getConnection();
 
 		String sql = "";
-		sql += "DELETE FROM User_basic WHERE userid IN ( " + names + " )";
+		sql += "DELETE FROM User_detail WHERE userid =?";
 
 		try {
 			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, user_detail.getUserid());
 
 			ps.executeUpdate();
 
@@ -268,8 +273,35 @@ public class User_basicDaoImpl implements User_basicDao {
 
 	@Override
 	public int nextBasicnum() {
-		// TODO Auto-generated method stub
-		return 0;
+		// DB연결 객체
+		conn = JDBCTemplate.getConnection();
+
+		// SQL 작성
+		String sql = "";
+		sql += "SELECT User_basic_seq.nextval FROM dual";
+
+		// 베이직 넘버 번호
+		int basicnum = 0;
+
+		try {
+			ps = conn.prepareStatement(sql); // SQL수행 객체
+			rs = ps.executeQuery(); // SQL 수행 및 결과집합 저장
+
+			// 조회 결과 처리
+			while (rs.next()) {
+				basicnum = rs.getInt(1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// DB객체 닫기
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		// 최종 결과 반환
+		return basicnum;
 	}
 
 }

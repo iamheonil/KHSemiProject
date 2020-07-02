@@ -7,13 +7,6 @@
 
 
 <style type="text/css">
-h4 {
-	text-align: center;
-	color: #0A2D5D;
-	font-weight: bold;
-	margin: 40px 0 40px 0;
-	font-size: 1.6em;
-}
 
 p {
 	text-align: center;
@@ -47,6 +40,12 @@ table {
 #btnBox {
 	
 }
+
+.title {
+	text-align: left;
+	margin-bottom: 18px;
+	font-weight: bold;
+}
 </style>
 
 <script type="text/javascript">
@@ -70,7 +69,7 @@ table {
 <div class="contents">
 	<div class="container">
 
-		<h4>새로운 사원 생성</h4>
+		<h2 class="title">새로운 사원 생성</h2>
 		<hr>
 
 		<div>
@@ -82,7 +81,7 @@ table {
 				<table class="table table-bordered">
 					<tr>
 						<td class="info">사번</td>
-						<td><input type="text" name="userrank" id="userrank" style="width: 100%" /></td>
+						<td><input type="text" name="userid" id="userid" style="width: 100%" /></td>
 					</tr>
 					<tr>
 						<td class="info">이름</td>
@@ -94,7 +93,7 @@ table {
 					</tr>
 					<tr>
 						<td class="info">부서</td>
-						<td><input type="text" name="userid" id="userid" style="width: 100%" /></td>
+						<td><input type="text" name="dept" id="dept" style="width: 100%" /></td>
 					</tr>
 				</table>
 
