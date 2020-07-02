@@ -22,6 +22,12 @@ public class DocumentDraftListController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		//로그인 되어있지 않으면 리다이렉트 
+	      if( req.getSession().getAttribute("login") == null ) {
+	         resp.sendRedirect("/");
+	         return;
+	      }
 		
 		int userid = 0; // session userid 저장 변수
 		String startDate = null; // 검색 날짜시작 값 변수
@@ -42,7 +48,7 @@ public class DocumentDraftListController extends HttpServlet {
 		//요청 파라미터를 전달하여 Paging 객체 생성하기
 		SearchPaging paging = documentService.getDraftPaging(req);
 
-		//게시글 전체 조회
+		//문서 전체 조회
 		ArrayList<Map<String, Object>> draftList = documentService.getListDraft(paging, userid, startDate, endDate);
 		
 		//Paging처리 결과 MODEL값 전달
