@@ -186,7 +186,7 @@ public class DayoffDaoImpl implements DayoffDao {
 		// 다음 게시글 번호 조회 쿼리
 		String sql = "";
 		sql += "INSERT INTO Dayoff(daynum, userid, daystart, dayend, dreason, dresult) ";
-		sql += " VALUES (dayoff_seq.nextval, ?, ?, ?, ?, '대기')";
+		sql += " VALUES (dayoff_seq.currval, ?, ?, ?, ?, '대기')";
 
 		try {
 			// DB작업

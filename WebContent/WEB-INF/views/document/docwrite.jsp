@@ -163,7 +163,7 @@ $(document).ready(function(){
 	$("#deleteBtn").click(function() {
 		console.log("클릭됌")
 		
-		var checkbox = $("input[name=checkbox]:checked");
+		var checkbox = $("input[name=checkbox]:disabled");
 		
 		checkbox.each(function(i) {
 			$(".link > tr:nth-child(2)").remove();
@@ -560,7 +560,7 @@ textarea{
 <!--     <p>Some text in the Modal..</p> -->
 
 	<input type="submit" onclick="location.href='/document/write'" value="확인">
-	<button>닫기</button>
+	<button type="button">닫기</button>
   </div>
 </div>
 </form>
