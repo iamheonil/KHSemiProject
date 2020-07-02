@@ -13,8 +13,6 @@ import javax.servlet.http.HttpSession;
 import web.dto.Dayoff;
 import web.service.face.DayoffService;
 import web.service.impl.DayoffServiceImpl;
-import web.util.ad_Day_Paging;
-
 /**
  * Servlet implementation class DayoffListController
  */
@@ -36,14 +34,16 @@ public class DayoffListController extends HttpServlet {
 		//세션 객체 생성
 		HttpSession session = req.getSession();
 		
+		
 		//세션에서 유저아이디 받아오기
-		session.setAttribute("userid", req.getParameter("userid"));
+		int userid = (int) session.getAttribute("userid");
+		System.out.println("session : " + userid);
 	
 		// 게시글 조회
-//		List<Dayoff> list = dayoffService.getDayoffById(req);
+		List<Dayoff> list = dayoffService.getDayoffById(userid);
 
 		//조회결과 MODEL값 전달
-//		req.setAttribute("list", list);
+		req.setAttribute("list", list);
 
 		// VIEW 지정
 		req.getRequestDispatcher("/WEB-INF/views/mypage/list.jsp").forward(req, resp);
