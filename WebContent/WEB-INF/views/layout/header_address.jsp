@@ -33,6 +33,12 @@ $(document).ready(function(){
 	})
 })
 
+/* 주소록 리스트 */
+$(document).ready(function(){
+	$(document).on("click", '.pagination a', function(){
+		$('#contents').load($(this).attr("href"));
+		return false;
+	})
 })
 
 </script>
