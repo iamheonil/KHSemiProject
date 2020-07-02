@@ -31,14 +31,10 @@ public class Doc_commentServiceImpl implements Doc_commentService {
 		
 		doc_commentDao.updateDoc_comment(comm);
 		
-		
-		if(comm.getComm_type().equals("중단")) {
-			documentDao.updateDocStateStop(comm);
-			return;
-		}
-		
+		System.out.println("의견작성완료");
 		
 		if(doc_commentDao.getMaxCommNumByDocNum(comm) > 0) {
+			System.out.println("마지마기~");
 			documentDao.updateDocState(comm);
 		}
 			

@@ -44,7 +44,7 @@ padding: 0px;
 					<li class="sidemenu-title">기안</li>
 					
 					<li class="sidemenu-content"><a href="/document/write">문서기안</a></li>
-<!-- 					<li class="sidemenu-content"><a href="/document/list/temp">임시저장함</a></li> -->
+					<li class="sidemenu-content"><a href="/document/list/temp">임시저장함</a></li>
 					
 					<li class="sidemenu-title">결재</li>
 					

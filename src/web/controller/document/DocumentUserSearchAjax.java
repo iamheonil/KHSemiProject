@@ -8,23 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import web.service.face.DocumentService;
-import web.service.impl.DocumentServiceImpl;
-
-@WebServlet("/document/approve")
-public class DocumentApproveController extends HttpServlet {
+@WebServlet("/document/write/search")
+public class DocumentUserSearchAjax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	private DocumentService documentService = new DocumentServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/WEB-INF/views/document/docapprove.jsp").forward(req, resp);
+		System.out.println("/document/write/search [GET]");
+		//VIEW지정 - forward
+		req.getRequestDispatcher("/WEB-INF/views/document/docwrite.jsp").forward(req, resp);
 	}
-	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
+		System.out.println("/ajax/test [POST]");
 	}
+	
 	
 }
