@@ -64,7 +64,7 @@ public class Board_commentDaoImpl implements Board_commentDao{
 				comment.setUserid(rs.getInt("userid"));
 				comment.setUsername(rs.getString("username"));
 				comment.setC_content(rs.getString("c_content"));
-				comment.setC_date(rs.getDate("c_date"));
+				comment.setC_date(rs.getTimestamp("c_date"));
 				comment.setUserrank(rs.getString("userrank"));
 				comment.setDept(rs.getString("dept"));
 				commentList.add(comment);

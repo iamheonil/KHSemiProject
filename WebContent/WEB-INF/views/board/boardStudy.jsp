@@ -56,7 +56,7 @@ $(document).ready(function(){
 						<td>${i.userid }</td>
 						<td>${i.username }</td>
 						<td>${i.hits }</td>
-						<td><fmt:formatDate value="${i.b_date }" pattern="yyyy-MM-dd" /></td>
+						<td><fmt:formatDate value="${i.b_date }" pattern="yyyy-MM-dd HH:mm" /></td>
 					</tr>
 				</c:forEach>
 			</thead>
@@ -72,7 +72,7 @@ $(document).ready(function(){
 					<td>${i.userid }</td>
 					<td>${i.username }</td>
 					<td>${i.hits }</td>
-					<td><fmt:formatDate value="${i.b_date }" pattern="yyyy-MM-dd" /></td>
+					<td><fmt:formatDate value="${i.b_date }" pattern="yyyy-MM-dd HH:mm" /></td>
 				</tr>
 			</c:forEach>
 		</table>

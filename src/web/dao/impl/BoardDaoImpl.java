@@ -44,7 +44,7 @@ public class BoardDaoImpl implements BoardDao{
 				board.setCategory(rs.getString("category"));
 				board.setB_num(rs.getInt("b_num"));
 				board.setB_title(rs.getString("b_title"));
-				board.setB_date(rs.getDate("b_date"));
+				board.setB_date(rs.getTimestamp("b_date"));
 				board.setHits(rs.getInt("hits"));
 				board.setUserid(rs.getInt("userid"));
 				board.setUsername(rs.getString("username"));
@@ -87,7 +87,7 @@ public class BoardDaoImpl implements BoardDao{
 				board.setCategory(rs.getString("category"));
 				board.setB_num(rs.getInt("b_num"));
 				board.setB_title(rs.getString("b_title"));
-				board.setB_date(rs.getDate("b_date"));
+				board.setB_date(rs.getTimestamp("b_date"));
 				board.setHits(rs.getInt("hits"));
 				board.setUserid(rs.getInt("userid"));
 				board.setUsername(rs.getString("username"));
@@ -128,7 +128,7 @@ public class BoardDaoImpl implements BoardDao{
 				board.setCategory(rs.getString("category"));
 				board.setB_num(rs.getInt("b_num"));
 				board.setB_title(rs.getString("b_title"));
-				board.setB_date(rs.getDate("b_date"));
+				board.setB_date(rs.getTimestamp("b_date"));
 				board.setHits(rs.getInt("hits"));
 				board.setUserid(rs.getInt("userid"));
 				board.setUsername(rs.getString("username"));
@@ -169,7 +169,7 @@ public class BoardDaoImpl implements BoardDao{
 				board.setCategory(rs.getString("category"));
 				board.setB_num(rs.getInt("b_num"));
 				board.setB_title(rs.getString("b_title"));
-				board.setB_date(rs.getDate("b_date"));
+				board.setB_date(rs.getTimestamp("b_date"));
 				board.setHits(rs.getInt("hits"));
 				board.setUserid(rs.getInt("userid"));
 				board.setUsername(rs.getString("username"));
@@ -597,7 +597,7 @@ public class BoardDaoImpl implements BoardDao{
 					board.setB_num(rs.getInt("b_num"));
 					board.setB_title(rs.getString("b_title"));
 					board.setB_content(rs.getNString("b_content"));
-					board.setB_date(rs.getDate("b_date"));
+					board.setB_date(rs.getTimestamp("b_date"));
 					board.setHits(rs.getInt("hits"));
 					board.setUserid(rs.getInt("userid"));
 					board.setUsername(rs.getNString("username"));
@@ -687,7 +687,7 @@ public class BoardDaoImpl implements BoardDao{
 						board.setB_num(rs.getInt("b_num"));
 						board.setB_title(rs.getString("b_title"));
 						board.setB_content(rs.getNString("b_content"));
-						board.setB_date(rs.getDate("b_date"));
+						board.setB_date(rs.getTimestamp("b_date"));
 						board.setHits(rs.getInt("hits"));
 						board.setUserid(rs.getInt("userid"));
 						board.setUsername(rs.getNString("username"));
@@ -772,7 +772,7 @@ public class BoardDaoImpl implements BoardDao{
 						board.setB_num(rs.getInt("b_num"));
 						board.setB_title(rs.getString("b_title"));
 						board.setB_content(rs.getNString("b_content"));
-						board.setB_date(rs.getDate("b_date"));
+						board.setB_date(rs.getTimestamp("b_date"));
 						board.setHits(rs.getInt("hits"));
 						board.setUserid(rs.getInt("userid"));
 						board.setUsername(rs.getNString("username"));
@@ -854,7 +854,7 @@ public class BoardDaoImpl implements BoardDao{
 					board.setB_num(rs.getInt("b_num"));
 					board.setB_title(rs.getString("b_title"));
 					board.setB_content(rs.getNString("b_content"));
-					board.setB_date(rs.getDate("b_date"));
+					board.setB_date(rs.getTimestamp("b_date"));
 					board.setHits(rs.getInt("hits"));
 					board.setUserid(rs.getInt("userid"));
 					board.setUsername(rs.getNString("username"));
