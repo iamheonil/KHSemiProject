@@ -31,7 +31,6 @@ $(document).ready(function(){
 	$('#address').click(function(){
 		$('#contents').load('/admin/address/list');
 	})
-})
 
 })
 
