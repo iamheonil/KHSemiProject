@@ -31,7 +31,11 @@ public class DocumentWriteController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		//로그인 되어있지 않으면 리다이렉트 
+	    if( req.getSession().getAttribute("login") == null ) {
+	       resp.sendRedirect("/");
+	       return;
+	    }
 		//사원 정보 조회
 		List<User_basic> user = documentService.userlist();
 		req.setAttribute("user", user);
@@ -50,37 +54,17 @@ public class DocumentWriteController extends HttpServlet {
 		
 		documentService.writeDoc(req);
 		
-		Doc_comment dcomm = new Doc_comment();
-		String approveComm = req.getParameter("approve_comment");
-		dcomm.setComm_content(approveComm);
-		
+//		Doc_comment dcomm = new Doc_comment();
+//		String approveComm = req.getParameter("approve_comment");
+//		dcomm.setComm_content(approveComm);
 		
 		Document doc = documentService.getDocumentno(req);
 		report_linkService.getDocReport_Link(doc);
 		
 		
-		resp.sendRedirect("/document/list/temp");
+//		resp.sendRedirect("/document/list/temp");
+		resp.sendRedirect("/document/dolist");
 		
 	}
-//	@Override
-//	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		
-//		Document document = new Document();
-//		
-//		//세션 객체 얻기
-//		HttpSession session = req.getSession();
-//		
-//		document.setDoc_title(req.getParameter("doc_title"));
-//		document.setDoc_substance(req.getParameter("doc_substance"));
-//		document.setDoc_content(req.getParameter("doc_content"));
-////		document.setDoc_substance((String)session.getAttribute("doc_substance"));
-//		document.setDoc_emergency(req.getParameter("chk"));
-//		
-//		document.setUserid((int)session.getAttribute("userid"));
-//		
-//		documentService.writeDoc(document);
-//		
-//		resp.sendRedirect("/document/list/temp");
-//	}
 
 }
