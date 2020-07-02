@@ -226,7 +226,7 @@ public class BoardServiceImpl implements BoardService{
 			
 			boardno.setB_num(Integer.parseInt(param));
 		}
-		System.out.println("게시글번호 확인!" + boardno);
+//		System.out.println("게시글번호 확인!" + boardno);
 		return boardno;
 	}
 	
@@ -241,7 +241,7 @@ public class BoardServiceImpl implements BoardService{
 			
 			commentno.setC_num(Integer.parseInt(param));
 		}
-		System.out.println("ServiceImpl 댓글번호 확인!" + commentno);
+//		System.out.println("ServiceImpl 댓글번호 확인!" + commentno);
 		return commentno;
 	}
 	
@@ -333,7 +333,7 @@ public class BoardServiceImpl implements BoardService{
 				
 				boardDao.boardUpdate(board);
 		
-		System.out.println(board);
+//		System.out.println(board);
 	}
 
 	@Override

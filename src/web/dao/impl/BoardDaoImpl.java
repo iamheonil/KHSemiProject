@@ -56,8 +56,15 @@ public class BoardDaoImpl implements BoardDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(ps); 
+			
+			try {
+//				JDBCTemplate.close(rs);
+//				JDBCTemplate.close(ps); 
+				if(ps!=null)	ps.close();
+				if(rs!=null) 	rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			
 		}
 		
@@ -99,8 +106,14 @@ public class BoardDaoImpl implements BoardDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JDBCTemplate.close(ps);
-			JDBCTemplate.close(rs);
+			try {
+//				JDBCTemplate.close(ps);
+//				JDBCTemplate.close(rs);
+				if(ps!=null)	ps.close();
+				if(rs!=null)	rs.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return N_list;
@@ -140,8 +153,14 @@ public class BoardDaoImpl implements BoardDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JDBCTemplate.close(ps);
-			JDBCTemplate.close(rs);
+			try {
+//				JDBCTemplate.close(rs);
+//				JDBCTemplate.close(ps); 
+				if(ps!=null)	ps.close();
+				if(rs!=null) 	rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return F_list;
@@ -181,8 +200,14 @@ public class BoardDaoImpl implements BoardDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JDBCTemplate.close(ps);
-			JDBCTemplate.close(rs);
+			try {
+//				JDBCTemplate.close(rs);
+//				JDBCTemplate.close(ps); 
+				if(ps!=null)	ps.close();
+				if(rs!=null) 	rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return S_list;
@@ -214,8 +239,14 @@ public class BoardDaoImpl implements BoardDao{
 			e.printStackTrace();
 		} finally {
 			
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(ps);
+			try {
+//				JDBCTemplate.close(rs);
+//				JDBCTemplate.close(ps); 
+				if(ps!=null)	ps.close();
+				if(rs!=null) 	rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			
 		}
 		
@@ -273,9 +304,14 @@ public class BoardDaoImpl implements BoardDao{
 		         e.printStackTrace();
 		      } finally {
 		         
-		         JDBCTemplate.close(rs);
-		         JDBCTemplate.close(ps);
-		         
+		    		try {
+//						JDBCTemplate.close(rs);
+//						JDBCTemplate.close(ps); 
+						if(ps!=null)	ps.close();
+						if(rs!=null) 	rs.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 		      }
 		      
 		      return totalCount;
@@ -307,8 +343,14 @@ public class BoardDaoImpl implements BoardDao{
 			e.printStackTrace();
 		} finally {
 			
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(ps);
+			try {
+//				JDBCTemplate.close(rs);
+//				JDBCTemplate.close(ps); 
+				if(ps!=null)	ps.close();
+				if(rs!=null) 	rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			
 		}
 		
@@ -352,8 +394,14 @@ public class BoardDaoImpl implements BoardDao{
 			e.printStackTrace();
 		} finally {
 			
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(ps);
+			try {
+//				JDBCTemplate.close(rs);
+//				JDBCTemplate.close(ps); 
+				if(ps!=null)	ps.close();
+				if(rs!=null) 	rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			
 		}
 		
@@ -383,8 +431,14 @@ public class BoardDaoImpl implements BoardDao{
 			e.printStackTrace();
 		} finally {
 			
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(ps);
+			try {
+//				JDBCTemplate.close(rs);
+//				JDBCTemplate.close(ps); 
+				if(ps!=null)	ps.close();
+				if(rs!=null) 	rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			
 		}
 		return totalCount;
@@ -440,8 +494,14 @@ public class BoardDaoImpl implements BoardDao{
 			e.printStackTrace();
 		} finally {
 			
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(ps);
+			try {
+//				JDBCTemplate.close(rs);
+//				JDBCTemplate.close(ps); 
+				if(ps!=null)	ps.close();
+				if(rs!=null) 	rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			
 		}
 		
@@ -478,8 +538,14 @@ public class BoardDaoImpl implements BoardDao{
 			e.printStackTrace();
 		} finally {
 			
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(ps);
+			try {
+//				JDBCTemplate.close(rs);
+//				JDBCTemplate.close(ps); 
+				if(ps!=null)	ps.close();
+				if(rs!=null) 	rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			
 		}
 		
@@ -532,8 +598,14 @@ public class BoardDaoImpl implements BoardDao{
 			e.printStackTrace();
 		} finally {
 			
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(ps);
+			try {
+//				JDBCTemplate.close(rs);
+//				JDBCTemplate.close(ps); 
+				if(ps!=null)	ps.close();
+				if(rs!=null) 	rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			
 		}
 		
@@ -613,8 +685,14 @@ public class BoardDaoImpl implements BoardDao{
 				e.printStackTrace();
 			} finally {
 				
-				JDBCTemplate.close(rs);
-				JDBCTemplate.close(ps);
+				try {
+//					JDBCTemplate.close(rs);
+//					JDBCTemplate.close(ps); 
+					if(ps!=null)	ps.close();
+					if(rs!=null) 	rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		
 		return list;
@@ -703,8 +781,14 @@ public class BoardDaoImpl implements BoardDao{
 					e.printStackTrace();
 				} finally {
 					
-					JDBCTemplate.close(rs);
-					JDBCTemplate.close(ps);
+					try {
+//						JDBCTemplate.close(rs);
+//						JDBCTemplate.close(ps); 
+						if(ps!=null)	ps.close();
+						if(rs!=null) 	rs.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 				}
 			
 			return list;
@@ -787,8 +871,14 @@ public class BoardDaoImpl implements BoardDao{
 					e.printStackTrace();
 				} finally {
 					
-					JDBCTemplate.close(rs);
-					JDBCTemplate.close(ps);
+					try {
+//						JDBCTemplate.close(rs);
+//						JDBCTemplate.close(ps); 
+						if(ps!=null)	ps.close();
+						if(rs!=null) 	rs.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 				}
 			
 			return list;
@@ -869,8 +959,14 @@ public class BoardDaoImpl implements BoardDao{
 				e.printStackTrace();
 			} finally {
 				
-				JDBCTemplate.close(rs);
-				JDBCTemplate.close(ps);
+				try {
+//					JDBCTemplate.close(rs);
+//					JDBCTemplate.close(ps); 
+					if(ps!=null)	ps.close();
+					if(rs!=null) 	rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		
 		return list;
@@ -1133,11 +1229,11 @@ public class BoardDaoImpl implements BoardDao{
 			}
 		}
 		
-		System.out.println(board.getCategory());
-		System.out.println(board.getB_title());
-		System.out.println(board.getB_content());
-		System.out.println(board.getB_num());
-		
+//		System.out.println(board.getCategory());
+//		System.out.println(board.getB_title());
+//		System.out.println(board.getB_content());
+//		System.out.println(board.getB_num());
+//		
 		
 		
 	}
