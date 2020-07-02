@@ -36,12 +36,6 @@ public class DocumentWaitApproveViewController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		//로그인 되어있지 않으면 리다이렉트 
-	    if( req.getSession().getAttribute("login") == null ) {
-	       resp.sendRedirect("/");
-	       return;
-	    }
-	    
 		//전달파라미터 얻기 - documentno
 		Document documentno = documentService.getDocumentno(req);
 		System.out.println(documentno);
@@ -92,7 +86,15 @@ public class DocumentWaitApproveViewController extends HttpServlet {
 		HttpSession session = req.getSession();
 		dcomm.setReceiver_id((int)session.getAttribute("userid"));
 		
+		System.out.println(dcomm);
+		
 		doc_commentService.updateDoc_comment(dcomm);
+		
+//		documentService.writeDoc(req);
+		
+		
+//		Document doc = documenTSERVICE.GETDOCUMENTNO(REQ);
+//		REPORT_LINKSERVICE.GETDocReport_Link(doc);
 		
 		resp.sendRedirect("/document/dolist");
 		

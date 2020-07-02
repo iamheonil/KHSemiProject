@@ -220,6 +220,16 @@ span{
 	<td></td>
 	</c:if>
 </tr>
+<%-- <c:forEach items="${viewComment }" var="comment"> --%>
+<!-- <tr> -->
+<%-- 	<td>${comment.report_type }</td> --%>
+<%-- 	<td>${comment.userrank }<br> --%>
+<%-- 	${comment.username }</td><!-- userrank, 보고종류 --> --%>
+<%-- 	<td>${comment.comm_content }</td> --%>
+<%-- 	<td>${comment.username }</td> --%>
+<%-- 	<td><fmt:formatDate value="${comment.comm_date }" pattern="yyyy-MM-dd"/><br> --%>
+<%-- 	<fmt:formatDate value="${comment.comm_date }" pattern="hh:MM:ss"/></td> --%>
+<!-- </tr> -->
 
 </c:forEach>
 </table>
@@ -245,7 +255,7 @@ span{
 	
 	<tr>
 		<td class="active">처리구분</td>
-		<td><input type="radio" id="approve_type" name="approve_type" value="결재" checked="checked" /> 결재 <!-- name변경!!! -->
+		<td><input type="radio" id="approve_type" name="approve_type" value="결재"/> 결재 <!-- name변경!!! -->
 		<input type="radio" id="approve_type" name="approve_type" value="중단"/> 중단
 		</td>
 	</tr>

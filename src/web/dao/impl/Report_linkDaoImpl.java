@@ -16,7 +16,10 @@ public class Report_linkDaoImpl implements Report_linkDao {
 	private PreparedStatement ps = null;
 	private ResultSet rs = null;
 	
-
+	@Override
+	public void insertReport_link(Report_link report_link) {
+		
+	}
 
 	@Override
 	public void deleteReport_link(Document doc) {
@@ -32,7 +35,7 @@ public class Report_linkDaoImpl implements Report_linkDao {
 			
 			ps.executeUpdate();
 			
-//			System.out.println("report_linnk 삭제완료");
+			System.out.println("report_linnk 삭제완료");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -104,5 +107,16 @@ public class Report_linkDaoImpl implements Report_linkDao {
 		//최종 결과 반환
 		return d;
 	}
+
+	@Override
+	public void insertReplaceReport_link(Report_link report_link) {
+		
+	}
+
+	@Override
+	public void deleteReplaceReport_link(Document doc) {
+		
+	}
+
 	
 }

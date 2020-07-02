@@ -74,7 +74,10 @@ public class Doc_attachDaoImpl implements Doc_attachDao {
 		}
 	}
 
-
+	@Override
+	public void deleteDoc_attach(Document doc) {
+		
+	}
 
 	@Override
 	public Doc_attach selectDoc_attachByDoc(Document doc) {

@@ -19,6 +19,13 @@ public interface Doc_attachDao {
 	 */
 	public void updateDoc_attach(Doc_attach doc_attach);
 	
+	/**
+	 * Doc 문서번호로 첨부파일 삭제
+	 * 
+	 * @param doc - 삭제할 문서번호정보
+	 */
+	public void deleteDoc_attach(Document doc);
+	
 	
 	/**
 	 * 문서번호로 첨부파일 정보 얻어오기
