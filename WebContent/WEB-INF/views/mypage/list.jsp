@@ -55,9 +55,9 @@ table, th {
 <jsp:include page="/WEB-INF/views/layout/aside_mypage.jsp" />
 
 
-<div class="content">
-	<h4>휴가 신청서 목록</h4>
+
 	<div class="container">
+	<h4>휴가 신청서 목록</h4>
 		<table class="table table-hover table-condensed">
 			<tr class="active">
 				<th>휴가번호</th>
@@ -90,6 +90,5 @@ table, th {
 
 	</div>
 
-</div>
 
 <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
