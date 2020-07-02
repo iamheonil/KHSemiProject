@@ -49,6 +49,7 @@ public class Report_linkDaoImpl implements Report_linkDao {
 		sql += " VALUES(report_link_seq.nextval, ?, ?, ?, ?, 1)";
 		
 		
+		
 		try {
 			ps = conn.prepareStatement(sql);
 			

@@ -904,6 +904,7 @@ public class DocumentServiceImpl implements DocumentService {
       // Paging 객체 생성
       SearchPaging paging = new SearchPaging(totalCount, curPage);
 
+      
       // 검색어
       paging.setSearch(search);
 

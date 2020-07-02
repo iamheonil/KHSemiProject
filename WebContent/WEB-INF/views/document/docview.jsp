@@ -185,6 +185,7 @@ span{
 	</c:if>
 </tr>
 
+
 </c:forEach>
 </table>
 </div>

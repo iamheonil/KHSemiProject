@@ -796,6 +796,7 @@ public class DocumentDaoImpl implements DocumentDao {
 			
 			rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
 			
+			
 			//조회 결과 처리
 			while(rs.next()) {
 				totalCount = rs.getInt(1);
